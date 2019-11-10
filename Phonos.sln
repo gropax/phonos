@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29021.104
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Phonos", "Phonos\Phonos.csproj", "{098D29E6-9EF1-42A4-BA25-63BF9491430E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intervals", "Intervals\Intervals.csproj", "{2CDAA18C-2426-42BC-9884-AF856BFDABF3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{098D29E6-9EF1-42A4-BA25-63BF9491430E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{098D29E6-9EF1-42A4-BA25-63BF9491430E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{098D29E6-9EF1-42A4-BA25-63BF9491430E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{098D29E6-9EF1-42A4-BA25-63BF9491430E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CDAA18C-2426-42BC-9884-AF856BFDABF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CDAA18C-2426-42BC-9884-AF856BFDABF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CDAA18C-2426-42BC-9884-AF856BFDABF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CDAA18C-2426-42BC-9884-AF856BFDABF3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8CF48258-DC54-4984-8FBA-89ECC547BA42}
+	EndGlobalSection
+EndGlobal
