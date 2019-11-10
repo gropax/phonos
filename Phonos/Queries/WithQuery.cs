@@ -13,11 +13,11 @@ namespace Phonos.Queries
         public string FieldName { get; }
         public HashSet<string> FieldValues { get; }
 
-        public WithQuery(IQuery query, string fieldName, HashSet<string> fieldValues)
+        public WithQuery(IQuery query, string fieldName, IEnumerable<string> fieldValues)
         {
             Query = query;
             FieldName = fieldName;
-            FieldValues = fieldValues;
+            FieldValues = new HashSet<string>(fieldValues);
         }
 
         public Interval<string[]> Match(Word word, int index)
