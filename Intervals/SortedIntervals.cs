@@ -58,7 +58,7 @@ namespace Intervals
 
         public static SortedIntervals<U> Map<T, U>(this SortedIntervals<T> intervals, Func<T, U> selector)
         {
-            return new SortedIntervals<U>(intervals.Map(selector));
+            return new SortedIntervals<U>(intervals.ToIntervals().Map(selector));
         }
 
         public static SortedIntervals<T> Translate<T>(this SortedIntervals<T> intervals, int value)

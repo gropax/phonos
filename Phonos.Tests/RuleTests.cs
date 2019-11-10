@@ -1,4 +1,5 @@
 using Intervals;
+using Phonos.Tests;
 using Phonos.Tests.Queries;
 using System;
 using System.Linq;
@@ -123,5 +124,54 @@ namespace Phonos.Queries.Tests
             Assert.Equal(expected, matches);
         }
 
+        [Fact]
+        public void TestApply()
+        {
+            var l = new PhonemeQuery(new[] { "l" });
+
+            var rule = new Rule(
+                timeSpan: new Interval(0, 1),
+                query: new SequenceQuery(new[] { l, l }),
+                maps: new[] {
+                    new PhonologicalMap(
+                        ps => new[] { "l" },
+                        graphicalMaps: new[] {
+                            new GraphicalMap(ps => ps),
+                        })
+                },
+                lookBehind: null,
+                lookAhead: null);
+
+            var word = new Word(
+                phonemes: new[] { "b", "e", "l", "l", "a" },
+                graphicalForms: new[] {
+                    new Alignment<string[]>(new[] {
+                        new Interval<string[]>(0, 1, new [] { "B" }),
+                        new Interval<string[]>(1, 1, new [] { "E" }),
+                        new Interval<string[]>(2, 1, new [] { "L" }),
+                        new Interval<string[]>(3, 1, new [] { "L" }),
+                        new Interval<string[]>(4, 1, new [] { "A" }),
+                    })
+                },
+                fields: null);
+
+            var newWords = rule.Apply(word);
+            var expected = new[]
+            {
+                new Word(
+                    phonemes: new[] { "b", "e", "l", "a" },
+                    graphicalForms: new[] {
+                        new Alignment<string[]>(new[] {
+                            new Interval<string[]>(0, 1, new [] { "B" }),
+                            new Interval<string[]>(1, 1, new [] { "E" }),
+                            new Interval<string[]>(2, 1, new [] { "L", "L" }),
+                            new Interval<string[]>(3, 1, new [] { "A" }),
+                        })
+                    },
+                    fields: null)
+            };
+
+            WordAssert.Equal(expected, newWords);
+        }
     }
 }
