@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.29021.104
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Phonos", "Phonos\Phonos.csproj", "{098D29E6-9EF1-42A4-BA25-63BF9491430E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intervals", "Intervals\Intervals.csproj", "{2CDAA18C-2426-42BC-9884-AF856BFDABF3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intervals", "Intervals\Intervals.csproj", "{2CDAA18C-2426-42BC-9884-AF856BFDABF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phonos.Tests", "Phonos.Tests\Phonos.Tests.csproj", "{222C4B57-8D3F-4CD4-8F04-09C9F227098C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{2CDAA18C-2426-42BC-9884-AF856BFDABF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CDAA18C-2426-42BC-9884-AF856BFDABF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CDAA18C-2426-42BC-9884-AF856BFDABF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{222C4B57-8D3F-4CD4-8F04-09C9F227098C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{222C4B57-8D3F-4CD4-8F04-09C9F227098C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{222C4B57-8D3F-4CD4-8F04-09C9F227098C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{222C4B57-8D3F-4CD4-8F04-09C9F227098C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
