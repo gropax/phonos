@@ -260,6 +260,42 @@ namespace Intervals
                     yield return interval;
         }
 
+        public static IEnumerable<Interval<T>> IntersectingWith<T>(this IEnumerable<IInterval<T>> intervals,
+            IInterval other, ContainsMode mode = ContainsMode.NON_STRICT)
+        {
+            foreach (var i in intervals.Select(i => i.ToInterval()))
+                if (i.IntersectsWith(other, mode))
+                    yield return i;
+        }
+
+        public static IEnumerable<Interval<T>> IntersectingWith<T>(this IEnumerable<IInterval<T>> intervals,
+            IEnumerable<IInterval> others, ContainsMode mode = ContainsMode.NON_STRICT)
+        {
+            var otherList = others.ToList();
+
+            foreach (var i in intervals.Select(i => i.ToInterval()))
+            {
+                foreach (var o in otherList)
+                {
+                    if (i.IntersectsWith(o, mode))
+                    {
+                        yield return i;
+                        break;
+                    }
+                }
+            }
+        }
+
+        public static bool IntersectsWith(this IInterval interval, IInterval other,
+            ContainsMode mode = ContainsMode.NON_STRICT)
+        {
+            var i = interval.ToInterval();
+            var o = other.ToInterval();
+            return i.IsMergedWith(o)
+                || i.Contains(o.Start, mode) || i.Contains(o.End, mode)
+                || o.Contains(i.Start, mode) || o.Contains(i.End, mode);
+        }
+
         /// <summary>
         /// Returns non-empty intersections of the given range interval with every interval in the collection.
         /// </summary>

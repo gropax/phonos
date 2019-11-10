@@ -72,6 +72,18 @@ namespace Intervals
             return new SortedIntervals<T>(intervals.AsEnumerable().Inside(range, comparer));
         }
 
+        public static SortedIntervals<T> IntersectingWith<T>(this SortedIntervals<T> intervals,
+            IInterval other, ContainsMode mode = ContainsMode.NON_STRICT)
+        {
+            return new SortedIntervals<T>(intervals.AsEnumerable().IntersectingWith(other, mode));
+        }
+
+        public static SortedIntervals<T> IntersectingWith<T>(this SortedIntervals<T> intervals,
+            IEnumerable<IInterval> others, ContainsMode mode = ContainsMode.NON_STRICT)
+        {
+            return new SortedIntervals<T>(intervals.AsEnumerable().IntersectingWith(others, mode));
+        }
+
         /// <summary>
         /// Filter out the intervals that are entirely covered by another interval.
         /// </summary>

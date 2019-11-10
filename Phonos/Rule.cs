@@ -40,26 +40,55 @@ namespace Phonos
             var phonemes = alignment.Right;
 
             // Compute every graphical forms
-            //var graphicalForms = map.GraphicalMaps.SelectMany(gmap =>
-            //    word.GraphicalForms.Select(gf =>
-            //        DeriveGraphicalForm(word, gmap, gf, alignment))).ToArray();
+            var graphicalForms = map.GraphicalMaps.SelectMany(gmap =>
+                word.GraphicalForms.Select(gf =>
+                    DeriveGraphicalForm(word, gmap, gf, replacements, alignment))).ToArray();
 
             // Realign fields on new phoneme sequence
             // @todo
 
-            return new Word(phonemes, null, null);
+            return new Word(phonemes, graphicalForms, null);
         }
 
-        public Alignment DeriveGraphicalForm(Word word, GraphicalMap map,
-            Alignment<string[]> graphicalForm, Alignment<string, string[]> alignment)
+        public Alignment<string[]> DeriveGraphicalForm(Word word, GraphicalMap map,
+            Alignment<string[]> graphicalForm, SortedIntervals<string[]> replacements,
+            Alignment<string, string[]> alignment)
         {
-            var mappings = alignment.Mappings;
+            var enumerator = graphicalForm.Intervals.GetEnumerator();
+            var newGraphemes = new List<Interval<string[]>>();
+            int shift = 0;
 
-            graphicalForm.Intervals
-                .Select(i => RemapInterval<string[]>(mappings, i))
-                .Map(i => map.Map(i.Value()));
+            foreach (var i in replacements)
+            {
+                var orignalGraphemes = graphicalForm.Intervals
+                    .IntersectingWith(i, ContainsMode.STRICT)
+                    .Union(g => g.SelectMany(k => k).ToArray())
+                    .Single();
 
-            throw new NotImplementedException();
+                var coveredPhonemes = alignment.Intervals
+                    .Select(a => new Interval<IntervalAlignment<string[]>>(a.Left, a))
+                    .IntersectingWith(orignalGraphemes, ContainsMode.STRICT)
+                    .Values().Select(a => a.Right)
+                    .AsEnumerable<IInterval>().ToList();
+
+                var range = coveredPhonemes.Range();
+
+                var replacedGraphemes = new Interval<string[]>(range, map.Map(orignalGraphemes.Value));
+
+                while (enumerator.MoveNext() && enumerator.Current.End <= orignalGraphemes.Start)
+                    newGraphemes.Add(enumerator.Current.Translate(shift));
+
+                newGraphemes.Add(replacedGraphemes);
+
+                // Skip the replaced interval
+                enumerator.MoveNext();
+                shift += replacedGraphemes.Length - orignalGraphemes.Length;
+            }
+
+            while (enumerator.MoveNext())
+                newGraphemes.Add(enumerator.Current.Translate(shift));
+
+            return new Alignment<string[]>(newGraphemes);
         }
 
         public Interval<T> RemapInterval<T>(Dictionary<int, int> mappings, Interval<T> interval)
