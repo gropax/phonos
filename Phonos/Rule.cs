@@ -7,15 +7,15 @@ using System.Text;
 
 namespace Phonos
 {
-    public class PhonologicalRule
+    public class Rule
     {
-        public Interval<int> TimeSpan { get; }
+        public Interval TimeSpan { get; }
         public IQuery Query { get; }
         public IQuery LookBehind { get; }
         public IQuery LookAhead { get; }
         public PhonologicalMap[] Maps { get; }
 
-        public PhonologicalRule(Interval<int> timeSpan, IQuery query, PhonologicalMap[] maps,
+        public Rule(Interval timeSpan, IQuery query, PhonologicalMap[] maps,
             IQuery lookBehind = null, IQuery lookAhead = null)
         {
             TimeSpan = timeSpan;
