@@ -9,7 +9,6 @@ namespace Phonos.Core.Queries
     public class SequenceQuery : IQuery
     {
         public IQuery[] Queries { get; }
-        public int Length => Queries.Sum(q => q.Length);
 
         public SequenceQuery(IEnumerable<IQuery> queries)
         {

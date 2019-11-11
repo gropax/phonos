@@ -8,6 +8,5 @@ namespace Phonos.Core.Queries
     public interface IQuery
     {
         Interval<string[]> Match(Word word, int index);
-        int Length { get; }
     }
 }

@@ -9,7 +9,6 @@ namespace Phonos.Core.Queries
     public class WithQuery : IQuery
     {
         public IQuery Query { get; }
-        public int Length => Query.Length;
         public string FieldName { get; }
         public HashSet<string> FieldValues { get; }
 

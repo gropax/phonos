@@ -9,7 +9,6 @@ namespace Phonos.Core.Queries
     public class PhonemeQuery : IQuery
     {
         public HashSet<string> Phonemes { get; }
-        public int Length => 1;
 
         public PhonemeQuery(IEnumerable<string> phonemes)
         {

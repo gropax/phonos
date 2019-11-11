@@ -7,7 +7,6 @@ namespace Phonos.Core.Queries
 {
     public class NullQuery : IQuery
     {
-        public int Length => 0;
         public Interval<string[]> Match(Word word, int index)
         {
             if (index < 0 || index > word.Phonemes.Length)
