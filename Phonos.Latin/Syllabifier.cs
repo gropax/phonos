@@ -133,7 +133,7 @@ namespace Phonos.Latin
                             }
                             else
                             {
-                                if (current == Phonemes.s)
+                                if (current.Quality == Phonemes.s)
                                 {
                                     syllablePhonemes.Add(current);
                                     lastPosition = SyllabicPosition.CODA;

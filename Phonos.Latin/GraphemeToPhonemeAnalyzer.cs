@@ -10,7 +10,7 @@ namespace Phonos.Latin
     {
         public string[] VOWELS = new[] { "a", "ā", "e", "ē", "i", "ī", "o", "ō", "u", "ū", "y", "ȳ" };
 
-        public Dictionary<string, Phoneme[]> CLASSICAL_LATIN_MONOGRAMS = new Dictionary<string, Phoneme[]>()
+        public Dictionary<string, string[]> CLASSICAL_LATIN_MONOGRAMS = new Dictionary<string, string[]>()
         {
             { "a", new [] { Phonemes.a } },
             { "ā", new [] { Phonemes.LONG_a } },
@@ -44,7 +44,7 @@ namespace Phonos.Latin
             { "z", new [] { Phonemes.z } },
         };
 
-        public Dictionary<string, Phoneme[]> CLASSICAL_LATIN_BIGRAMS = new Dictionary<string, Phoneme[]>()
+        public Dictionary<string, string[]> CLASSICAL_LATIN_BIGRAMS = new Dictionary<string, string[]>()
         {
             { "ae", new [] { Phonemes.a_i } },
             { "au", new [] { Phonemes.a_u } },
@@ -79,7 +79,7 @@ namespace Phonos.Latin
 
                 if (trigram.StartsWith("qu") && !VOWELS.Contains(trigram.Substring(2, 1)))
                 {
-                    phonemes = new[] { Phonemes.k.Quality, Phonemes.u.Quality };
+                    phonemes = new[] { Phonemes.k, Phonemes.u };
                     graphemes.Add(new Interval<string[]>(l, phonemes.Length, new[] { bigram }));
                     l += phonemes.Length;
                     allPhonemes.AddRange(phonemes);
@@ -87,15 +87,14 @@ namespace Phonos.Latin
                 }
                 if (trigram.StartsWith("gu") && !VOWELS.Contains(trigram.Substring(2, 1)))
                 {
-                    phonemes = new[] { Phonemes.g.Quality, Phonemes.u.Quality };
+                    phonemes = new[] { Phonemes.g, Phonemes.u };
                     graphemes.Add(new Interval<string[]>(l, phonemes.Length, new[] { bigram }));
                     l += phonemes.Length;
                     allPhonemes.AddRange(phonemes);
                     i++;
                 }
-                else if (CLASSICAL_LATIN_BIGRAMS.TryGetValue(bigram, out var phonemesObj))
+                else if (CLASSICAL_LATIN_BIGRAMS.TryGetValue(bigram, out phonemes))
                 {
-                    phonemes = phonemesObj.Select(p => p.Quality).ToArray();
                     graphemes.Add(new Interval<string[]>(l, phonemes.Length, new[] { bigram }));
                     l += phonemes.Length;
                     allPhonemes.AddRange(phonemes);
@@ -104,17 +103,16 @@ namespace Phonos.Latin
                 else if (monogram == "j")
                 {
                     if (i > 0 && i < length - 1 && IsVowel(word[i - 1]) && IsVowel(word[i + 1]))
-                        phonemes = new[] { Phonemes.j.Quality, Phonemes.j.Quality };
+                        phonemes = new[] { Phonemes.j, Phonemes.j };
                     else
-                        phonemes = new[] { Phonemes.j.Quality };
+                        phonemes = new[] { Phonemes.j };
 
                     graphemes.Add(new Interval<string[]>(l, phonemes.Length, new[] { monogram }));
                     l += phonemes.Length;
                     allPhonemes.AddRange(phonemes);
                 }
-                else if (CLASSICAL_LATIN_MONOGRAMS.TryGetValue(monogram, out var phonemesObj2))
+                else if (CLASSICAL_LATIN_MONOGRAMS.TryGetValue(monogram, out phonemes))
                 {
-                    phonemes = phonemesObj2.Select(p => p.Quality).ToArray();
                     graphemes.Add(new Interval<string[]>(l, phonemes.Length, new[] { monogram }));
                     l += phonemes.Length;
                     allPhonemes.AddRange(phonemes);
