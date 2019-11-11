@@ -22,10 +22,10 @@ namespace Phonos.Latin.Tests
         [InlineData("ejectio", "initial:2 tonic:3 post-tonic:2 final:1")]  // ej.ˈjek.ti.o
         //[InlineData("proavunculus", "ˌpro.a.ˈwuŋ.ku.lus")]
         // Secondary stress
-        [InlineData("architectūra", "tonic:2 post-tonic:2 pre-tonic:3 tonic:2 final:2")]  // ˌar.kʰi.tek.ˈtuː.ra
-        [InlineData("exclamatūrūs", "tonic:3 post-tonic:3 pre-tonic:2 tonic:2 final:3")]  // ˌeks.kla.ma.ˈtuː.ruːs
+        [InlineData("architectūra", "tonic:2 pre-tonic:2 pre-tonic:3 tonic:2 final:2")]  // ˌar.kʰi.tek.ˈtuː.ra
+        [InlineData("exclamatūrūs", "tonic:3 pre-tonic:3 pre-tonic:2 tonic:2 final:3")]  // ˌeks.kla.ma.ˈtuː.ruːs
         // word beginnig with qu and gu
-        [InlineData("gubernātōrem", "initial:2 tonic:3 post-tonic:2 tonic:2 final:3")]  // gu.ˌber.naː.ˈtoː.rem
+        [InlineData("gubernātōrem", "initial:2 tonic:3 pre-tonic:2 tonic:2 final:3")]  // gu.ˌber.naː.ˈtoː.rem
         public void GetSyllableTheory(string latin, string accent)
         {
             var parser = new WordParser();

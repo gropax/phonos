@@ -78,14 +78,10 @@ namespace Phonos.Latin
                         accent = Accent.INITIAL;
                     else if (i == syllables.Length - 1)
                         accent = Accent.FINAL;
+                    else if (i == syllables.Length - 2)
+                        accent = Accent.POSTTONIC;
                     else
-                    {
-                        var previous = syllables[i - 1];
-                        if (previous.Stress == Stress.UNSTRESSED)
-                            accent = Accent.PRETONIC;
-                        else
-                            accent = Accent.POSTTONIC;
-                    }
+                        accent = Accent.PRETONIC;
                 }
 
                 accents.Add(new Interval<string>(syllable.ToInterval(), accent));

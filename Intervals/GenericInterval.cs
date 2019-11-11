@@ -11,7 +11,7 @@ namespace Intervals
         new Interval<T> ToInterval();
     }
 
-    public class Interval<T> : Interval, IInterval<T>
+    public class Interval<T> : Interval, IInterval<T>, IEquatable<Interval<T>>
     {
         public T Value { get; private set; }
 
@@ -28,6 +28,20 @@ namespace Intervals
         public Interval(int start, int length, T value) : base (start, length)
         {
             Value = value;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Interval<T> interval &&
+                base.Equals(obj) &&
+                EqualityComparer<T>.Default.Equals(Value, interval.Value);
+        }
+
+        public bool Equals(Interval<T> other)
+        {
+            return Start == other.Start &&
+                Length == other.Length &&
+                EqualityComparer<T>.Default.Equals(Value, other.Value);
         }
 
         public override int GetHashCode()

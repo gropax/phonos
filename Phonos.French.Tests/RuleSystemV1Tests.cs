@@ -44,6 +44,13 @@ namespace Phonos.French.Tests
             TestRule(RuleSystem.Rule2(), data);
         }
 
+        //[Theory]
+        //[InlineData("calidum", /*phono:*/ "kaldum", /*graphs:*/ "caldum")]
+        //public void TestRule3(params string[] data)
+        //{
+        //    TestRule(RuleSystem.Rule3(), data);
+        //}
+
 
         private void TestRule(Rule rule, string[] data)
         {

@@ -33,7 +33,9 @@ namespace Phonos.Latin.Tests
             var graphemes = ParseGraphemic(graphemic);
 
             Assert.Equal(phonemes, latinWord.Phonemes);
-            Assert.Equal(graphemes, latinWord.GraphicalForms[0].Intervals);
+            Assert.Equal(graphemes.Map((string[] gx) => string.Join("", gx)),
+                latinWord.GraphicalForms[0].Intervals
+                    .Map((string[] gx) => string.Join("", gx)));
         }
 
         private string[] ParsePhonemic(string phonemic)
