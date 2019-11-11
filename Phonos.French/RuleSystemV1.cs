@@ -65,5 +65,19 @@ namespace Phonos.French
                     q3 => q3.Phon("a", "a").With("accent", "final")))
                 .Map(P.Erase));
         }
+
+        /// <summary>
+        /// Consonification des post-toniques brèves en hiatus
+        /// [G. Zink, Phonétique historique du français, p. 40]
+        /// </summary>
+        public Rule Rule4()
+        {
+            return R.Rule(r => r
+                .Named("Consonification des post-toniques brèves en hiatus")
+                .From(0).To(100)
+                .Match(q => q.Phon(Q.VOWEL).With("accent", "post-tonic"))
+                .After(q => q.Phon(Q.VOWEL))
+                .Map(P.Consonify));
+        }
     }
 }

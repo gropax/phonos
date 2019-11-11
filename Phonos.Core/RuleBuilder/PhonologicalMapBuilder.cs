@@ -8,14 +8,15 @@ namespace Phonos.Core.RuleBuilder
     public class PhonologicalMapBuilder
     {
         private Func<string[], string[]> _phono;
-        private GraphicalMap[] _graph = new GraphicalMap[0];
+        private GraphicalMap[] _graph;
 
         public PhonologicalMap Build()
         {
             if (_phono == null)
                 throw new QueryBuilderException("Phonological map must be set before building.");
 
-            return new PhonologicalMap(_phono, _graph);
+            return new PhonologicalMap(_phono,
+                _graph ?? new[] { GraphicalMap.Identity });
         }
 
         public PhonologicalMapBuilder Phono(Func<string[], string[]> map)

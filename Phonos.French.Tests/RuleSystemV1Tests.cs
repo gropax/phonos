@@ -53,6 +53,15 @@ namespace Phonos.French.Tests
             TestRule(RuleSystem.Rule3(), data);
         }
 
+        [Theory]
+        [InlineData("gaudia", /*phono:*/ "gau̯dja", /*graphs:*/ "gaudia")]
+        [InlineData("nausea", /*phono:*/ "nau̯sja", /*graphs:*/ "nausea")]
+        [InlineData("vidua", /*phono:*/ "widwa", /*graphs:*/ "vidua")]
+        public void TestRule4(params string[] data)
+        {
+            TestRule(RuleSystem.Rule4(), data);
+        }
+
 
         private void TestRule(Rule rule, string[] data)
         {

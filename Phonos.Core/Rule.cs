@@ -191,6 +191,8 @@ namespace Phonos.Core
 
     public class GraphicalMap
     {
+        public static GraphicalMap Identity => new GraphicalMap(_ => _);
+
         public Func<string, string> Map { get; }
         public GraphicalMap(Func<string, string> map)
         {
