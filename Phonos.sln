@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phonos.French", "Phonos.Fre
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phonos.French.Tests", "Phonos.French.Tests\Phonos.French.Tests.csproj", "{F8969BEF-AE92-4EC7-B93E-EEFBD3625082}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phonos.Latin", "Phonos.Latin\Phonos.Latin.csproj", "{348B3A68-8E94-44B7-B717-75340E81FE9F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phonos.Latin.Tests", "Phonos.Latin.Tests\Phonos.Latin.Tests.csproj", "{E0245361-D604-4649-A2C2-72EB13B2FD29}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{F8969BEF-AE92-4EC7-B93E-EEFBD3625082}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8969BEF-AE92-4EC7-B93E-EEFBD3625082}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8969BEF-AE92-4EC7-B93E-EEFBD3625082}.Release|Any CPU.Build.0 = Release|Any CPU
+		{348B3A68-8E94-44B7-B717-75340E81FE9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{348B3A68-8E94-44B7-B717-75340E81FE9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{348B3A68-8E94-44B7-B717-75340E81FE9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{348B3A68-8E94-44B7-B717-75340E81FE9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0245361-D604-4649-A2C2-72EB13B2FD29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0245361-D604-4649-A2C2-72EB13B2FD29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0245361-D604-4649-A2C2-72EB13B2FD29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0245361-D604-4649-A2C2-72EB13B2FD29}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
