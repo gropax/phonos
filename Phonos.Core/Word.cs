@@ -9,10 +9,10 @@ namespace Phonos.Core
     public class Word
     {
         public string[] Phonemes { get; }
-        public Alignment<string[]>[] GraphicalForms { get; }
+        public Alignment<string>[] GraphicalForms { get; }
         public Dictionary<string, Alignment<string>> Fields { get; }
 
-        public Word(string[] phonemes, Alignment<string[]>[] graphicalForms,
+        public Word(string[] phonemes, Alignment<string>[] graphicalForms,
             Dictionary<string, Alignment<string>> fields = null)
         {
             Phonemes = phonemes;

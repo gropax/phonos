@@ -29,11 +29,11 @@ namespace Phonos.Core.Queries.Tests
                 graphicalForms: null,
                 fields: null);
 
-            var matches = r.Match(word).ToIntervals().ToArray();
+            var matches = r.Match(word).Map(px => string.Join(string.Empty, px)).ToArray();
             var expected = new[]
             {
-                new Interval<string[]>(0, 3, new[] { "r", "a", "t" }),
-                new Interval<string[]>(5, 3, new[] { "l", "e", "r" }),
+                new Interval<string>(0, 3, "rat"),
+                new Interval<string>(5, 3, "ler"),
             };
 
             Assert.Equal(expected, matches);
@@ -58,12 +58,12 @@ namespace Phonos.Core.Queries.Tests
                 graphicalForms: null,
                 fields: null);
 
-            var matches = r.Match(word).ToIntervals().ToArray();
+            var matches = r.Match(word).Map(px => string.Join(string.Empty, px)).ToArray();
             var expected = new[]
             {
-                new Interval<string[]>(2, 1, new[] { "t" }),
-                new Interval<string[]>(4, 1, new[] { "b" }),
-                new Interval<string[]>(7, 1, new[] { "r" }),
+                new Interval<string>(2, 1, "t"),
+                new Interval<string>(4, 1, "b"),
+                new Interval<string>(7, 1, "r"),
             };
 
             Assert.Equal(expected, matches);
@@ -88,13 +88,13 @@ namespace Phonos.Core.Queries.Tests
                 graphicalForms: null,
                 fields: null);
 
-            var matches = r.Match(word).ToIntervals().ToArray();
+            var matches = r.Match(word).Map(px => string.Join(string.Empty, px)).ToArray();
             var expected = new[]
             {
-                new Interval<string[]>(0, 1, new[] { "r" }),
-                new Interval<string[]>(2, 1, new[] { "t" }),
-                new Interval<string[]>(5, 1, new[] { "l" }),
-                new Interval<string[]>(7, 1, new[] { "r" }),
+                new Interval<string>(0, 1, "r"),
+                new Interval<string>(2, 1, "t"),
+                new Interval<string>(5, 1, "l"),
+                new Interval<string>(7, 1, "r"),
             };
 
             Assert.Equal(expected, matches);
@@ -119,11 +119,11 @@ namespace Phonos.Core.Queries.Tests
                 graphicalForms: null,
                 fields: null);
 
-            var matches = r.Match(word).ToIntervals().ToArray();
+            var matches = r.Match(word).Map(px => string.Join(string.Empty, px)).ToArray();
             var expected = new[]
             {
-                new Interval<string[]>(2, 1, new[] { "t" }),
-                new Interval<string[]>(7, 1, new[] { "r" }),
+                new Interval<string>(2, 1, "t"),
+                new Interval<string>(7, 1, "r"),
             };
 
             Assert.Equal(expected, matches);
@@ -151,12 +151,12 @@ namespace Phonos.Core.Queries.Tests
             var word = new Word(
                 phonemes: new[] { "b", "e", "l", "l", "a" },
                 graphicalForms: new[] {
-                    new Alignment<string[]>(new[] {
-                        new Interval<string[]>(0, 1, new [] { "B" }),
-                        new Interval<string[]>(1, 1, new [] { "E" }),
-                        new Interval<string[]>(2, 1, new [] { "L" }),
-                        new Interval<string[]>(3, 1, new [] { "L" }),
-                        new Interval<string[]>(4, 1, new [] { "A" }),
+                    new Alignment<string>(new[] {
+                        new Interval<string>(0, 1, "B"),
+                        new Interval<string>(1, 1, "E"),
+                        new Interval<string>(2, 1, "L"),
+                        new Interval<string>(3, 1, "L"),
+                        new Interval<string>(4, 1, "A"),
                     })
                 },
                 fields: new Dictionary<string, Alignment<string>>()
@@ -176,11 +176,11 @@ namespace Phonos.Core.Queries.Tests
                 new Word(
                     phonemes: new[] { "b", "e", "l", "a" },
                     graphicalForms: new[] {
-                        new Alignment<string[]>(new[] {
-                            new Interval<string[]>(0, 1, new [] { "B" }),
-                            new Interval<string[]>(1, 1, new [] { "E" }),
-                            new Interval<string[]>(2, 1, new [] { "L", "L" }),
-                            new Interval<string[]>(3, 1, new [] { "A" }),
+                        new Alignment<string>(new[] {
+                            new Interval<string>(0, 1, "B"),
+                            new Interval<string>(1, 1, "E"),
+                            new Interval<string>(2, 1, "LL"),
+                            new Interval<string>(3, 1, "A"),
                         })
                     },
                     fields: new Dictionary<string, Alignment<string>>()

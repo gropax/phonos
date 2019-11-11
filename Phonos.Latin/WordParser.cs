@@ -67,7 +67,7 @@ namespace Phonos.Latin
         {
             var l = 0;
             var allPhonemes = new List<string>();
-            var graphemes = new List<Interval<string[]>>();
+            var graphemes = new List<Interval<string>>();
 
             int length = word.Length;
             for (int i = 0; i < length; i++)
@@ -81,7 +81,7 @@ namespace Phonos.Latin
                 if (trigram.StartsWith("qu") && !VOWELS.Contains(trigram.Substring(2, 1)))
                 {
                     phonemes = new[] { Phonemes.k, Phonemes.u };
-                    graphemes.Add(new Interval<string[]>(l, phonemes.Length, new[] { bigram }));
+                    graphemes.Add(new Interval<string>(l, phonemes.Length, bigram));
                     l += phonemes.Length;
                     allPhonemes.AddRange(phonemes);
                     i++;
@@ -89,14 +89,14 @@ namespace Phonos.Latin
                 if (trigram.StartsWith("gu") && !VOWELS.Contains(trigram.Substring(2, 1)))
                 {
                     phonemes = new[] { Phonemes.g, Phonemes.u };
-                    graphemes.Add(new Interval<string[]>(l, phonemes.Length, new[] { bigram }));
+                    graphemes.Add(new Interval<string>(l, phonemes.Length, bigram));
                     l += phonemes.Length;
                     allPhonemes.AddRange(phonemes);
                     i++;
                 }
                 else if (CLASSICAL_LATIN_BIGRAMS.TryGetValue(bigram, out phonemes))
                 {
-                    graphemes.Add(new Interval<string[]>(l, phonemes.Length, new[] { bigram }));
+                    graphemes.Add(new Interval<string>(l, phonemes.Length, bigram));
                     l += phonemes.Length;
                     allPhonemes.AddRange(phonemes);
                     i++;
@@ -108,13 +108,13 @@ namespace Phonos.Latin
                     else
                         phonemes = new[] { Phonemes.j };
 
-                    graphemes.Add(new Interval<string[]>(l, phonemes.Length, new[] { monogram }));
+                    graphemes.Add(new Interval<string>(l, phonemes.Length, monogram));
                     l += phonemes.Length;
                     allPhonemes.AddRange(phonemes);
                 }
                 else if (CLASSICAL_LATIN_MONOGRAMS.TryGetValue(monogram, out phonemes))
                 {
-                    graphemes.Add(new Interval<string[]>(l, phonemes.Length, new[] { monogram }));
+                    graphemes.Add(new Interval<string>(l, phonemes.Length, monogram));
                     l += phonemes.Length;
                     allPhonemes.AddRange(phonemes);
                 }
@@ -125,7 +125,7 @@ namespace Phonos.Latin
             return new Word(
                 phonemes: allPhonemes.ToArray(),
                 graphicalForms: new[] {
-                    new Core.Alignment<string[]>(graphemes.ToArray()),
+                    new Core.Alignment<string>(graphemes.ToArray()),
                 });
         }
 

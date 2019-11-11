@@ -95,19 +95,19 @@ namespace Phonos.Core
             return new Alignment<string>(annotations);
         }
 
-        public Alignment<string[]> DeriveGraphicalForm(Word word, GraphicalMap map,
-            Alignment<string[]> graphicalForm, SortedIntervals<string[]> replacements,
+        public Alignment<string> DeriveGraphicalForm(Word word, GraphicalMap map,
+            Alignment<string> graphicalForm, SortedIntervals<string[]> replacements,
             Alignment<string, string[]> alignment)
         {
             var enumerator = graphicalForm.Intervals.GetEnumerator();
-            var newGraphemes = new List<Interval<string[]>>();
+            var newGraphemes = new List<Interval<string>>();
             int shift = 0;
 
             foreach (var i in replacements)
             {
                 var orignalGraphemes = graphicalForm.Intervals
                     .IntersectingWith(i, ContainsMode.STRICT)
-                    .Union(g => g.SelectMany(k => k).ToArray())
+                    .Union(g => string.Join(string.Empty, g))
                     .Single();
 
                 var coveredPhonemes = alignment.Intervals
@@ -118,7 +118,7 @@ namespace Phonos.Core
 
                 var range = coveredPhonemes.Range();
 
-                var replacedGraphemes = new Interval<string[]>(range, map.Map(orignalGraphemes.Value));
+                var replacedGraphemes = new Interval<string>(range, map.Map(orignalGraphemes.Value));
 
                 while (enumerator.MoveNext() && enumerator.Current.End <= orignalGraphemes.Start)
                     newGraphemes.Add(enumerator.Current.Translate(shift));
@@ -132,7 +132,7 @@ namespace Phonos.Core
             while (enumerator.MoveNext())
                 newGraphemes.Add(enumerator.Current.Translate(shift));
 
-            return new Alignment<string[]>(newGraphemes);
+            return new Alignment<string>(newGraphemes);
         }
 
         public Interval<T> RemapInterval<T>(Dictionary<int, int> mappings, Interval<T> interval)
@@ -191,8 +191,8 @@ namespace Phonos.Core
 
     public class GraphicalMap
     {
-        public Func<string[], string[]> Map { get; }
-        public GraphicalMap(Func<string[], string[]> map)
+        public Func<string, string> Map { get; }
+        public GraphicalMap(Func<string, string> map)
         {
             Map = map;
         }

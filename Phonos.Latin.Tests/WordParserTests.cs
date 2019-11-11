@@ -33,9 +33,7 @@ namespace Phonos.Latin.Tests
             var graphemes = ParseGraphemic(graphemic);
 
             Assert.Equal(phonemes, latinWord.Phonemes);
-            Assert.Equal(graphemes.Map((string[] gx) => string.Join("", gx)),
-                latinWord.GraphicalForms[0].Intervals
-                    .Map((string[] gx) => string.Join("", gx)));
+            Assert.Equal(graphemes, latinWord.GraphicalForms[0].Intervals);
         }
 
         private string[] ParsePhonemic(string phonemic)
@@ -43,14 +41,14 @@ namespace Phonos.Latin.Tests
             return phonemic.Split(" ");
         }
 
-        private IEnumerable<Interval<string[]>> ParseGraphemic(string graphemic)
+        private IEnumerable<Interval<string>> ParseGraphemic(string graphemic)
         {
             int i = 0;
             foreach (var g in graphemic.Split(" "))
             {
                 var parts = g.Split(":", StringSplitOptions.RemoveEmptyEntries);
                 int length = parts.Length > 1 ? int.Parse(parts[1]) : 1;
-                yield return new Interval<string[]>(i, length, new[] { parts[0] });
+                yield return new Interval<string>(i, length, parts[0]);
                 i += length;
             }
         }

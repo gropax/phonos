@@ -24,7 +24,7 @@ namespace Phonos.Core.RuleBuilder
             return this;
         }
 
-        public PhonologicalMapBuilder Rewrite(params Func<string[], string[]>[] graphicalMaps)
+        public PhonologicalMapBuilder Rewrite(params Func<string, string>[] graphicalMaps)
         {
             _graph = graphicalMaps.Select(gm => new GraphicalMap(gm)).ToArray();
             return this;
