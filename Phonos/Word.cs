@@ -10,19 +10,19 @@ namespace Phonos
     {
         public string[] Phonemes { get; }
         public Alignment<string[]>[] GraphicalForms { get; }
-        private Dictionary<string, Alignment<string>> _fields;
+        public Dictionary<string, Alignment<string>> Fields { get; }
 
         public Word(string[] phonemes, Alignment<string[]>[] graphicalForms,
             Dictionary<string, Alignment<string>> fields = null)
         {
             Phonemes = phonemes;
             GraphicalForms = graphicalForms;
-            _fields = fields ?? new Dictionary<string, Alignment<string>>();
+            Fields = fields ?? new Dictionary<string, Alignment<string>>();
         }
 
         public Alignment<string> GetField(string name)
         {
-            if (_fields.TryGetValue(name, out var field))
+            if (Fields.TryGetValue(name, out var field))
                 return field;
             else
                 throw new KeyNotFoundException($"No field with name [{name}].");
@@ -30,7 +30,7 @@ namespace Phonos
 
         public void SetField(string name, Alignment<string> alignment)
         {
-            _fields[name] = alignment;
+            Fields[name] = alignment;
         }
     }
 

@@ -45,9 +45,50 @@ namespace Phonos
                     DeriveGraphicalForm(word, gmap, gf, replacements, alignment))).ToArray();
 
             // Realign fields on new phoneme sequence
-            // @todo
+            var fields = word.Fields.ToDictionary(kv => kv.Key,
+                kv => RealignField(kv.Value, replacements, alignment));
 
-            return new Word(phonemes, graphicalForms, null);
+            return new Word(phonemes, graphicalForms, fields);
+        }
+
+        public Alignment<string> RealignField(Alignment<string> field,
+            SortedIntervals<string[]> replacements, Alignment<string, string[]> alignment)
+        {
+            var enumerator = field.Intervals.GetEnumerator();
+            var annotations = new List<Interval<string>>();
+            int shift = 0;
+
+            foreach (var i in replacements)
+            {
+                var orignalAnnotations = field.Intervals
+                    .IntersectingWith(i, ContainsMode.STRICT)
+                    .Union(g => g.First())
+                    .Single();
+
+                var coveredPhonemes = alignment.Intervals
+                    .Select(a => new Interval<IntervalAlignment<string[]>>(a.Left, a))
+                    .IntersectingWith(orignalAnnotations, ContainsMode.STRICT)
+                    .Values().Select(a => a.Right)
+                    .AsEnumerable<IInterval>().ToList();
+
+                var range = coveredPhonemes.Range();
+
+                var realignedAnnotation = new Interval<string>(range, orignalAnnotations.Value);
+
+                while (enumerator.MoveNext() && enumerator.Current.End <= orignalAnnotations.Start)
+                    annotations.Add(enumerator.Current.Translate(shift));
+
+                annotations.Add(realignedAnnotation);
+
+                // Skip the replaced interval
+                enumerator.MoveNext();
+                shift += realignedAnnotation.Length - orignalAnnotations.Length;
+            }
+
+            while (enumerator.MoveNext())
+                annotations.Add(enumerator.Current.Translate(shift));
+
+            return new Alignment<string>(annotations);
         }
 
         public Alignment<string[]> DeriveGraphicalForm(Word word, GraphicalMap map,

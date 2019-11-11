@@ -2,6 +2,7 @@ using Intervals;
 using Phonos.Tests;
 using Phonos.Tests.Queries;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
@@ -153,7 +154,16 @@ namespace Phonos.Queries.Tests
                         new Interval<string[]>(4, 1, new [] { "A" }),
                     })
                 },
-                fields: null);
+                fields: new Dictionary<string, Alignment<string>>()
+                {
+                    { "type", new Alignment<string>(new[] {
+                        new Interval<string>(0, 1, "C"),
+                        new Interval<string>(1, 1, "V"),
+                        new Interval<string>(2, 1, "C"),
+                        new Interval<string>(3, 1, "C"),
+                        new Interval<string>(4, 1, "V"),
+                    }) },
+                }); 
 
             var newWords = rule.Apply(word);
             var expected = new[]
@@ -168,7 +178,15 @@ namespace Phonos.Queries.Tests
                             new Interval<string[]>(3, 1, new [] { "A" }),
                         })
                     },
-                    fields: null)
+                    fields: new Dictionary<string, Alignment<string>>()
+                    {
+                        { "type", new Alignment<string>(new[] {
+                            new Interval<string>(0, 1, "C"),
+                            new Interval<string>(1, 1, "V"),
+                            new Interval<string>(2, 1, "C"),
+                            new Interval<string>(3, 1, "V"),
+                        }) },
+                    })
             };
 
             WordAssert.Equal(expected, newWords);
