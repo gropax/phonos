@@ -81,6 +81,15 @@ namespace Phonos.Core.RuleBuilder
             return this;
         }
 
+        public ContextQueryBuilder Maybe(Action<ContextQueryBuilder> queryDefinition)
+        {
+            var queryBuilder = new ContextQueryBuilder();
+            queryDefinition(queryBuilder);
+            var query = queryBuilder.Build();
+            SetQuery(new MaybeQuery(query));
+            return this;
+        }
+
         public ContextQueryBuilder Seq(params Action<ContextQueryBuilder>[] queriesDefinitions)
         {
             var queries = queriesDefinitions.Select(qd =>

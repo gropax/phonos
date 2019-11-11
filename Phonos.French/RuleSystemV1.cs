@@ -53,18 +53,16 @@ namespace Phonos.French
         /// @fixme
         ///     Cette règle s'applique-t-elle à toutes les voyelle ? (je n'ai
         ///     que des exemples de syncope du /i/).
-        /// @fixme
-        ///     Cette règle s'applique-t-elle à toutes les positions post-toniques suivies
-        ///     d'un /a/ (et pas seulement du /a/ final) ? Peut-être en tonique, mais en 
-        ///     pré-tonique, c'est douteux...
         /// </remarks>
         public Rule Rule3()
         {
             return R.Rule(r => r
                 .Named("Syncope des voyelles post-toniques suivies d'un /a/ final")
                 .From(0).To(200)
-                .Match(Q.PostTonicVowel)
-                .After(q => q.Phon("t", "d"))
+                .Match(q => q.Phon(Q.VOWEL).With("accent", "post-tonic"))
+                .After(q => q.Seq(_ => _.Phon(Q.CONSONANT),
+                    q2 => q2.Maybe(_ => _.Phon(Q.CONSONANT)),
+                    q3 => q3.Phon("a", "a").With("accent", "final")))
                 .Map(P.Erase));
         }
     }
