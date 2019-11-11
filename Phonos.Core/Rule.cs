@@ -82,8 +82,6 @@ namespace Phonos.Core
 
                 annotations.Add(realignedAnnotation);
 
-                // Skip the replaced interval
-                enumerator.MoveNext();
                 shift += realignedAnnotation.Length - orignalAnnotations.Length;
             }
 
@@ -121,10 +119,9 @@ namespace Phonos.Core
                 while (enumerator.MoveNext() && enumerator.Current.End <= orignalGraphemes.Start)
                     newGraphemes.Add(enumerator.Current.Translate(shift));
 
-                newGraphemes.Add(replacedGraphemes);
+                if (replacedGraphemes.Value.Length > 0)
+                    newGraphemes.Add(replacedGraphemes);
 
-                // Skip the replaced interval
-                enumerator.MoveNext();
                 shift += replacedGraphemes.Length - orignalGraphemes.Length;
             }
 
