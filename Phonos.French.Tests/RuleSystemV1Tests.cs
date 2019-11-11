@@ -1,4 +1,4 @@
-using Intervals;
+﻿using Intervals;
 using Phonos.Core;
 using System;
 using System.Collections.Generic;
@@ -22,13 +22,26 @@ namespace Phonos.French.Tests
 
         [Theory]
         [InlineData("ambulat", /*phono:*/ "amblat", /*graphs:*/ "amblat")]
-        [InlineData("oricula", /*phono:*/ "orikla", /*graphs:*/ "oricla")]  // @faked
+        [InlineData("auricula", /*phono:*/ "au̯rikla", /*graphs:*/ "auricla")]  // @faked
         [InlineData("oculum", /*phono:*/ "oklum", /*graphs:*/ "oclum")]
         [InlineData("tabula", /*phono:*/ "tabla", /*graphs:*/ "tabla")]
-        [InlineData("atala")]  // no match  @faked
+        [InlineData("genita")]  // no match
+        [InlineData("quaesita")]  // no match
         public void TestRule1(params string[] data)
         {
             TestRule(RuleSystem.Rule1(), data);
+        }
+
+        [Theory]
+        [InlineData("calidum", /*phono:*/ "kaldum", /*graphs:*/ "caldum")]
+        [InlineData("viridem", /*phono:*/ "wirdem", /*graphs:*/ "virdem")]
+        [InlineData("genita", /*phono:*/ "genta", /*graphs:*/ "genta")]
+        [InlineData("quaesita", /*phono:*/ "kʷai̯sta", /*graphs:*/ "quaesta")]
+        [InlineData("oculum")]  // no match
+        [InlineData("tabula")]  // no match
+        public void TestRule2(params string[] data)
+        {
+            TestRule(RuleSystem.Rule2(), data);
         }
 
 
