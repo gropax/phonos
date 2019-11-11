@@ -15,6 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Phonos.Core\Phonos.Core.csproj" />
     <ProjectReference Include="..\Phonos.French\Phonos.French.csproj" />
+    <ProjectReference Include="..\Phonos.Latin\Phonos.Latin.csproj" />
   </ItemGroup>
 
 </Project>
