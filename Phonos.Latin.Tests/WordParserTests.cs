@@ -6,7 +6,7 @@ using Xunit;
 
 namespace Phonos.Latin.Tests
 {
-    public class GraphemeToPhonemeAnalyzerTests
+    public class WordParserTests
     {
         [Theory]
         // x -> ks
@@ -25,15 +25,15 @@ namespace Phonos.Latin.Tests
         [InlineData("avia", "a w i a", "a v i a")]
         public void AnalyzeTheory(string graphical, string phonemic, string graphemic)
         {
-            var analyzer = new GraphemeToPhonemeAnalyzer();
+            var analyzer = new WordParser();
 
-            var latinWord = analyzer.Analyze(graphical);
+            var latinWord = analyzer.Parse(graphical);
 
             var phonemes = ParsePhonemic(phonemic);
             var graphemes = ParseGraphemic(graphemic);
 
             Assert.Equal(phonemes, latinWord.Phonemes);
-            Assert.Equal(graphemes, latinWord.GraphicalForm);
+            Assert.Equal(graphemes, latinWord.GraphicalForms[0].Intervals);
         }
 
         private string[] ParsePhonemic(string phonemic)

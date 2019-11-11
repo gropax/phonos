@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Phonos.Core.Analyzers
 {
-    interface IAnalyzer
+    public interface IAnalyzer
     {
         void Analyze(Word word);
     }

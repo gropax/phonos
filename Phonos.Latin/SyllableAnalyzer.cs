@@ -1,4 +1,6 @@
 ﻿using Intervals;
+using Phonos.Core;
+using Phonos.Core.Analyzers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +13,15 @@ namespace Phonos.Latin
         UNSTRESSED,
         PRIMARY_STRESS,
         SECONDARY_STRESS,
+    }
+
+    public static class Accent
+    {
+        public const string TONIC = "tonic";
+        public const string INITIAL = "initial";
+        public const string FINAL = "final";
+        public const string PRETONIC = "pre-tonic";
+        public const string POSTTONIC = "post-tonic";
     }
 
     public class Syllable : IInterval<Syllable>
@@ -39,7 +50,7 @@ namespace Phonos.Latin
     }
 
 
-    public class Syllabifier
+    public class SyllableAnalyzer : IAnalyzer
     {
         public enum SyllabicPosition
         {
@@ -48,14 +59,49 @@ namespace Phonos.Latin
             CODA,
         }
 
-        public Syllable[] GetSyllables(Phoneme[] phonemicWord)
+        public void Analyze(Word word)
         {
-            var syllablesPhonemes = new List<Phoneme[]>();
-            var syllablePhonemes = new List<Phoneme>();
+            var syllables = GetSyllables(word.Phonemes);
+
+            var accents = new List<Interval<string>>();
+
+            for (int i = 0; i < syllables.Length; i++)
+            {
+                var syllable = syllables[i];
+
+                string accent;
+                if (syllable.Stress == Stress.PRIMARY_STRESS || syllable.Stress == Stress.SECONDARY_STRESS)
+                    accent = Accent.TONIC;
+                else
+                {
+                    if (i == 0)
+                        accent = Accent.INITIAL;
+                    else if (i == syllables.Length - 1)
+                        accent = Accent.FINAL;
+                    else
+                    {
+                        var previous = syllables[i - 1];
+                        if (previous.Stress == Stress.UNSTRESSED)
+                            accent = Accent.PRETONIC;
+                        else
+                            accent = Accent.POSTTONIC;
+                    }
+                }
+
+                accents.Add(new Interval<string>(syllable.ToInterval(), accent));
+            }
+
+            word.SetField("accent", new Core.Alignment<string>(accents));
+        }
+
+        public Syllable[] GetSyllables(string[] phonemicWord)
+        {
+            var syllablesPhonemes = new List<string[]>();
+            var syllablePhonemes = new List<string>();
 
             var lastPosition = SyllabicPosition.CODA;
 
-            Phoneme current = null;
+            string current = null;
 
             for (int i = 0; i < phonemicWord.Length; i++)
             {
@@ -63,7 +109,7 @@ namespace Phonos.Latin
 
                 if (i == 0)
                 {
-                    if (current.Type == PhonemeType.VOCALIC)
+                    if (IsVocalic(current))
                     {
                         syllablePhonemes.Add(current);
                         lastPosition = SyllabicPosition.NUCLEUS;
@@ -81,7 +127,7 @@ namespace Phonos.Latin
 
                     if (next == null)
                     {  // Last phoneme of the word
-                        if (current.Type == PhonemeType.VOCALIC && last.Type == PhonemeType.VOCALIC)
+                        if (IsVocalic(current) && IsVocalic(last))
                         {
                             syllablesPhonemes.Add(syllablePhonemes.ToArray());
                             syllablePhonemes.Clear();
@@ -89,9 +135,9 @@ namespace Phonos.Latin
                         syllablePhonemes.Add(current);
                         syllablesPhonemes.Add(syllablePhonemes.ToArray());
                     }
-                    else if (current.Type == PhonemeType.VOCALIC)
+                    else if (IsVocalic(current))
                     {
-                        if (last.Type == PhonemeType.VOCALIC)
+                        if (IsVocalic(last))
                         {
                             syllablesPhonemes.Add(syllablePhonemes.ToArray());
                             syllablePhonemes.Clear();
@@ -102,9 +148,9 @@ namespace Phonos.Latin
                     }
                     else
                     {
-                        if (last.Type == PhonemeType.VOCALIC)
+                        if (IsVocalic(last))
                         {
-                            if (next.Type == PhonemeType.VOCALIC)
+                            if (IsVocalic(next))
                             {
                                 syllablesPhonemes.Add(syllablePhonemes.ToArray());
                                 syllablePhonemes.Clear();
@@ -120,7 +166,7 @@ namespace Phonos.Latin
                         }
                         else
                         {
-                            if (next.Type == PhonemeType.VOCALIC)
+                            if (IsVocalic(next))
                             {
                                 if (lastPosition == SyllabicPosition.CODA)
                                 {
@@ -133,7 +179,7 @@ namespace Phonos.Latin
                             }
                             else
                             {
-                                if (current.Quality == Phonemes.s)
+                                if (current == Phonemes.s)
                                 {
                                     syllablePhonemes.Add(current);
                                     lastPosition = SyllabicPosition.CODA;
@@ -167,8 +213,8 @@ namespace Phonos.Latin
             {
                 syllableNo++;
                 start -= phonemes.Length;
-                var nucleus = phonemes.Where(p => p.Type == PhonemeType.VOCALIC).First();
-                var hasCoda = phonemes.Last().Type != PhonemeType.VOCALIC;
+                var nucleus = phonemes.Where(p => IsVocalic(p)).First();
+                var hasCoda = !IsVocalic(phonemes.Last());
 
                 if (distanceToAccent == 0)
                 {
@@ -177,7 +223,7 @@ namespace Phonos.Latin
                 }
                 else if (distanceToAccent == 1)
                 {
-                    if (nucleus.Quantity == PhonemeQuantity.LONG || hasCoda || syllableNo == syllableNumber)
+                    if (IsLong(nucleus) || hasCoda || syllableNo == syllableNumber)
                     {
                         isAccentuated = true;
                         distanceToAccent = 0;
@@ -211,6 +257,20 @@ namespace Phonos.Latin
             syllables.Reverse();
 
             return syllables.ToArray();
+        }
+
+        private HashSet<char> VOWELS = new HashSet<char>(
+            new[] { 'a', 'e', 'i', 'o', 'u', 'y' });
+        private bool IsVocalic(string phoneme)
+        {
+            return VOWELS.Contains(phoneme[0]);
+        }
+
+        private HashSet<char> QUANTITY_MARKS = new HashSet<char>(
+            new[] { 'ː', '\u032f' });
+        private bool IsLong(string phoneme)
+        {
+            return QUANTITY_MARKS.Contains(phoneme.Last());
         }
     }
 }

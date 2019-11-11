@@ -1,4 +1,5 @@
 ﻿using Intervals;
+using Phonos.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace Phonos.Latin
 {
-    public class GraphemeToPhonemeAnalyzer
+    public class WordParser
     {
         public string[] VOWELS = new[] { "a", "ā", "e", "ē", "i", "ī", "o", "ō", "u", "ū", "y", "ȳ" };
 
@@ -62,7 +63,7 @@ namespace Phonos.Latin
             { "th", new [] { Phonemes.th } },
         };
 
-        public LatinWord Analyze(string word)
+        public Word Parse(string word)
         {
             var l = 0;
             var allPhonemes = new List<string>();
@@ -121,7 +122,11 @@ namespace Phonos.Latin
                     throw new Exception($"Unsupported character: `{monogram}`.");
             }
 
-            return new LatinWord(word, allPhonemes.ToArray(), graphemes.ToArray());
+            return new Word(
+                phonemes: allPhonemes.ToArray(),
+                graphicalForms: new[] {
+                    new Core.Alignment<string[]>(graphemes.ToArray()),
+                });
         }
 
         private bool IsVowel(char v)
