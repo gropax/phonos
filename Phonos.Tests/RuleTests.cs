@@ -17,6 +17,7 @@ namespace Phonos.Queries.Tests
             var c = new PhonemeQuery(new[] { "r", "t", "b", "l" });
 
             var r = new Rule(
+                name: "Test",
                 timeSpan: new Interval(0, 1),
                 query: new SequenceQuery(new[] { c, v, c }),
                 maps: null,
@@ -45,6 +46,7 @@ namespace Phonos.Queries.Tests
             var c = new PhonemeQuery(new[] { "r", "t", "b", "l" });
 
             var r = new Rule(
+                name: "Test",
                 timeSpan: new Interval(0, 1),
                 query: c,
                 maps: null,
@@ -74,6 +76,7 @@ namespace Phonos.Queries.Tests
             var c = new PhonemeQuery(new[] { "r", "t", "b", "l" });
 
             var r = new Rule(
+                name: "Test",
                 timeSpan: new Interval(0, 1),
                 query: c,
                 maps: null,
@@ -104,6 +107,7 @@ namespace Phonos.Queries.Tests
             var c = new PhonemeQuery(new[] { "r", "t", "b", "l" });
 
             var r = new Rule(
+                name: "Test",
                 timeSpan: new Interval(0, 1),
                 query: c,
                 maps: null,
@@ -131,6 +135,7 @@ namespace Phonos.Queries.Tests
             var l = new PhonemeQuery(new[] { "l" });
 
             var rule = new Rule(
+                name: "Test",
                 timeSpan: new Interval(0, 1),
                 query: new SequenceQuery(new[] { l, l }),
                 maps: new[] {

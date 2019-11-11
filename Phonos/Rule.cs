@@ -9,15 +9,17 @@ namespace Phonos
 {
     public class Rule
     {
+        public string Name { get; }
         public Interval TimeSpan { get; }
         public IQuery Query { get; }
         public IQuery LookBehind { get; }
         public IQuery LookAhead { get; }
         public PhonologicalMap[] Maps { get; }
 
-        public Rule(Interval timeSpan, IQuery query, PhonologicalMap[] maps,
+        public Rule(string name, Interval timeSpan, IQuery query, PhonologicalMap[] maps,
             IQuery lookBehind = null, IQuery lookAhead = null)
         {
+            Name = name;
             TimeSpan = timeSpan;
             Query = query;
             Maps = maps;
