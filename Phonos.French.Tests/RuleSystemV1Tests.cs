@@ -22,6 +22,10 @@ namespace Phonos.French.Tests
 
         [Theory]
         [InlineData("ambulat", /*phono:*/ "amblat", /*graphs:*/ "amblat")]
+        [InlineData("oricula", /*phono:*/ "orikla", /*graphs:*/ "oricla")]  // @faked
+        [InlineData("oculum", /*phono:*/ "oklum", /*graphs:*/ "oclum")]
+        [InlineData("tabula", /*phono:*/ "tabla", /*graphs:*/ "tabla")]
+        [InlineData("atala")]  // no match  @faked
         public void TestRule1(params string[] data)
         {
             TestRule(RuleSystem.Rule1(), data);
@@ -82,7 +86,9 @@ namespace Phonos.French.Tests
                 else
                     graphicalForms.Add(segment);
             }
-            phonoData.Add(new PhonologicalFormData(phonemes, graphicalForms.ToArray()));
+
+            if (phonemes != null)
+                phonoData.Add(new PhonologicalFormData(phonemes, graphicalForms.ToArray()));
 
             return new WordData(latin, phonoData.ToArray());
         }

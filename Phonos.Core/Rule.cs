@@ -30,6 +30,10 @@ namespace Phonos.Core
         public Word[] Apply(Word word)
         {
             var matches = Match(word);
+
+            if (matches.ToIntervals().Count() == 0)
+                return new Word[0];
+
             return Maps.Select(map => DeriveWord(word, map, matches)).ToArray();
         }
 
