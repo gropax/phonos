@@ -13,6 +13,12 @@ namespace Phonos.Core.RuleBuilder
             return _rules.ToArray();
         }
 
+        public RuleSystemBuilder Rule(Rule rule)
+        {
+            _rules.Add(rule);
+            return this;
+        }
+
         public RuleSystemBuilder Rule(Action<RuleBuilder> ruleDefinition)
         {
             var builder = new RuleBuilder();
@@ -29,6 +35,14 @@ namespace Phonos.Core.RuleBuilder
         {
             var builder = new RuleSystemBuilder();
             systemDefinition(builder);
+            var system = builder.Build();
+            return system;
+        }
+
+        public static Rule Rule(Action<RuleBuilder> ruleDefinition)
+        {
+            var builder = new RuleBuilder();
+            ruleDefinition(builder);
             var system = builder.Build();
             return system;
         }
