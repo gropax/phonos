@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29021.104
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Phonos", "Phonos\Phonos.csproj", "{098D29E6-9EF1-42A4-BA25-63BF9491430E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Phonos.Core", "Phonos.Core\Phonos.Core.csproj", "{098D29E6-9EF1-42A4-BA25-63BF9491430E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intervals", "Intervals\Intervals.csproj", "{2CDAA18C-2426-42BC-9884-AF856BFDABF3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Phonos.Tests", "Phonos.Tests\Phonos.Tests.csproj", "{222C4B57-8D3F-4CD4-8F04-09C9F227098C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Phonos.Core.Tests", "Phonos.Core.Tests\Phonos.Core.Tests.csproj", "{222C4B57-8D3F-4CD4-8F04-09C9F227098C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intervals.Tests", "Intervals.Tests\Intervals.Tests.csproj", "{4332E83E-5AC8-4363-A2C1-F9DBC2CBE546}"
 EndProject
