@@ -79,5 +79,24 @@ namespace Phonos.French
                 .After(q => q.Phon(Q.VOWEL))
                 .Map(P.Consonify));
         }
+
+        /// <summary>
+        /// Affaiblissement de toutes les voyelles post-toniques restantes.
+        /// [G. Zink, Phonétique historique du français, pp. 39-40]
+        /// </summary>
+        /// <remarks>
+        /// @fixme
+        ///    - Ici ont lieu des problèmes de séquençage.
+        ///    - Il faut préciser la datation, voire scinder la règle
+        /// </remarks>
+        public Rule Rule5()
+        {
+            return R.Rule(r => r
+                .Named("Syncope des voyelles post-toniques restantes")
+                .From(200).To(500)
+                .Match(q => q.Phon(Q.VOWEL).With("accent", "post-tonic"))
+                .Map(P.Erase));
+        }
+
     }
 }

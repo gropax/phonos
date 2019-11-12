@@ -13,6 +13,7 @@ namespace Phonos.Latin.Tests
         // Consonant clusters
         [InlineData("dextra", "tonic:4 final:3")]  // ˈdeks.tra
         [InlineData("exclāmans", "initial:3 tonic:3 final:4")]  // eks.ˈklaː.mans
+        [InlineData("feretrum", "tonic:2 post-tonic:2 final:4")]  // ˈmak.si.mus
         // diphtongues
         [InlineData("aenigma", "initial:1 tonic:3 final:2")]  // ai̯.ˈnig.ma
         // Close vowels

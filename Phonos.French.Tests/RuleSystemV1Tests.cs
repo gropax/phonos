@@ -62,6 +62,16 @@ namespace Phonos.French.Tests
             TestRule(RuleSystem.Rule4(), data);
         }
 
+        [Theory]
+        [InlineData("hominem", /*phono:*/ "homnem", /*graphs:*/ "homnem")]
+        [InlineData("feretrum", /*phono:*/ "fertrum", /*graphs:*/ "fertrum")]
+        [InlineData("comitem", /*phono:*/ "komtem", /*graphs:*/ "comtem")]
+        [InlineData("cubitum", /*phono:*/ "kubtum", /*graphs:*/ "cubtum")]
+        public void TestRule5(params string[] data)
+        {
+            TestRule(RuleSystem.Rule5(), data);
+        }
+
 
         private void TestRule(Rule rule, string[] data)
         {

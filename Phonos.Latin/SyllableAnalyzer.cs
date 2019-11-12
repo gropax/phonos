@@ -105,7 +105,7 @@ namespace Phonos.Latin
 
                 if (i == 0)
                 {
-                    if (IsVocalic(current))
+                    if (IsVowel(current))
                     {
                         syllablePhonemes.Add(current);
                         lastPosition = SyllabicPosition.NUCLEUS;
@@ -123,7 +123,7 @@ namespace Phonos.Latin
 
                     if (next == null)
                     {  // Last phoneme of the word
-                        if (IsVocalic(current) && IsVocalic(last))
+                        if (IsVowel(current) && IsVowel(last))
                         {
                             syllablesPhonemes.Add(syllablePhonemes.ToArray());
                             syllablePhonemes.Clear();
@@ -131,9 +131,9 @@ namespace Phonos.Latin
                         syllablePhonemes.Add(current);
                         syllablesPhonemes.Add(syllablePhonemes.ToArray());
                     }
-                    else if (IsVocalic(current))
+                    else if (IsVowel(current))
                     {
-                        if (IsVocalic(last))
+                        if (IsVowel(last))
                         {
                             syllablesPhonemes.Add(syllablePhonemes.ToArray());
                             syllablePhonemes.Clear();
@@ -144,9 +144,17 @@ namespace Phonos.Latin
                     }
                     else
                     {
-                        if (IsVocalic(last))
+                        if (IsVowel(last))
                         {
-                            if (IsVocalic(next))
+                            if (IsVowel(next))
+                            {
+                                syllablesPhonemes.Add(syllablePhonemes.ToArray());
+                                syllablePhonemes.Clear();
+
+                                syllablePhonemes.Add(current);
+                                lastPosition = SyllabicPosition.ONSET;
+                            }
+                            else if (IsOnsetCluster(current, next))
                             {
                                 syllablesPhonemes.Add(syllablePhonemes.ToArray());
                                 syllablePhonemes.Clear();
@@ -162,7 +170,7 @@ namespace Phonos.Latin
                         }
                         else
                         {
-                            if (IsVocalic(next))
+                            if (IsVowel(next))
                             {
                                 if (lastPosition == SyllabicPosition.CODA)
                                 {
@@ -209,8 +217,8 @@ namespace Phonos.Latin
             {
                 syllableNo++;
                 start -= phonemes.Length;
-                var nucleus = phonemes.Where(p => IsVocalic(p)).First();
-                var hasCoda = !IsVocalic(phonemes.Last());
+                var nucleus = phonemes.Where(p => IsVowel(p)).First();
+                var hasCoda = !IsVowel(phonemes.Last());
 
                 if (distanceToAccent == 0)
                 {
@@ -257,10 +265,53 @@ namespace Phonos.Latin
 
         private HashSet<char> VOWELS = new HashSet<char>(
             new[] { 'a', 'e', 'i', 'o', 'u', 'y' });
-        private bool IsVocalic(string phoneme)
+        private bool IsVowel(string phoneme)
         {
             return VOWELS.Contains(phoneme[0]);
         }
+
+        private HashSet<char> OCCLUSIVES = new HashSet<char>(
+            new[] { 'p', 'b', 't', 'd', 'k', 'g' });
+        private bool IsOcclusive(string phoneme)
+        {
+            return OCCLUSIVES.Contains(phoneme[0]);
+        }
+
+        private HashSet<char> FRICATIVES = new HashSet<char>(
+            new[] { 'f', 'v', 's', 'z', 'ʃ', 'ʒ' });
+        private bool IsFricative(string phoneme)
+        {
+            return FRICATIVES.Contains(phoneme[0]);
+        }
+
+        private HashSet<char> LIQUIDES = new HashSet<char>(
+            new[] { 'l', 'r', 'ʁ' });
+        private bool IsLiquide(string phoneme)
+        {
+            return LIQUIDES.Contains(phoneme[0]);
+        }
+
+        //private HashSet<char> CONSONANTS = new HashSet<char>(
+        //    new[] { 'j', 'w', 'ɥ' });
+        //private bool IsConsonant(string phoneme)
+        //{
+        //    return CONSONANTS.Contains(phoneme[0]);
+        //}
+
+        private HashSet<char> SEMI_VOWELS = new HashSet<char>(
+            new[] { 'j', 'w', 'ɥ' });
+        private bool IsSemiVowel(string phoneme)
+        {
+            return SEMI_VOWELS.Contains(phoneme[0]);
+        }
+
+        private string[] ONSET_CLUSTERS = new[] { "p", "b", "t", "d", "k", "g" };
+        private bool IsOnsetCluster(string fst, string snd)
+        {
+            return (!IsVowel(fst) && !IsSemiVowel(fst) && IsSemiVowel(snd))
+                || ((IsOcclusive(fst) || IsFricative(fst)) && IsLiquide(snd));
+        }
+
 
         private HashSet<char> QUANTITY_MARKS = new HashSet<char>(
             new[] { 'ː', '\u032f' });
