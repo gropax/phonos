@@ -12,12 +12,14 @@ namespace Phonos.French.Tests
         public RuleSystemV1 RuleSystem { get; }
         public Latin.WordParser WordParser { get; }
         public Latin.SyllableAnalyzer SyllableAnalyzer { get; }
+        public Latin.AccentAnalyzer AccentAnalyzer { get; }
 
         public RuleSystemV1Tests()
         {
             RuleSystem = new RuleSystemV1();
             WordParser = new Latin.WordParser();
             SyllableAnalyzer = new Latin.SyllableAnalyzer();
+            AccentAnalyzer = new Latin.AccentAnalyzer();
         }
 
         [Theory]
@@ -79,6 +81,7 @@ namespace Phonos.French.Tests
 
             var word = WordParser.Parse(testData.Latin);
             SyllableAnalyzer.Analyze(word);
+            AccentAnalyzer.Analyze(word);
 
             var derived = rule.Apply(word);
 

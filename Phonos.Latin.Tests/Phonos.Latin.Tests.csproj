@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Intervals\Intervals.csproj" />
+    <ProjectReference Include="..\Phonos.Core.Tests\Phonos.Core.Tests.csproj" />
     <ProjectReference Include="..\Phonos.Latin\Phonos.Latin.csproj" />
   </ItemGroup>
 

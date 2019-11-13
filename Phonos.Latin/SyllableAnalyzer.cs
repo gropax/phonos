@@ -8,48 +8,6 @@ using System.Text;
 
 namespace Phonos.Latin
 {
-    public enum Stress
-    {
-        UNSTRESSED,
-        PRIMARY_STRESS,
-        SECONDARY_STRESS,
-    }
-
-    public static class Accent
-    {
-        public const string TONIC = "tonic";
-        public const string INITIAL = "initial";
-        public const string FINAL = "final";
-        public const string PRETONIC = "pre-tonic";
-        public const string POSTTONIC = "post-tonic";
-    }
-
-    public class Syllable : IInterval<Syllable>
-    {
-        public int Start { get; private set; }
-        public int Length { get; private set; }
-        public int End { get => Start + Length; }
-        public Stress Stress { get; private set; }
-
-        public Syllable(int start, int length, Stress stress)
-        {
-            Start = start;
-            Length = length;
-            Stress = stress;
-        }
-
-        public Interval<Syllable> ToInterval()
-        {
-            return new Interval<Syllable>(Start, Length, this);
-        }
-
-        Interval IInterval.ToInterval()
-        {
-            return new Interval(Start, Length);
-        }
-    }
-
-
     public class SyllableAnalyzer : IAnalyzer
     {
         public enum SyllabicPosition
@@ -62,37 +20,12 @@ namespace Phonos.Latin
         public void Analyze(Word word)
         {
             var syllables = GetSyllables(word.Phonemes);
-
-            var accents = new List<Interval<string>>();
-
-            for (int i = 0; i < syllables.Length; i++)
-            {
-                var syllable = syllables[i];
-
-                string accent;
-                if (syllable.Stress == Stress.PRIMARY_STRESS || syllable.Stress == Stress.SECONDARY_STRESS)
-                    accent = Accent.TONIC;
-                else
-                {
-                    if (i == 0)
-                        accent = Accent.INITIAL;
-                    else if (i == syllables.Length - 1)
-                        accent = Accent.FINAL;
-                    else if (i == syllables.Length - 2)
-                        accent = Accent.POSTTONIC;
-                    else
-                        accent = Accent.PRETONIC;
-                }
-
-                accents.Add(new Interval<string>(syllable.ToInterval(), accent));
-            }
-
-            word.SetField("accent", new Core.Alignment<string>(accents));
+            word.SetField("syllable", new Core.Alignment<string>(syllables));
         }
 
-        public Syllable[] GetSyllables(string[] phonemicWord)
+        public IEnumerable<Interval<string>> GetSyllables(string[] phonemicWord)
         {
-            var syllablesPhonemes = new List<string[]>();
+            var start = 0;
             var syllablePhonemes = new List<string>();
 
             var lastPosition = SyllabicPosition.CODA;
@@ -105,7 +38,7 @@ namespace Phonos.Latin
 
                 if (i == 0)
                 {
-                    if (IsVowel(current))
+                    if (IPA.IsVowel(current))
                     {
                         syllablePhonemes.Add(current);
                         lastPosition = SyllabicPosition.NUCLEUS;
@@ -123,19 +56,27 @@ namespace Phonos.Latin
 
                     if (next == null)
                     {  // Last phoneme of the word
-                        if (IsVowel(current) && IsVowel(last))
+                        if (IPA.IsVowel(current) && IPA.IsVowel(last))
                         {
-                            syllablesPhonemes.Add(syllablePhonemes.ToArray());
+                            yield return new Interval<string>(start,
+                                syllablePhonemes.Count,
+                                IPA.IsLong(current) ? "long" : "short");
+                            start += syllablePhonemes.Count;
                             syllablePhonemes.Clear();
                         }
                         syllablePhonemes.Add(current);
-                        syllablesPhonemes.Add(syllablePhonemes.ToArray());
+                        yield return new Interval<string>(start,
+                            syllablePhonemes.Count,
+                            !IPA.IsVowel(current) || IPA.IsLong(current) ? "long" : "short");
                     }
-                    else if (IsVowel(current))
+                    else if (IPA.IsVowel(current))
                     {
-                        if (IsVowel(last))
+                        if (IPA.IsVowel(last))
                         {
-                            syllablesPhonemes.Add(syllablePhonemes.ToArray());
+                            yield return new Interval<string>(start,
+                                syllablePhonemes.Count,
+                                IPA.IsLong(last) ? "long" : "short");
+                            start += syllablePhonemes.Count;
                             syllablePhonemes.Clear();
                         }
 
@@ -144,11 +85,14 @@ namespace Phonos.Latin
                     }
                     else
                     {
-                        if (IsVowel(last))
+                        if (IPA.IsVowel(last))
                         {
-                            if (IsVowel(next))
+                            if (IPA.IsVowel(next))
                             {
-                                syllablesPhonemes.Add(syllablePhonemes.ToArray());
+                                yield return new Interval<string>(start,
+                                    syllablePhonemes.Count,
+                                    IPA.IsLong(last) ? "long" : "short");
+                                start += syllablePhonemes.Count;
                                 syllablePhonemes.Clear();
 
                                 syllablePhonemes.Add(current);
@@ -156,7 +100,10 @@ namespace Phonos.Latin
                             }
                             else if (IsOnsetCluster(current, next))
                             {
-                                syllablesPhonemes.Add(syllablePhonemes.ToArray());
+                                yield return new Interval<string>(start,
+                                    syllablePhonemes.Count,
+                                    IPA.IsLong(last) ? "long" : "short");
+                                start += syllablePhonemes.Count;
                                 syllablePhonemes.Clear();
 
                                 syllablePhonemes.Add(current);
@@ -170,11 +117,14 @@ namespace Phonos.Latin
                         }
                         else
                         {
-                            if (IsVowel(next))
+                            if (IPA.IsVowel(next))
                             {
                                 if (lastPosition == SyllabicPosition.CODA)
                                 {
-                                    syllablesPhonemes.Add(syllablePhonemes.ToArray());
+                                    yield return new Interval<string>(start,
+                                        syllablePhonemes.Count,
+                                        "long");
+                                    start += syllablePhonemes.Count;
                                     syllablePhonemes.Clear();
                                 }
 
@@ -190,7 +140,10 @@ namespace Phonos.Latin
                                 }
                                 else
                                 {
-                                    syllablesPhonemes.Add(syllablePhonemes.ToArray());
+                                    yield return new Interval<string>(start,
+                                        syllablePhonemes.Count,
+                                        "long");
+                                    start += syllablePhonemes.Count;
                                     syllablePhonemes.Clear();
                                     syllablePhonemes.Add(current);
                                     lastPosition = SyllabicPosition.ONSET;
@@ -200,124 +153,12 @@ namespace Phonos.Latin
                     }
                 }
             }
-
-            var syllables = new List<Syllable>();
-
-            int start = phonemicWord.Length;
-            int distanceToAccent = 0;
-            bool isAccentuated = false;
-            bool isPrimary = true;
-
-            syllablesPhonemes.Reverse();
-
-            int syllableNumber = syllablesPhonemes.Count;
-            int syllableNo = 0;
-
-            foreach (var phonemes in syllablesPhonemes)
-            {
-                syllableNo++;
-                start -= phonemes.Length;
-                var nucleus = phonemes.Where(p => IsVowel(p)).First();
-                var hasCoda = !IsVowel(phonemes.Last());
-
-                if (distanceToAccent == 0)
-                {
-                    isAccentuated = false;
-                    distanceToAccent++;
-                }
-                else if (distanceToAccent == 1)
-                {
-                    if (IsLong(nucleus) || hasCoda || syllableNo == syllableNumber)
-                    {
-                        isAccentuated = true;
-                        distanceToAccent = 0;
-                    }
-                    else
-                    {
-                        isAccentuated = false;
-                        distanceToAccent++;
-                    }
-                }
-                else
-                {
-                    isAccentuated = true;
-                    distanceToAccent = 0;
-                }
-
-                Stress accentuation;
-                if (isAccentuated && isPrimary)
-                {
-                    accentuation = Stress.PRIMARY_STRESS;
-                    isPrimary = false;
-                }
-                else if (isAccentuated)
-                    accentuation = Stress.SECONDARY_STRESS;
-                else
-                    accentuation = Stress.UNSTRESSED;
-
-                syllables.Add(new Syllable(start, phonemes.Length, accentuation));
-            }
-
-            syllables.Reverse();
-
-            return syllables.ToArray();
         }
 
-        private HashSet<char> VOWELS = new HashSet<char>(
-            new[] { 'a', 'e', 'i', 'o', 'u', 'y' });
-        private bool IsVowel(string phoneme)
+        public bool IsOnsetCluster(string fst, string snd)
         {
-            return VOWELS.Contains(phoneme[0]);
-        }
-
-        private HashSet<char> OCCLUSIVES = new HashSet<char>(
-            new[] { 'p', 'b', 't', 'd', 'k', 'g' });
-        private bool IsOcclusive(string phoneme)
-        {
-            return OCCLUSIVES.Contains(phoneme[0]);
-        }
-
-        private HashSet<char> FRICATIVES = new HashSet<char>(
-            new[] { 'f', 'v', 's', 'z', 'ʃ', 'ʒ' });
-        private bool IsFricative(string phoneme)
-        {
-            return FRICATIVES.Contains(phoneme[0]);
-        }
-
-        private HashSet<char> LIQUIDES = new HashSet<char>(
-            new[] { 'l', 'r', 'ʁ' });
-        private bool IsLiquide(string phoneme)
-        {
-            return LIQUIDES.Contains(phoneme[0]);
-        }
-
-        //private HashSet<char> CONSONANTS = new HashSet<char>(
-        //    new[] { 'j', 'w', 'ɥ' });
-        //private bool IsConsonant(string phoneme)
-        //{
-        //    return CONSONANTS.Contains(phoneme[0]);
-        //}
-
-        private HashSet<char> SEMI_VOWELS = new HashSet<char>(
-            new[] { 'j', 'w', 'ɥ' });
-        private bool IsSemiVowel(string phoneme)
-        {
-            return SEMI_VOWELS.Contains(phoneme[0]);
-        }
-
-        private string[] ONSET_CLUSTERS = new[] { "p", "b", "t", "d", "k", "g" };
-        private bool IsOnsetCluster(string fst, string snd)
-        {
-            return (!IsVowel(fst) && !IsSemiVowel(fst) && IsSemiVowel(snd))
-                || ((IsOcclusive(fst) || IsFricative(fst)) && IsLiquide(snd));
-        }
-
-
-        private HashSet<char> QUANTITY_MARKS = new HashSet<char>(
-            new[] { 'ː', '\u032f' });
-        private bool IsLong(string phoneme)
-        {
-            return QUANTITY_MARKS.Contains(phoneme.Last());
+            return (!IPA.IsVowel(fst) && !IPA.IsSemiVowel(fst) && IPA.IsSemiVowel(snd))
+                || ((IPA.IsOcclusive(fst) || IPA.IsFricative(fst)) && IPA.IsLiquide(snd));
         }
     }
 }
