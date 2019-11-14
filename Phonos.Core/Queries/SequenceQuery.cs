@@ -15,14 +15,14 @@ namespace Phonos.Core.Queries
             Queries = queries.ToArray();
         }
 
-        public Interval<string[]> Match(Word word, int index)
+        public Interval<string[]> Match(Word word, int index, Interval scope = null)
         {
             int i = index;
             var matches = new List<Interval<string[]>>();
 
             foreach (var query in Queries)
             {
-                var match = query.Match(word, i);
+                var match = query.Match(word, i, scope);
                 if (match == null)
                     return null;
 

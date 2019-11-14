@@ -258,6 +258,44 @@ namespace Phonos.Core.Queries.Tests
             WordAssert.Equal(expected, newWords);
         }
 
+        [Fact]
+        public void TestApplyWithScope()
+        {
+            var c = new PhonemeQuery(new[] { "b", "l" });
+            var v = new PhonemeQuery(new[] { "a", "e" });
+
+            var rule = new Rule(
+                name: "Test",
+                timeSpan: new Interval(0, 1),
+                query: v,
+                maps: new[] {
+                    new PhonologicalMap(
+                        ps => new[] { "o" },
+                        graphicalMaps: new[] {
+                            new GraphicalMap(ps => ps),
+                        })
+                },
+                lookBehind: c,
+                lookAhead: c,
+                scope: "syllable");
+
+            var word = new Word(
+                Phonemes("b", "e", "l", "l", "a", "b", "e", "l"), 
+                GraphicalForms(Alignment.Parse("B E L L A B E L")),
+                Fields(Field("syllable", Alignment.Parse("long:3 short:2 long:3")))); 
+
+            var newWords = rule.Apply(word);
+            var expected = new[]
+            {
+                new Word(
+                    Phonemes("b", "o", "l", "l", "a", "b", "o", "l"),
+                    GraphicalForms(Alignment.Parse("B E L L A B E L")),
+                    Fields(Field("syllable", Alignment.Parse("long:3 short:2 long:3")))), 
+            };
+
+            WordAssert.Equal(expected, newWords);
+        }
+
 
 
 

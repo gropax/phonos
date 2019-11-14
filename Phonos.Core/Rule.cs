@@ -31,12 +31,15 @@ namespace Phonos.Core
 
         public Word[] Apply(Word word)
         {
-            var matches = Scope == null ? Match(word) : MatchScope(word);
+            var scopes = Scope != null
+                ? word.GetField(Scope).Intervals.ToArray()
+                : new[] { new Interval(0, word.Phonemes.Length) };
 
-            if (matches.ToIntervals().Count() == 0)
+            var matches = scopes.SelectMany(s => MatchScope(word, s)).ToArray();
+            if (matches.Length == 0)
                 return new Word[0];
 
-            return Maps.Select(map => DeriveWord(word, map, matches)).ToArray();
+            return Maps.Select(map => DeriveWord(word, map, matches.AssumeSorted())).ToArray();
         }
 
         public Word DeriveWord(Word word, PhonologicalMap map, SortedIntervals<string[]> matches)
@@ -154,29 +157,23 @@ namespace Phonos.Core
 
                 while (index < interval.End)
                 {
-                    var behind = LookBehind.Match(word, index);
+                    var behind = LookBehind.Match(word, index, interval);
                     if (behind == null)
                     {
                         index++;
                         continue;
                     }
-                    else if (behind.End > interval.End)
-                        break;
 
-                    var match = Query.Match(word, behind.End);
+                    var match = Query.Match(word, behind.End, interval);
                     if (match == null)
                     {
                         index++;
                         continue;
                     }
-                    else if (match.End > interval.End)
-                        break;
 
-                    var ahead = LookAhead.Match(word, match.End);
+                    var ahead = LookAhead.Match(word, match.End, interval);
                     if (ahead == null)
                         index++;
-                    else if (ahead.End > interval.End)
-                        break;
                     else
                     {
                         matches.Add(match);
@@ -186,6 +183,37 @@ namespace Phonos.Core
             }
 
             return matches.AssumeSorted();
+        }
+
+        public IEnumerable<Interval<string[]>> MatchScope(Word word, Interval scope)
+        {
+            int index = scope.Start;
+
+            while (index < scope.End)
+            {
+                var behind = LookBehind.Match(word, index, scope);
+                if (behind == null)
+                {
+                    index++;
+                    continue;
+                }
+
+                var match = Query.Match(word, behind.End, scope);
+                if (match == null)
+                {
+                    index++;
+                    continue;
+                }
+
+                var ahead = LookAhead.Match(word, match.End, scope);
+                if (ahead == null)
+                    index++;
+                else
+                {
+                    yield return match;
+                    index = match.End;
+                }
+            }
         }
 
         public SortedIntervals<string[]> Match(Word word)

@@ -19,9 +19,9 @@ namespace Phonos.Core.Queries
             FieldValues = new HashSet<string>(fieldValues);
         }
 
-        public Interval<string[]> Match(Word word, int index)
+        public Interval<string[]> Match(Word word, int index, Interval scope = null)
         {
-            var match = Query.Match(word, index);
+            var match = Query.Match(word, index, scope);
             if (match == null)
                 return null;
 

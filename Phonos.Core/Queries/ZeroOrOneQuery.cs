@@ -14,9 +14,9 @@ namespace Phonos.Core.Queries
             Query = query;
         }
 
-        public Interval<string[]> Match(Word word, int index)
+        public Interval<string[]> Match(Word word, int index, Interval scope = null)
         {
-            return Query.Match(word, index) ??
+            return Query.Match(word, index, scope) ??
                 new Interval<string[]>(index, 0, new string[0]);
         }
     }

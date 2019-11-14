@@ -7,12 +7,13 @@ namespace Phonos.Core.Queries
 {
     public class EndAnchorQuery : IQuery
     {
-        public int Length => 0;
-        public Interval<string[]> Match(Word word, int index)
+        public Interval<string[]> Match(Word word, int index, Interval scope = null)
         {
-            if (index < 0 || index > word.Phonemes.Length)
+            var range = scope ?? new Interval(0, word.Phonemes.Length);
+
+            if (!range.Contains(index))
                 throw new ArgumentOutOfRangeException(nameof(index));
-            else if (index == word.Phonemes.Length)
+            else if (index == range.End)
                 return new Interval<string[]>(index, 0, new string[0]);
             else
                 return null;
