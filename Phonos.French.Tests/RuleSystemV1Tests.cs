@@ -74,6 +74,15 @@ namespace Phonos.French.Tests
             TestRule(RuleSystem.Rule5(), data);
         }
 
+        [Theory]
+        [InlineData("sacramentum", /*phono:*/ "sakrəmentum", /*graphs:*/ "sacramentum")]
+        [InlineData("armatūra", /*phono:*/ "armətuːra", /*graphs:*/ "armatūra")]
+        [InlineData("firmamente", /*phono:*/ "firməmente", /*graphs:*/ "firmamente")]
+        public void TestRule6(params string[] data)
+        {
+            TestRule(RuleSystem.Rule6(), data);
+        }
+
 
         private void TestRule(Rule rule, string[] data)
         {

@@ -98,5 +98,20 @@ namespace Phonos.French
                 .Map(P.Erase));
         }
 
+
+        /// <summary>
+        /// Centralisation de /a/ pré-tonique en syllabe ouverte.
+        /// [G. Zink, Phonétique historique du français, p. 41]
+        /// </summary>
+        public Rule Rule6()
+        {
+            return R.Rule(r => r
+                .Named("Centralisation de /a/ pré-tonique en syllabe ouverte")
+                .From(600).To(700)
+                .Scope("syllable")
+                .Match(q => q.Phon("a").With("accent", "pre-tonic"))
+                .After(Q.End)
+                .Map(p => p.Phono(_ => new[] { "ə" })));
+        }
     }
 }

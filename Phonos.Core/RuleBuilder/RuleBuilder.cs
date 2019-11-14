@@ -13,6 +13,7 @@ namespace Phonos.Core.RuleBuilder
         private string _name = "Unnamed";
         private int _start = 0;
         private int _end = 0;
+        private string _scope;
         private IQuery _query;
         private IQuery _lookBehind;
         private IQuery _lookAhead;
@@ -26,7 +27,7 @@ namespace Phonos.Core.RuleBuilder
                 throw new QueryBuilderException("Phonological map must be set before building.");
 
             return new Rule(_name, new Interval(_start, _end - _start),
-                _query, _maps, _lookBehind, _lookAhead);
+                _query, _maps, _lookBehind, _lookAhead, _scope);
         }
 
         public RuleBuilder Named(string name)
@@ -44,6 +45,12 @@ namespace Phonos.Core.RuleBuilder
         public RuleBuilder To(int end)
         {
             _end = end;
+            return this;
+        }
+
+        public RuleBuilder Scope(string scope)
+        {
+            _scope = scope;
             return this;
         }
 
