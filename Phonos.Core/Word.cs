@@ -34,6 +34,26 @@ namespace Phonos.Core
         }
     }
 
+    public static class Alignment
+    {
+        public static Alignment<string> Parse(string intervals)
+        {
+            return new Alignment<string>(ParseIntervals(intervals));
+        }
+
+        public static IEnumerable<Interval<string>> ParseIntervals(string intervals)
+        {
+            int i = 0;
+            foreach (var g in intervals.Split(" "))
+            {
+                var parts = g.Split(":", StringSplitOptions.RemoveEmptyEntries);
+                int length = parts.Length > 1 ? int.Parse(parts[1]) : 1;
+                yield return new Interval<string>(i, length, parts[0]);
+                i += length;
+            }
+        }
+    }
+
     public class Alignment<T>
     {
         public SortedIntervals<T> Intervals { get; }

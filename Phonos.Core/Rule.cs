@@ -14,10 +14,11 @@ namespace Phonos.Core
         public IQuery Query { get; }
         public IQuery LookBehind { get; }
         public IQuery LookAhead { get; }
+        public string Scope { get; }
         public PhonologicalMap[] Maps { get; }
 
         public Rule(string name, Interval timeSpan, IQuery query, PhonologicalMap[] maps,
-            IQuery lookBehind = null, IQuery lookAhead = null)
+            IQuery lookBehind = null, IQuery lookAhead = null, string scope = null)
         {
             Name = name;
             TimeSpan = timeSpan;
@@ -25,11 +26,12 @@ namespace Phonos.Core
             Maps = maps;
             LookBehind = lookBehind ?? new NullQuery();
             LookAhead = lookAhead ?? new NullQuery();
+            Scope = scope;
         }
 
         public Word[] Apply(Word word)
         {
-            var matches = Match(word);
+            var matches = Scope == null ? Match(word) : MatchScope(word);
 
             if (matches.ToIntervals().Count() == 0)
                 return new Word[0];
@@ -140,6 +142,50 @@ namespace Phonos.Core
             int start = mappings[interval.Start];
             int end = mappings[interval.End];
             return new Interval<T>(start, end - start, interval.Value);
+        }
+
+        public SortedIntervals<string[]> MatchScope(Word word)
+        {
+            var matches = new List<Interval<string[]>>();
+
+            foreach (var interval in word.GetField(Scope).Intervals)
+            {
+                int index = interval.Start;
+
+                while (index < interval.End)
+                {
+                    var behind = LookBehind.Match(word, index);
+                    if (behind == null)
+                    {
+                        index++;
+                        continue;
+                    }
+                    else if (behind.End > interval.End)
+                        break;
+
+                    var match = Query.Match(word, behind.End);
+                    if (match == null)
+                    {
+                        index++;
+                        continue;
+                    }
+                    else if (match.End > interval.End)
+                        break;
+
+                    var ahead = LookAhead.Match(word, match.End);
+                    if (ahead == null)
+                        index++;
+                    else if (ahead.End > interval.End)
+                        break;
+                    else
+                    {
+                        matches.Add(match);
+                        index = match.End;
+                    }
+                }
+            }
+
+            return matches.AssumeSorted();
         }
 
         public SortedIntervals<string[]> Match(Word word)

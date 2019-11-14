@@ -24,10 +24,7 @@ namespace Phonos.Core.Queries.Tests
                 lookBehind: null,
                 lookAhead: null);
 
-            var word = new Word(
-                phonemes: new[] { "r", "a", "t", "a", "b", "l", "e", "r", "a" },
-                graphicalForms: null,
-                fields: null);
+            var word = new Word(Phonemes("r", "a", "t", "a", "b", "l", "e", "r", "a"), null, null); 
 
             var matches = r.Match(word).Map(px => string.Join(string.Empty, px)).ToArray();
             var expected = new[]
@@ -53,10 +50,7 @@ namespace Phonos.Core.Queries.Tests
                 lookBehind: v,
                 lookAhead: null);
 
-            var word = new Word(
-                phonemes: new[] { "r", "a", "t", "a", "b", "l", "e", "r", "a" },
-                graphicalForms: null,
-                fields: null);
+            var word = new Word(Phonemes("r", "a", "t", "a", "b", "l", "e", "r", "a"), null, null); 
 
             var matches = r.Match(word).Map(px => string.Join(string.Empty, px)).ToArray();
             var expected = new[]
@@ -83,10 +77,7 @@ namespace Phonos.Core.Queries.Tests
                 lookBehind: null,
                 lookAhead: v);
 
-            var word = new Word(
-                phonemes: new[] { "r", "a", "t", "a", "b", "l", "e", "r", "a" },
-                graphicalForms: null,
-                fields: null);
+            var word = new Word(Phonemes("r", "a", "t", "a", "b", "l", "e", "r", "a"), null, null); 
 
             var matches = r.Match(word).Map(px => string.Join(string.Empty, px)).ToArray();
             var expected = new[]
@@ -114,16 +105,118 @@ namespace Phonos.Core.Queries.Tests
                 lookBehind: v,
                 lookAhead: v);
 
-            var word = new Word(
-                phonemes: new[] { "r", "a", "t", "a", "b", "l", "e", "r", "a" },
-                graphicalForms: null,
-                fields: null);
+            var word = new Word(Phonemes( "r", "a", "t", "a", "b", "l", "e", "r", "a"), null, null); 
 
             var matches = r.Match(word).Map(px => string.Join(string.Empty, px)).ToArray();
             var expected = new[]
             {
                 new Interval<string>(2, 1, "t"),
                 new Interval<string>(7, 1, "r"),
+            };
+
+            Assert.Equal(expected, matches);
+        }
+
+        [Fact]
+        public void TestMatchesWithScope()
+        {
+            var t = new PhonemeQuery(new[] { "t" });
+            var a = new PhonemeQuery(new[] { "a" });
+
+            var rule = new Rule(
+                name: "Test",
+                timeSpan: new Interval(0, 1),
+                query: new SequenceQuery(new[] { t, a, t }),
+                maps: new[] {
+                    new PhonologicalMap(
+                        ps => new[] { "l" },
+                        graphicalMaps: new[] {
+                            new GraphicalMap(ps => ps),
+                        })
+                },
+                lookBehind: null,
+                lookAhead: null,
+                scope: "syllable");
+
+            var word = new Word(
+                Phonemes("t", "a", "t", "a", "t", "t", "a", "a", "t", "a", "t"), null,
+                Fields(Field("syllable", Alignment.Parse("short:2 long:3 short:2 short:1 long:3")))); 
+
+            var matches = rule.MatchScope(word).Map(px => string.Join(string.Empty, px)).ToArray();
+            var expected = new[]
+            {
+                new Interval<string>(2, 3, "tat"),
+                new Interval<string>(8, 3, "tat"),
+            };
+
+            Assert.Equal(expected, matches);
+        }
+
+        [Fact]
+        public void TestMatchesWithScopeAndLookBehind()
+        {
+            var t = new PhonemeQuery(new[] { "t" });
+            var a = new PhonemeQuery(new[] { "a" });
+
+            var rule = new Rule(
+                name: "Test",
+                timeSpan: new Interval(0, 1),
+                query: new SequenceQuery(new[] { a, t }),
+                maps: new[] {
+                    new PhonologicalMap(
+                        ps => new[] { "l" },
+                        graphicalMaps: new[] {
+                            new GraphicalMap(ps => ps),
+                        })
+                },
+                lookBehind: t,
+                lookAhead: null,
+                scope: "syllable");
+
+            var word = new Word(
+                Phonemes("t", "a", "t", "a", "t", "t", "a", "a", "t", "a", "t"), null,
+                Fields(Field("syllable", Alignment.Parse("short:2 long:3 short:2 short:1 long:3")))); 
+
+            var matches = rule.MatchScope(word).Map(px => string.Join(string.Empty, px)).ToArray();
+            var expected = new[]
+            {
+                new Interval<string>(3, 2, "at"),
+                new Interval<string>(9, 2, "at"),
+            };
+
+            Assert.Equal(expected, matches);
+        }
+
+        [Fact]
+        public void TestMatchesWithScopeAndLookAhead()
+        {
+            var t = new PhonemeQuery(new[] { "t" });
+            var a = new PhonemeQuery(new[] { "a" });
+
+            var rule = new Rule(
+                name: "Test",
+                timeSpan: new Interval(0, 1),
+                query: new SequenceQuery(new[] { t, a }),
+                maps: new[] {
+                    new PhonologicalMap(
+                        ps => new[] { "l" },
+                        graphicalMaps: new[] {
+                            new GraphicalMap(ps => ps),
+                        })
+                },
+                lookBehind: null,
+                lookAhead: t,
+                scope: "syllable");
+
+            var word = new Word(
+                Phonemes("t", "a", "t", "a", "t", "t", "a", "a", "t", "a", "t"), null,
+                Fields(Field("syllable", Alignment.Parse("short:2 long:3 short:2 short:1 long:3")))); 
+
+            var matches = rule.MatchScope(word).Map(px => string.Join(string.Empty, px)).ToArray();
+            var expected = new[]
+            {
+                new Interval<string>(2, 2, "ta"),
+                new Interval<string>(8, 2, "ta"),
             };
 
             Assert.Equal(expected, matches);
@@ -149,52 +242,48 @@ namespace Phonos.Core.Queries.Tests
                 lookAhead: null);
 
             var word = new Word(
-                phonemes: new[] { "b", "e", "l", "l", "a" },
-                graphicalForms: new[] {
-                    new Alignment<string>(new[] {
-                        new Interval<string>(0, 1, "B"),
-                        new Interval<string>(1, 1, "E"),
-                        new Interval<string>(2, 1, "L"),
-                        new Interval<string>(3, 1, "L"),
-                        new Interval<string>(4, 1, "A"),
-                    })
-                },
-                fields: new Dictionary<string, Alignment<string>>()
-                {
-                    { "type", new Alignment<string>(new[] {
-                        new Interval<string>(0, 1, "C"),
-                        new Interval<string>(1, 1, "V"),
-                        new Interval<string>(2, 1, "C"),
-                        new Interval<string>(3, 1, "C"),
-                        new Interval<string>(4, 1, "V"),
-                    }) },
-                }); 
+                Phonemes("b", "e", "l", "l", "a"),
+                GraphicalForms(Alignment.Parse("B E L L A")),
+                Fields(Field("type", Alignment.Parse("C V C C V")))); 
 
             var newWords = rule.Apply(word);
             var expected = new[]
             {
                 new Word(
-                    phonemes: new[] { "b", "e", "l", "a" },
-                    graphicalForms: new[] {
-                        new Alignment<string>(new[] {
-                            new Interval<string>(0, 1, "B"),
-                            new Interval<string>(1, 1, "E"),
-                            new Interval<string>(2, 1, "LL"),
-                            new Interval<string>(3, 1, "A"),
-                        })
-                    },
-                    fields: new Dictionary<string, Alignment<string>>()
-                    {
-                        { "type", new Alignment<string>(new[] {
-                            new Interval<string>(0, 1, "C"),
-                            new Interval<string>(1, 1, "V"),
-                            new Interval<string>(2, 1, "C"),
-                            new Interval<string>(3, 1, "V"),
-                        }) },
-                    })
+                    Phonemes("b", "e", "l", "a"),
+                    GraphicalForms(Alignment.Parse("B E LL:2 A")),
+                    Fields(Field("type", Alignment.Parse("C V C V"))))
             };
 
             WordAssert.Equal(expected, newWords);
+        }
+
+
+
+
+        private string[] Phonemes(params string[] phonemes)
+        {
+            return phonemes;
+        }
+
+        private Alignment<string>[] GraphicalForms(params Alignment<string>[] graphicalForms)
+        {
+            return graphicalForms;
+        }
+
+        private Dictionary<string, Alignment<string>> Fields(params (string, Alignment<string>)[] fields)
+        {
+            var dict = new Dictionary<string, Alignment<string>>();
+
+            foreach (var (name, alignment) in fields)
+                dict[name] = alignment;
+
+            return dict;
+        }
+
+        private (string, Alignment<string>) Field(string name, Alignment<string> alignment)
+        {
+            return (name, alignment);
         }
     }
 }
