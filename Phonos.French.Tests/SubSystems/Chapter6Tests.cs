@@ -1,20 +1,18 @@
 ﻿using Intervals;
 using Phonos.Core;
 using Phonos.Core.Analyzers;
+using Phonos.French.Tests;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
-namespace Phonos.French.Tests
+namespace Phonos.French.SubSystems.Tests
 {
-    public class RuleSystemV1Tests : RuleSystemTests
+    public class Chapter6Tests : RuleSystemTests
     {
-        public RuleSystemV1 RuleSystem { get; }
-
-        public RuleSystemV1Tests()
+        public Chapter6Tests()
         {
-            RuleSystem = new RuleSystemV1();
             Analyzers = new IAnalyzer[]
             {
                 new MemoizeAnalyzer("classical_latin"),
@@ -22,6 +20,12 @@ namespace Phonos.French.Tests
                 new Latin.AccentAnalyzer(),
             };
         }
+
+        //[Theory]
+        //public void TestRuleSystem(params string[] data)
+        //{
+        //    TestRules(Chapter6.Rules(), data);
+        //}
 
         [Theory]
         [InlineData("ambulat", /*phono:*/ "amblat", /*graphs:*/ "amblat")]
@@ -32,7 +36,7 @@ namespace Phonos.French.Tests
         [InlineData("quaesita")]  // no match
         public void TestRule1(params string[] data)
         {
-            TestRule(RuleSystem.Rule1(), data);
+            TestRule(Chapter6.Rule1(), data);
         }
 
         [Theory]
@@ -44,7 +48,7 @@ namespace Phonos.French.Tests
         [InlineData("tabula")]  // no match
         public void TestRule2(params string[] data)
         {
-            TestRule(RuleSystem.Rule2(), data);
+            TestRule(Chapter6.Rule2(), data);
         }
 
         [Theory]
@@ -53,7 +57,7 @@ namespace Phonos.French.Tests
         [InlineData("hominem")]  // no match
         public void TestRule3(params string[] data)
         {
-            TestRule(RuleSystem.Rule3(), data);
+            TestRule(Chapter6.Rule3(), data);
         }
 
         [Theory]
@@ -62,7 +66,7 @@ namespace Phonos.French.Tests
         [InlineData("vidua", /*phono:*/ "widwa", /*graphs:*/ "vidua")]
         public void TestRule4(params string[] data)
         {
-            TestRule(RuleSystem.Rule4(), data);
+            TestRule(Chapter6.Rule4(), data);
         }
 
         [Theory]
@@ -72,7 +76,7 @@ namespace Phonos.French.Tests
         [InlineData("cubitum", /*phono:*/ "kubtum", /*graphs:*/ "cubtum")]
         public void TestRule5(params string[] data)
         {
-            TestRule(RuleSystem.Rule5(), data);
+            TestRule(Chapter6.Rule5(), data);
         }
 
         [Theory]
@@ -81,7 +85,7 @@ namespace Phonos.French.Tests
         [InlineData("firmamente", /*phono:*/ "firməmente", /*graphs:*/ "firmamente")]
         public void TestRule6(params string[] data)
         {
-            TestRule(RuleSystem.Rule6(), data);
+            TestRule(Chapter6.Rule6(), data);
         }
     }
 }

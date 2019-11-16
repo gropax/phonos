@@ -1,17 +1,22 @@
 ﻿using Phonos.Core;
 using Phonos.Core.RuleBuilder;
 using System;
-using System.Linq;
+using System.Collections.Generic;
+using System.Text;
 
-namespace Phonos.French
+namespace Phonos.French.SubSystems
 {
-    public class RuleSystemV1
+    /// <summary>
+    /// [G. Zink, Phonétique historique du français, ch. VI]
+    /// </summary>
+    public static class Chapter6
     {
-        public Rule[] Build()
+        public static Rule[] Rules()
         {
-            return R.System(s => s
-                .Rule(Rule1())
-            );
+            return new[]
+            {
+                Rule1(), Rule2(), Rule3(), Rule4(), Rule5(), Rule6(),
+            };
         }
 
         /// <summary>
@@ -19,7 +24,7 @@ namespace Phonos.French
         /// et une consonne liquide à l'arrière (r, l).
         /// [G. Zink, Phonétique historique du français, p. 39]
         /// </summary>
-        public Rule Rule1()
+        public static Rule Rule1()
         {
             return R.Rule(r => r
                 .Named("Syncope des voyelles post-toniques entre une occlusive orale et une consonne liquide")
@@ -35,7 +40,7 @@ namespace Phonos.French
         /// à l'avant (r, l, n, s) et une dentale à l'arrière.
         /// [G. Zink, Phonétique historique du français, p. 39]
         /// </summary>
-        public Rule Rule2()
+        public static Rule Rule2()
         {
             return R.Rule(r => r
                 .Named("Syncope des voyelles post-toniques entre une consonne homorganique et une dentale")
@@ -55,7 +60,7 @@ namespace Phonos.French
         ///     Cette règle s'applique-t-elle à toutes les voyelle ? (je n'ai
         ///     que des exemples de syncope du /i/).
         /// </remarks>
-        public Rule Rule3()
+        public static Rule Rule3()
         {
             return R.Rule(r => r
                 .Named("Syncope des voyelles post-toniques suivies d'un /a/ final")
@@ -71,7 +76,7 @@ namespace Phonos.French
         /// Consonification des post-toniques brèves en hiatus
         /// [G. Zink, Phonétique historique du français, p. 40]
         /// </summary>
-        public Rule Rule4()
+        public static Rule Rule4()
         {
             return R.Rule(r => r
                 .Named("Consonification des post-toniques brèves en hiatus")
@@ -90,7 +95,7 @@ namespace Phonos.French
         ///    - Ici ont lieu des problèmes de séquençage.
         ///    - Il faut préciser la datation, voire scinder la règle
         /// </remarks>
-        public Rule Rule5()
+        public static Rule Rule5()
         {
             return R.Rule(r => r
                 .Named("Syncope des voyelles post-toniques restantes")
@@ -104,7 +109,7 @@ namespace Phonos.French
         /// Centralisation de /a/ pré-tonique en syllabe ouverte.
         /// [G. Zink, Phonétique historique du français, p. 41]
         /// </summary>
-        public Rule Rule6()
+        public static Rule Rule6()
         {
             return R.Rule(r => r
                 .Named("Centralisation de /a/ pré-tonique en syllabe ouverte")
@@ -114,17 +119,5 @@ namespace Phonos.French
                 .After(Q.End)
                 .Map(p => p.Phono(_ => new[] { "ə" })));
         }
-
-        //public Rule[] RuleSystem1()
-        //{
-        //    return R.System(s => s
-        //        .Rule(r => r
-        //            .Named("Changement vocaliques du latin vulgaire")
-        //            .From(0).To(200)
-        //            .Match(q => q.Phon("a").With("accent", "pre-tonic"))
-        //            .After(Q.End)
-        //            .Map(p => p.Phono(_ => new[] { "ə" })));
-        //            ))
-        //}
     }
 }

@@ -8,7 +8,7 @@ namespace Phonos.French.SubSystems
 {
     /// <summary>
     /// Évolutions des voyelles du latin classique au latin vulgaire.
-    /// [G. Zink, Phonétique historique du français, ch. VII]
+    /// [G. Zink, Phonétique historique du français, ch. VIII]
     /// </summary>
     public static class Chapter8
     {
