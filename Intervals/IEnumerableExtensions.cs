@@ -66,9 +66,13 @@ namespace Intervals
                     T[] before = ts.SubArray(leftIdx, interval.Start - leftIdx);
                     builder.AddRange(before);
 
-                    var beforeInterval = new Interval<T[]>(leftIdx, before.Length, before);
-                    intervalAlignments.Add(new IntervalAlignment<T[]>(beforeInterval,
-                        beforeInterval.Translate(rightIdx - leftIdx), true));
+                    int shift = rightIdx - leftIdx;
+                    for (int i = 0; i < before.Length; i++)
+                    {
+                        var beforeInterval = new Interval<T[]>(leftIdx + i, 1, new[] { before[i] });
+                        intervalAlignments.Add(new IntervalAlignment<T[]>(beforeInterval,
+                            beforeInterval.Translate(shift), true));
+                    }
 
                     rightIdx += before.Length;
 
@@ -79,8 +83,9 @@ namespace Intervals
                     builder.AddRange(rightContent);
 
                     // Store from and to intervals
+                    var leftInterval = new Interval<T[]>(interval, leftContent);
                     var rightInterval = new Interval<T[]>(start: rightIdx, length: rightContent.Length, value: interval.Value);
-                    intervalAlignments.Add(new IntervalAlignment<T[]>(interval, rightInterval, false));
+                    intervalAlignments.Add(new IntervalAlignment<T[]>(leftInterval, rightInterval, false));
 
                     // Store mappings for intervals start and end positions
                     mappings[interval.Start] = rightInterval.Start;
@@ -96,11 +101,12 @@ namespace Intervals
                 var final = ts.SubArray(leftIdx, ts.Length - leftIdx);
                 builder.AddRange(final);
 
-                if (final.Length > 0)
+                int shift2 = rightIdx - leftIdx;
+                for (int i = 0; i < final.Length; i++)
                 {
-                    var finalInterval = new Interval<T[]>(leftIdx, final.Length, final);
+                    var finalInterval = new Interval<T[]>(leftIdx, 1, new[] { final[i] });
                     intervalAlignments.Add(new IntervalAlignment<T[]>(finalInterval,
-                        finalInterval.Translate(rightIdx - leftIdx), true));
+                        finalInterval.Translate(shift2), true));
                 }
 
                 // Finalize TO string and store mapping for end of strings

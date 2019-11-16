@@ -21,11 +21,31 @@ namespace Phonos.French.SubSystems.Tests
             };
         }
 
-        //[Theory]
-        //public void TestRuleSystem(params string[] data)
-        //{
-        //    TestRules(Chapter6.Rules(), data);
-        //}
+        [Theory]
+        [InlineData("ambulat", /*phono:*/ "amblat", /*graphs:*/ "amblat")]
+        [InlineData("auricula", /*phono:*/ "au̯rikla", /*graphs:*/ "auricla")]  // @faked
+        [InlineData("oculum", /*phono:*/ "oklum", /*graphs:*/ "oclum")]
+        [InlineData("tabula", /*phono:*/ "tabla", /*graphs:*/ "tabla")]
+        [InlineData("calidum", /*phono:*/ "kaldum", /*graphs:*/ "caldum")]
+        [InlineData("viridem", /*phono:*/ "wirdem", /*graphs:*/ "virdem")]
+        [InlineData("genita", /*phono:*/ "genta", /*graphs:*/ "genta")]
+        [InlineData("quaesita", /*phono:*/ "kʷai̯sta", /*graphs:*/ "quaesta")]
+        [InlineData("debita", /*phono:*/ "debta", /*graphs:*/ "debta")]
+        [InlineData("movita", /*phono:*/ "mowta", /*graphs:*/ "movta")]
+        [InlineData("gaudia", /*phono:*/ "gau̯dja", /*graphs:*/ "gaudia")]
+        [InlineData("nausea", /*phono:*/ "nau̯sja", /*graphs:*/ "nausea")]
+        [InlineData("vidua", /*phono:*/ "widwa", /*graphs:*/ "vidua")]
+        [InlineData("hominem", /*phono:*/ "homnem", /*graphs:*/ "homnem")]
+        [InlineData("feretrum", /*phono:*/ "fertrum", /*graphs:*/ "fertrum")]
+        [InlineData("comitem", /*phono:*/ "komtem", /*graphs:*/ "comtem")]
+        [InlineData("cubitum", /*phono:*/ "kubtum", /*graphs:*/ "cubtum")]
+        [InlineData("sacramentum", /*phono:*/ "sakrəmentum", /*graphs:*/ "sacramentum")]
+        [InlineData("armatūra", /*phono:*/ "armətuːra", /*graphs:*/ "armatūra")]
+        [InlineData("firmamente", /*phono:*/ "firməmente", /*graphs:*/ "firmamente")]
+        public void TestRuleSystem(params string[] data)
+        {
+            TestRules(Chapter6.Rules(), data);
+        }
 
         [Theory]
         [InlineData("ambulat", /*phono:*/ "amblat", /*graphs:*/ "amblat")]
