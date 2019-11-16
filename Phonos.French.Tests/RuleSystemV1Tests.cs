@@ -8,21 +8,19 @@ using Xunit;
 
 namespace Phonos.French.Tests
 {
-    public class RuleSystemV1Tests
+    public class RuleSystemV1Tests : RuleSystemTests
     {
         public RuleSystemV1 RuleSystem { get; }
-        public Latin.WordParser WordParser { get; }
-        public MemoizeAnalyzer LatinMemoizeAnalyzer { get; }
-        public Latin.SyllableAnalyzer SyllableAnalyzer { get; }
-        public Latin.AccentAnalyzer AccentAnalyzer { get; }
 
         public RuleSystemV1Tests()
         {
             RuleSystem = new RuleSystemV1();
-            WordParser = new Latin.WordParser();
-            LatinMemoizeAnalyzer = new MemoizeAnalyzer("classical_latin");
-            SyllableAnalyzer = new Latin.SyllableAnalyzer();
-            AccentAnalyzer = new Latin.AccentAnalyzer();
+            Analyzers = new IAnalyzer[]
+            {
+                new MemoizeAnalyzer("classical_latin"),
+                new Latin.SyllableAnalyzer(),
+                new Latin.AccentAnalyzer(),
+            };
         }
 
         [Theory]
@@ -84,148 +82,6 @@ namespace Phonos.French.Tests
         public void TestRule6(params string[] data)
         {
             TestRule(RuleSystem.Rule6(), data);
-        }
-
-        [Theory]
-        [InlineData("ferum", /*phono:*/ "fɛrom", /*graphs:*/ "ferum")]
-        [InlineData("sērum", /*phono:*/ "serom", /*graphs:*/ "sērum")]
-        [InlineData("soror", /*phono:*/ "sɔrɔr", /*graphs:*/ "soror")]
-        [InlineData("sōlum", /*phono:*/ "solom", /*graphs:*/ "sōlum")]
-        [InlineData("subinde", /*phono:*/ "sobendɛ", /*graphs:*/ "subinde")]
-        [InlineData("poena", /*phono:*/ "pena", /*graphs:*/ "poena")]
-        [InlineData("praeda", /*phono:*/ "prɛda", /*graphs:*/ "praeda")]
-        [InlineData("saeta", /*phono:*/ "sɛta", /*graphs:*/ "saeta")]
-        [InlineData("pauper", /*phono:*/ "pɔpɛr", /*graphs:*/ "pauper")]
-        [InlineData("causa", /*phono:*/ "kɔsa", /*graphs:*/ "causa")]
-        [InlineData("mālum", /*phono:*/ "malom", /*graphs:*/ "mālum")]
-        [InlineData(/*fake*/ "mūlum", /*phono:*/ "mulom", /*graphs:*/ "mūlum")]
-        [InlineData(/*fake*/ "mīlum", /*phono:*/ "milom", /*graphs:*/ "mīlum")]
-        public void TestRuleSystem1(params string[] data)
-        {
-            TestRules(RuleSystem.RuleSystem1(), data);
-        }
-
-
-        private void TestRules(Rule[] rules, string[] data, Func<Rule[], IRuleSequencer> sequencerBuilder = null)
-        {
-            var testData = ParseData(data);
-
-            var word = WordParser.Parse(testData.Latin);
-            LatinMemoizeAnalyzer.Analyze(word);
-            SyllableAnalyzer.Analyze(word);
-            AccentAnalyzer.Analyze(word);
-
-            sequencerBuilder = sequencerBuilder ?? (rx => new LinearRuleSequencer(rules));
-
-            var sequencer = sequencerBuilder(rules);
-            var derived = sequencer.Apply(word).FinalWords().ToArray();
-
-            Assert.Equal(testData.PhonologicalForms.Length, derived.Length);
-
-            for (int i = 0; i < testData.PhonologicalForms.Length; i++)
-            {
-                var expected = testData.PhonologicalForms[i];
-                var real = derived[i];
-
-                Assert.Equal(expected.Phonemes, string.Join(string.Empty, real.Phonemes));
-                Assert.Equal(expected.GraphicalForms.Length, real.GraphicalForms.Length);
-
-                for (int j = 0; j < expected.GraphicalForms.Length; j++)
-                {
-                    var expectedG = expected.GraphicalForms[j];
-                    var realG = real.GraphicalForms[j];
-                    var realStr = string.Join(string.Empty, realG.Intervals.SelectMany(k => k.Value));
-
-                    Assert.Equal(expectedG, realStr);
-                }
-            }
-        }
-
-        private void TestRule(Rule rule, string[] data)
-        {
-            var testData = ParseData(data);
-
-            var word = WordParser.Parse(testData.Latin);
-            LatinMemoizeAnalyzer.Analyze(word);
-            SyllableAnalyzer.Analyze(word);
-            AccentAnalyzer.Analyze(word);
-
-            var derived = rule.Apply(word);
-
-            Assert.Equal(testData.PhonologicalForms.Length, derived.Length);
-
-            for (int i = 0; i < testData.PhonologicalForms.Length; i++)
-            {
-                var expected = testData.PhonologicalForms[i];
-                var real = derived[i];
-
-                Assert.Equal(expected.Phonemes, string.Join(string.Empty, real.Phonemes));
-                Assert.Equal(expected.GraphicalForms.Length, real.GraphicalForms.Length);
-
-                for (int j = 0; j < expected.GraphicalForms.Length; j++)
-                {
-                    var expectedG = expected.GraphicalForms[j];
-                    var realG = real.GraphicalForms[j];
-                    var realStr = string.Join(string.Empty, realG.Intervals.SelectMany(k => k.Value));
-
-                    Assert.Equal(expectedG, realStr);
-                }
-            }
-        }
-
-
-        private WordData ParseData(string[] data)
-        {
-            string latin = data[0];
-            var phono = data.Skip(1).ToArray();
-
-            var phonoData = new List<PhonologicalFormData>();
-            string phonemes = null;
-            var graphicalForms = new List<string>();
-
-            for (int i = 0; i < phono.Length; i++)
-            {
-                string segment = phono[i];
-                if (phonemes == null)
-                    phonemes = segment;
-                else if (segment == "||")
-                {
-                    phonoData.Add(new PhonologicalFormData(phonemes, graphicalForms.ToArray()));
-                    phonemes = null;
-                    graphicalForms.Clear();
-                }
-                else
-                    graphicalForms.Add(segment);
-            }
-
-            if (phonemes != null)
-                phonoData.Add(new PhonologicalFormData(phonemes, graphicalForms.ToArray()));
-
-            return new WordData(latin, phonoData.ToArray());
-        }
-    }
-
-    public class WordData
-    {
-        public string Latin { get; }
-        public PhonologicalFormData[] PhonologicalForms { get; }
-
-        public WordData(string latin, PhonologicalFormData[] phonologicalForms)
-        {
-            Latin = latin;
-            PhonologicalForms = phonologicalForms;
-        }
-    }
-
-    public class PhonologicalFormData
-    {
-        public string Phonemes { get; }
-        public string[] GraphicalForms { get; }
-
-        public PhonologicalFormData(string phonemes, string[] graphicalForms)
-        {
-            Phonemes = phonemes;
-            GraphicalForms = graphicalForms;
         }
     }
 }
