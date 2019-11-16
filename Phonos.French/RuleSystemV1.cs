@@ -113,5 +113,134 @@ namespace Phonos.French
                 .After(Q.End)
                 .Map(p => p.Phono(_ => new[] { "ə" })));
         }
+
+        /// <summary>
+        /// Évolution de /ē/, /ō/, /ě/ et /ǒ/ en /e/, /o/, /ɛ/, /ɔ/ en latin vulgaire.
+        /// [G. Zink, Phonétique historique du français, p. 50]
+        /// </summary>
+        public Rule Rule7()
+        {
+            return R.Rule(r => r
+                .Named("Évolution des voyelles /e/ et /o/ en latin vulgaire")
+                .From(100).To(200)
+                .Match(q => q.Phon("eː", "e", "oː", "o"))
+                .Map(p => p.Phono(px =>
+                {
+                    if (px[0] == "eː")
+                        return new[] { "e" };
+                    else if (px[0] == "e")
+                        return new[] { "ɛ" };
+                    else if (px[0] == "oː")
+                        return new[] { "o" };
+                    else  // 
+                        return new[] { "ɔ" };
+                })));
+        }
+
+        /// <summary>
+        /// Évolution de /ǐ/ en /e/ en latin vulgaire.
+        /// [G. Zink, Phonétique historique du français, p. 50]
+        /// </summary>
+        public Rule Rule8()
+        {
+            return R.Rule(r => r
+                .Named("Évolution de /ǐ/ en latin vulgaire")
+                .From(200).To(300)
+                .Match(q => q.Phon("i"))
+                .Map(p => p.Phono(px => new [] { "e" })));
+        }
+
+        /// <summary>
+        /// Évolution de /ǔ/ en /o/ à l'intérieur d'un mot, en latin vulgaire.
+        /// [G. Zink, Phonétique historique du français, p. 50]
+        /// </summary>
+        public Rule Rule9()
+        {
+            return R.Rule(r => r
+                .Named("Évolution de /ǔ/ en position intérieure en latin vulgaire")
+                .From(300).To(400)
+                .Match(q => q.Phon("u").Without("accent", "final"))
+                .Map(p => p.Phono(px => new [] { "o" })));
+        }
+
+        /// <summary>
+        /// Évolution de /ǔ/ en /o/ en finale de mot, en latin vulgaire.
+        /// [G. Zink, Phonétique historique du français, p. 50]
+        /// </summary>
+        public Rule Rule10()
+        {
+            return R.Rule(r => r
+                .Named("Évolution de /ǔ/ en finale en latin vulgaire")
+                .From(400).To(500)
+                .Match(q => q.Phon("u").With("accent", "final"))
+                .Map(p => p.Phono(px => new [] { "o" })));
+        }
+
+        /// <summary>
+        /// Évolution de /oi̯/ en /e/ en latin vulgaire.
+        /// [G. Zink, Phonétique historique du français, p. 51]
+        /// </summary>
+        public Rule Rule11()
+        {
+            return R.Rule(r => r
+                .Named("Évolution de /oi̯/ en latin vulgaire")
+                .From(0).To(100)
+                .Match(q => q.Phon("oi̯"))
+                .Map(p => p.Phono(px => new [] { "e" })));
+        }
+
+        /// <summary>
+        /// Évolution de /ai̯/ en /ɛ/ en latin vulgaire.
+        /// [G. Zink, Phonétique historique du français, p. 51]
+        /// @subrules
+        /// </summary>
+        public Rule Rule12()
+        {
+            return R.Rule(r => r
+                .Named("Évolution de /ai̯/ en latin vulgaire")
+                .From(100).To(200)
+                .Match(q => q.Phon("ai̯"))
+                .Map(p => p.Phono(px => new [] { "ɛ" })));
+        }
+
+        /// <summary>
+        /// Évolution de /au̯/ en /ɔ/ en latin vulgaire.
+        /// [G. Zink, Phonétique historique du français, p. 51]
+        /// @subrules
+        /// @interactions Pas de diphtongaisons ultérieure du /ɔ/ (p. 51)
+        /// @evolution (p. 52)
+        /// </summary>
+        public Rule Rule13()
+        {
+            return R.Rule(r => r
+                .Named("Évolution de /au̯/ en latin vulgaire")
+                .From(100).To(200)
+                .Match(q => q.Phon("au̯"))
+                .Map(p => p.Phono(px => new [] { "ɔ" })));
+        }
+
+        /// <summary>
+        /// Évolutions des voyelles du latin classique au latin vulgaire.
+        /// </summary>
+        public Rule[] RuleSystem1()
+        {
+            return new[]
+            {
+                Rule7(), Rule8(), Rule9(), Rule10(),
+                Rule11(), Rule12(), Rule13(),
+            };
+        }
+
+        //public Rule[] RuleSystem1()
+        //{
+        //    return R.System(s => s
+        //        .Rule(r => r
+        //            .Named("Changement vocaliques du latin vulgaire")
+        //            .From(0).To(200)
+        //            .Match(q => q.Phon("a").With("accent", "pre-tonic"))
+        //            .After(Q.End)
+        //            .Map(p => p.Phono(_ => new[] { "ə" })));
+        //            ))
+        //}
     }
 }

@@ -26,12 +26,17 @@ namespace Phonos.Core
 
                 foreach (var derivation in derivations)
                 {
-                    var results = rule.Apply(derivation.Derived)
-                        .Select(w => new WordDerivation(rule, derivation.Derived, w))
-                        .ToArray();
+                    var results = rule.Apply(derivation.Derived);
 
-                    derivation.LaterDerivations = results;
-                    newDerivations.AddRange(results);
+                    if (results.Length > 0)
+                    {
+                        var dx = results.Select(w => new WordDerivation(rule, derivation.Derived, w)).ToArray();
+                        derivation.LaterDerivations = dx;
+                        newDerivations.AddRange(dx);
+                    }
+                    else
+                        newDerivations.Add(derivation);
+
                 }
 
                 derivations = newDerivations;
@@ -53,7 +58,23 @@ namespace Phonos.Core
             Rule = rule;
             Original = original;
             Derived = derived;
-            LaterDerivations = laterDerivations;
+            LaterDerivations = laterDerivations ?? new WordDerivation[0];
+        }
+
+        public IEnumerable<Word> FinalWords()
+        {
+            var q = new Stack<WordDerivation>();
+            q.Push(this);
+
+            while (q.Count > 0)
+            {
+                var derivation = q.Pop();
+                if (derivation.LaterDerivations.Length > 0)
+                    foreach (var d in derivation.LaterDerivations)
+                        q.Push(d);
+                else
+                    yield return derivation.Derived;
+            }
         }
     }
 }

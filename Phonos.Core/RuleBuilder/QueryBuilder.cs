@@ -59,6 +59,12 @@ namespace Phonos.Core.RuleBuilder
             WrapQuery(new WithQuery(_query, key, values));
             return this;
         }
+
+        public MatchQueryBuilder Without(string key, params string[] values)
+        {
+            WrapQuery(new WithQuery(_query, key, values, negated: true));
+            return this;
+        }
     }
 
     public class ContextQueryBuilder : QueryBuilder

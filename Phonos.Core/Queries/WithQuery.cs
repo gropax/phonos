@@ -11,12 +11,14 @@ namespace Phonos.Core.Queries
         public IQuery Query { get; }
         public string FieldName { get; }
         public HashSet<string> FieldValues { get; }
+        public bool Negated { get; }
 
-        public WithQuery(IQuery query, string fieldName, IEnumerable<string> fieldValues)
+        public WithQuery(IQuery query, string fieldName, IEnumerable<string> fieldValues, bool negated = false)
         {
             Query = query;
             FieldName = fieldName;
             FieldValues = new HashSet<string>(fieldValues);
+            Negated = negated;
         }
 
         public Interval<string[]> Match(Word word, int index, Interval scope = null)
@@ -30,7 +32,9 @@ namespace Phonos.Core.Queries
                 .Where(i => FieldValues.Contains(i.Value))
                 .Count() > 0;
 
-            return matchField ? match : null;
+            bool isMatch = matchField == !Negated;
+
+            return isMatch ? match : null;
         }
     }
 }

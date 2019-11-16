@@ -83,6 +83,56 @@ namespace Phonos.French.Tests
             TestRule(RuleSystem.Rule6(), data);
         }
 
+        [Theory]
+        [InlineData("ferum", /*phono:*/ "fɛrom", /*graphs:*/ "ferum")]
+        [InlineData("sērum", /*phono:*/ "serom", /*graphs:*/ "sērum")]
+        [InlineData("soror", /*phono:*/ "sɔrɔr", /*graphs:*/ "soror")]
+        [InlineData("sōlum", /*phono:*/ "solom", /*graphs:*/ "sōlum")]
+        [InlineData("subinde", /*phono:*/ "sobendɛ", /*graphs:*/ "subinde")]
+        [InlineData("poena", /*phono:*/ "pena", /*graphs:*/ "poena")]
+        [InlineData("praeda", /*phono:*/ "prɛda", /*graphs:*/ "praeda")]
+        [InlineData("saeta", /*phono:*/ "sɛta", /*graphs:*/ "saeta")]
+        [InlineData("pauper", /*phono:*/ "pɔpɛr", /*graphs:*/ "pauper")]
+        [InlineData("causa", /*phono:*/ "kɔsa", /*graphs:*/ "causa")]
+        public void TestRuleSystem1(params string[] data)
+        {
+            TestRules(RuleSystem.RuleSystem1(), data);
+        }
+
+
+        private void TestRules(Rule[] rules, string[] data, Func<Rule[], IRuleSequencer> sequencerBuilder = null)
+        {
+            var testData = ParseData(data);
+
+            var word = WordParser.Parse(testData.Latin);
+            SyllableAnalyzer.Analyze(word);
+            AccentAnalyzer.Analyze(word);
+
+            sequencerBuilder = sequencerBuilder ?? (rx => new LinearRuleSequencer(rules));
+
+            var sequencer = sequencerBuilder(rules);
+            var derived = sequencer.Apply(word).FinalWords().ToArray();
+
+            Assert.Equal(testData.PhonologicalForms.Length, derived.Length);
+
+            for (int i = 0; i < testData.PhonologicalForms.Length; i++)
+            {
+                var expected = testData.PhonologicalForms[i];
+                var real = derived[i];
+
+                Assert.Equal(expected.Phonemes, string.Join(string.Empty, real.Phonemes));
+                Assert.Equal(expected.GraphicalForms.Length, real.GraphicalForms.Length);
+
+                for (int j = 0; j < expected.GraphicalForms.Length; j++)
+                {
+                    var expectedG = expected.GraphicalForms[j];
+                    var realG = real.GraphicalForms[j];
+                    var realStr = string.Join(string.Empty, realG.Intervals.SelectMany(k => k.Value));
+
+                    Assert.Equal(expectedG, realStr);
+                }
+            }
+        }
 
         private void TestRule(Rule rule, string[] data)
         {
