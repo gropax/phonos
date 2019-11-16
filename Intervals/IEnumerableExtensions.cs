@@ -65,6 +65,11 @@ namespace Intervals
                     // Append string segment before interval
                     T[] before = ts.SubArray(leftIdx, interval.Start - leftIdx);
                     builder.AddRange(before);
+
+                    var beforeInterval = new Interval<T[]>(leftIdx, before.Length, before);
+                    intervalAlignments.Add(new IntervalAlignment<T[]>(beforeInterval,
+                        beforeInterval.Translate(rightIdx - leftIdx), true));
+
                     rightIdx += before.Length;
 
                     var leftContent = ts.SubArray(interval);
@@ -74,21 +79,29 @@ namespace Intervals
                     builder.AddRange(rightContent);
 
                     // Store from and to intervals
-                    var toInterval = new Interval<T[]>(start: rightIdx, length: rightContent.Length, value: interval.Value);
-                    intervalAlignments.Add(new IntervalAlignment<T[]>(interval, toInterval));
+                    var rightInterval = new Interval<T[]>(start: rightIdx, length: rightContent.Length, value: interval.Value);
+                    intervalAlignments.Add(new IntervalAlignment<T[]>(interval, rightInterval, false));
 
                     // Store mappings for intervals start and end positions
-                    mappings[interval.Start] = toInterval.Start;
-                    mappings[interval.End] = toInterval.End;
+                    mappings[interval.Start] = rightInterval.Start;
+                    mappings[interval.End] = rightInterval.End;
 
                     leftIdx = interval.End;
-                    rightIdx = toInterval.End;
+                    rightIdx = rightInterval.End;
 
                     lastInterval = interval;
                 }
 
                 // Append string segment after last interval
-                builder.AddRange(ts.SubArray(leftIdx, ts.Length - leftIdx));
+                var final = ts.SubArray(leftIdx, ts.Length - leftIdx);
+                builder.AddRange(final);
+
+                if (final.Length > 0)
+                {
+                    var finalInterval = new Interval<T[]>(leftIdx, final.Length, final);
+                    intervalAlignments.Add(new IntervalAlignment<T[]>(finalInterval,
+                        finalInterval.Translate(rightIdx - leftIdx), true));
+                }
 
                 // Finalize TO string and store mapping for end of strings
                 toString = builder.ToString();

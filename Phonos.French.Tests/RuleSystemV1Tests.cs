@@ -97,6 +97,9 @@ namespace Phonos.French.Tests
         [InlineData("saeta", /*phono:*/ "sɛta", /*graphs:*/ "saeta")]
         [InlineData("pauper", /*phono:*/ "pɔpɛr", /*graphs:*/ "pauper")]
         [InlineData("causa", /*phono:*/ "kɔsa", /*graphs:*/ "causa")]
+        [InlineData("mālum", /*phono:*/ "malom", /*graphs:*/ "mālum")]
+        [InlineData(/*fake*/ "mūlum", /*phono:*/ "mulom", /*graphs:*/ "mūlum")]
+        [InlineData(/*fake*/ "mīlum", /*phono:*/ "milom", /*graphs:*/ "mīlum")]
         public void TestRuleSystem1(params string[] data)
         {
             TestRules(RuleSystem.RuleSystem1(), data);

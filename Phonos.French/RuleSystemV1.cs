@@ -1,6 +1,7 @@
 ﻿using Phonos.Core;
 using Phonos.Core.RuleBuilder;
 using System;
+using System.Linq;
 
 namespace Phonos.French
 {
@@ -142,26 +143,31 @@ namespace Phonos.French
         /// <summary>
         /// Évolution de /ǐ/ en /e/ en latin vulgaire.
         /// [G. Zink, Phonétique historique du français, p. 50]
+        /// @interactions [OK] Don't affect /i/ from /iː/
         /// </summary>
         public Rule Rule8()
         {
             return R.Rule(r => r
                 .Named("Évolution de /ǐ/ en latin vulgaire")
                 .From(200).To(300)
-                .Match(q => q.Phon("i"))
+                .Match(q => q.Phon("i")
+                    .Without("classical_latin", "iː"))
                 .Map(p => p.Phono(px => new [] { "e" })));
         }
 
         /// <summary>
         /// Évolution de /ǔ/ en /o/ à l'intérieur d'un mot, en latin vulgaire.
         /// [G. Zink, Phonétique historique du français, p. 50]
+        /// @interactions [OK] Don't affect /u/ from /uː/
         /// </summary>
         public Rule Rule9()
         {
             return R.Rule(r => r
                 .Named("Évolution de /ǔ/ en position intérieure en latin vulgaire")
                 .From(300).To(400)
-                .Match(q => q.Phon("u").Without("accent", "final"))
+                .Match(q => q.Phon("u")
+                    .Without("accent", "final")
+                    .Without("classical_latin", "uː"))  // @interaction
                 .Map(p => p.Phono(px => new [] { "o" })));
         }
 
@@ -222,6 +228,19 @@ namespace Phonos.French
         }
 
         /// <summary>
+        /// Disparition de l'opposition entre voyelles longues et brèves
+        /// [G. Zink, Phonétique historique du français, p. 49]
+        /// </summary>
+        public Rule Rule14()
+        {
+            return R.Rule(r => r
+                .Named("Disparition de l'opposition entre voyelles longues et brèves")
+                .From(100).To(200)
+                .Match(q => q.Phon("aː", "iː", "uː"))  // Les cas /ē/ et /ō/ sont gérés en 7
+                .Map(P.Shorten));
+        }
+
+        /// <summary>
         /// Évolutions des voyelles du latin classique au latin vulgaire.
         /// </summary>
         public Rule[] RuleSystem1()
@@ -229,7 +248,7 @@ namespace Phonos.French
             return new[]
             {
                 Rule7(), Rule8(), Rule9(), Rule10(),
-                Rule11(), Rule12(), Rule13(),
+                Rule11(), Rule12(), Rule13(), Rule14(),
             };
         }
 

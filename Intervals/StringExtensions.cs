@@ -82,7 +82,7 @@ namespace Intervals
 
                     // Store from and to intervals
                     var toInterval = new Interval<T>(start: toIdx, length: toContent.Length, value: fromInterval.Value);
-                    intervalAlignments.Add(new IntervalAlignment<T>(fromInterval, toInterval));
+                    intervalAlignments.Add(new IntervalAlignment<T>(fromInterval, toInterval, false));
 
                     // Store mappings for intervals start and end positions
                     mappings[fromInterval.Start] = toInterval.Start;

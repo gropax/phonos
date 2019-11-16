@@ -443,11 +443,13 @@ namespace Intervals
     {
         public Interval<T> Left { get; private set; }
         public Interval<T> Right { get; private set; }
+        public bool Match { get; }
 
-        public IntervalAlignment(Interval<T> from, Interval<T> to)
+        public IntervalAlignment(Interval<T> from, Interval<T> to, bool match)
         {
             Left = from;
             Right = to;
+            Match = match;
         }
     }
 
