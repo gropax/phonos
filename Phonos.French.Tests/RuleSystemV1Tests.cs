@@ -1,5 +1,6 @@
 ﻿using Intervals;
 using Phonos.Core;
+using Phonos.Core.Analyzers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace Phonos.French.Tests
     {
         public RuleSystemV1 RuleSystem { get; }
         public Latin.WordParser WordParser { get; }
+        public MemoizeAnalyzer LatinMemoizeAnalyzer { get; }
         public Latin.SyllableAnalyzer SyllableAnalyzer { get; }
         public Latin.AccentAnalyzer AccentAnalyzer { get; }
 
@@ -18,6 +20,7 @@ namespace Phonos.French.Tests
         {
             RuleSystem = new RuleSystemV1();
             WordParser = new Latin.WordParser();
+            LatinMemoizeAnalyzer = new MemoizeAnalyzer("classical_latin");
             SyllableAnalyzer = new Latin.SyllableAnalyzer();
             AccentAnalyzer = new Latin.AccentAnalyzer();
         }
@@ -105,6 +108,7 @@ namespace Phonos.French.Tests
             var testData = ParseData(data);
 
             var word = WordParser.Parse(testData.Latin);
+            LatinMemoizeAnalyzer.Analyze(word);
             SyllableAnalyzer.Analyze(word);
             AccentAnalyzer.Analyze(word);
 
@@ -139,6 +143,7 @@ namespace Phonos.French.Tests
             var testData = ParseData(data);
 
             var word = WordParser.Parse(testData.Latin);
+            LatinMemoizeAnalyzer.Analyze(word);
             SyllableAnalyzer.Analyze(word);
             AccentAnalyzer.Analyze(word);
 

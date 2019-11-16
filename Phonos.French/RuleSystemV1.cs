@@ -117,13 +117,15 @@ namespace Phonos.French
         /// <summary>
         /// Évolution de /ē/, /ō/, /ě/ et /ǒ/ en /e/, /o/, /ɛ/, /ɔ/ en latin vulgaire.
         /// [G. Zink, Phonétique historique du français, p. 50]
+        /// @interactions [OK] Pas d'evolution de /e/ issu de /oe/
         /// </summary>
         public Rule Rule7()
         {
             return R.Rule(r => r
                 .Named("Évolution des voyelles /e/ et /o/ en latin vulgaire")
                 .From(100).To(200)
-                .Match(q => q.Phon("eː", "e", "oː", "o"))
+                .Match(q => q.Phon("eː", "e", "oː", "o")
+                    .Without("classical_latin", "oi̯"))  // @interaction
                 .Map(p => p.Phono(px =>
                 {
                     if (px[0] == "eː")
