@@ -35,7 +35,7 @@ namespace Phonos.Core.Tests.TestData
                     var fieldsKv = (Dictionary<object, dynamic>)wordKv.Value;
 
                     var phonemes = ParsePhonemes(inputPhono);
-                    var graphicalForms = new List<Alignment<string>>();
+                    var graphicalForms = new Alignment<string>[0];
                     var wordFields = new Dictionary<string, Alignment<string>>();
                     var outputs = new List<RuleTestSampleOutput>();
 
@@ -45,7 +45,15 @@ namespace Phonos.Core.Tests.TestData
 
                         if (fieldName == "_graph")
                         {
-                            //graphicalForms = new string[0];
+                            if (fieldKv.Value.GetType() == typeof(List<object>))
+                                graphicalForms = ((List<dynamic>)fieldKv.Value)
+                                    .Select(g => ParseAlignment((string)g))
+                                    .ToArray();
+                            else
+                                graphicalForms = new[]
+                                {
+                                    ParseAlignment((string)fieldKv.Value),
+                                };
                         }
                         else if (fieldName.StartsWith("_"))
                             wordFields.Add(fieldName.Substring(1), ParseAlignment(fieldKv.Value));
@@ -56,7 +64,7 @@ namespace Phonos.Core.Tests.TestData
                         }
                     }
 
-                    var inputWord = new Word(phonemes, graphicalForms.ToArray(), wordFields);
+                    var inputWord = new Word(phonemes, graphicalForms, wordFields);
 
                     samples.Add(new RuleTestSample(inputWord, outputs.ToArray()));
                 }
