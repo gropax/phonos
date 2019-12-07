@@ -1,0 +1,12 @@
+﻿# Rules tests
+123:
+    src: Zink p.45
+    desc: Syncope des voyelles pré-toniques autres que /a/ en syllable ouverte
+    from: 400
+    to: 600
+    post: syllable
+    samples:
+        monwe:
+            _latin: m o n ē:2
+            monwa: monoie
+            monɛ: monaie, *

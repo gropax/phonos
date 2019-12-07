@@ -8,7 +8,7 @@ using Xunit;
 
 namespace Phonos.Core.Queries.Tests
 {
-    public class RuleTests
+    public class YamlParserTests
     {
         [Fact]
         public void TestMatches()
