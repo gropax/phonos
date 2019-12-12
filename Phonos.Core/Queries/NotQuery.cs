@@ -20,7 +20,7 @@ namespace Phonos.Core.Queries
             if (match != null)
                 return null;
             else
-                return new Interval<string[]>(scope, new string[0]);
+                return new Interval<string[]>(index, 0, new string[0]);
         }
     }
 }

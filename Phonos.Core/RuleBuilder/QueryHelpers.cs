@@ -10,10 +10,27 @@ namespace Phonos.Core.RuleBuilder
         public static Action<ContextQueryBuilder> Start => qb => qb.Start();
         public static Action<ContextQueryBuilder> End => qb => qb.End();
 
-        public static Action<MatchQueryBuilder> Consonant =>
-            qd => qd.Phon(CONSONANT);
+        //public static Action<MatchQueryBuilder> Consonant =>
+        //    qd => qd.Phon(CONSONANT);
         public static Action<MatchQueryBuilder> PostTonicVowel =>
             qd => qd.Phon(VOWEL).With("accent", "post-tonic");
+
+        public static string[] VOWELS = new[]
+        {
+            "i", "y", "ɨ", "ʉ", "ɯ", "u", "ɪ", "ʏ", "ʊ", "e", "ø",
+            "ɘ", "ɵ", "ɤ", "o", "ə", "ɛ", "œ", "ɜ", "ɞ",
+            "ʌ", "ɔ", "æ", "ɐ", "a", "ɶ", "ä", "ɑ", "ɒ",
+        };
+
+        public static bool Vowel(string phoneme)
+        {
+            return VOWELS.Contains(phoneme[0].ToString());
+        }
+
+        public static bool Consonant(string phoneme)
+        {
+            return CONSONANT.Contains(phoneme[0].ToString());
+        }
 
         public static string[] VOWEL = new[]
         {

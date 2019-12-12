@@ -16,6 +16,7 @@ namespace Phonos.French.SubSystems
             return new[]
             {
                 Rule1(), Rule2(), Rule3(), Rule4(), Rule5(), Rule6(),
+                Rule7(), Rule8(), Rule9(),
             };
         }
 
@@ -113,11 +114,69 @@ namespace Phonos.French.SubSystems
         {
             return R.Rule(r => r
                 .Named("Centralisation de /a/ pré-tonique en syllabe ouverte")
-                .From(600).To(700)
+                .From(400).To(600)
                 .Scope("syllable")
                 .Match(q => q.Phon("a").With("accent", "pre-tonic"))
                 .After(Q.End)
                 .Map(p => p.Phono(_ => new[] { "ə" })));
+        }
+
+        /// <summary>
+        /// Centralisation des voyelles pré-toniques autres que /a/ en syllabe ouverte,
+        /// précédées d'un groupe consonantique (explosif)
+        /// [G. Zink, Phonétique historique du français, p. 41]
+        /// @interaction [?]
+        /// </summary>
+        public static Rule Rule7()
+        {
+            return R.Rule(r => r
+                .Named("Centralisation des voyelles pré-toniques autres que /a/ en syllable ouverte, précédées d'un groupe consonantique")
+                .From(400).To(600)
+                .Scope("syllable")
+                .Match(q => q.Phon(p => Q.Vowel(p) && p[0] != 'a')
+                    .With("accent", "pre-tonic"))
+                .Before(q => q.Seq(q1 => q1.Phon(Q.Consonant), q2 => q2.Phon(Q.Consonant)))
+                .After(Q.End)
+                .Map(p => p.Phono(_ => new[] { "ə" })));
+        }
+
+        /// <summary>
+        /// Syncope des voyelles pré-toniques autres que /a/ en syllabe ouvert,
+        /// non supportées par un groupe consonantique en précession
+        /// [G. Zink, Phonétique historique du français, p. 41]
+        /// @interaction [?]
+        /// </summary>
+        public static Rule Rule8()
+        {
+            return R.Rule(r => r
+                .Named("Syncope des voyelles pré-toniques autres que /a/ en syllable ouverte")
+                .From(400).To(600)
+                .Scope("syllable")
+                .Match(q => q.Phon(p => Q.Vowel(p) && p[0] != 'a')
+                    .With("accent", "pre-tonic"))
+                .Before(q => q.Seq(Q.Start, s2 => s2.Maybe(m => m.Phon(Q.Consonant))))
+                .After(Q.End)
+                .Map(P.Erase));
+        }
+
+        /// <summary>
+        /// Évolution des pré-toniques autres que /a/ en syllabe fermée
+        /// [G. Zink, Phonétique historique du français, p. 41]
+        /// @interaction [TODO] Contralisation en cas de libération d'entrave
+        /// @problem [TODO] Syllabation de calumnǐāre problématique : pour le moment
+        /// /u/ est contr-tonique et /ǐ/ pré-tonique, mais l'exemple du livre donne
+        /// /u/ comme pré-tonique (/ǐ/ est donc à considéré comme /j/ ?).
+        /// </summary>
+        public static Rule Rule9()
+        {
+            return R.Rule(r => r
+                .Named("Antériorisation des pré-toniques autres que /a/ en syllabe formée")
+                .From(400).To(600)
+                .Scope("syllable")
+                .Match(q => q.Phon(Q.Vowel)
+                    .With("accent", "pre-tonic"))
+                .After(q => q.Phon(Q.Consonant))
+                .Map(p => p.Phono(_ => new[] { "e" }).Rewrite(_ => "e")));
         }
     }
 }

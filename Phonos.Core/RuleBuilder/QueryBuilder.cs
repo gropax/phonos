@@ -41,6 +41,12 @@ namespace Phonos.Core.RuleBuilder
             return this;
         }
 
+        public MatchQueryBuilder Phon(Func<string, bool> phonemeCondition)
+        {
+            SetQuery(new PhonemeQuery(phonemeCondition));
+            return this;
+        }
+
         public MatchQueryBuilder Seq(params Action<MatchQueryBuilder>[] queriesDefinitions)
         {
             var queries = queriesDefinitions.Select(qd =>
@@ -81,6 +87,12 @@ namespace Phonos.Core.RuleBuilder
             return this;
         }
 
+        public ContextQueryBuilder Phon(Func<string, bool> phonemeCondition)
+        {
+            SetQuery(new PhonemeQuery(phonemeCondition));
+            return this;
+        }
+
         public ContextQueryBuilder Phon(params string[] phonemes)
         {
             SetQuery(new PhonemeQuery(phonemes));
@@ -106,6 +118,15 @@ namespace Phonos.Core.RuleBuilder
             });
 
             SetQuery(new SequenceQuery(queries));
+            return this;
+        }
+
+        public ContextQueryBuilder Not(Action<ContextQueryBuilder> queryDefinition)
+        {
+            var queryBuilder = new ContextQueryBuilder();
+            queryDefinition(queryBuilder);
+
+            SetQuery(new NotQuery(queryBuilder.Build()));
             return this;
         }
 

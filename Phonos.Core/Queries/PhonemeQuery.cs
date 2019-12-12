@@ -8,11 +8,17 @@ namespace Phonos.Core.Queries
 {
     public class PhonemeQuery : IQuery
     {
-        public HashSet<string> Phonemes { get; }
+        public Func<string, bool> Condition { get; }
+
+        public PhonemeQuery(Func<string, bool> condition)
+        {
+            Condition = condition;
+        }
 
         public PhonemeQuery(IEnumerable<string> phonemes)
         {
-            Phonemes = new HashSet<string>(phonemes);
+            var phonemeSet = new HashSet<string>(phonemes);
+            Condition = p => phonemeSet.Contains(p);
         }
 
         public Interval<string[]> Match(Word word, int index, Interval scope = null)
@@ -25,7 +31,7 @@ namespace Phonos.Core.Queries
                 return null;
 
             var first = word.Phonemes[index];
-            if (Phonemes.Contains(first))
+            if (Condition(first))
                 return new Interval<string[]>(index, 1, new[] { first });
             else
                 return null;

@@ -42,6 +42,12 @@ namespace Phonos.French.SubSystems.Tests
         [InlineData("sacramentum", /*phono:*/ "sakrəmentum", /*graphs:*/ "sacramentum")]
         [InlineData("armatūra", /*phono:*/ "armətuːra", /*graphs:*/ "armatūra")]
         [InlineData("firmamente", /*phono:*/ "firməmente", /*graphs:*/ "firmamente")]
+
+        [InlineData("bonitātem", /*phono:*/ "bontaːtem", "bontātem")]  // no match
+        // TODO: fix [InlineData("calumniāre", /*phono:*/ "kalemniaːre", /*graphs:*/ "calemniāre")]
+        [InlineData("latrocinium", /*phono:*/ "latrəkinium", /*graphs:*/ "latrocinium")]
+        [InlineData("paupertātem", /*phono:*/ "pau̯pertaːtem", /*graphs:*/ "paupertātem")]
+        [InlineData("voluntātem", /*phono:*/ "wolentaːtem", /*graphs:*/ "volentātem")]
         public void TestRuleSystem(params string[] data)
         {
             TestRules(Chapter6.Rules(), data);
@@ -106,6 +112,33 @@ namespace Phonos.French.SubSystems.Tests
         public void TestRule6(params string[] data)
         {
             TestRule(Chapter6.Rule6(), data);
+        }
+
+        [Theory]
+        [InlineData("latrocinium", /*phono:*/ "latrəkinium", /*graphs:*/ "latrocinium")]
+        [InlineData("bonitātem")]  // no match
+        [InlineData(/*fake*/ "atrartātem")]  // no match
+        public void TestRule7(params string[] data)
+        {
+            TestRule(Chapter6.Rule7(), data);
+        }
+
+        [Theory]
+        [InlineData("latrocinium")]  // no match
+        [InlineData("bonitātem", /*phono:*/ "bontaːtem", "bontātem")]  // no match
+        [InlineData(/*fake*/ "atrartātem")]  // no match
+        public void TestRule8(params string[] data)
+        {
+            TestRule(Chapter6.Rule8(), data);
+        }
+
+        [Theory]
+        [InlineData("paupertātem", /*phono:*/ "pau̯pertaːtem", /*graphs:*/ "paupertātem")]
+        [InlineData("voluntātem", /*phono:*/ "wolentaːtem", /*graphs:*/ "volentātem")]
+        // TODO: fix [InlineData("calumniāre", /*phono:*/ "kalemniaːre", /*graphs:*/ "calemniāre")]
+        public void TestRule9(params string[] data)
+        {
+            TestRule(Chapter6.Rule9(), data);
         }
     }
 }
