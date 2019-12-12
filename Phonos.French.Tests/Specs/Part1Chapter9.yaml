@@ -40,9 +40,11 @@ p1c9r1c:
     samples:
         fiɛ̯ro:
             _graph: f ie r o
+            _accent: tonic:2 final:2
             fie̯ro: f ie r o
         miɛ̯l:
             _graph: m ie l
+            _accent: tonic:3
             mie̯l: m ie l
 
 p1c9r1d:
@@ -54,9 +56,11 @@ p1c9r1d:
     samples:
         fie̯r:
             _graph: f ie r
+            _accent: tonic:3
             fjer: f i e r
         mie̯l:
             _graph: m ie l
+            _accent: tonic:3
             mjel: m i e l
 
 p1c9r2a:
@@ -68,9 +72,13 @@ p1c9r2a:
     samples:
         sɔrɔr:
             _graph: s o r o r
+            _syllable: short:2 long:3
+            _accent: tonic:2 final:3
             sɔɔ̯rɔr: s o r o r
         kɔr:
             _graph: c o r
+            _syllable: long:3
+            _accent: tonic:3
             kɔɔ̯r: c o r
 
 p1c9r2b:
@@ -82,9 +90,11 @@ p1c9r2b:
     samples:
         sɔɔ̯rɔr:
             _graph: s o r o r
+            _accent: tonic:2 final:3
             suɔ̯rɔr: s uo r o r
         kɔɔ̯r:
             _graph: c o r
+            _accent: tonic:3
             kuɔ̯r: c uo r
 
 p1c9r2c:
@@ -96,9 +106,11 @@ p1c9r2c:
     samples:
         suɔ̯rɔr:
             _graph: s uo r o r
+            _accent: tonic:2 final:3
             suo̯rɔr: s uo r o r
         kuɔ̯r:
             _graph: c uo r
+            _accent: tonic:3
             kuo̯r: c uo r
 
 p1c9r2d:
@@ -110,10 +122,12 @@ p1c9r2d:
     samples:
         suo̯r:
             _graph: s uo r
-            sue̯r: s uo r  # @todo
+            _accent: tonic:3
+            sue̯r: s ue r
         kuo̯r:
             _graph: c uo r
-            kue̯r: c uo r  # @todo
+            _accent: tonic:3
+            kue̯r: c ue r
 
 p1c9r2e:
     src: Zink p.55-56, http://www.diachronie.be/cours_grammaire/phonetique/134.html
@@ -123,11 +137,13 @@ p1c9r2e:
     to: 1150
     samples:
         sue̯r:
-            _graph: s uo r  # @todo
-            sye̯r: s uo r  # @todo
+            _graph: s ue r
+            _accent: tonic:3
+            sye̯r: s ue r
         kue̯r:
-            _graph: c uo r  # @todo
-            kye̯r: c uo r  # @todo
+            _graph: c ue r
+            _accent: tonic:3
+            kye̯r: c ue r
 
 p1c9r2f:
     src: Zink p.55-56, http://www.diachronie.be/cours_grammaire/phonetique/134.html
@@ -137,11 +153,13 @@ p1c9r2f:
     to: 1200
     samples:
         sye̯r:
-            _graph: s uo r  # @todo
-            syø̯r: s uo r  # @todo
+            _graph: s ue r
+            _accent: tonic:3
+            syø̯r: s ue r
         kye̯r:
-            _graph: c uo r  # @todo
-            kyø̯r: c uo r  # @todo
+            _graph: c ue r
+            _accent: tonic:3
+            kyø̯r: c ue r
 
 p1c9r2g:
     src: Zink p.55-56, http://www.diachronie.be/cours_grammaire/phonetique/134.html
@@ -150,12 +168,14 @@ p1c9r2g:
     from: 1200
     to: 1250
     samples:
-       syø̯r:
-            _graph: s uo r  # @todo
-            sɥør: s uo r  # @todo
-       kyø̯r:
-           _graph: c uo r  # @todo
-           kɥør: c uo r  # @todo
+        syø̯r:
+            _graph: s ue r
+            _accent: tonic:3
+            sɥør: s ue r
+        kyø̯r:
+            _graph: c ue r
+            _accent: tonic:3
+            kɥør: c ue r
 
 p1c9r2h:
     src: Zink p.55-56, http://www.diachronie.be/cours_grammaire/phonetique/134.html
@@ -165,11 +185,13 @@ p1c9r2h:
     to: 1300
     samples:
         sɥør:
-            _graph: s uo r  # @todo
-            sør: s uo r  # @todo
+            _graph: s ue r
+            _accent: tonic:3
+            sør: s œu r
         kɥør:
-            _graph: c uo r  # @todo
-            kør: c uo r  # @todo
+            _graph: c ue r
+            _accent: tonic:3
+            kør: c œu r
 
 p1c9r3a:
     src: Zink p.56-57, http://www.diachronie.be/cours_grammaire/phonetique/001.html
