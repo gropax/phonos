@@ -14,9 +14,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Phonos.Core.Tests\Phonos.Core.Tests.csproj" />
     <ProjectReference Include="..\Phonos.Core\Phonos.Core.csproj" />
     <ProjectReference Include="..\Phonos.French\Phonos.French.csproj" />
     <ProjectReference Include="..\Phonos.Latin\Phonos.Latin.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Specs\Part1Chapter9.yaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

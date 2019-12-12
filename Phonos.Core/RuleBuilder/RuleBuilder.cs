@@ -10,6 +10,8 @@ namespace Phonos.Core.RuleBuilder
 
     public class RuleBuilder
     {
+        private string _id = null;
+        private string _group = "Unnamed";
         private string _name = "Unnamed";
         private int _start = 0;
         private int _end = 0;
@@ -21,13 +23,27 @@ namespace Phonos.Core.RuleBuilder
 
         public Rule Build()
         {
-            if (_query == null)
+            if (_id == null)
+                throw new QueryBuilderException("Rule must have an ID.");
+            else if (_query == null)
                 throw new QueryBuilderException("Match query must be set before building.");
             else if (_maps == null)
                 throw new QueryBuilderException("Phonological map must be set before building.");
 
-            return new Rule(_name, new Interval(_start, _end - _start),
+            return new Rule(_id, _group, _name, new Interval(_start, _end - _start),
                 _query, _maps, _lookBehind, _lookAhead, _scope);
+        }
+
+        public RuleBuilder Id(string id)
+        {
+            _id = id;
+            return this;
+        }
+
+        public RuleBuilder Group(string group)
+        {
+            _group = group;
+            return this;
         }
 
         public RuleBuilder Named(string name)

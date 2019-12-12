@@ -1,6 +1,7 @@
 ﻿using Intervals;
 using Phonos.Core;
 using Phonos.Core.Analyzers;
+using Phonos.Core.Tests.TestData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,6 +47,58 @@ namespace Phonos.French.Tests
                     Assert.Equal(expectedG, realStr);
                 }
             }
+        }
+
+        protected void TestRules(Rule[] rules, RuleTest ruleTest)
+        {
+            var dict = rules.ToDictionary(r => r.Id, r => r);
+            Assert.True(dict.TryGetValue(ruleTest.Id, out var rule),
+                $"Rule not found [{ruleTest.Id}].");
+            TestRule(rule, ruleTest);
+        }
+
+        protected void TestRule(Rule rule, RuleTest ruleTest)
+        {
+            foreach (var sample in ruleTest.Samples)
+                TestSample(rule, ruleTest, sample);
+        }
+
+
+        protected void TestSample(Rule rule, RuleTest ruleTest, RuleTestSample sample)
+        {
+            var word = sample.Input;
+            var derived = rule.Apply(word);
+
+            Assert.Equal(sample.Outputs.Length, derived.Length);
+
+            for (int i = 0; i < sample.Outputs.Length; i++)
+                TestSampleOutput(sample.Outputs, derived, i);
+        }
+
+        private void TestSampleOutput(RuleTestSampleOutput[] outputs,
+            Word[] derived, int index)
+        {
+            var output = outputs[index];
+            var expected = output.Word;
+            var real = derived[index];
+
+            Assert.Equal(expected.Phonemes, real.Phonemes);
+
+            Assert.Equal(expected.GraphicalForms.Length, real.GraphicalForms.Length);
+
+            for (int j = 0; j < expected.GraphicalForms.Length; j++)
+                TestGraphicalForm(expected.GraphicalForms, real.GraphicalForms, j);
+        }
+
+        private void TestGraphicalForm(Core.Alignment<string>[] expectedForms,
+            Core.Alignment<string>[] derived, int index)
+        {
+            var expected = expectedForms[index];
+            var real = derived[index];
+
+            Assert.Equal(
+                expected.Intervals.Select(i => i.Value).ToArray(),
+                real.Intervals.Select(i => i.Value).ToArray());
         }
 
         protected void TestRule(Rule rule, string[] data)

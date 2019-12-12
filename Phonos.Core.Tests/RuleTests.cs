@@ -17,6 +17,8 @@ namespace Phonos.Core.Queries.Tests
             var c = new PhonemeQuery(new[] { "r", "t", "b", "l" });
 
             var r = new Rule(
+                id: "test",
+                group: "test",
                 name: "Test",
                 timeSpan: new Interval(0, 1),
                 query: new SequenceQuery(new[] { c, v, c }),
@@ -43,6 +45,8 @@ namespace Phonos.Core.Queries.Tests
             var c = new PhonemeQuery(new[] { "r", "t", "b", "l" });
 
             var r = new Rule(
+                group: "test",
+                id: "test",
                 name: "Test",
                 timeSpan: new Interval(0, 1),
                 query: c,
@@ -70,6 +74,8 @@ namespace Phonos.Core.Queries.Tests
             var c = new PhonemeQuery(new[] { "r", "t", "b", "l" });
 
             var r = new Rule(
+                id: "test",
+                group: "test",
                 name: "Test",
                 timeSpan: new Interval(0, 1),
                 query: c,
@@ -98,6 +104,8 @@ namespace Phonos.Core.Queries.Tests
             var c = new PhonemeQuery(new[] { "r", "t", "b", "l" });
 
             var r = new Rule(
+                id: "test",
+                group: "test",
                 name: "Test",
                 timeSpan: new Interval(0, 1),
                 query: c,
@@ -124,6 +132,8 @@ namespace Phonos.Core.Queries.Tests
             var a = new PhonemeQuery(new[] { "a" });
 
             var rule = new Rule(
+                id: "test",
+                group: "test",
                 name: "Test",
                 timeSpan: new Interval(0, 1),
                 query: new SequenceQuery(new[] { t, a, t }),
@@ -159,6 +169,8 @@ namespace Phonos.Core.Queries.Tests
             var a = new PhonemeQuery(new[] { "a" });
 
             var rule = new Rule(
+                id: "test",
+                group: "test",
                 name: "Test",
                 timeSpan: new Interval(0, 1),
                 query: new SequenceQuery(new[] { a, t }),
@@ -194,6 +206,8 @@ namespace Phonos.Core.Queries.Tests
             var a = new PhonemeQuery(new[] { "a" });
 
             var rule = new Rule(
+                id: "test",
+                group: "test",
                 name: "Test",
                 timeSpan: new Interval(0, 1),
                 query: new SequenceQuery(new[] { t, a }),
@@ -228,6 +242,8 @@ namespace Phonos.Core.Queries.Tests
             var l = new PhonemeQuery(new[] { "l" });
 
             var rule = new Rule(
+                id: "test",
+                group: "test",
                 name: "Test",
                 timeSpan: new Interval(0, 1),
                 query: new SequenceQuery(new[] { l, l }),
@@ -265,6 +281,8 @@ namespace Phonos.Core.Queries.Tests
             var v = new PhonemeQuery(new[] { "a", "e" });
 
             var rule = new Rule(
+                id: "test",
+                group: "test",
                 name: "Test",
                 timeSpan: new Interval(0, 1),
                 query: v,

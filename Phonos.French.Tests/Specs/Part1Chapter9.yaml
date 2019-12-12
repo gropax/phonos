@@ -1,4 +1,4 @@
-﻿r1a:
+﻿p1c9r1a:
     src: Zink p.54, http://www.diachronie.be/cours_grammaire/phonetique/072.html
     group: Diphtongaison de /ɛ/ tonique libre ou monosyllabique
     desc: Segmentation de /ɛ/ sous l'accent tonique
@@ -7,11 +7,14 @@
     samples:
         fɛru:
             _graph: f e r u
+            _syllable: short:2 short:2
+            _accent: tonic:2 final:2
             fεε̯ru: f e r u
         mɛl:
             _graph: m e l
             mεε̯l: m e l
-r1b:
+
+p1c9r1b:
     src: Zink p.54, http://www.diachronie.be/cours_grammaire/phonetique/072.html
     group: Diphtongaison de /ɛ/ tonique libre ou monosyllabique
     desc: Dissimilation d'aperture de /ε/
@@ -24,9 +27,9 @@ r1b:
         mεε̯l:
             _graph: m e l
             miε̯l: m ie l
-r1c:
+
+p1c9r1c:
     src: Zink p.54, http://www.diachronie.be/cours_grammaire/phonetique/072.html
-    group: Diphtongaison de /ɛ/ tonique libre ou monosyllabique
     desc: Assimilation d'aperture progressive de /ɛ̯/
     from: 600
     to: 700
@@ -37,7 +40,8 @@ r1c:
         miε̯l:
             _graph: m ie l
             mie̯l: m ie l
-r1d:
+
+p1c9r1d:
     src: Zink p.54, http://www.diachronie.be/cours_grammaire/phonetique/072.html
     group: Diphtongaison de /ɛ/ tonique libre ou monosyllabique
     desc: Consonantisation de /i/
@@ -51,7 +55,7 @@ r1d:
             _graph: m ie l
             mjel: m i e l
 
-r2a:
+p1c9r2a:
     src: Zink p.55-56, http://www.diachronie.be/cours_grammaire/phonetique/134.html
     group: Diphtongaison de /ɔ/ (issu do /ǒ/) tonique libre ou monosyllabique
     desc: Segmentation de /ɔ/ sous l'accent tonique
@@ -65,7 +69,7 @@ r2a:
             _graph: c o r
             kɔɔ̯r: c o r
 
-r2b:
+p1c9r2b:
     src: Zink p.55-56, http://www.diachronie.be/cours_grammaire/phonetique/134.html
     group: Diphtongaison de /ɔ/ (issu do /ǒ/) tonique libre ou monosyllabique
     desc: Dissimilation d'aperture de /ɔ/
@@ -79,7 +83,7 @@ r2b:
             _graph: c o r
             kuɔ̯r: c uo r
 
-r2c:
+p1c9r2c:
     src: Zink p.55-56, http://www.diachronie.be/cours_grammaire/phonetique/134.html
     group: Diphtongaison de /ɔ/ (issu do /ǒ/) tonique libre ou monosyllabique
     desc: Assimilation d'aperture de /ɔ̯/
@@ -93,7 +97,7 @@ r2c:
             _graph: c uo r
             kuo̯r: c uo r
 
-r2d:
+p1c9r2d:
     src: Zink p.55-56, http://www.diachronie.be/cours_grammaire/phonetique/134.html
     group: Diphtongaison de /ɔ/ (issu do /ǒ/) tonique libre ou monosyllabique
     desc: Différenciation du point d'articulation de /o̯/
@@ -107,7 +111,7 @@ r2d:
             _graph: c uo r
             kue̯r: c uo r  # @todo
 
-r2e:
+p1c9r2e:
     src: Zink p.55-56, http://www.diachronie.be/cours_grammaire/phonetique/134.html
     group: Diphtongaison de /ɔ/ (issu do /ǒ/) tonique libre ou monosyllabique
     desc: Antériorisation de /u/
@@ -121,7 +125,7 @@ r2e:
             _graph: c uo r  # @todo
             kye̯r: c uo r  # @todo
 
-r2f:
+p1c9r2f:
     src: Zink p.55-56, http://www.diachronie.be/cours_grammaire/phonetique/134.html
     group: Diphtongaison de /ɔ/ (issu do /ǒ/) tonique libre ou monosyllabique
     desc: Labialisation de /e̯/ 
@@ -135,21 +139,21 @@ r2f:
             _graph: c uo r  # @todo
             kyø̯r: c uo r  # @todo
 
-r2g:
+p1c9r2g:
     src: Zink p.55-56, http://www.diachronie.be/cours_grammaire/phonetique/134.html
     group: Diphtongaison de /ɔ/ (issu do /ǒ/) tonique libre ou monosyllabique
     desc: Consonantisation de /y/ 
     from: 1200
     to: 1250
     samples:
-        syø̯r:
+       syø̯r:
             _graph: s uo r  # @todo
             sɥør: s uo r  # @todo
-        kyø̯r:
-            _graph: c uo r  # @todo
-            kɥør: c uo r  # @todo
+       kyø̯r:
+           _graph: c uo r  # @todo
+           kɥør: c uo r  # @todo
 
-r2h:
+p1c9r2h:
     src: Zink p.55-56, http://www.diachronie.be/cours_grammaire/phonetique/134.html
     group: Diphtongaison de /ɔ/ (issu do /ǒ/) tonique libre ou monosyllabique
     desc: Amuïssement de /ɥ/
@@ -163,7 +167,7 @@ r2h:
             _graph: c uo r  # @todo
             kør: c uo r  # @todo
 
-r3a:
+p1c9r3a:
     src: Zink p.56-57, http://www.diachronie.be/cours_grammaire/phonetique/001.html
     group: Diphtongaison de /a/ tonique libre ou monosyllabique non suivie d'une nasale
     desc: Segmentation de /a/ sous l'accent tonique
@@ -177,7 +181,7 @@ r3a:
             _graph: s a l
             saa̯l: s a l
 
-r3b:
+p1c9r3b:
     src: Zink p.56-57, http://www.diachronie.be/cours_grammaire/phonetique/001.html
     group: Diphtongaison de /a/ tonique libre ou monosyllabique non suivie d'une nasale
     desc: Dissimilation d'aperture de /a̯/
@@ -191,7 +195,7 @@ r3b:
             _graph: s a l
             saε̯l: s a l
 
-r3c:
+p1c9r3c:
     src: Zink p.56-57, http://www.diachronie.be/cours_grammaire/phonetique/001.html
     group: Diphtongaison de /a/ tonique libre ou monosyllabique non suivie d'une nasale
     desc: Assimilation de /a/
@@ -205,7 +209,7 @@ r3c:
             _graph: s a l
             sεε̯l: s e l
 
-r3d:
+p1c9r3d:
     src: Zink p.56-57, http://www.diachronie.be/cours_grammaire/phonetique/001.html
     group: Diphtongaison de /a/ tonique libre ou monosyllabique non suivie d'une nasale
     desc: Réduction de /ɛɛ̯/ et allongement du /ε/ résultant (conjecture)
@@ -219,7 +223,7 @@ r3d:
             _graph: s e l
             sεːl: s e l
 
-r3e:
+p1c9r3e:
     src: Zink p.56-57, http://www.diachronie.be/cours_grammaire/phonetique/001.html
     group: Diphtongaison de /a/ tonique libre ou monosyllabique non suivie d'une nasale
     desc: Fermeture de /εː/
@@ -232,7 +236,8 @@ r3e:
         sεːl:
             _graph: s e l
             seːl: s e l
-r3f:
+
+p1c9r3f:
     src: Zink p.56-57, http://www.diachronie.be/cours_grammaire/phonetique/001.html
     group: Diphtongaison de /a/ tonique libre ou monosyllabique non suivie d'une nasale
     desc: Abrègement de /eː/

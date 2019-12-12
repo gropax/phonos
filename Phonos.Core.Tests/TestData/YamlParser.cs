@@ -21,8 +21,8 @@ namespace Phonos.Core.Tests.TestData
 
                 var src = fields["src"];
                 var desc = fields["desc"];
-                var from = int.Parse(fields["from"]);
-                var to = int.Parse(fields["to"]);
+                var from = ParseDate((string)fields["from"]);
+                var to = ParseDate((string)fields["to"]);
 
                 //var string[] post = kv2.Value["post"].Select(p => p.ToString());
 
@@ -59,8 +59,12 @@ namespace Phonos.Core.Tests.TestData
                             wordFields.Add(fieldName.Substring(1), ParseAlignment(fieldKv.Value));
                         else
                         {
-                            var outputPhono = fieldKv.Key;
-                            var outputGraph = fieldKv.Value;
+                            var outputPhono = ParsePhonemes((string)fieldKv.Key);
+                            var outputGraph = ((string)fieldKv.Value)
+                                .Split(',').Select(s => ParseAlignment(s.Trim()))
+                                .ToArray();
+                            outputs.Add(new RuleTestSampleOutput(
+                                new Word(outputPhono, outputGraph)));
                         }
                     }
 
@@ -78,6 +82,21 @@ namespace Phonos.Core.Tests.TestData
                     samples: samples.ToArray()
                     );
             }
+        }
+
+        private DateInfo ParseDate(string dateInfo)
+        {
+            string dateStr = dateInfo;
+            bool certain = true;
+
+            if (dateInfo.EndsWith('?'))
+            {
+                dateStr = dateStr.Substring(0, dateInfo.Length - 1);
+                certain = false;
+            }
+
+            var date = int.Parse(dateStr);
+            return new DateInfo(date, certain);
         }
 
         public char[] Range1 = new[] { 'ʷ', 'ʰ', 'ː' };
@@ -142,13 +161,13 @@ namespace Phonos.Core.Tests.TestData
         public string Id { get; }
         public string Source { get; }
         public string Description { get; }
-        public int From { get; }
-        public int To { get; }
+        public DateInfo From { get; }
+        public DateInfo To { get; }
         //public string[] PostProcessing { get; }
         public string[] PostProcessing { get; }
         public RuleTestSample[] Samples { get; }
 
-        public RuleTest(string id, string source, string description, int from, int to, RuleTestSample[] samples)
+        public RuleTest(string id, string source, string description, DateInfo from, DateInfo to, RuleTestSample[] samples)
         {
             Id = id;
             Source = source;
@@ -174,6 +193,20 @@ namespace Phonos.Core.Tests.TestData
     public class RuleTestSampleOutput
     {
         public Word Word { get; }
-        public Word[] Outputs { get; }
+        public RuleTestSampleOutput(Word word)
+        {
+            Word = word;
+        }
+    }
+
+    public struct DateInfo
+    {
+        public int Date { get; }
+        public bool Certain { get; }
+        public DateInfo(int date, bool certain)
+        {
+            Date = date;
+            Certain = certain;
+        }
     }
 }

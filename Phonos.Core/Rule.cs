@@ -9,6 +9,8 @@ namespace Phonos.Core
 {
     public class Rule
     {
+        public string Id { get; }
+        public string Group { get; }
         public string Name { get; }
         public Interval TimeSpan { get; }
         public IQuery Query { get; }
@@ -17,9 +19,11 @@ namespace Phonos.Core
         public string Scope { get; }
         public PhonologicalMap[] Maps { get; }
 
-        public Rule(string name, Interval timeSpan, IQuery query, PhonologicalMap[] maps,
+        public Rule(string id, string group, string name, Interval timeSpan, IQuery query, PhonologicalMap[] maps,
             IQuery lookBehind = null, IQuery lookAhead = null, string scope = null)
         {
+            Id = id;
+            Group = group;
             Name = name;
             TimeSpan = timeSpan;
             Query = query;
