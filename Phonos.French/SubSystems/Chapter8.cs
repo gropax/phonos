@@ -31,8 +31,9 @@ namespace Phonos.French.SubSystems
             return R.Rule(r => r
                 .Named("Évolution des voyelles /e/ et /o/ en latin vulgaire")
                 .From(100).To(200)
-                .Match(q => q.Phon("eː", "e", "oː", "o")
-                    .Without("classical_latin", "oi̯"))  // @interaction
+                .Query(q => q
+                    .Match(m => m.Phon("eː", "e", "oː", "o")
+                        .Without("classical_latin", "oi̯")))  // @interaction
                 .Map(p => p.Phono(px =>
                 {
                     if (px[0] == "eː")
@@ -56,8 +57,9 @@ namespace Phonos.French.SubSystems
             return R.Rule(r => r
                 .Named("Évolution de /ǐ/ en latin vulgaire")
                 .From(200).To(300)
-                .Match(q => q.Phon("i")
-                    .Without("classical_latin", "iː"))
+                .Query(q => q
+                    .Match(m => m.Phon("i")
+                        .Without("classical_latin", "iː")))
                 .Map(p => p.Phono(px => new [] { "e" })));
         }
 
@@ -71,9 +73,10 @@ namespace Phonos.French.SubSystems
             return R.Rule(r => r
                 .Named("Évolution de /ǔ/ en position intérieure en latin vulgaire")
                 .From(300).To(400)
-                .Match(q => q.Phon("u")
-                    .Without("accent", "final")
-                    .Without("classical_latin", "uː"))  // @interaction
+                .Query(q => q
+                    .Match(m => m.Phon("u")
+                        .Without("accent", "final")
+                        .Without("classical_latin", "uː")))  // @interaction
                 .Map(p => p.Phono(px => new [] { "o" })));
         }
 
@@ -86,7 +89,8 @@ namespace Phonos.French.SubSystems
             return R.Rule(r => r
                 .Named("Évolution de /ǔ/ en finale en latin vulgaire")
                 .From(400).To(500)
-                .Match(q => q.Phon("u").With("accent", "final"))
+                .Query(q => q
+                    .Match(m => m.Phon("u").With("accent", "final")))
                 .Map(p => p.Phono(px => new [] { "o" })));
         }
 
@@ -99,7 +103,8 @@ namespace Phonos.French.SubSystems
             return R.Rule(r => r
                 .Named("Évolution de /oi̯/ en latin vulgaire")
                 .From(0).To(100)
-                .Match(q => q.Phon("oi̯"))
+                .Query(q => q
+                    .Match(m => m.Phon("oi̯")))
                 .Map(p => p.Phono(px => new [] { "e" })));
         }
 
@@ -113,7 +118,8 @@ namespace Phonos.French.SubSystems
             return R.Rule(r => r
                 .Named("Évolution de /ai̯/ en latin vulgaire")
                 .From(100).To(200)
-                .Match(q => q.Phon("ai̯"))
+                .Query(q => q
+                    .Match(m => m.Phon("ai̯")))
                 .Map(p => p.Phono(px => new [] { "ɛ" })));
         }
 
@@ -129,7 +135,8 @@ namespace Phonos.French.SubSystems
             return R.Rule(r => r
                 .Named("Évolution de /au̯/ en latin vulgaire")
                 .From(100).To(200)
-                .Match(q => q.Phon("au̯"))
+                .Query(q => q
+                    .Match(m => m.Phon("au̯")))
                 .Map(p => p.Phono(px => new [] { "ɔ" })));
         }
 
@@ -142,7 +149,8 @@ namespace Phonos.French.SubSystems
             return R.Rule(r => r
                 .Named("Disparition de l'opposition entre voyelles longues et brèves")
                 .From(100).To(200)
-                .Match(q => q.Phon("aː", "iː", "uː"))  // Les cas /ē/ et /ō/ sont gérés en 7
+                .Query(q => q
+                    .Match(m => m.Phon("aː", "iː", "uː")))  // Les cas /ē/ et /ō/ sont gérés en 7
                 .Map(P.Shorten));
         }
     }

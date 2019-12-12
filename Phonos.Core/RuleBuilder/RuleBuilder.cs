@@ -15,23 +15,21 @@ namespace Phonos.Core.RuleBuilder
         private string _name = "Unnamed";
         private int _start = 0;
         private int _end = 0;
-        private string _scope;
-        private IQuery _query;
-        private IQuery _lookBehind;
-        private IQuery _lookAhead;
+        private ContextualQuery[] _queries;
         private PhonologicalMap[] _maps;
 
         public Rule Build()
         {
-            if (_id == null)
-                throw new QueryBuilderException("Rule must have an ID.");
-            else if (_query == null)
-                throw new QueryBuilderException("Match query must be set before building.");
+            //if (_id == null)
+            //    throw new QueryBuilderException("Rule must have an ID.");
+            //else
+            if (_queries.Length == 0)
+                throw new QueryBuilderException("Rule must have at least one contextual query.");
             else if (_maps == null)
                 throw new QueryBuilderException("Phonological map must be set before building.");
 
             return new Rule(_id, _group, _name, new Interval(_start, _end - _start),
-                _query, _maps, _lookBehind, _lookAhead, _scope);
+                _queries, _maps);
         }
 
         public RuleBuilder Id(string id)
@@ -64,33 +62,16 @@ namespace Phonos.Core.RuleBuilder
             return this;
         }
 
-        public RuleBuilder Scope(string scope)
+        public RuleBuilder Query(params Action<ContextualQueryBuilder>[] queryDefinitions)
         {
-            _scope = scope;
-            return this;
-        }
+            var queries = queryDefinitions.Select(md =>
+            {
+                var builder = new ContextualQueryBuilder();
+                md(builder);
+                return builder.Build();
+            });
 
-        public RuleBuilder Match(Action<MatchQueryBuilder> queryDefinition)
-        {
-            var queryBuilder = new MatchQueryBuilder();
-            queryDefinition(queryBuilder);
-            _query = queryBuilder.Build();
-            return this;
-        }
-
-        public RuleBuilder Before(Action<ContextQueryBuilder> queryDefinition)
-        {
-            var queryBuilder = new ContextQueryBuilder();
-            queryDefinition(queryBuilder);
-            _lookBehind = queryBuilder.Build();
-            return this;
-        }
-
-        public RuleBuilder After(Action<ContextQueryBuilder> queryDefinition)
-        {
-            var queryBuilder = new ContextQueryBuilder();
-            queryDefinition(queryBuilder);
-            _lookAhead = queryBuilder.Build();
+            _queries = queries.ToArray();
             return this;
         }
 

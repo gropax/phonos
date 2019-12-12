@@ -56,9 +56,10 @@ namespace Phonos.Core.RuleBuilder
                 .Rule(r => r
                     .Named("My rule")
                     .From(0).To(200)
-                    .Match(q => q.Phon("a").With("accent", "tonic"))
-                    .Before(q => q.Seq(Q.Start, q2 => q2.Phon("b").With("auie", "nrst")))
-                    .After(Q.End)
+                    .Query(q => q
+                        .Match(m => m.Phon("a").With("accent", "tonic"))
+                        .Before(b => b.Seq(Q.Start, q2 => q2.Phon("b").With("auie", "nrst")))
+                        .After(Q.End))
                     .Map(m => m.Phono(P.Degeminate).Rewrite())));
         }
     }

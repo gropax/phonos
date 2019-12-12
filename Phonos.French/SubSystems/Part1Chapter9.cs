@@ -31,9 +31,10 @@ namespace Phonos.French.SubSystems
                 .Group("Diphtongaison de /ɛ/ tonique libre ou monosyllabique")
                 .Named("Segmentation de /ɛ/ sous l'accent tonique")
                 .From(100).To(200)
-                .Match(q => q.Phon("ɛ").With("accent", "tonic"))
-                .Before(q => q.Phon("b", "k"))
-                .After(q => q.Phon("l", "r"))
+                .Query(q => q
+                    .Match(m => m.Phon("ɛ").With("accent", "tonic"))
+                    .Before(b => b.Phon("b", "k"))
+                    .After(a => a.Phon("l", "r")))
                 .Map(P.Erase));
         }
     }

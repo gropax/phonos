@@ -30,9 +30,10 @@ namespace Phonos.French.SubSystems
             return R.Rule(r => r
                 .Named("Syncope des voyelles post-toniques entre une occlusive orale et une consonne liquide")
                 .From(0).To(200)
-                .Match(Q.PostTonicVowel)
-                .Before(q => q.Phon("b", "k"))
-                .After(q => q.Phon("l", "r"))
+                .Query(q => q
+                    .Match(Q.PostTonicVowel)
+                    .Before(b => b.Phon("b", "k"))
+                    .After(a => a.Phon("l", "r")))
                 .Map(P.Erase));
         }
 
@@ -46,9 +47,10 @@ namespace Phonos.French.SubSystems
             return R.Rule(r => r
                 .Named("Syncope des voyelles post-toniques entre une consonne homorganique et une dentale")
                 .From(0).To(200)
-                .Match(Q.PostTonicVowel)
-                .Before(q => q.Phon("r", "l", "n", "s"))
-                .After(q => q.Phon("t", "d"))
+                .Query(q => q
+                    .Match(Q.PostTonicVowel)
+                    .Before(b => b.Phon("r", "l", "n", "s"))
+                    .After(a => a.Phon("t", "d")))
                 .Map(P.Erase));
         }
 
@@ -66,10 +68,11 @@ namespace Phonos.French.SubSystems
             return R.Rule(r => r
                 .Named("Syncope des voyelles post-toniques suivies d'un /a/ final")
                 .From(0).To(200)
-                .Match(q => q.Phon(Q.VOWEL).With("accent", "post-tonic"))
-                .After(q => q.Seq(_ => _.Phon(Q.CONSONANT),
-                    q2 => q2.Maybe(_ => _.Phon(Q.CONSONANT)),
-                    q3 => q3.Phon("a", "a").With("accent", "final")))
+                .Query(q => q
+                    .Match(m => m.Phon(Q.VOWEL).With("accent", "post-tonic"))
+                    .After(a => a.Seq(_ => _.Phon(Q.CONSONANT),
+                        q2 => q2.Maybe(_ => _.Phon(Q.CONSONANT)),
+                        q3 => q3.Phon("a", "a").With("accent", "final"))))
                 .Map(P.Erase));
         }
 
@@ -82,8 +85,9 @@ namespace Phonos.French.SubSystems
             return R.Rule(r => r
                 .Named("Consonification des post-toniques brèves en hiatus")
                 .From(0).To(100)
-                .Match(q => q.Phon(Q.VOWEL).With("accent", "post-tonic"))
-                .After(q => q.Phon(Q.VOWEL))
+                .Query(q => q
+                    .Match(m => m.Phon(Q.VOWEL).With("accent", "post-tonic"))
+                    .After(a => a.Phon(Q.VOWEL)))
                 .Map(P.Consonify));
         }
 
@@ -101,7 +105,8 @@ namespace Phonos.French.SubSystems
             return R.Rule(r => r
                 .Named("Syncope des voyelles post-toniques restantes")
                 .From(200).To(500)
-                .Match(q => q.Phon(Q.VOWEL).With("accent", "post-tonic"))
+                .Query(q => q
+                    .Match(m => m.Phon(Q.VOWEL).With("accent", "post-tonic")))
                 .Map(P.Erase));
         }
 
@@ -115,9 +120,10 @@ namespace Phonos.French.SubSystems
             return R.Rule(r => r
                 .Named("Centralisation de /a/ pré-tonique en syllabe ouverte")
                 .From(400).To(600)
-                .Scope("syllable")
-                .Match(q => q.Phon("a").With("accent", "pre-tonic"))
-                .After(Q.End)
+                .Query(q => q
+                    .Scope("syllable")
+                    .Match(m => m.Phon("a").With("accent", "pre-tonic"))
+                    .After(Q.End))
                 .Map(p => p.Phono(_ => new[] { "ə" })));
         }
 
@@ -132,11 +138,12 @@ namespace Phonos.French.SubSystems
             return R.Rule(r => r
                 .Named("Centralisation des voyelles pré-toniques autres que /a/ en syllable ouverte, précédées d'un groupe consonantique")
                 .From(400).To(600)
-                .Scope("syllable")
-                .Match(q => q.Phon(p => Q.Vowel(p) && p[0] != 'a')
-                    .With("accent", "pre-tonic"))
-                .Before(q => q.Seq(q1 => q1.Phon(Q.Consonant), q2 => q2.Phon(Q.Consonant)))
-                .After(Q.End)
+                .Query(q => q
+                    .Scope("syllable")
+                    .Match(m => m.Phon(p => Q.Vowel(p) && p[0] != 'a')
+                        .With("accent", "pre-tonic"))
+                    .Before(b => b.Seq(q1 => q1.Phon(Q.Consonant), q2 => q2.Phon(Q.Consonant)))
+                    .After(Q.End))
                 .Map(p => p.Phono(_ => new[] { "ə" })));
         }
 
@@ -151,11 +158,12 @@ namespace Phonos.French.SubSystems
             return R.Rule(r => r
                 .Named("Syncope des voyelles pré-toniques autres que /a/ en syllable ouverte")
                 .From(400).To(600)
-                .Scope("syllable")
-                .Match(q => q.Phon(p => Q.Vowel(p) && p[0] != 'a')
-                    .With("accent", "pre-tonic"))
-                .Before(q => q.Seq(Q.Start, s2 => s2.Maybe(m => m.Phon(Q.Consonant))))
-                .After(Q.End)
+                .Query(q => q
+                    .Scope("syllable")
+                    .Match(m => m.Phon(p => Q.Vowel(p) && p[0] != 'a')
+                        .With("accent", "pre-tonic"))
+                    .Before(b => b.Seq(Q.Start, s2 => s2.Maybe(m => m.Phon(Q.Consonant))))
+                    .After(Q.End))
                 .Map(P.Erase));
         }
 
@@ -172,10 +180,12 @@ namespace Phonos.French.SubSystems
             return R.Rule(r => r
                 .Named("Antériorisation des pré-toniques autres que /a/ en syllabe formée")
                 .From(400).To(600)
-                .Scope("syllable")
-                .Match(q => q.Phon(Q.Vowel)
-                    .With("accent", "pre-tonic"))
-                .After(q => q.Phon(Q.Consonant))
+                .Query(q => q
+                    .Scope("syllable")
+                    .Match(m => m
+                        .Phon(Q.Vowel)
+                        .With("accent", "pre-tonic"))
+                    .After(a => a.Phon(Q.Consonant)))
                 .Map(p => p.Phono(_ => new[] { "e" }).Rewrite(_ => "e")));
         }
     }
