@@ -33,8 +33,6 @@ namespace Phonos.Core.Tests.TestData
                 var from = ParseDate((string)fields["from"]);
                 var to = ParseDate((string)fields["to"]);
 
-                //var string[] post = kv2.Value["post"].Select(p => p.ToString());
-
                 var samples = new List<RuleTestSample>();
                 var wordsKv = (Dictionary<object, dynamic>)fields["samples"];
 
@@ -45,6 +43,7 @@ namespace Phonos.Core.Tests.TestData
 
                     var phonemes = ParsePhonemes(inputPhono);
                     var graphicalForms = new Alignment<string>[0];
+                    var metas = new string[0];
                     var wordFields = new Dictionary<string, Alignment<string>>();
                     var outputs = new List<RuleTestSampleOutput>();
 
@@ -64,20 +63,62 @@ namespace Phonos.Core.Tests.TestData
                                     ParseAlignment((string)fieldKv.Value),
                                 };
                         }
+                        else if (fieldName == "_meta")
+                        {
+                            metas = ((string)fieldKv.Value)
+                                .Split(',').Select(m => m.Trim())
+                                .ToArray();
+                        }
                         else if (fieldName.StartsWith("_"))
                             wordFields.Add(fieldName.Substring(1), ParseAlignment(fieldKv.Value));
                         else
                         {
                             var outputPhono = ParsePhonemes((string)fieldKv.Key);
-                            var outputGraph = ((string)fieldKv.Value)
-                                .Split(',').Select(s => ParseAlignment(s.Trim()))
-                                .ToArray();
+                            var graphicalForms2 = new Alignment<string>[0];
+                            var metas2 = new string[0];
+                            var wordFields2 = new Dictionary<string, Alignment<string>>();
+
+                            if (fieldKv.Value.GetType() == typeof(string))
+                            {
+                                graphicalForms2 = ((string)fieldKv.Value)
+                                    .Split(',').Select(s => ParseAlignment(s.Trim()))
+                                    .ToArray();
+                            }
+                            else
+                            {
+                                foreach (var fieldKv2 in (Dictionary<object, dynamic>)fieldKv.Value)
+                                {
+                                    string fieldName2 = (string)fieldKv2.Key;
+
+                                    if (fieldName2 == "_graph")
+                                    {
+                                        if (fieldKv2.Value.GetType() == typeof(List<object>))
+                                            graphicalForms2 = ((List<dynamic>)fieldKv2.Value)
+                                                .Select(g => ParseAlignment((string)g))
+                                                .ToArray();
+                                        else
+                                            graphicalForms2 = new[]
+                                            {
+                                                ParseAlignment((string)fieldKv2.Value),
+                                            };
+                                    }
+                                    else if (fieldName2 == "_meta")
+                                    {
+                                        metas2 = ((string)fieldKv2.Value)
+                                            .Split(',').Select(m => m.Trim())
+                                            .ToArray();
+                                    }
+                                    else if (fieldName2.StartsWith("_"))
+                                        wordFields2.Add(fieldName2.Substring(1), ParseAlignment(fieldKv2.Value));
+                                }
+                            }
+
                             outputs.Add(new RuleTestSampleOutput(
-                                new Word(outputPhono, outputGraph)));
+                                new Word(outputPhono, graphicalForms2, wordFields2, metas2)));
                         }
                     }
 
-                    var inputWord = new Word(phonemes, graphicalForms, wordFields);
+                    var inputWord = new Word(phonemes, graphicalForms, wordFields, metas);
 
                     samples.Add(new RuleTestSample(inputWord, outputs.ToArray()));
                 }

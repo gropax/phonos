@@ -85,9 +85,23 @@ namespace Phonos.French.Tests
             Assert.Equal(expected.Phonemes, real.Phonemes);
 
             Assert.Equal(expected.GraphicalForms.Length, real.GraphicalForms.Length);
-
             for (int j = 0; j < expected.GraphicalForms.Length; j++)
                 TestGraphicalForm(expected.GraphicalForms, real.GraphicalForms, j);
+
+            Assert.Equal(expected.Metas, real.Metas);
+
+            foreach (var key in expected.Fields.Keys)
+            {
+                var expectedField = expected.Fields[key];
+                Assert.True(real.Fields.TryGetValue(key, out var realField),
+                    $"Missing field [{key}].");
+                Assert.Equal(DumpField(expectedField), DumpField(realField));
+            }
+        }
+
+        private string[] DumpField(Core.Alignment<string> alignment)
+        {
+            return alignment.Intervals.Select(i => $"{i.Value}:{i.Start}:{i.End}").ToArray();
         }
 
         private void TestGraphicalForm(Core.Alignment<string>[] expectedForms,

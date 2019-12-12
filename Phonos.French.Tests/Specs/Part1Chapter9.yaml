@@ -445,3 +445,114 @@ p1c9r4i:
             _graph: t r oi:2 s:0
             _accent: tonic:4
             trɛ: t r ai s:0
+
+p1c9r5a:
+    src: Zink p.59-60, http://www.diachronie.be/cours_grammaire/phonetique/107.html
+    context: Diphtongaison de /o/ tonique libre ou monosyllabique
+    rules: Segmentation de /o/ sous l’accent tonique
+    from: 400?
+    to: 500?
+    samples:
+        ora:
+            _graph: h:0 o r a
+            _syllable: short:2 short:2
+            _accent: tonic:2 final:2
+            oo̯ra: h:0 o r a
+        dos:  # ltn: duos
+            _graph: d o s
+            _syllable: long:3
+            _accent: tonic:3
+            doo̯s: d o s
+
+p1c9r5b:
+    src: Zink p.59-60, http://www.diachronie.be/cours_grammaire/phonetique/107.html
+    context: Diphtongaison de /o/ tonique libre ou monosyllabique
+    rules: Dissimilation d’aperture de /o̯/
+    from: 500
+    to: 600
+    samples:
+        oo̯ra:
+            _graph: h:0 o r a
+            _accent: tonic:2 final:2
+            ou̯ra: h:0 ou r a
+        doo̯s:
+            _graph: d o s
+            _accent: tonic:3
+            dou̯s: d ou s
+
+p1c9r5c:
+    src: Zink p.59-60, http://www.diachronie.be/cours_grammaire/phonetique/107.html
+    context: Diphtongaison de /o/ tonique libre ou monosyllabique
+    rules: Dissimilation du point d’articulation de /o/
+    from: 1000
+    to: 1100
+    optional: true
+    samples:
+        ou̯rə:
+            _graph: h:0 ou r e
+            _accent: tonic:2 final:2
+            eu̯rə:
+                _graph: h:0 eu r e
+                _meta: Nord et Centre
+            ou̯rə:
+                _graph: h:0 ou r e
+                _meta: Est et Ouest
+        dou̯s:
+            _graph: d ou s
+            _accent: tonic:3
+            deu̯s:
+                _graph: d eu s
+                _meta: Nord et Centre
+            dou̯s:
+                _graph: d ou s
+                _meta: Est et Ouest
+
+p1c9r5d:
+    src: Zink p.59-60, http://www.diachronie.be/cours_grammaire/phonetique/107.html
+    context: Diphtongaison de /o/ tonique libre ou monosyllabique
+    rules: Labialisation de /e/
+    from: 1100
+    to: 1150
+    #meta: Nord et Centre
+    samples:
+        eu̯rə:
+            _graph: h:0 eu r e
+            _accent: tonic:2 final:2
+            øu̯rə: h:0 eu r e
+        deu̯s:
+            _graph: d eu s
+            _accent: tonic:3
+            døu̯s: d eu s
+
+p1c9r5e:
+    src: Zink p.59-60, http://www.diachronie.be/cours_grammaire/phonetique/107.html
+    context: Diphtongaison de /o/ tonique libre ou monosyllabique
+    rules: Réduction de /øu̯/
+    from: 1150
+    to: 1200
+    samples:
+        øu̯rə:
+            _graph: h:0 ou r e
+            _accent: tonic:2 final:2
+            ørə: h:0 eu r e
+        døu̯s:
+            _graph: d ou s
+            _accent: tonic:3
+            døs: d eu s
+
+p1c9r5f:
+    src: Zink p.59-60, http://www.diachronie.be/cours_grammaire/phonetique/107.html
+    context: Diphtongaison de /o/ tonique libre ou monosyllabique
+    rules: Réduction de /ou̯/
+    from: 1100
+    to: 1200
+    #meta: Est et Ouest
+    samples:
+        ou̯rə:
+            _graph: h:0 ou r e
+            _accent: tonic:2 final:2
+            urə: h:0 ou r e
+        dou̯s:
+            _graph: d ou s
+            _accent: tonic:3
+            dus: d ou s

@@ -11,13 +11,15 @@ namespace Phonos.Core
         public string[] Phonemes { get; }
         public Alignment<string>[] GraphicalForms { get; }
         public Dictionary<string, Alignment<string>> Fields { get; }
+        public string[] Metas { get; }
 
         public Word(string[] phonemes, Alignment<string>[] graphicalForms,
-            Dictionary<string, Alignment<string>> fields = null)
+            Dictionary<string, Alignment<string>> fields = null, string[] metas = null)
         {
             Phonemes = phonemes;
             GraphicalForms = graphicalForms;
             Fields = fields ?? new Dictionary<string, Alignment<string>>();
+            Metas = metas ?? new string[0];
         }
 
         public Alignment<string> GetField(string name)
