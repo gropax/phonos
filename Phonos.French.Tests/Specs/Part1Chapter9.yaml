@@ -210,6 +210,9 @@ p1c9r3a:
             _syllable: long:3
             _accent: tonic:3
             saa̯l: s a l
+        canem:  # @no_match : Suivie d'une nasale
+            _syllable: short:2 short:2
+            _accent: tonic:2 final:2
 
 p1c9r3b:
     src: Zink p.56-57, http://www.diachronie.be/cours_grammaire/phonetique/001.html
@@ -290,3 +293,156 @@ p1c9r3f:
             _graph: s e l
             _accent: tonic:3
             sel: s e l
+
+p1c9r4a:
+    src: Zink p.58-59, http://www.diachronie.be/cours_grammaire/phonetique/043.html
+    group: Diphtongaison de /e/ tonique libre ou monosyllabique
+    desc: Segmentation de /e/ sous l’accent tonique
+    from: 200?
+    to: 300?
+    samples:
+        pera:
+            _graph: p e r a
+            _syllable: short:2 short:2
+            _accent: tonic:2 final:2
+            pee̯ra: p e r a
+        tres:
+            _graph: t r e s
+            _syllable: long:4
+            _accent: tonic:4
+            tree̯s: t r e s
+
+p1c9r4b:
+    src: Zink p.58-59, http://www.diachronie.be/cours_grammaire/phonetique/043.html
+    group: Diphtongaison de /e/ tonique libre ou monosyllabique
+    desc: Dissimilation d’aperture de /e̯/
+    from: 300
+    to: 400
+    samples:
+        pee̯ra:
+            _graph: p e r a
+            _accent: tonic:2 final:2
+            pei̯ra: p ei r a
+        tree̯s:
+            _graph: t r e s
+            _accent: tonic:4
+            trei̯s: t r ei s
+
+# @fixme Zink dit -> /ɔ/, Diachronie.be dit -> /o/
+p1c9r4c:
+    src: Zink p.58-59, http://www.diachronie.be/cours_grammaire/phonetique/043.html
+    group: Diphtongaison de /e/ tonique libre ou monosyllabique
+    desc: Dissimilation du point d’articulation de /e/
+    from: 1100
+    to: 1150
+    samples:
+        pei̯rə:
+            _graph: p ei r e
+            _accent: tonic:2 final:2
+            poi̯rə: p oi r e
+        trei̯s:
+            _graph: t r ei s
+            _accent: tonic:4
+            troi̯s: t r oi s
+
+p1c9r4d:
+    src: Zink p.58-59, http://www.diachronie.be/cours_grammaire/phonetique/043.html
+    group: Diphtongaison de /e/ tonique libre ou monosyllabique
+    desc: Assimilation de /i̯/
+    from: 1150
+    to: 1175
+    samples:
+        poi̯rə:
+            _graph: p oi r e
+            _accent: tonic:2 final:2
+            poe̯rə: p oi r e
+        troi̯s:
+            _graph: t r oi s
+            _accent: tonic:4
+            troe̯s: t r oi s
+
+p1c9r4e:
+    src: Zink p.58-59, http://www.diachronie.be/cours_grammaire/phonetique/043.html
+    group: Diphtongaison de /e/ tonique libre ou monosyllabique
+    desc: Assimilation de /o/
+    from: 1175
+    to: 1200
+    samples:
+        poe̯rə:
+            _graph: p oi r e
+            _accent: tonic:2 final:2
+            pue̯rə: p oi r e
+        troe̯s:
+            _graph: t r oi s
+            _accent: tonic:4
+            true̯s: t r oi s
+
+p1c9r4f:
+    src: Zink p.58-59, http://www.diachronie.be/cours_grammaire/phonetique/043.html
+    group: Diphtongaison de /e/ tonique libre ou monosyllabique
+    desc: Consonantisation de /u/
+    from: 1200
+    to: 1250
+    samples:
+        pue̯rə:
+            _graph: p oi r e
+            _accent: tonic:2 final:2
+            pwerə: p oi:2 r e
+        true̯s:
+            _graph: t r oi s
+            _accent: tonic:4
+            trwes: t r oi:2 s
+
+p1c9r4g:
+    src: Zink p.58-59, http://www.diachronie.be/cours_grammaire/phonetique/043.html
+    group: Diphtongaison de /e/ tonique libre ou monosyllabique
+    desc: Ouverture de /e/ sous l’influence de /w/ 
+    from: 1250
+    to: 1300
+    samples:
+        pwerə:
+            _graph: p oi:2 r e
+            _accent: tonic:2 final:2
+            pwɛrə: p oi:2 r e
+        trwes:
+            _graph: t r oi:2 s
+            _accent: tonic:4
+            trwɛs: t r oi:2 s
+
+p1c9r4h:
+    src: Zink p.58-59, http://www.diachronie.be/cours_grammaire/phonetique/043.html
+    group: Diphtongaison de /e/ tonique libre ou monosyllabique
+    desc:
+        1: Amuïssement de la consonne de la variante /wε/
+        2: Ouverture de /e/ sous l’influence de /w/ 
+    from: 1300
+    to: 1400
+    samples:
+        pwɛrə:
+            _graph: p oi:2 r e
+            _accent: tonic:2 final:2
+            1:
+                pɛrə: p oi r e
+            2:
+                pwarə: p oi:2 r e
+        trwɛ:
+            _graph: t r oi:2 s:0
+            _accent: tonic:4
+            trɛ: t r oi s:0
+            trwa: t r oi:2 s:0
+
+p1c9r4i:
+    src: Zink p.58-59, http://www.diachronie.be/cours_grammaire/phonetique/043.html
+    group: Diphtongaison de /e/ tonique libre ou monosyllabique
+    desc: Orthographique: réécriture du son /ɛ/ écrit "oi" en "ai"
+    from: 1700
+    to: 1800
+    samples:
+        pɛrə:
+            _graph: p oi:2 r e
+            _accent: tonic:2 final:2
+            pɛrə: p ai r e
+        trɛ:
+            _graph: t r oi:2 s:0
+            _accent: tonic:4
+            trɛ: t r ai s:0

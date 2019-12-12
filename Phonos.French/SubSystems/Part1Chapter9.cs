@@ -183,6 +183,7 @@ namespace Phonos.French.SubSystems
                 .Map(p => p.Phono(_ => new[] { "ø" }).Rewrite(_ => "œu")));
         }
 
+        // @fixme Ne pas match si suivi d'un nasale
         public static Rule Rule3a()
         {
             return R.Rule(r => r
