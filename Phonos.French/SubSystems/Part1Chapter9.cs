@@ -18,6 +18,7 @@ namespace Phonos.French.SubSystems
                 Rule1a(), Rule1b(), Rule1c(), Rule1d(),
                 Rule2a(), Rule2b(), Rule2c(), Rule2d(), Rule2e(), Rule2f(), Rule2g(), Rule2h(),
                 Rule3a(), Rule3b(), Rule3c(), Rule3d(), Rule3e(), Rule3f(),
+                Rule4a(), Rule4b(), Rule4c(), Rule4d(), Rule4e(), Rule4f(), Rule4g(), Rule4h(), Rule4i(),
             };
         }
 
@@ -280,6 +281,142 @@ namespace Phonos.French.SubSystems
                 .Rules(p => p
                     .Named("Abrègement de /eː/")
                     .Phono(_ => new[] { "e" })));
+        }
+
+
+        public static RuleContext Rule4a()
+        {
+            return R.Rule(c => c
+                .Id("p1c9r4a")
+                .Group("Diphtongaison de /e/ tonique libre ou monosyllabique")
+                .From(200).To(300)
+                .Query(
+                    q => q  // tonique libre
+                        .Scope("syllable")
+                        .Match(m => m.Phon("e").With("accent", "tonic"))
+                        .After(Q.End),
+                    q => q  // tonique monosyllabique
+                        .Match(m => m.Phon("e").With("accent", "tonic"))
+                        .After(a => a.Seq(
+                            s1 => s1.ZeroOrMany(z => z.Phon(Q.Consonant)),
+                            Q.End)))
+                .Rules(p => p
+                    .Named("Segmentation de /e/ sous l’accent tonique")
+                    .Phono(_ => new[] { "ee̯" })));
+        }
+
+        public static RuleContext Rule4b()
+        {
+            return R.Rule(c => c
+                .Id("p1c9r4b")
+                .Group("Diphtongaison de /e/ tonique libre ou monosyllabique")
+                .From(300).To(400)
+                .Query(q => q.
+                    Match(m => m.Phon("ee̯").With("accent", "tonic")))
+                .Rules(p => p
+                    .Named("Dissimilation d’aperture de /e̯/")
+                    .Phono(_ => new[] { "ei̯" })
+                    .Rewrite(_ => "ei")));
+        }
+
+        public static RuleContext Rule4c()
+        {
+            return R.Rule(c => c
+                .Id("p1c9r4c")
+                .Group("Diphtongaison de /e/ tonique libre ou monosyllabique")
+                .From(1100).To(1150)
+                .Query(q => q.
+                    Match(m => m.Phon("ei̯").With("accent", "tonic")))
+                .Rules(p => p
+                    .Named("Dissimilation du point d’articulation de /e/")
+                    .Phono(_ => new[] { "oi̯" })
+                    .Rewrite(_ => "oi")));
+        }
+
+        public static RuleContext Rule4d()
+        {
+            return R.Rule(c => c
+                .Id("p1c9r4d")
+                .Group("Diphtongaison de /e/ tonique libre ou monosyllabique")
+                .From(1150).To(1175)
+                .Query(q => q.
+                    Match(m => m.Phon("oi̯").With("accent", "tonic")))
+                .Rules(p => p
+                    .Named("Assimilation de /i̯/")
+                    .Phono(_ => new[] { "oe̯" })));
+        }
+
+        public static RuleContext Rule4e()
+        {
+            return R.Rule(c => c
+                .Id("p1c9r4e")
+                .Group("Diphtongaison de /e/ tonique libre ou monosyllabique")
+                .From(1175).To(1200)
+                .Query(q => q.
+                    Match(m => m.Phon("oe̯").With("accent", "tonic")))
+                .Rules(p => p
+                    .Named("Assimilation de /o/")
+                    .Phono(_ => new[] { "ue̯" })));
+        }
+
+        public static RuleContext Rule4f()
+        {
+            return R.Rule(c => c
+                .Id("p1c9r4f")
+                .Group("Diphtongaison de /e/ tonique libre ou monosyllabique")
+                .From(1200).To(1250)
+                .Query(q => q.
+                    Match(m => m.Phon("ue̯").With("accent", "tonic")))
+                .Rules(p => p
+                    .Named("Consonantisation de /u/")
+                    .Phono(_ => new[] { "w", "e" })));
+        }
+
+        public static RuleContext Rule4g()
+        {
+            return R.Rule(c => c
+                .Id("p1c9r4g")
+                .Group("Diphtongaison de /e/ tonique libre ou monosyllabique")
+                .From(1250).To(1300)
+                .Query(q => q.
+                    Match(m => m
+                        .Seq(s => s.Phon("w"), s => s.Phon("e"))
+                        .With("accent", "tonic")))
+                .Rules(p => p
+                    .Named("Ouverture de /e/ sous l’influence de /w/ ")
+                    .Phono(_ => new[] { "w", "ɛ" })));
+        }
+
+        public static RuleContext Rule4h()
+        {
+            return R.Rule(c => c
+                .Id("p1c9r4h")
+                .Group("Diphtongaison de /e/ tonique libre ou monosyllabique")
+                .From(1300).To(1400)
+                .Query(q => q.
+                    Match(m => m
+                        .Seq(s => s.Phon("w"), s => s.Phon("ɛ"))
+                        .With("accent", "tonic")))
+                .Rules(
+                    r => r
+                        .Named("Amuïssement de la consonne de la variante /wε/")
+                        .Phono(_ => new[] { "ɛ" }),
+                    r => r
+                        .Named("Ouverture de /e/ sous l’influence de /w/ ")
+                        .Phono(_ => new[] { "w", "a" })));
+        }
+
+        public static RuleContext Rule4i()
+        {
+            return R.Rule(c => c
+                .Id("p1c9r4i")
+                .Group("Diphtongaison de /e/ tonique libre ou monosyllabique")
+                .From(1700).To(1800)
+                .Query(q => q.
+                    Match(m => m.Phon("ɛ").With("accent", "tonic")))
+                .Rules(p => p
+                    .Named("(Orthographique) réécriture du son /ɛ/ écrit \"oi\" en \"ai\"")
+                    .Phono(_ => new[] { "ɛ" }).Rewrite(gx => gx == "oi" ? "ai" : gx)));
         }
     }
 }
