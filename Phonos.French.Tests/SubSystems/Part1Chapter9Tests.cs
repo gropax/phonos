@@ -26,7 +26,7 @@ namespace Phonos.French.SubSystems.Tests
 
         [Theory]
         [MemberData(nameof(RuleData))]
-        public void Test(RuleTest ruleTest)
+        public void Test(RuleContextTest ruleTest)
         {
             TestRules(Part1Chapter9.Rules(), ruleTest);
         }

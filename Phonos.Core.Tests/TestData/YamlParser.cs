@@ -9,7 +9,7 @@ namespace Phonos.Core.Tests.TestData
 {
     public class YamlParser
     {
-        public IEnumerable<RuleTest> Parse(TextReader reader)
+        public IEnumerable<RuleContextTest> Parse(TextReader reader)
         {
             var deserializer = new YamlDotNet.Serialization.Deserializer();
             var result = deserializer.Deserialize(reader);
@@ -19,8 +19,17 @@ namespace Phonos.Core.Tests.TestData
                 string id = (string)kv.Key;
                 var fields = (Dictionary<object, dynamic>)kv.Value;
 
-                var src = fields["src"];
-                var desc = fields["desc"];
+                var src = (string)fields["src"];
+                var context = (string)fields["context"];
+
+                var rules = new List<string>();
+                var rulesField = fields["rules"];
+                if (rulesField.GetType() == typeof(List<object>))
+                    foreach (var rule in rulesField)
+                        rules.Add((string)rule);
+                else
+                    rules.Add((string)rulesField);
+
                 var from = ParseDate((string)fields["from"]);
                 var to = ParseDate((string)fields["to"]);
 
@@ -73,10 +82,10 @@ namespace Phonos.Core.Tests.TestData
                     samples.Add(new RuleTestSample(inputWord, outputs.ToArray()));
                 }
 
-                yield return new RuleTest(
+                yield return new RuleContextTest(
                     id: id,
                     source: src,
-                    description: desc,
+                    rules: rules.ToArray(),
                     from: from,
                     to: to,
                     samples: samples.ToArray()
@@ -156,22 +165,22 @@ namespace Phonos.Core.Tests.TestData
         }
     }
 
-    public class RuleTest
+    public class RuleContextTest
     {
         public string Id { get; }
         public string Source { get; }
-        public string Description { get; }
         public DateInfo From { get; }
         public DateInfo To { get; }
         //public string[] PostProcessing { get; }
         public string[] PostProcessing { get; }
+        public string[] Rules { get; }
         public RuleTestSample[] Samples { get; }
 
-        public RuleTest(string id, string source, string description, DateInfo from, DateInfo to, RuleTestSample[] samples)
+        public RuleContextTest(string id, string source, string[] rules, DateInfo from, DateInfo to, RuleTestSample[] samples)
         {
             Id = id;
             Source = source;
-            Description = description;
+            Rules = rules;
             From = from;
             To = to;
             Samples = samples;

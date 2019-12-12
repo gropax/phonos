@@ -51,7 +51,6 @@ namespace Phonos.Core
 
         public Word DeriveWord(Rule rule, Word word, SortedIntervals<string[]> matches)
         {
-
             var replacements = matches.Map(match => rule.Phonological(match));
             var alignment = word.Phonemes.AlignReplace(replacements);
 

@@ -49,7 +49,7 @@ namespace Phonos.French.Tests
             }
         }
 
-        protected void TestRules(RuleContext[] rules, RuleTest ruleTest)
+        protected void TestRules(RuleContext[] rules, RuleContextTest ruleTest)
         {
             var dict = rules.ToDictionary(r => r.Id, r => r);
             Assert.True(dict.TryGetValue(ruleTest.Id, out var rule),
@@ -57,14 +57,14 @@ namespace Phonos.French.Tests
             TestRule(rule, ruleTest);
         }
 
-        protected void TestRule(RuleContext rule, RuleTest ruleTest)
+        protected void TestRule(RuleContext rule, RuleContextTest ruleTest)
         {
             foreach (var sample in ruleTest.Samples)
                 TestSample(rule, ruleTest, sample);
         }
 
 
-        protected void TestSample(RuleContext rule, RuleTest ruleTest, RuleTestSample sample)
+        protected void TestSample(RuleContext rule, RuleContextTest ruleTest, RuleTestSample sample)
         {
             var word = sample.Input;
             var derived = rule.Apply(word);

@@ -6,9 +6,9 @@ using Xunit;
 
 namespace Phonos.Core.Tests.TestData
 {
-    public class RuleTestData : TheoryData<RuleTest>
+    public class RuleTestData : TheoryData<RuleContextTest>
     {
-        public RuleTestData(IEnumerable<RuleTest> ruleTests)
+        public RuleTestData(IEnumerable<RuleContextTest> ruleTests)
         {
             foreach (var ruleTest in ruleTests)
                 Add(ruleTest);
