@@ -202,9 +202,13 @@ p1c9r3a:
     samples:
         mare:
             _graph: m a r e
+            _syllable: short:2 short:2
+            _accent: tonic:2 final:2
             maa̯re: m a r e
         sal:
             _graph: s a l
+            _syllable: long:3
+            _accent: tonic:3
             saa̯l: s a l
 
 p1c9r3b:
@@ -216,9 +220,11 @@ p1c9r3b:
     samples:
         maa̯re:
             _graph: m a r e
+            _accent: tonic:2 final:2
             maɛ̯re: m a r e
         saa̯l:
             _graph: s a l
+            _accent: tonic:3
             saɛ̯l: s a l
 
 p1c9r3c:
@@ -230,9 +236,11 @@ p1c9r3c:
     samples:
         maɛ̯re:
             _graph: m a r e
+            _accent: tonic:2 final:2
             mɛɛ̯re: m e r e
         saɛ̯l:
             _graph: s a l
+            _accent: tonic:3
             sɛɛ̯l: s e l
 
 p1c9r3d:
@@ -244,9 +252,11 @@ p1c9r3d:
     samples:
         mɛɛ̯r:
             _graph: m e r
+            _accent: tonic:3
             mɛːr: m e r
         sɛɛ̯l:
             _graph: s e l
+            _accent: tonic:3
             sɛːl: s e l
 
 p1c9r3e:
@@ -258,9 +268,11 @@ p1c9r3e:
     samples:
         mɛːr:
             _graph: m e r
+            _accent: tonic:3
             meːr: m e r
         sɛːl:
             _graph: s e l
+            _accent: tonic:3
             seːl: s e l
 
 p1c9r3f:
@@ -272,7 +284,9 @@ p1c9r3f:
     samples:
         meːr:
             _graph: m e r
+            _accent: tonic:3
             mer: m e r
         seːl:
             _graph: s e l
+            _accent: tonic:3
             sel: s e l

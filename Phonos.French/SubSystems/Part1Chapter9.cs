@@ -16,8 +16,8 @@ namespace Phonos.French.SubSystems
             return new Rule[]
             {
                 Rule1a(), Rule1b(), Rule1c(), Rule1d(),
-                Rule2a(), Rule2b(), Rule2c(), Rule2d(),
-                Rule2e(), Rule2f(), Rule2g(), Rule2h(),
+                Rule2a(), Rule2b(), Rule2c(), Rule2d(), Rule2e(), Rule2f(), Rule2g(), Rule2h(),
+                Rule3a(), Rule3b(), Rule3c(), Rule3d(), Rule3e(), Rule3f(),
             };
         }
 
@@ -181,6 +181,86 @@ namespace Phonos.French.SubSystems
                         s => s.Phon("ɥ"),
                         s2 => s2.Phon("ø").With("accent", "tonic"))))
                 .Map(p => p.Phono(_ => new[] { "ø" }).Rewrite(_ => "œu")));
+        }
+
+        public static Rule Rule3a()
+        {
+            return R.Rule(r => r
+                .Id("p1c9r3a")
+                .Group("Diphtongaison de /a/ tonique libre ou monosyllabique non suivie d'une nasale")
+                .Named("Segmentation de /a/ sous l'accent tonique")
+                .From(400).To(500)
+                .Query(
+                    q => q  // tonique libre
+                        .Scope("syllable")
+                        .Match(m => m.Phon("a").With("accent", "tonic"))
+                        .After(Q.End),
+                    q => q  // tonique monosyllabique
+                        .Match(m => m.Phon("a").With("accent", "tonic"))
+                        .After(a => a.Seq(
+                            s1 => s1.ZeroOrMany(z => z.Phon(Q.Consonant)),
+                            Q.End)))
+                .Map(p => p.Phono(_ => new[] { "aa̯" })));
+        }
+
+        public static Rule Rule3b()
+        {
+            return R.Rule(r => r
+                .Id("p1c9r3b")
+                .Group("Diphtongaison de /a/ tonique libre ou monosyllabique non suivie d'une nasale")
+                .Named("Dissimilation d'aperture de /a̯/")
+                .From(500).To(600)
+                .Query(q => q.
+                    Match(m => m.Phon("aa̯").With("accent", "tonic")))
+                .Map(p => p.Phono(_ => new[] { "aɛ̯" })));
+        }
+
+        public static Rule Rule3c()
+        {
+            return R.Rule(r => r
+                .Id("p1c9r3c")
+                .Group("Diphtongaison de /a/ tonique libre ou monosyllabique non suivie d'une nasale")
+                .Named("Assimilation de /a/")
+                .From(600).To(650)
+                .Query(q => q.
+                    Match(m => m.Phon("aɛ̯").With("accent", "tonic")))
+                .Map(p => p.Phono(_ => new[] { "ɛɛ̯" }).Rewrite(_ => "e")));
+        }
+
+        public static Rule Rule3d()
+        {
+            return R.Rule(r => r
+                .Id("p1c9r3d")
+                .Group("Diphtongaison de /a/ tonique libre ou monosyllabique non suivie d'une nasale")
+                .Named("Réduction de /ɛɛ̯/ et allongement du /ɛ/ résultant (conjecture)")
+                .From(650).To(700)
+                .Query(q => q.
+                    Match(m => m.Phon("ɛɛ̯").With("accent", "tonic")))
+                .Map(p => p.Phono(_ => new[] { "ɛː" })));
+        }
+
+        public static Rule Rule3e()
+        {
+            return R.Rule(r => r
+                .Id("p1c9r3e")
+                .Group("Diphtongaison de /a/ tonique libre ou monosyllabique non suivie d'une nasale")
+                .Named("Fermeture de /ɛː/")
+                .From(1000).To(1100)
+                .Query(q => q.
+                    Match(m => m.Phon("ɛː").With("accent", "tonic")))
+                .Map(p => p.Phono(_ => new[] { "eː" })));
+        }
+
+        public static Rule Rule3f()
+        {
+            return R.Rule(r => r
+                .Id("p1c9r3f")
+                .Group("Diphtongaison de /a/ tonique libre ou monosyllabique non suivie d'une nasale")
+                .Named("Abrègement de /eː/")
+                .From(1000).To(1100)
+                .Query(q => q.
+                    Match(m => m.Phon("eː").With("accent", "tonic")))
+                .Map(p => p.Phono(_ => new[] { "e" })));
         }
     }
 }
