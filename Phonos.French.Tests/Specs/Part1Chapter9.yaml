@@ -9,24 +9,28 @@
             _graph: f e r u
             _syllable: short:2 short:2
             _accent: tonic:2 final:2
-            fεε̯ru: f e r u
+            fɛɛ̯ru: f e r u
         mɛl:
             _graph: m e l
-            mεε̯l: m e l
+            _syllable: long:3
+            _accent: tonic:3
+            mɛɛ̯l: m e l
 
 p1c9r1b:
     src: Zink p.54, http://www.diachronie.be/cours_grammaire/phonetique/072.html
     group: Diphtongaison de /ɛ/ tonique libre ou monosyllabique
-    desc: Dissimilation d'aperture de /ε/
+    desc: Dissimilation d'aperture de /ɛ/
     from: 200
     to: 300
     samples:
-        fεε̯ru:
+        fɛɛ̯ru:
             _graph: f e r u
-            fiε̯ru: f ie r u
-        mεε̯l:
+            _accent: tonic:2 final:2
+            fiɛ̯ru: f ie r u
+        mɛɛ̯l:
             _graph: m e l
-            miε̯l: m ie l
+            _accent: tonic:3
+            miɛ̯l: m ie l
 
 p1c9r1c:
     src: Zink p.54, http://www.diachronie.be/cours_grammaire/phonetique/072.html
@@ -34,10 +38,10 @@ p1c9r1c:
     from: 600
     to: 700
     samples:
-        fiε̯ro:
+        fiɛ̯ro:
             _graph: f ie r o
             fie̯ro: f ie r o
-        miε̯l:
+        miɛ̯l:
             _graph: m ie l
             mie̯l: m ie l
 
@@ -190,10 +194,10 @@ p1c9r3b:
     samples:
         maa̯re:
             _graph: m a r e
-            maε̯re: m a r e
+            maɛ̯re: m a r e
         saa̯l:
             _graph: s a l
-            saε̯l: s a l
+            saɛ̯l: s a l
 
 p1c9r3c:
     src: Zink p.56-57, http://www.diachronie.be/cours_grammaire/phonetique/001.html
@@ -202,38 +206,38 @@ p1c9r3c:
     from: 600
     to: 650
     samples:
-        maε̯re:
+        maɛ̯re:
             _graph: m a r e
-            mεε̯re: m e r e
-        saε̯l:
+            mɛɛ̯re: m e r e
+        saɛ̯l:
             _graph: s a l
-            sεε̯l: s e l
+            sɛɛ̯l: s e l
 
 p1c9r3d:
     src: Zink p.56-57, http://www.diachronie.be/cours_grammaire/phonetique/001.html
     group: Diphtongaison de /a/ tonique libre ou monosyllabique non suivie d'une nasale
-    desc: Réduction de /ɛɛ̯/ et allongement du /ε/ résultant (conjecture)
+    desc: Réduction de /ɛɛ̯/ et allongement du /ɛ/ résultant (conjecture)
     from: 650
     to: 700
     samples:
-        mɛε̯r:
+        mɛɛ̯r:
             _graph: m e r
             mɛːr: m e r
-        sɛε̯l:
+        sɛɛ̯l:
             _graph: s e l
-            sεːl: s e l
+            sɛːl: s e l
 
 p1c9r3e:
     src: Zink p.56-57, http://www.diachronie.be/cours_grammaire/phonetique/001.html
     group: Diphtongaison de /a/ tonique libre ou monosyllabique non suivie d'une nasale
-    desc: Fermeture de /εː/
+    desc: Fermeture de /ɛː/
     from: 1000
     to: 1100
     samples:
         mɛːr:
             _graph: m e r
             meːr: m e r
-        sεːl:
+        sɛːl:
             _graph: s e l
             seːl: s e l
 
