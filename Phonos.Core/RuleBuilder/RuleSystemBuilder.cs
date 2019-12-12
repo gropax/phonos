@@ -6,22 +6,22 @@ namespace Phonos.Core.RuleBuilder
 {
     public class RuleSystemBuilder
     {
-        private List<Rule> _rules = new List<Rule>();
+        private List<RuleContext> _rules = new List<RuleContext>();
 
-        public Rule[] Build()
+        public RuleContext[] Build()
         {
             return _rules.ToArray();
         }
 
-        public RuleSystemBuilder Rule(Rule rule)
+        public RuleSystemBuilder Rule(RuleContext rule)
         {
             _rules.Add(rule);
             return this;
         }
 
-        public RuleSystemBuilder Rule(Action<RuleBuilder> ruleDefinition)
+        public RuleSystemBuilder Rule(Action<RuleContextBuilder> ruleDefinition)
         {
-            var builder = new RuleBuilder();
+            var builder = new RuleContextBuilder();
             ruleDefinition(builder);
             var rule = builder.Build();
             _rules.Add(rule);
@@ -31,7 +31,7 @@ namespace Phonos.Core.RuleBuilder
 
     public static class R
     {
-        public static Rule[] System(Action<RuleSystemBuilder> systemDefinition)
+        public static RuleContext[] System(Action<RuleSystemBuilder> systemDefinition)
         {
             var builder = new RuleSystemBuilder();
             systemDefinition(builder);
@@ -39,9 +39,9 @@ namespace Phonos.Core.RuleBuilder
             return system;
         }
 
-        public static Rule Rule(Action<RuleBuilder> ruleDefinition)
+        public static RuleContext Rule(Action<RuleContextBuilder> ruleDefinition)
         {
-            var builder = new RuleBuilder();
+            var builder = new RuleContextBuilder();
             ruleDefinition(builder);
             var system = builder.Build();
             return system;
@@ -54,13 +54,15 @@ namespace Phonos.Core.RuleBuilder
         {
             var rules = R.System(s => s
                 .Rule(r => r
-                    .Named("My rule")
                     .From(0).To(200)
                     .Query(q => q
                         .Match(m => m.Phon("a").With("accent", "tonic"))
                         .Before(b => b.Seq(Q.Start, q2 => q2.Phon("b").With("auie", "nrst")))
                         .After(Q.End))
-                    .Map(m => m.Phono(P.Degeminate).Rewrite())));
+                    .Rules(m => m
+                        .Named("My rule")
+                        .Phono(P.Degeminate)
+                        .Rewrite())));
         }
     }
 }

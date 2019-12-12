@@ -7,9 +7,9 @@ namespace Phonos.Core
 {
     public class LinearRuleSequencer : IRuleSequencer
     {
-        public Rule[] Rules { get; }
+        public RuleContext[] Rules { get; }
 
-        public LinearRuleSequencer(IEnumerable<Rule> rules)
+        public LinearRuleSequencer(IEnumerable<RuleContext> rules)
         {
             Rules = rules.OrderBy(r => r.TimeSpan.Start)
                 .ThenBy(r => r.TimeSpan.End).ToArray();
@@ -48,12 +48,12 @@ namespace Phonos.Core
 
     public class WordDerivation
     {
-        public Rule Rule { get; }
+        public RuleContext Rule { get; }
         public Word Original { get; }
         public Word Derived { get; }
         public WordDerivation[] LaterDerivations { get; set; }
 
-        public WordDerivation(Rule rule, Word original, Word derived, WordDerivation[] laterDerivations = null)
+        public WordDerivation(RuleContext rule, Word original, Word derived, WordDerivation[] laterDerivations = null)
         {
             Rule = rule;
             Original = original;

@@ -11,7 +11,7 @@ namespace Phonos.French.SubSystems
     /// </summary>
     public static class Chapter6
     {
-        public static Rule[] Rules()
+        public static RuleContext[] Rules()
         {
             return new[]
             {
@@ -25,16 +25,17 @@ namespace Phonos.French.SubSystems
         /// et une consonne liquide à l'arrière (r, l).
         /// [G. Zink, Phonétique historique du français, p. 39]
         /// </summary>
-        public static Rule Rule1()
+        public static RuleContext Rule1()
         {
-            return R.Rule(r => r
-                .Named("Syncope des voyelles post-toniques entre une occlusive orale et une consonne liquide")
+            return R.Rule(c => c
                 .From(0).To(200)
                 .Query(q => q
                     .Match(Q.PostTonicVowel)
                     .Before(b => b.Phon("b", "k"))
                     .After(a => a.Phon("l", "r")))
-                .Map(P.Erase));
+                .Rules(r => r
+                    .Named("Syncope des voyelles post-toniques entre une occlusive orale et une consonne liquide")
+                    .Phono(P.Erase).Rewrite(G.Erase)));
         }
 
         /// <summary>
@@ -42,16 +43,17 @@ namespace Phonos.French.SubSystems
         /// à l'avant (r, l, n, s) et une dentale à l'arrière.
         /// [G. Zink, Phonétique historique du français, p. 39]
         /// </summary>
-        public static Rule Rule2()
+        public static RuleContext Rule2()
         {
-            return R.Rule(r => r
-                .Named("Syncope des voyelles post-toniques entre une consonne homorganique et une dentale")
+            return R.Rule(c => c
                 .From(0).To(200)
                 .Query(q => q
                     .Match(Q.PostTonicVowel)
                     .Before(b => b.Phon("r", "l", "n", "s"))
                     .After(a => a.Phon("t", "d")))
-                .Map(P.Erase));
+                .Rules(r => r
+                    .Named("Syncope des voyelles post-toniques entre une consonne homorganique et une dentale")
+                    .Phono(P.Erase).Rewrite(G.Erase)));
         }
 
         /// <summary>
@@ -63,32 +65,34 @@ namespace Phonos.French.SubSystems
         ///     Cette règle s'applique-t-elle à toutes les voyelle ? (je n'ai
         ///     que des exemples de syncope du /i/).
         /// </remarks>
-        public static Rule Rule3()
+        public static RuleContext Rule3()
         {
-            return R.Rule(r => r
-                .Named("Syncope des voyelles post-toniques suivies d'un /a/ final")
+            return R.Rule(c => c
                 .From(0).To(200)
                 .Query(q => q
                     .Match(m => m.Phon(Q.VOWEL).With("accent", "post-tonic"))
                     .After(a => a.Seq(_ => _.Phon(Q.CONSONANT),
                         q2 => q2.Maybe(_ => _.Phon(Q.CONSONANT)),
                         q3 => q3.Phon("a", "a").With("accent", "final"))))
-                .Map(P.Erase));
+                .Rules(r => r
+                    .Named("Syncope des voyelles post-toniques suivies d'un /a/ final")
+                    .Phono(P.Erase).Rewrite(G.Erase)));
         }
 
         /// <summary>
         /// Consonification des post-toniques brèves en hiatus
         /// [G. Zink, Phonétique historique du français, p. 40]
         /// </summary>
-        public static Rule Rule4()
+        public static RuleContext Rule4()
         {
-            return R.Rule(r => r
-                .Named("Consonification des post-toniques brèves en hiatus")
+            return R.Rule(c => c
                 .From(0).To(100)
                 .Query(q => q
                     .Match(m => m.Phon(Q.VOWEL).With("accent", "post-tonic"))
                     .After(a => a.Phon(Q.VOWEL)))
-                .Map(P.Consonify));
+                .Rules(r => r
+                    .Named("Consonification des post-toniques brèves en hiatus")
+                    .Phono(P.Consonify)));
         }
 
         /// <summary>
@@ -100,14 +104,15 @@ namespace Phonos.French.SubSystems
         ///    - Ici ont lieu des problèmes de séquençage.
         ///    - Il faut préciser la datation, voire scinder la règle
         /// </remarks>
-        public static Rule Rule5()
+        public static RuleContext Rule5()
         {
-            return R.Rule(r => r
-                .Named("Syncope des voyelles post-toniques restantes")
+            return R.Rule(c => c
                 .From(200).To(500)
                 .Query(q => q
                     .Match(m => m.Phon(Q.VOWEL).With("accent", "post-tonic")))
-                .Map(P.Erase));
+                .Rules(r => r
+                    .Named("Syncope des voyelles post-toniques restantes")
+                    .Phono(P.Erase).Rewrite(G.Erase)));
         }
 
 
@@ -115,16 +120,17 @@ namespace Phonos.French.SubSystems
         /// Centralisation de /a/ pré-tonique en syllabe ouverte.
         /// [G. Zink, Phonétique historique du français, p. 41]
         /// </summary>
-        public static Rule Rule6()
+        public static RuleContext Rule6()
         {
-            return R.Rule(r => r
-                .Named("Centralisation de /a/ pré-tonique en syllabe ouverte")
+            return R.Rule(c => c
                 .From(400).To(600)
                 .Query(q => q
                     .Scope("syllable")
                     .Match(m => m.Phon("a").With("accent", "pre-tonic"))
                     .After(Q.End))
-                .Map(p => p.Phono(_ => new[] { "ə" })));
+                .Rules(r => r
+                    .Named("Centralisation de /a/ pré-tonique en syllabe ouverte")
+                    .Phono(_ => new[] { "ə" })));
         }
 
         /// <summary>
@@ -133,10 +139,9 @@ namespace Phonos.French.SubSystems
         /// [G. Zink, Phonétique historique du français, p. 41]
         /// @interaction [?]
         /// </summary>
-        public static Rule Rule7()
+        public static RuleContext Rule7()
         {
-            return R.Rule(r => r
-                .Named("Centralisation des voyelles pré-toniques autres que /a/ en syllable ouverte, précédées d'un groupe consonantique")
+            return R.Rule(c => c
                 .From(400).To(600)
                 .Query(q => q
                     .Scope("syllable")
@@ -144,7 +149,9 @@ namespace Phonos.French.SubSystems
                         .With("accent", "pre-tonic"))
                     .Before(b => b.Seq(q1 => q1.Phon(Q.Consonant), q2 => q2.Phon(Q.Consonant)))
                     .After(Q.End))
-                .Map(p => p.Phono(_ => new[] { "ə" })));
+                .Rules(r => r
+                    .Named("Centralisation des voyelles pré-toniques autres que /a/ en syllable ouverte, précédées d'un groupe consonantique")
+                    .Phono(_ => new[] { "ə" }).Rewrite(G.Erase)));
         }
 
         /// <summary>
@@ -153,10 +160,9 @@ namespace Phonos.French.SubSystems
         /// [G. Zink, Phonétique historique du français, p. 41]
         /// @interaction [?]
         /// </summary>
-        public static Rule Rule8()
+        public static RuleContext Rule8()
         {
-            return R.Rule(r => r
-                .Named("Syncope des voyelles pré-toniques autres que /a/ en syllable ouverte")
+            return R.Rule(c => c
                 .From(400).To(600)
                 .Query(q => q
                     .Scope("syllable")
@@ -164,7 +170,9 @@ namespace Phonos.French.SubSystems
                         .With("accent", "pre-tonic"))
                     .Before(b => b.Seq(Q.Start, s2 => s2.Maybe(m => m.Phon(Q.Consonant))))
                     .After(Q.End))
-                .Map(P.Erase));
+                .Rules(r => r
+                    .Named("Syncope des voyelles pré-toniques autres que /a/ en syllable ouverte")
+                    .Phono(P.Erase).Rewrite(G.Erase)));
         }
 
         /// <summary>
@@ -175,10 +183,9 @@ namespace Phonos.French.SubSystems
         /// /u/ est contr-tonique et /ǐ/ pré-tonique, mais l'exemple du livre donne
         /// /u/ comme pré-tonique (/ǐ/ est donc à considéré comme /j/ ?).
         /// </summary>
-        public static Rule Rule9()
+        public static RuleContext Rule9()
         {
-            return R.Rule(r => r
-                .Named("Antériorisation des pré-toniques autres que /a/ en syllabe formée")
+            return R.Rule(c => c
                 .From(400).To(600)
                 .Query(q => q
                     .Scope("syllable")
@@ -186,7 +193,9 @@ namespace Phonos.French.SubSystems
                         .Phon(Q.Vowel)
                         .With("accent", "pre-tonic"))
                     .After(a => a.Phon(Q.Consonant)))
-                .Map(p => p.Phono(_ => new[] { "e" }).Rewrite(_ => "e")));
+                .Rules(r => r
+                    .Named("Antériorisation des pré-toniques autres que /a/ en syllabe formée")
+                    .Phono(_ => new[] { "e" }).Rewrite(_ => "e")));
         }
     }
 }

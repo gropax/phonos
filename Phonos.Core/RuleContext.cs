@@ -9,22 +9,34 @@ namespace Phonos.Core
 {
     public class Rule
     {
+        public string Name { get; }
+        public Func<string[], string[]> Phonological { get; }
+        public GraphicalMap[] Graphical { get; }
+
+        public Rule(string name, Func<string[], string[]> phonological, GraphicalMap[] graphical)
+        {
+            Name = name;
+            Phonological = phonological;
+            Graphical = graphical;
+        }
+    }
+
+    public class RuleContext
+    {
         public string Id { get; }
         public string Group { get; }
-        public string Name { get; }
         public Interval TimeSpan { get; }
         public ContextualQuery[] Queries { get; }
-        public PhonologicalMap[] Maps { get; }
+        public Rule[] Rules { get; }
 
-        public Rule(string id, string group, string name, Interval timeSpan,
-            ContextualQuery[] queries, PhonologicalMap[] maps)
+        public RuleContext(string id, string group, Interval timeSpan,
+            ContextualQuery[] queries, Rule[] rules)
         {
             Id = id;
             Group = group;
-            Name = name;
             TimeSpan = timeSpan;
             Queries = queries;
-            Maps = maps;
+            Rules = rules;
         }
 
         public Word[] Apply(Word word)
@@ -32,19 +44,22 @@ namespace Phonos.Core
             var matches = Queries.SelectMany(q => q.Match(word)).Sorted();
             if (matches.Count() == 0)
                 return new Word[0];
-            return Maps.Select(map => DeriveWord(word, map, matches)).ToArray();
+
+            var words = Rules.Select(r => DeriveWord(r, word, matches)).ToArray();
+            return words;
         }
 
-        public Word DeriveWord(Word word, PhonologicalMap map, SortedIntervals<string[]> matches)
+        public Word DeriveWord(Rule rule, Word word, SortedIntervals<string[]> matches)
         {
-            var replacements = matches.Map(match => map.Map(match));
+
+            var replacements = matches.Map(match => rule.Phonological(match));
             var alignment = word.Phonemes.AlignReplace(replacements);
 
             // Compute new phoneme sequence
             var phonemes = alignment.Right;
 
             // Compute every graphical forms
-            var graphicalForms = map.GraphicalMaps.SelectMany(gmap =>
+            var graphicalForms = rule.Graphical.SelectMany(gmap =>
                 word.GraphicalForms.Select(gf =>
                     DeriveGraphicalForm(word, gmap, gf, replacements, alignment))).ToArray();
 
@@ -138,18 +153,6 @@ namespace Phonos.Core
             int start = mappings[interval.Start];
             int end = mappings[interval.End];
             return new Interval<T>(start, end - start, interval.Value);
-        }
-    }
-
-    public class PhonologicalMap
-    {
-        public Func<string[], string[]> Map { get; }
-        public GraphicalMap[] GraphicalMaps { get; }
-
-        public PhonologicalMap(Func<string[], string[]> map, GraphicalMap[] graphicalMaps)
-        {
-            Map = map;
-            GraphicalMaps = graphicalMaps;
         }
     }
 

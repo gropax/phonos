@@ -8,26 +8,31 @@ namespace Phonos.Core.RuleBuilder
 {
     public static class P
     {
-        public static Action<PhonologicalMapBuilder> Erase =>
-            pb => pb.Phono(px => new string[0]).Rewrite(gx => string.Empty);
-        public static Action<PhonologicalMapBuilder> Consonify =>
-            pb => pb.Phono(ConsonifyFunc);
-        public static Action<PhonologicalMapBuilder> Shorten =>
-            pb => pb.Phono(ShortenFunc);
+        //public static Action<PhonologicalMapBuilder> Erase =>
+        //    pb => pb.Phono(px => new string[0]).Rewrite(gx => string.Empty);
+        //public static Action<PhonologicalMapBuilder> Consonify =>
+        //    pb => pb.Phono(ConsonifyFunc);
+        //public static Action<PhonologicalMapBuilder> Shorten =>
+        //    pb => pb.Phono(ShortenFunc);
+
+        public static string[] Erase(string[] phonemes)
+        {
+            return new string[0];
+        }
 
         public static string[] Degeminate(string[] phonemes)
         {
             throw new NotImplementedException();
         }
 
-        public static string[] ShortenFunc(string[] phonemes)
+        public static string[] Shorten(string[] phonemes)
         {
             return phonemes.Select(p => p.Replace("ː", string.Empty)).ToArray();
         }
 
         static Dictionary<string, string> CONSONIFICATION =
             new Dictionary<string, string>() { { "i", "j" }, { "e", "j" }, { "u", "w" } };
-        public static string[] ConsonifyFunc(string[] phonemes)
+        public static string[] Consonify(string[] phonemes)
         {
             if (phonemes.Length > 1)
                 throw new RewritingError("Can only consonify a single phoneme.");

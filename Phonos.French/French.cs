@@ -8,7 +8,7 @@ namespace Phonos.French
 {
     public static class French
     {
-        public static Rule[] Rules()
+        public static RuleContext[] Rules()
         {
             return Chapter6.Rules()
                 .Concat(Chapter8.Rules())

@@ -8,25 +8,25 @@ using Xunit;
 
 namespace Phonos.Core.Queries.Tests
 {
-    public class RuleTests
+    public class RuleContextTests
     {
         [Fact]
         public void TestApply()
         {
             var l = new PhonemeQuery(new[] { "l" });
 
-            var rule = new Rule(
+            var rule = new RuleContext(
                 id: "test",
                 group: "test",
-                name: "Test",
                 timeSpan: new Interval(0, 1),
                 queries: new[] {
                     new ContextualQuery(new SequenceQuery(new[] { l, l })),
                 },
-                maps: new[] {
-                    new PhonologicalMap(
-                        ps => new[] { "l" },
-                        graphicalMaps: new[] {
+                rules: new[] {
+                    new Rule(
+                        name: "Test",
+                        phonological: ps => new[] { "l" },
+                        graphical: new[] {
                             new GraphicalMap(ps => ps),
                         })
                 });
@@ -54,18 +54,18 @@ namespace Phonos.Core.Queries.Tests
             var c = new PhonemeQuery(new[] { "b", "l" });
             var v = new PhonemeQuery(new[] { "a", "e" });
 
-            var rule = new Rule(
+            var rule = new RuleContext(
                 id: "test",
                 group: "test",
-                name: "Test",
                 timeSpan: new Interval(0, 1),
                 queries: new[] {
                     new ContextualQuery(v, lookBehind: c, lookAhead: c, scope: "syllable"),
                 },
-                maps: new[] {
-                    new PhonologicalMap(
-                        ps => new[] { "o" },
-                        graphicalMaps: new[] {
+                rules: new[] {
+                    new Rule(
+                        name: "Test",
+                        phonological: ps => new[] { "o" },
+                        graphical: new[] {
                             new GraphicalMap(ps => ps),
                         })
                 });

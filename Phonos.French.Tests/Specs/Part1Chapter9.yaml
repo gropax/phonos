@@ -409,32 +409,32 @@ p1c9r4g:
             _accent: tonic:4
             trwɛs: t r oi:2 s
 
-p1c9r4h:
-    src: Zink p.58-59, http://www.diachronie.be/cours_grammaire/phonetique/043.html
-    group: Diphtongaison de /e/ tonique libre ou monosyllabique
-    desc:
-        1: Amuïssement de la consonne de la variante /wε/
-        2: Ouverture de /e/ sous l’influence de /w/ 
-    from: 1300
-    to: 1400
-    samples:
-        pwɛrə:
-            _graph: p oi:2 r e
-            _accent: tonic:2 final:2
-            1:
-                pɛrə: p oi r e
-            2:
-                pwarə: p oi:2 r e
-        trwɛ:
-            _graph: t r oi:2 s:0
-            _accent: tonic:4
-            trɛ: t r oi s:0
-            trwa: t r oi:2 s:0
+#p1c9r4h:
+#    src: Zink p.58-59, http://www.diachronie.be/cours_grammaire/phonetique/043.html
+#    group: Diphtongaison de /e/ tonique libre ou monosyllabique
+#    desc:
+#        1: Amuïssement de la consonne de la variante /wε/
+#        2: Ouverture de /e/ sous l’influence de /w/ 
+#    from: 1300
+#    to: 1400
+#    samples:
+#        pwɛrə:
+#            _graph: p oi:2 r e
+#            _accent: tonic:2 final:2
+#            1:
+#                pɛrə: p oi r e
+#            2:
+#                pwarə: p oi:2 r e
+#        trwɛ:
+#            _graph: t r oi:2 s:0
+#            _accent: tonic:4
+#            trɛ: t r oi s:0
+#            trwa: t r oi:2 s:0
 
 p1c9r4i:
     src: Zink p.58-59, http://www.diachronie.be/cours_grammaire/phonetique/043.html
     group: Diphtongaison de /e/ tonique libre ou monosyllabique
-    desc: Orthographique: réécriture du son /ɛ/ écrit "oi" en "ai"
+    desc: (Orthographique) réécriture du son /ɛ/ écrit "oi" en "ai"
     from: 1700
     to: 1800
     samples:
