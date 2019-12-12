@@ -10,22 +10,27 @@ namespace Phonos.Core.RuleBuilder
 
     public class RuleBuilder
     {
-        private string _name = "Unnamed";
+        private string _name = null;
+        private string[] _metas = new string[0];
         private Func<string[], string[]> _phono;
         private GraphicalMap[] _graph;
 
         public Rule Build()
         {
-            if (_phono == null)
-                throw new QueryBuilderException("Phonological map must be set before building.");
-
-            return new Rule(_name, _phono,
-                _graph ?? new[] { GraphicalMap.Identity });
+            return new Rule(_name, _phono ?? Rule.Identity,
+                _graph ?? new[] { GraphicalMap.Identity },
+                _metas);
         }
 
         public RuleBuilder Named(string name)
         {
             _name = name;
+            return this;
+        }
+
+        public RuleBuilder Meta(params string[] metas)
+        {
+            _metas = metas;
             return this;
         }
 

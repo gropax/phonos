@@ -9,15 +9,19 @@ namespace Phonos.Core
 {
     public class Rule
     {
+        public static Func<string[], string[]> Identity = (x) => x;
+
         public string Name { get; }
+        public string[] Metas { get; }
         public Func<string[], string[]> Phonological { get; }
         public GraphicalMap[] Graphical { get; }
 
-        public Rule(string name, Func<string[], string[]> phonological, GraphicalMap[] graphical)
+        public Rule(string name, Func<string[], string[]> phonological, GraphicalMap[] graphical, string[] metas = null)
         {
             Name = name;
             Phonological = phonological;
             Graphical = graphical;
+            Metas = metas ?? new string[0];
         }
     }
 
@@ -66,7 +70,9 @@ namespace Phonos.Core
             var fields = word.Fields.ToDictionary(kv => kv.Key,
                 kv => RealignField(kv.Value, replacements, alignment));
 
-            return new Word(phonemes, graphicalForms, fields);
+            var metas = word.Metas.Concat(rule.Metas).ToArray();
+
+            return new Word(phonemes, graphicalForms, fields, metas);
         }
 
         public Alignment<string> RealignField(Alignment<string> field,

@@ -19,6 +19,7 @@ namespace Phonos.French.SubSystems
                 Rule2a(), Rule2b(), Rule2c(), Rule2d(), Rule2e(), Rule2f(), Rule2g(), Rule2h(),
                 Rule3a(), Rule3b(), Rule3c(), Rule3d(), Rule3e(), Rule3f(),
                 Rule4a(), Rule4b(), Rule4c(), Rule4d(), Rule4e(), Rule4f(), Rule4g(), Rule4h(), Rule4i(),
+                Rule5a(), Rule5b(), Rule5c(), Rule5d(), Rule5e(), Rule5f(),
             };
         }
 
@@ -417,6 +418,98 @@ namespace Phonos.French.SubSystems
                 .Rules(p => p
                     .Named("(Orthographique) réécriture du son /ɛ/ écrit \"oi\" en \"ai\"")
                     .Phono(_ => new[] { "ɛ" }).Rewrite(gx => gx == "oi" ? "ai" : gx)));
+        }
+
+        public static RuleContext Rule5a()
+        {
+            return R.Rule(c => c
+                .Id("p1c9r5a")
+                .Group("Diphtongaison de /o/ tonique libre ou monosyllabique")
+                .From(400).To(500)
+                .Query(
+                    q => q  // tonique libre
+                        .Scope("syllable")
+                        .Match(m => m.Phon("o").With("accent", "tonic"))
+                        .After(Q.End),
+                    q => q  // tonique monosyllabique
+                        .Match(m => m.Phon("o").With("accent", "tonic"))
+                        .After(a => a.Seq(
+                            s1 => s1.ZeroOrMany(z => z.Phon(Q.Consonant)),
+                            Q.End)))
+                .Rules(p => p
+                    .Named("Segmentation de /o/ sous l’accent tonique")
+                    .Phono(_ => new[] { "oo̯" })));
+        }
+
+        public static RuleContext Rule5b()
+        {
+            return R.Rule(c => c
+                .Id("p1c9r5b")
+                .Group("Diphtongaison de /o/ tonique libre ou monosyllabique")
+                .From(500).To(600)
+                .Query(q => q.
+                    Match(m => m.Phon("oo̯").With("accent", "tonic")))
+                .Rules(p => p
+                    .Named("Dissimilation d’aperture de /o̯/")
+                    .Phono(_ => new[] { "ou̯" })
+                    .Rewrite(_ => "ou")));
+        }
+
+        public static RuleContext Rule5c()
+        {
+            return R.Rule(c => c
+                .Id("p1c9r5c")
+                .Group("Diphtongaison de /o/ tonique libre ou monosyllabique")
+                .From(1000).To(1100)
+                .Query(q => q.
+                    Match(m => m.Phon("ou̯").With("accent", "tonic")))
+                .Rules(
+                    r => r
+                        .Named("Dissimilation du point d’articulation de /o/")
+                        .Meta("Nord et Centre")
+                        .Phono(_ => new[] { "eu̯" })
+                        .Rewrite(_ => "eu"),
+                    r => r
+                        .Meta("Est et Ouest")));
+        }
+
+        public static RuleContext Rule5d()
+        {
+            return R.Rule(c => c
+                .Id("p1c9r5d")
+                .Group("Diphtongaison de /o/ tonique libre ou monosyllabique")
+                .From(1100).To(1150)
+                .Query(q => q.
+                    Match(m => m.Phon("eu̯").With("accent", "tonic")))
+                .Rules(r => r
+                    .Named("Labialisation de /e/")
+                    .Phono(_ => new[] { "øu̯" })));
+        }
+
+        public static RuleContext Rule5e()
+        {
+            return R.Rule(c => c
+                .Id("p1c9r5e")
+                .Group("Diphtongaison de /o/ tonique libre ou monosyllabique")
+                .From(1150).To(1200)
+                .Query(q => q.
+                    Match(m => m.Phon("øu̯").With("accent", "tonic")))
+                .Rules(r => r
+                    .Named("Réduction de /øu̯/")
+                    .Phono(_ => new[] { "ø" })));
+        }
+
+        public static RuleContext Rule5f()
+        {
+            return R.Rule(c => c
+                .Id("p1c9r5f")
+                .Group("Diphtongaison de /o/ tonique libre ou monosyllabique")
+                .From(1100).To(1200)
+                .Query(q => q.
+                    Match(m => m.Phon("ou̯").With("accent", "tonic")))
+                .Rules(r => r
+                    .Named("Réduction de /ou̯/")
+                    .Phono(_ => new[] { "u" })));
         }
     }
 }

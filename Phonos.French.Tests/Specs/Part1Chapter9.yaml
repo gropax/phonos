@@ -455,8 +455,8 @@ p1c9r5a:
     samples:
         ora:
             _graph: h:0 o r a
-            _syllable: short:2 short:2
-            _accent: tonic:2 final:2
+            _syllable: short:1 short:2
+            _accent: tonic:1 final:2
             oo̯ra: h:0 o r a
         dos:  # ltn: duos
             _graph: d o s
@@ -473,7 +473,7 @@ p1c9r5b:
     samples:
         oo̯ra:
             _graph: h:0 o r a
-            _accent: tonic:2 final:2
+            _accent: tonic:1 final:2
             ou̯ra: h:0 ou r a
         doo̯s:
             _graph: d o s
@@ -490,7 +490,7 @@ p1c9r5c:
     samples:
         ou̯rə:
             _graph: h:0 ou r e
-            _accent: tonic:2 final:2
+            _accent: tonic:1 final:2
             eu̯rə:
                 _graph: h:0 eu r e
                 _meta: Nord et Centre
@@ -517,7 +517,7 @@ p1c9r5d:
     samples:
         eu̯rə:
             _graph: h:0 eu r e
-            _accent: tonic:2 final:2
+            _accent: tonic:1 final:2
             øu̯rə: h:0 eu r e
         deu̯s:
             _graph: d eu s
@@ -532,11 +532,11 @@ p1c9r5e:
     to: 1200
     samples:
         øu̯rə:
-            _graph: h:0 ou r e
-            _accent: tonic:2 final:2
+            _graph: h:0 eu r e
+            _accent: tonic:1 final:2
             ørə: h:0 eu r e
         døu̯s:
-            _graph: d ou s
+            _graph: d eu s
             _accent: tonic:3
             døs: d eu s
 
@@ -550,7 +550,7 @@ p1c9r5f:
     samples:
         ou̯rə:
             _graph: h:0 ou r e
-            _accent: tonic:2 final:2
+            _accent: tonic:1 final:2
             urə: h:0 ou r e
         dou̯s:
             _graph: d ou s
