@@ -402,9 +402,11 @@ namespace Phonos.French.SubSystems
                 .Rules(
                     r => r
                         .Named("Amuïssement de la consonne de la variante /wε/")
+                        .Meta("Savant")
                         .Phono(_ => new[] { "ɛ" }),
                     r => r
                         .Named("Ouverture de /e/ sous l’influence de /w/ ")
+                        .Meta("Populaire")
                         .Phono(_ => new[] { "w", "a" })));
         }
 

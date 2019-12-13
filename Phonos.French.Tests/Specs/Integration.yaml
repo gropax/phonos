@@ -5,6 +5,21 @@
     kœʁ:
         _graph: cœur
         _meta: Nord et Centre
+ferum:
+    fɛʁ: fer
+mare:
+    mɛʁ: mer
+mel:
+    mjɛl: miel
+pera:
+    pwaʁ: 
+        _graph: poire
+        _meta: Populaire
+    pɛʁ: 
+        _graph: paire
+        _meta: Savant
+sal:
+    sɛl: sel
 soror:
     suʁ:
         _graph: sour
@@ -12,3 +27,10 @@ soror:
     sœʁ:
         _graph: sœur
         _meta: Nord et Centre
+tres:
+    tʁwa:
+        _graph: trois
+        _meta: Populaire
+    tʁɛ:
+        _graph: trais
+        _meta: Savant
