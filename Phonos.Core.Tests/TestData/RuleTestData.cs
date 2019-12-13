@@ -14,4 +14,13 @@ namespace Phonos.Core.Tests.TestData
                 Add(ruleTest);
         }
     }
+
+    public class IntegrationTestData : TheoryData<IntegrationTest>
+    {
+        public IntegrationTestData(IEnumerable<IntegrationTest> ruleTests)
+        {
+            foreach (var ruleTest in ruleTests)
+                Add(ruleTest);
+        }
+    }
 }

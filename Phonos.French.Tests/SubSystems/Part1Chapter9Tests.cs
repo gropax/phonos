@@ -20,7 +20,7 @@ namespace Phonos.French.SubSystems.Tests
                 var parser = new YamlParser();
                 var path = @".\Specs\Part1Chapter9.yaml";
                 using (StreamReader reader = File.OpenText(path))
-                    return new RuleTestData(parser.Parse(reader).ToList());
+                    return new RuleTestData(parser.ParseRuleTests(reader).ToList());
             }
         }
 

@@ -19,7 +19,7 @@ namespace Phonos.Core.Tests.TestData
 
             using (StreamReader reader = File.OpenText(path))
             {
-                var result = parser.Parse(reader).ToList();
+                var result = parser.ParseRuleTests(reader).ToList();
             }
         }
     }

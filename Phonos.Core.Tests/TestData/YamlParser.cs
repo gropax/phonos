@@ -7,9 +7,85 @@ using System.Text;
 
 namespace Phonos.Core.Tests.TestData
 {
+    public class IntegrationTest
+    {
+        public string Latin { get; }
+        public SampleOutput[] Outputs { get; }
+        public IntegrationTest(string latin, SampleOutput[] outputs)
+        {
+            Latin = latin;
+            Outputs = outputs;
+        }
+    }
+
     public class YamlParser
     {
-        public IEnumerable<RuleContextTest> Parse(TextReader reader)
+        public IEnumerable<IntegrationTest> ParseIntegrationTests(TextReader reader)
+        {
+            var deserializer = new YamlDotNet.Serialization.Deserializer();
+            var result = deserializer.Deserialize(reader);
+
+            foreach (var kv in (Dictionary<object, dynamic>)result)
+            {
+                string latin = (string)kv.Key;
+
+                var fieldsKv = (Dictionary<object, dynamic>)kv.Value;
+                //var metas = new string[0];
+                var outputs = new List<SampleOutput>();
+
+                foreach (var fieldKv in fieldsKv)
+                {
+                    string fieldName = (string)fieldKv.Key;
+
+                    var outputPhono = ParsePhonemes((string)fieldKv.Key);
+                    var graphicalForms = new Alignment<string>[0];
+                    var metas = new string[0];
+                    var wordFields = new Dictionary<string, Alignment<string>>();
+
+                    if (fieldKv.Value.GetType() == typeof(string))
+                    {
+                        graphicalForms = ((string)fieldKv.Value)
+                            .Split(',').Select(s => ParseAlignment(s.Trim()))
+                            .ToArray();
+                    }
+                    else
+                    {
+                        foreach (var fieldKv2 in (Dictionary<object, dynamic>)fieldKv.Value)
+                        {
+                            string fieldName2 = (string)fieldKv2.Key;
+
+                            if (fieldName2 == "_graph")
+                            {
+                                if (fieldKv2.Value.GetType() == typeof(List<object>))
+                                    graphicalForms = ((List<dynamic>)fieldKv2.Value)
+                                        .Select(g => ParseAlignment((string)g))
+                                        .ToArray();
+                                else
+                                    graphicalForms = new[]
+                                    {
+                                        ParseAlignment((string)fieldKv2.Value),
+                                    };
+                            }
+                            else if (fieldName2 == "_meta")
+                            {
+                                metas = ((string)fieldKv2.Value)
+                                    .Split(',').Select(m => m.Trim())
+                                    .ToArray();
+                            }
+                            else if (fieldName2.StartsWith("_"))
+                                wordFields.Add(fieldName2.Substring(1), ParseAlignment(fieldKv2.Value));
+                        }
+                    }
+
+                    outputs.Add(new SampleOutput(
+                        new Word(outputPhono, graphicalForms, wordFields, metas)));
+                }
+
+                yield return new IntegrationTest(latin, outputs.ToArray());
+            }
+        }
+
+        public IEnumerable<RuleContextTest> ParseRuleTests(TextReader reader)
         {
             var deserializer = new YamlDotNet.Serialization.Deserializer();
             var result = deserializer.Deserialize(reader);
@@ -45,7 +121,7 @@ namespace Phonos.Core.Tests.TestData
                     var graphicalForms = new Alignment<string>[0];
                     var metas = new string[0];
                     var wordFields = new Dictionary<string, Alignment<string>>();
-                    var outputs = new List<RuleTestSampleOutput>();
+                    var outputs = new List<SampleOutput>();
 
                     foreach (var fieldKv in fieldsKv)
                     {
@@ -113,7 +189,7 @@ namespace Phonos.Core.Tests.TestData
                                 }
                             }
 
-                            outputs.Add(new RuleTestSampleOutput(
+                            outputs.Add(new SampleOutput(
                                 new Word(outputPhono, graphicalForms2, wordFields2, metas2)));
                         }
                     }
@@ -231,19 +307,19 @@ namespace Phonos.Core.Tests.TestData
     public class RuleTestSample
     {
         public Word Input { get; }
-        public RuleTestSampleOutput[] Outputs { get; }
+        public SampleOutput[] Outputs { get; }
 
-        public RuleTestSample(Word input, RuleTestSampleOutput[] outputs)
+        public RuleTestSample(Word input, SampleOutput[] outputs)
         {
             Input = input;
             Outputs = outputs;
         }
     }
 
-    public class RuleTestSampleOutput
+    public class SampleOutput
     {
         public Word Word { get; }
-        public RuleTestSampleOutput(Word word)
+        public SampleOutput(Word word)
         {
             Word = word;
         }

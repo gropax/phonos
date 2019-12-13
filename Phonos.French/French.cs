@@ -15,4 +15,12 @@ namespace Phonos.French
                 .ToArray();
         }
     }
+
+    public static class French2
+    {
+        public static RuleContext[] Rules()
+        {
+            return Part1Chapter9.Rules();
+        }
+    }
 }

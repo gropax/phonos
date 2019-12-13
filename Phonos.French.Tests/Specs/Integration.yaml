@@ -1,0 +1,14 @@
+﻿cor:
+    kuʁ:
+        _graph: cour
+        _meta: Est et Ouest
+    kœʁ:
+        _graph: cœur
+        _meta: Nord et Centre
+soror:
+    suʁ:
+        _graph: sour
+        _meta: Est et Ouest
+    sœʁ:
+        _graph: sœur
+        _meta: Nord et Centre

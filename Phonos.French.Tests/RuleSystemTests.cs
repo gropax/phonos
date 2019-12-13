@@ -75,7 +75,7 @@ namespace Phonos.French.Tests
                 TestSampleOutput(sample.Outputs, derived, i);
         }
 
-        private void TestSampleOutput(RuleTestSampleOutput[] outputs,
+        protected void TestSampleOutput(SampleOutput[] outputs,
             Word[] derived, int index)
         {
             var output = outputs[index];
@@ -146,6 +146,7 @@ namespace Phonos.French.Tests
                 }
             }
         }
+
 
         private WordData ParseData(string[] data)
         {
