@@ -32,6 +32,16 @@ namespace Phonos.Core.RuleBuilder
             return CONSONANT.Contains(phoneme[0].ToString());
         }
 
+        public static bool NasalConsonant(string phoneme)
+        {
+            return NASAL_CONSONANT.Contains(phoneme[0].ToString());
+        }
+
+        public static bool NonNasalConsonant(string phoneme)
+        {
+            return NON_NASAL_CONSONANT.Contains(phoneme[0].ToString());
+        }
+
         public static string[] VOWEL = new[]
         {
             "a", "aː", "e", "eː", "i", "iː", "o", "oː", "u", "uː", "y", "yː" 
@@ -48,7 +58,13 @@ namespace Phonos.Core.RuleBuilder
             "j", "w", "ɥ",
         };
 
+        public static string[] NASAL_CONSONANT = new[]
+        {
+            "m", "n", "ŋ", "ɲ",
+        };
+
         public static string[] NON_VOWEL = CONSONANT.Concat(GLIDE).ToArray();
         public static string[] NON_CONSONANT = VOWEL.Concat(GLIDE).ToArray();
+        public static string[] NON_NASAL_CONSONANT = CONSONANT.Except(NASAL_CONSONANT).ToArray();
     }
 }

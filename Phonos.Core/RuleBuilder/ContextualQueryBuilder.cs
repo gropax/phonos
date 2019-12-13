@@ -11,18 +11,32 @@ namespace Phonos.Core.RuleBuilder
         private IQuery _query;
         private IQuery _lookBehind;
         private IQuery _lookAhead;
+        //private IQuery _negLookBehind;
+        private IQuery _negLookAhead;
+        private IQuery _next;
+        private bool _last = false;
 
         public ContextualQuery Build()
         {
             if (_query == null)
                 throw new QueryBuilderException("Match query must be set before building.");
+            else if (_last && _scope == null)
+                throw new QueryBuilderException("Scope must be set if using Last.");
+            else if (_next != null && _scope == null)
+                throw new QueryBuilderException("Scope must be set if using Next.");
 
-            return new ContextualQuery(_query, _lookBehind, _lookAhead, _scope);
+            return new ContextualQuery(_query, _lookBehind, _lookAhead, _negLookAhead, _scope, _next, _last);
         }
 
         public ContextualQueryBuilder Scope(string scope)
         {
             _scope = scope;
+            return this;
+        }
+
+        public ContextualQueryBuilder Last()
+        {
+            _last = true;
             return this;
         }
 
@@ -47,6 +61,30 @@ namespace Phonos.Core.RuleBuilder
             var queryBuilder = new ContextQueryBuilder();
             queryDefinition(queryBuilder);
             _lookAhead = queryBuilder.Build();
+            return this;
+        }
+
+        //public ContextualQueryBuilder BeforeNot(Action<ContextQueryBuilder> queryDefinition)
+        //{
+        //    var queryBuilder = new ContextQueryBuilder();
+        //    queryDefinition(queryBuilder);
+        //    _negLookBehind = queryBuilder.Build();
+        //    return this;
+        //}
+
+        public ContextualQueryBuilder AfterNot(Action<ContextQueryBuilder> queryDefinition)
+        {
+            var queryBuilder = new ContextQueryBuilder();
+            queryDefinition(queryBuilder);
+            _negLookAhead = queryBuilder.Build();
+            return this;
+        }
+
+        public ContextualQueryBuilder Next(Action<ContextQueryBuilder> queryDefinition)
+        {
+            var queryBuilder = new ContextQueryBuilder();
+            queryDefinition(queryBuilder);
+            _next = queryBuilder.Build();
             return this;
         }
     }

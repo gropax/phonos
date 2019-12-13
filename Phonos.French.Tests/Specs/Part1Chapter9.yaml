@@ -58,11 +58,11 @@ p1c9r1d:
         fie̯r:
             _graph: f ie r
             _accent: tonic:3
-            fjer: f i e r
+            fjer: f ie r  # @fixme f i e r
         mie̯l:
             _graph: m ie l
             _accent: tonic:3
-            mjel: m i e l
+            mjel: m ie l  # @fixme m i e l
 
 p1c9r2a:
     src: Zink p.55-56, http://www.diachronie.be/cours_grammaire/phonetique/134.html
@@ -214,6 +214,9 @@ p1c9r3a:
         canem:  # @no_match : Suivie d'une nasale
             _syllable: short:2 short:2
             _accent: tonic:2 final:2
+        tam:  # @no_match : Suivie d'une nasale
+            _syllable: short:3
+            _accent: tonic:3
 
 p1c9r3b:
     src: Zink p.56-57, http://www.diachronie.be/cours_grammaire/phonetique/001.html

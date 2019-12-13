@@ -208,12 +208,13 @@ namespace Phonos.French.SubSystems
                     q => q  // tonique libre
                         .Scope("syllable")
                         .Match(m => m.Phon("a").With("accent", "tonic"))
-                        .After(Q.End),
+                        .After(Q.End)
+                        .Next(n => n.Seq(Q.Start, s => s.Phon(Q.NonNasalConsonant))),
                     q => q  // tonique monosyllabique
+                        .Scope("syllable")
                         .Match(m => m.Phon("a").With("accent", "tonic"))
-                        .After(a => a.Seq(
-                            s1 => s1.ZeroOrMany(z => z.Phon(Q.Consonant)),
-                            Q.End)))
+                        .AfterNot(a => a.Phon(Q.NasalConsonant))
+                        .Last())
                 .Rules(p => p
                     .Named("Segmentation de /a/ sous l'accent tonique")
                     .Phono(_ => new[] { "aa̯" })));
