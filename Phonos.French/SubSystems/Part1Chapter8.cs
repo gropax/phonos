@@ -10,25 +10,22 @@ namespace Phonos.French.SubSystems
     /// Évolutions des voyelles du latin classique au latin vulgaire.
     /// [G. Zink, Phonétique historique du français, ch. VIII]
     /// </summary>
-    public static class Chapter8
+    public static class Part1Chapter8
     {
         public static RuleContext[] Rules()
         {
             return new[]
             {
-                Rule7(), Rule8(), Rule9(), Rule10(),
-                Rule11(), Rule12(), Rule13(), Rule14(),
+                Rule1a(), Rule1b(), Rule1c(), Rule1d(), Rule1e(),
+                Rule2a(), Rule2b(), Rule2c(), 
             };
         }
 
-        /// <summary>
-        /// Évolution de /ē/, /ō/, /ě/ et /ǒ/ en /e/, /o/, /ɛ/, /ɔ/ en latin vulgaire.
-        /// [G. Zink, Phonétique historique du français, p. 50]
-        /// @interactions [OK] Pas d'evolution de /e/ issu de /oe/
-        /// </summary>
-        public static RuleContext Rule7()
+        public static RuleContext Rule1a()
         {
             return R.Rule(c => c
+                .Id("p1c8r1a")
+                .Group("Redistribution des quantités, différentiation des timbres")
                 .From(100).To(200)
                 .Query(q => q
                     .Match(m => m.Phon("eː", "e", "oː", "o")
@@ -48,31 +45,41 @@ namespace Phonos.French.SubSystems
                     })));
         }
 
-        /// <summary>
-        /// Évolution de /ǐ/ en /e/ en latin vulgaire.
-        /// [G. Zink, Phonétique historique du français, p. 50]
-        /// @interactions [OK] Don't affect /i/ from /iː/
-        /// </summary>
-        public static RuleContext Rule8()
+        public static RuleContext Rule1b()
         {
             return R.Rule(c => c
+                .Id("p1c8r1b")
+                .Group("Redistribution des quantités, différentiation des timbres")
+                .From(100).To(200)
+                .Query(q => q
+                    .Match(m => m.Phon("aː", "iː", "uː")))  // Les cas /ē/ et /ō/ sont gérés en 7
+                .Rules(r => r
+                    .Named("Disparition de l'opposition entre voyelles longues et brèves")
+                    .Phono(P.Shorten)));
+        }
+
+        // @interactions [OK] Don't affect /i/ from /iː/
+        public static RuleContext Rule1c()
+        {
+            return R.Rule(c => c
+                .Id("p1c8r1c")
+                .Group("Redistribution des quantités, différentiation des timbres")
                 .From(200).To(300)
                 .Query(q => q
                     .Match(m => m.Phon("i")
                         .Without("classical_latin", "iː")))
                 .Rules(p => p
-                    .Named("Évolution de /ǐ/ en latin vulgaire")
-                    .Phono(px => new [] { "e" })));
+                    .Named("Ouverture de /ǐ/")
+                    .Phono(px => new [] { "e" })
+                    .Rewrite(_ => "e")));
         }
 
-        /// <summary>
-        /// Évolution de /ǔ/ en /o/ à l'intérieur d'un mot, en latin vulgaire.
-        /// [G. Zink, Phonétique historique du français, p. 50]
-        /// @interactions [OK] Don't affect /u/ from /uː/
-        /// </summary>
-        public static RuleContext Rule9()
+        // @interactions [OK] Don't affect /u/ from /uː/
+        public static RuleContext Rule1d()
         {
             return R.Rule(c => c
+                .Id("p1c8r1d")
+                .Group("Redistribution des quantités, différentiation des timbres")
                 .From(300).To(400)
                 .Query(q => q
                     .Match(m => m.Phon("u")
@@ -80,31 +87,30 @@ namespace Phonos.French.SubSystems
                         .Without("classical_latin", "uː")))  // @interaction
                 .Rules(p => p
                     .Named("Évolution de /ǔ/ en position intérieure en latin vulgaire")
-                    .Phono(px => new [] { "o" })));
+                    .Phono(px => new [] { "o" })
+                    .Rewrite(_ => "o")));
         }
 
-        /// <summary>
-        /// Évolution de /ǔ/ en /o/ en finale de mot, en latin vulgaire.
-        /// [G. Zink, Phonétique historique du français, p. 50]
-        /// </summary>
-        public static RuleContext Rule10()
+        public static RuleContext Rule1e()
         {
             return R.Rule(c => c
+                .Id("p1c8r1e")
+                .Group("Redistribution des quantités, différentiation des timbres")
                 .From(400).To(500)
                 .Query(q => q
                     .Match(m => m.Phon("u").With("accent", "final")))
                 .Rules(p => p
                     .Named("Évolution de /ǔ/ en finale en latin vulgaire")
-                    .Phono(px => new [] { "o" })));
+                    .Phono(px => new [] { "o" })
+                    .Rewrite(_ => "o")));
         }
 
-        /// <summary>
-        /// Évolution de /oi̯/ en /e/ en latin vulgaire.
-        /// [G. Zink, Phonétique historique du français, p. 51]
-        /// </summary>
-        public static RuleContext Rule11()
+
+        public static RuleContext Rule2a()
         {
             return R.Rule(c => c
+                .Id("p1c8r2a")
+                .Group("Monophtongaison des diphtongues latines")
                 .From(0).To(100)
                 .Query(q => q
                     .Match(m => m.Phon("oi̯")))
@@ -113,14 +119,12 @@ namespace Phonos.French.SubSystems
                     .Phono(px => new [] { "e" })));
         }
 
-        /// <summary>
-        /// Évolution de /ai̯/ en /ɛ/ en latin vulgaire.
-        /// [G. Zink, Phonétique historique du français, p. 51]
-        /// @subrules
-        /// </summary>
-        public static RuleContext Rule12()
+        // @subrules
+        public static RuleContext Rule2b()
         {
             return R.Rule(c => c
+                .Id("p1c8r2b")
+                .Group("Monophtongaison des diphtongues latines")
                 .From(100).To(200)
                 .Query(q => q
                     .Match(m => m.Phon("ai̯")))
@@ -129,37 +133,20 @@ namespace Phonos.French.SubSystems
                     .Phono(px => new [] { "ɛ" })));
         }
 
-        /// <summary>
-        /// Évolution de /au̯/ en /ɔ/ en latin vulgaire.
-        /// [G. Zink, Phonétique historique du français, p. 51]
-        /// @subrules
-        /// @interactions Pas de diphtongaisons ultérieure du /ɔ/ (p. 51)
-        /// @evolution (p. 52)
-        /// </summary>
-        public static RuleContext Rule13()
+        // @subrules
+        // @interactions Pas de diphtongaisons ultérieure du /ɔ/ (p. 51)
+        // @evolution (p. 52)
+        public static RuleContext Rule2c()
         {
             return R.Rule(c => c
+                .Id("p1c8r2c")
+                .Group("Monophtongaison des diphtongues latines")
                 .From(100).To(200)
                 .Query(q => q
                     .Match(m => m.Phon("au̯")))
                 .Rules(p => p
                     .Named("Évolution de /au̯/ en latin vulgaire")
                     .Phono(px => new [] { "ɔ" })));
-        }
-
-        /// <summary>
-        /// Disparition de l'opposition entre voyelles longues et brèves
-        /// [G. Zink, Phonétique historique du français, p. 49]
-        /// </summary>
-        public static RuleContext Rule14()
-        {
-            return R.Rule(c => c
-                .From(100).To(200)
-                .Query(q => q
-                    .Match(m => m.Phon("aː", "iː", "uː")))  // Les cas /ē/ et /ō/ sont gérés en 7
-                .Rules(r => r
-                    .Named("Disparition de l'opposition entre voyelles longues et brèves")
-                    .Phono(P.Shorten)));
         }
     }
 }

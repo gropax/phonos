@@ -1,0 +1,139 @@
+﻿p1c8r1a:
+    src: Zink p.49-50
+    context: Redistribution des quantités et différentiation des timbres
+    rules: Évolution des voyelles /e/ et /o/ en latin vulgaire
+    from: 100?
+    to: 200?
+    samples:
+        ferum:
+            _graph: f e r u m
+            _classical_latin: f e r u m
+            fɛrum: f e r u m
+        seːrum:
+            _graph: s e r u m
+            _classical_latin: s e r u m
+            serum: s e r u m
+        soror:
+            _graph: s o r o r
+            _classical_latin: s o r o r
+            sɔrɔr: s o r o r
+        soːlum:
+            _graph: s o l u m
+            _classical_latin: s o l u m
+            solum: s o l u m
+
+p1c8r1b:
+    src: Zink p.49-50
+    context: Redistribution des quantités et différentiation des timbres
+    rules: Disparition de l'opposition entre voyelles longues et brèves
+    from: 100?
+    to: 200?
+    samples:
+        maːlum:
+            _graph: m a l u m
+            malum: m a l u m
+        piːlum:
+            _graph: p i l u m
+            pilum: p i l u m
+        ruːta:
+            _graph: r u t a
+            ruta: r u t a
+
+p1c8r1c:
+    src: Zink p.49-50
+    context: Redistribution des quantités et différentiation des timbres
+    rules: Ouverture de /ǐ/
+    from: 200
+    to: 300
+    samples:
+        subinde:
+            _graph: s u b i n d e
+            _classical_latin: s u b i n d e
+            subende: s u b e n d e
+
+p1c8r1d:
+    src: Zink p.49-50
+    context: Redistribution des quantités et différentiation des timbres
+    rules: Ouverture de /ǔ/ à l'intérieur du mot
+    from: 300
+    to: 400
+    samples:
+        suvende:
+            _graph: s u v e n d e
+            _classical_latin: s u b i n d e
+            _accent: initial:2 tonic:3 final:2
+            sovende: s o v e n d e
+
+p1c8r1e:
+    src: Zink p.49-50
+    context: Redistribution des quantités et différentiation des timbres
+    rules: Ouverture de /ǔ/ en finale
+    from: 400
+    to: 500
+    samples:
+        fiɛ̯ru:
+            _graph: f ie r u
+            _accent: tonic:2 final:2
+            fiɛ̯ro: f ie r o
+
+p1c8r2a:
+    src: Zink p.51-52
+    context: Monophtongaison des diphtongues latines
+    rules: Monophtongaison de /oi̯/
+    from: 100
+    to: 200
+    samples:
+        poi̯na:
+            _graph: p oe n a
+            _syllable: long:2 short:2
+            _accent: tonic:2 final:2
+            pena: p oe n a
+
+# Il existe aussi /ai/ -> /e/ antérieur, comme dans "praeda" -> "proie"
+# Il doit s'agir d'une interaction avec p1c8r1a.
+p1c8r2b:
+    src: Zink p.51-52
+    context: Monophtongaison des diphtongues latines
+    rules: Monophtongaison de /ai̯/
+    from: 100
+    to: 200
+    samples:
+        #prae̯da:
+        #    _graph: p r ae d a
+        #    _syllable: long:3 short:2
+        #    _accent: tonic:3 final:2
+        #    kɛlum: p r ae d a
+        kai̯lum:
+            _graph: c ae l u m
+            _syllable: long:2 long:3
+            _accent: tonic:2 final:3
+            kɛlum: c ae l u m
+
+# Il existe aussi /au/ -> /o/ antérieur, comme dans "cauda" -> "coda" -> "queue"
+p1c8r2c:
+    src: Zink p.51-52
+    context: Monophtongaison des diphtongues latines
+    rules: Monophtongaison de /au̯/
+    from: 300? # 100
+    to: 400? # 200
+    samples:
+        au̯ru:
+            _graph: au:2 r u
+            _syllable: long:1 short:2
+            _accent: tonic:1 final:2
+            ɔru: au:2 r u
+        parau̯la:
+            _graph: p a r au:2 l a
+            _syllable: short:2 long:2 short:2
+            _accent: initial:2 tonic:2 final:2
+            parɔla: p a r au:2 l a
+        klau̯zu:
+            _graph: k l au:2 s u
+            _syllable: long:3 short:2
+            _accent: tonic:3 final:2
+            klɔzu: k l au:2 s u
+        lau̯do:
+            _graph: l au:2 d o
+            _syllable: long:2 short:2
+            _accent: tonic:2 final:2
+            lɔdo: l au:2 d o

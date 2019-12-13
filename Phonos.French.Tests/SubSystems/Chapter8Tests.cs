@@ -37,7 +37,7 @@ namespace Phonos.French.SubSystems.Tests
         [InlineData(/*fake*/ "mīlum", /*phono:*/ "milom", /*graphs:*/ "mīlum")]
         public void TestRuleSystem1(params string[] data)
         {
-            TestRules(Chapter8.Rules(), data);
+            TestRules(Part1Chapter8.Rules(), data);
         }
 
     }
