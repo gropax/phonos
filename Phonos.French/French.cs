@@ -20,7 +20,10 @@ namespace Phonos.French
     {
         public static RuleContext[] Rules()
         {
-            return Part1Chapter9.Rules();
+            return new RuleContext[0]
+                .Concat(Part1Chapter8.Rules())
+                .Concat(Part1Chapter9.Rules())
+                .ToArray();
         }
     }
 }

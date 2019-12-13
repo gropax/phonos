@@ -69,7 +69,10 @@ namespace Phonos.French.Tests
             var word = sample.Input;
             var derived = rule.Apply(word);
 
-            Assert.Equal(sample.Outputs.Length, derived.Length);
+            int expectedNb = sample.Outputs.Length;
+
+            Assert.True(expectedNb == derived.Length,
+                $"Expect [{string.Join("", word.Phonemes)}] to have [{expectedNb}] derivations ({string.Join(", ", sample.Outputs.Select(o => "[" + string.Join("", o.Word.Phonemes) + "]"))}) but only have [{derived.Length}].");
 
             for (int i = 0; i < sample.Outputs.Length; i++)
                 TestSampleOutput(sample.Outputs, derived, i);

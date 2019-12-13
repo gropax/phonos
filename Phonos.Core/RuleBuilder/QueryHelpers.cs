@@ -50,7 +50,7 @@ namespace Phonos.Core.RuleBuilder
         public static string[] CONSONANT = new[]
         {
             "p", "pʰ", "b", "m", "f", "v", "t", "tʰ", "d", "n", "s", "z",
-            "r", "ʁ", "l", "k", "g", "ŋ", "kʰ", "kʷ", "gʷ", "h",
+            "r", "ʁ", "l", "k", "g", "ŋ", "kʰ", "kʷ", "gʷ", "h", "θ", "ð"
         };
 
         public static string[] GLIDE = new[]

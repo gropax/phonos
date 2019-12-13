@@ -1,0 +1,148 @@
+﻿p1c6r3a:
+    src: Zink p.43-45
+    context: Effacement des voyelles finales
+    rules: Affaiblissement de /a/ final
+    from: 600
+    to: 700
+    samples:
+        pɔrtat:
+            _graph: p o r t a t
+            _accent: tonic:3 final:3
+            pɔrtət: p o r t e t
+        bruna:
+            _graph: b r u n a
+            _accent: tonic:3 final:2
+            brunə: b r u n e
+
+p1c6r3b:
+    src: Zink p.43-45
+    context: Effacement des voyelles finales
+    rules: Affaiblissement de la voyelle finale précédée d'un groupe consonantique conjoint
+    from: 600
+    to: 700
+    samples:
+        nɔstro:
+            _graph: n o s t r o
+            _syllable: long:3 short:3
+            _accent: tonic:3 final:3
+            nɔstrə: n o s t r e
+        doblo:
+            _graph: d o b l o
+            _syllable: short:2 short:3
+            _accent: tonic:2 final:3
+            doblə: d o b l e
+        maɛ̯ðre:
+            _graph: m a t r e
+            _syllable: short:2 short:3
+            _accent: tonic:2 final:3
+            maɛ̯ðrə: m a t r e
+
+p1c6r3c:
+    src: Zink p.43-45
+    context: Effacement des voyelles finales
+    rules: Affaiblissement de la voyelle finale précédée de certains groupes consonantiques disjoints
+    from: 600
+    to: 700
+    samples:
+        robʤo:
+            _graph: r o b gi o
+            _accent: tonic:3 final:2
+            robʤə: r o b gi e
+        ɔrʤo:
+            _graph: o r gi o
+            _accent: tonic:2 final:2
+            ɔrʤə: o r gi e
+        heɫmo:
+            _graph: h e l m o
+            _accent: tonic:3 final:2
+            heɫmə: h e l m e
+        heɫmo:
+            _graph: h e l m o
+            _accent: tonic:3 final:2
+            heɫmə: h e l m e
+        peyyro:  # fictif
+            _graph: p e j j r o
+            _accent: tonic:4 final:2
+            peyyrə: p e j j r e
+        sɔmno:
+            _graph: s o m n o
+            _accent: tonic:3 final:2
+            sɔmnə: s o m n e
+
+p1c6r3d:
+    src: Zink p.43-45
+    context: Effacement des voyelles finales
+    rules: Apparition d'un /ə/ de soutien après groupe consonantique conjoint
+    from: 600
+    to: 700
+    samples:
+        nɔstr:  # noster
+            _graph: n o s t r
+            _accent: tonic:5
+            nɔstrə: n o s t r e
+        dobl:  # fictif
+            _graph: d o b l
+            _accent: tonic:4
+            doblə: d o b l e
+        maɛ̯ðr:  # fictif
+            _graph: m a t r
+            _accent: tonic:4
+            maɛ̯ðrə: m a t r e
+
+p1c6r3e:
+    src: Zink p.43-45
+    context: Effacement des voyelles finales
+    rules: Apparition d'un /ə/ de soutien après groupe consonantique disjoint
+    from: 600
+    to: 700
+    samples:
+        robʤ:  # fictif
+            _graph: r o b gi
+            _accent: tonic:4
+            robʤə: r o b gi e
+        heɫm:  # fictif
+            _graph: h e l m
+            _accent: tonic:4
+            heɫmə: h e l m e
+        peyyr:  # pejor
+            _graph: p e j j r
+            _accent: tonic:5
+            peyyrə: p e j j r e
+        sɔmn:  # fictif
+            _graph: s o m n
+            _accent: tonic:4
+            sɔmnə: s o m n e
+
+p1c6r3f:
+    src: Zink p.43-45
+    context: Effacement des voyelles finales
+    rules: Affaiblissement de la voyelle finale sous accent d'écho
+    from: 600
+    to: 700
+    samples:
+        kɔmtɛ:
+            _graph: c o m t e
+            _accent: tonic:3 final:2
+            _echo: echo:3:2
+            kɔmtə: c o m t e
+        tjepdu:
+            _graph: t i e d u
+            _accent: tonic:3 final:2
+            _echo: echo:3:2
+            tjepdə: t i e d e
+
+p1c6r3f:
+    src: Zink p.43-45
+    context: Effacement des voyelles finales
+    rules: Affaiblissement de la voyelle finale hors de l'accent d'écho
+    from: 600
+    to: 700
+    samples:
+        kaldu:
+            _graph: c a l d u
+            _accent: tonic:3 final:2
+            kald: c a l d
+        werde:
+            _graph: v e r d e
+            _accent: tonic:3 final:2
+            werd: v e r d
