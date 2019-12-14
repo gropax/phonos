@@ -146,3 +146,18 @@ p1c6r3g:
             _graph: v e r d e
             _accent: tonic:3 final:2
             werd: v e r d
+
+p1c6r3h:
+    src: Zink p.43-45
+    context: Effacement des voyelles finales
+    rules: Affaiblissement de la voyelle finale entravée par /nt/
+    from: 600
+    to: 700
+    samples:
+        pɔrtant:
+            _graph: p o r t a n t
+            _accent: tonic:3 final:4
+            pɔrtənt: p o r t e n t
+        pɔrtas:
+            _graph: p o r t a s
+            _accent: tonic:3 final:3

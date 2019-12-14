@@ -21,6 +21,7 @@ namespace Phonos.French
         public static RuleContext[] Rules()
         {
             return new RuleContext[0]
+                .Concat(Part1Chapter6.Rules())
                 .Concat(Part1Chapter8.Rules())
                 .Concat(Part1Chapter9.Rules())
                 .ToArray();

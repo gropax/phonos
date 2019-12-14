@@ -1,16 +1,45 @@
-﻿cor:
+﻿asinum:
+    ɑn: âne
+
+calidum:
+    ʃo: chaud
+comitem:
+    kɔ̃t: comte
+cor:
     kuʁ:
         _graph: cour
         _meta: Est et Ouest
     kœʁ:
         _graph: cœur
         _meta: Nord et Centre
+
+deu:
+    djø: dieu
+duplum:
+    dubl: double
+
 ferum:
     fɛʁ: fer
+
+#helmum:
+#    om: heaume
+hordeum:
+    ɔʁʒ: orge
+hospitem:
+    ot: hôte
+
 mare:
     mɛʁ: mer
+matrem:
+    mɛr: mère
 mel:
     mjɛl: miel
+
+nostrum:
+    nɔtr: notre
+noster:
+    nɔtr: notre
+
 pera:
     pwaʁ: 
         _graph: poire
@@ -18,8 +47,23 @@ pera:
     pɛʁ: 
         _graph: paire
         _meta: Savant
+pejor:
+    piʁ: pire
+portas:
+    pɔʁt: portes
+portat:
+    pɔʁt: porte
+portant:
+    pɔʁt: portent
+
+rubium:
+    ʁuʒ: rouge
+    
 sal:
     sɛl: sel
+
+somnum:
+    sɔm: somme
 soror:
     suʁ:
         _graph: sour
@@ -27,6 +71,9 @@ soror:
     sœʁ:
         _graph: sœur
         _meta: Nord et Centre
+
+tepidum:
+    tjɛd: tiède
 tres:
     tʁwa:
         _graph: trois
@@ -34,3 +81,6 @@ tres:
     tʁɛ:
         _graph: trais
         _meta: Savant
+
+viridem:
+    vɛʁ: vert
