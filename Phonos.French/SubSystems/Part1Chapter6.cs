@@ -12,7 +12,7 @@ namespace Phonos.French.SubSystems
         {
             return new[]
             {
-                Rule1a(), Rule1b(), Rule1c(), Rule1d(),
+                Rule1a(), Rule1b(), Rule1c(), Rule1d(), Rule1e(), Rule1f(), Rule1g(),
             };
         }
 
@@ -85,6 +85,67 @@ namespace Phonos.French.SubSystems
                     .Named("Apparition d'un /ə/ de soutien après groupe consonantique conjoint")
                     .Phono(_ => new[] { "ə" })
                     .Rewrite(_ => "e")));
+        }
+
+        public static RuleContext Rule1e()
+        {
+            return R.Rule(c => c
+                .Id("p1c6r3e")
+                .Group("Effacement des voyelles finales")
+                .From(600).To(700)
+                .Query(
+                    q => q
+                        .Match(m => m.Nothing())
+                        .Before(b => b.Seq(s => s.Phon(IPA.CONSONANTS), s => s.Phon("ʤ")))
+                        .After(a => a.End()),
+                    q => q
+                        .Match(m => m.Nothing())
+                        .Before(b => b.Seq(s => s.Phon("ɫ"), s => s.Phon("m", "n")))
+                        .After(a => a.End()),
+                    q => q
+                        .Match(m => m.Nothing())
+                        .Before(b => b.Seq(s => s.Phon("y"), s => s.Phon("y"), s => s.Phon("r")))
+                        .After(a => a.End()),
+                    q => q
+                        .Match(m => m.Nothing())
+                        .Before(b => b.Seq(s => s.Phon("m"), s => s.Phon("n")))
+                        .After(a => a.End()))
+                .Rules(r => r
+                    .Named("Apparition d'un /ə/ de soutien après groupe consonantique disjoint")
+                    .Phono(_ => new[] { "ə" })
+                    .Rewrite(_ => "e")));
+        }
+
+        public static RuleContext Rule1f()
+        {
+            return R.Rule(c => c
+                .Id("p1c6r3f")
+                .Group("Effacement des voyelles finales")
+                .From(600).To(700)
+                .Query(q => q
+                    .Match(m => m.Phon(IPA.IsVowel)
+                        .With("accent", "final")
+                        .With("echo", "echo")))
+                .Rules(r => r
+                    .Named("Affaiblissement de la voyelle finale sous accent d'écho")
+                    .Phono(_ => new[] { "ə" })
+                    .Rewrite(_ => "e")));
+        }
+
+        public static RuleContext Rule1g()
+        {
+            return R.Rule(c => c
+                .Id("p1c6r3g")
+                .Group("Effacement des voyelles finales")
+                .From(600).To(700)
+                .Query(q => q
+                    .Match(m => m.Phon(IPA.IsVowel)
+                        .With("accent", "final")
+                        .Without("echo", "echo")))
+                .Rules(r => r
+                    .Named("Disparition de la voyelle finale hors de l'accent d'écho")
+                    .Phono(_ => new string[0])
+                    .Rewrite(_ => "")));
         }
     }
 }

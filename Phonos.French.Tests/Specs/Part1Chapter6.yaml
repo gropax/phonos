@@ -126,15 +126,15 @@ p1c6r3f:
             _echo: echo:3:2
             kɔmtə: c o m t e
         tjepdu:
-            _graph: t i e d u
-            _accent: tonic:3 final:2
-            _echo: echo:3:2
-            tjepdə: t i e d e
+            _graph: t i e p d u
+            _accent: tonic:4 final:2
+            _echo: echo:4:2
+            tjepdə: t i e p d e
 
-p1c6r3f:
+p1c6r3g:
     src: Zink p.43-45
     context: Effacement des voyelles finales
-    rules: Affaiblissement de la voyelle finale hors de l'accent d'écho
+    rules: Disparition de la voyelle finale hors de l'accent d'écho
     from: 600
     to: 700
     samples:

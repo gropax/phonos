@@ -26,8 +26,10 @@ namespace Phonos.Core
         {
             if (Fields.TryGetValue(name, out var field))
                 return field;
+            //else
+            //    throw new KeyNotFoundException($"No field with name [{name}].");
             else
-                throw new KeyNotFoundException($"No field with name [{name}].");
+                return new Alignment<string>(Enumerable.Empty<Interval<string>>());
         }
 
         public void SetField(string name, Alignment<string> alignment)
