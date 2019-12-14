@@ -157,7 +157,7 @@ namespace Phonos.Latin
 
         public bool IsOnsetCluster(string fst, string snd)
         {
-            return (!IPA.IsVowel(fst) && !IPA.IsSemiVowel(fst) && IPA.IsSemiVowel(snd))
+            return (!IPA.IsVowel(fst) && !IPA.IsGlide(fst) && IPA.IsGlide(snd))
                 || ((IPA.IsOcclusive(fst) || IPA.IsFricative(fst)) && IPA.IsLiquide(snd));
         }
     }

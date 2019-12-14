@@ -70,9 +70,9 @@ namespace Phonos.French.SubSystems
             return R.Rule(c => c
                 .From(0).To(200)
                 .Query(q => q
-                    .Match(m => m.Phon(Q.VOWEL).With("accent", "post-tonic"))
-                    .After(a => a.Seq(_ => _.Phon(Q.CONSONANT),
-                        q2 => q2.Maybe(_ => _.Phon(Q.CONSONANT)),
+                    .Match(m => m.Phon(IPA.VOWELS).With("accent", "post-tonic"))
+                    .After(a => a.Seq(_ => _.Phon(IPA.CONSONANTS),
+                        q2 => q2.Maybe(_ => _.Phon(IPA.CONSONANTS)),
                         q3 => q3.Phon("a", "a").With("accent", "final"))))
                 .Rules(r => r
                     .Named("Syncope des voyelles post-toniques suivies d'un /a/ final")
@@ -88,8 +88,8 @@ namespace Phonos.French.SubSystems
             return R.Rule(c => c
                 .From(0).To(100)
                 .Query(q => q
-                    .Match(m => m.Phon(Q.VOWEL).With("accent", "post-tonic"))
-                    .After(a => a.Phon(Q.VOWEL)))
+                    .Match(m => m.Phon(IPA.VOWELS).With("accent", "post-tonic"))
+                    .After(a => a.Phon(IPA.VOWELS)))
                 .Rules(r => r
                     .Named("Consonification des post-toniques brèves en hiatus")
                     .Phono(P.Consonify)));
@@ -109,7 +109,7 @@ namespace Phonos.French.SubSystems
             return R.Rule(c => c
                 .From(200).To(500)
                 .Query(q => q
-                    .Match(m => m.Phon(Q.VOWEL).With("accent", "post-tonic")))
+                    .Match(m => m.Phon(IPA.VOWELS).With("accent", "post-tonic")))
                 .Rules(r => r
                     .Named("Syncope des voyelles post-toniques restantes")
                     .Phono(P.Erase).Rewrite(G.Erase)));
@@ -145,9 +145,9 @@ namespace Phonos.French.SubSystems
                 .From(400).To(600)
                 .Query(q => q
                     .Scope("syllable")
-                    .Match(m => m.Phon(p => Q.Vowel(p) && p[0] != 'a')
+                    .Match(m => m.Phon(p => IPA.IsVowel(p) && p[0] != 'a')
                         .With("accent", "pre-tonic"))
-                    .Before(b => b.Seq(q1 => q1.Phon(Q.Consonant), q2 => q2.Phon(Q.Consonant)))
+                    .Before(b => b.Seq(q1 => q1.Phon(IPA.IsConsonant), q2 => q2.Phon(IPA.IsConsonant)))
                     .After(Q.End))
                 .Rules(r => r
                     .Named("Centralisation des voyelles pré-toniques autres que /a/ en syllable ouverte, précédées d'un groupe consonantique")
@@ -166,9 +166,9 @@ namespace Phonos.French.SubSystems
                 .From(400).To(600)
                 .Query(q => q
                     .Scope("syllable")
-                    .Match(m => m.Phon(p => Q.Vowel(p) && p[0] != 'a')
+                    .Match(m => m.Phon(p => IPA.IsVowel(p) && p[0] != 'a')
                         .With("accent", "pre-tonic"))
-                    .Before(b => b.Seq(Q.Start, s2 => s2.Maybe(m => m.Phon(Q.Consonant))))
+                    .Before(b => b.Seq(Q.Start, s2 => s2.Maybe(m => m.Phon(IPA.IsConsonant))))
                     .After(Q.End))
                 .Rules(r => r
                     .Named("Syncope des voyelles pré-toniques autres que /a/ en syllable ouverte")
@@ -190,9 +190,9 @@ namespace Phonos.French.SubSystems
                 .Query(q => q
                     .Scope("syllable")
                     .Match(m => m
-                        .Phon(Q.Vowel)
+                        .Phon(IPA.IsVowel)
                         .With("accent", "pre-tonic"))
-                    .After(a => a.Phon(Q.Consonant)))
+                    .After(a => a.Phon(IPA.IsConsonant)))
                 .Rules(r => r
                     .Named("Antériorisation des pré-toniques autres que /a/ en syllabe formée")
                     .Phono(_ => new[] { "e" }).Rewrite(_ => "e")));

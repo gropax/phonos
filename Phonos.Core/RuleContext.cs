@@ -87,7 +87,8 @@ namespace Phonos.Core
                 var orignalAnnotations = field.Intervals
                     .IntersectingWith(i, ContainsMode.STRICT)
                     .Union(g => g.First())
-                    .Single();
+                    .SingleOrDefault()
+                    ?? new Interval<string>(i, string.Empty);
 
                 var coveredPhonemes = alignment.Intervals
                     .Select(a => new Interval<IntervalAlignment<string[]>>(a.Left, a))
@@ -126,7 +127,8 @@ namespace Phonos.Core
                 var orignalGraphemes = graphicalForm.Intervals
                     .IntersectingWith(i, ContainsMode.STRICT)
                     .Union(g => string.Join(string.Empty, g))
-                    .Single();
+                    .SingleOrDefault()
+                    ?? new Interval<string>(i, string.Empty);
 
                 var coveredPhonemes = alignment.Intervals
                     .Select(a => new Interval<IntervalAlignment<string[]>>(a.Left, a))

@@ -12,7 +12,7 @@ namespace Phonos.French.SubSystems
         {
             return new[]
             {
-                Rule1a(), Rule1b(), Rule1c(),
+                Rule1a(), Rule1b(), Rule1c(), Rule1d(),
             };
         }
 
@@ -38,8 +38,8 @@ namespace Phonos.French.SubSystems
                 .From(600).To(700)
                 .Query(q => q
                     .Scope("syllable")
-                    .Match(m => m.Phon(Q.VOWELS).With("accent", "final"))
-                    .Before(b => b.Seq(s => s.Phon(Q.CONSONANT), s => s.Phon(Q.CONSONANT))))
+                    .Match(m => m.Phon(IPA.IsVowel).With("accent", "final"))
+                    .Before(b => b.Seq(s => s.Phon(IPA.CONSONANTS), s => s.Phon(IPA.CONSONANTS))))
                 .Rules(r => r
                     .Named("Affaiblissement de la voyelle finale précédée d'un groupe consonantique conjoint")
                     .Phono(_ => new[] { "ə" })
@@ -54,16 +54,16 @@ namespace Phonos.French.SubSystems
                 .From(600).To(700)
                 .Query(
                     q => q
-                        .Match(m => m.Phon(Q.VOWELS).With("accent", "final"))
-                        .Before(b => b.Seq(s => s.Phon(Q.CONSONANT), s => s.Phon("ʤ"))),
+                        .Match(m => m.Phon(IPA.IsVowel).With("accent", "final"))
+                        .Before(b => b.Seq(s => s.Phon(IPA.CONSONANTS), s => s.Phon("ʤ"))),
                     q => q
-                        .Match(m => m.Phon(Q.VOWELS).With("accent", "final"))
+                        .Match(m => m.Phon(IPA.IsVowel).With("accent", "final"))
                         .Before(b => b.Seq(s => s.Phon("ɫ"), s => s.Phon("m", "n"))),
                     q => q
-                        .Match(m => m.Phon(Q.VOWELS).With("accent", "final"))
+                        .Match(m => m.Phon(IPA.IsVowel).With("accent", "final"))
                         .Before(b => b.Seq(s => s.Phon("y"), s => s.Phon("y"), s => s.Phon("r"))),
                     q => q
-                        .Match(m => m.Phon(Q.VOWELS).With("accent", "final"))
+                        .Match(m => m.Phon(IPA.IsVowel).With("accent", "final"))
                         .Before(b => b.Seq(s => s.Phon("m"), s => s.Phon("n"))))
                 .Rules(r => r
                     .Named("Affaiblissement de la voyelle finale précédée de certains groupes consonantiques disjoints")
@@ -71,20 +71,20 @@ namespace Phonos.French.SubSystems
                     .Rewrite(_ => "e")));
         }
 
-        //public static RuleContext Rule1d()
-        //{
-        //    return R.Rule(c => c
-        //        .Id("p1c6r3b")
-        //        .Group("Effacement des voyelles finales")
-        //        .From(600).To(700)
-        //        .Query(q => q
-        //            .Match(m => m.Nothing())
-        //            .Before(b => b.Seq(s => s.Phon(Q.CONSONANT), s => s.Phon(Q.CONSONANT))))
-        //        .Rules(r => r
-        //            .Named("Apparition d'un /ə/ de soutien après groupe consonantique conjoint")
-        //            .Phono(_ => new[] { "ə" })
-        //            .Rewrite(_ => "e")));
-        //}
-
+        public static RuleContext Rule1d()
+        {
+            return R.Rule(c => c
+                .Id("p1c6r3d")
+                .Group("Effacement des voyelles finales")
+                .From(600).To(700)
+                .Query(q => q
+                    .Match(m => m.Nothing())
+                    .Before(Q.ConjointCluster)
+                    .After(a => a.End()))
+                .Rules(r => r
+                    .Named("Apparition d'un /ə/ de soutien après groupe consonantique conjoint")
+                    .Phono(_ => new[] { "ə" })
+                    .Rewrite(_ => "e")));
+        }
     }
 }

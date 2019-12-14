@@ -37,7 +37,7 @@ namespace Phonos.French.SubSystems
                     q => q  // tonique monosyllabique
                         .Match(m => m.Phon("ɛ").With("accent", "tonic"))
                         .After(a => a.Seq(
-                            s1 => s1.ZeroOrMany(z => z.Phon(Q.Consonant)),
+                            s1 => s1.ZeroOrMany(z => z.Phon(IPA.IsConsonant)),
                             Q.End)))
                 .Rules(r => r
                     .Named("Segmentation de /ɛ/ sous l'accent tonique")
@@ -97,7 +97,7 @@ namespace Phonos.French.SubSystems
                     q => q  // tonique monosyllabique
                         .Match(m => m.Phon("ɔ").With("accent", "tonic"))
                         .After(a => a.Seq(
-                            s1 => s1.ZeroOrMany(z => z.Phon(Q.Consonant)),
+                            s1 => s1.ZeroOrMany(z => z.Phon(IPA.IsConsonant)),
                             Q.End)))
                 .Rules(p => p
                     .Named("Segmentation de /ɔ/ sous l'accent tonique")
@@ -209,11 +209,11 @@ namespace Phonos.French.SubSystems
                         .Scope("syllable")
                         .Match(m => m.Phon("a").With("accent", "tonic"))
                         .After(Q.End)
-                        .Next(n => n.Seq(Q.Start, s => s.Phon(Q.NonNasalConsonant))),
+                        .Next(n => n.Seq(Q.Start, s => s.Phon(IPA.NON_NASAL_CONSONANTS))),
                     q => q  // tonique monosyllabique
                         .Scope("syllable")
                         .Match(m => m.Phon("a").With("accent", "tonic"))
-                        .AfterNot(a => a.Phon(Q.NasalConsonant))
+                        .AfterNot(a => a.Phon(IPA.NASAL_CONSONANTS))
                         .Last())
                 .Rules(p => p
                     .Named("Segmentation de /a/ sous l'accent tonique")
@@ -300,7 +300,7 @@ namespace Phonos.French.SubSystems
                     q => q  // tonique monosyllabique
                         .Match(m => m.Phon("e").With("accent", "tonic"))
                         .After(a => a.Seq(
-                            s1 => s1.ZeroOrMany(z => z.Phon(Q.Consonant)),
+                            s1 => s1.ZeroOrMany(z => z.Phon(IPA.IsConsonant)),
                             Q.End)))
                 .Rules(p => p
                     .Named("Segmentation de /e/ sous l’accent tonique")
@@ -437,7 +437,7 @@ namespace Phonos.French.SubSystems
                     q => q  // tonique monosyllabique
                         .Match(m => m.Phon("o").With("accent", "tonic"))
                         .After(a => a.Seq(
-                            s1 => s1.ZeroOrMany(z => z.Phon(Q.Consonant)),
+                            s1 => s1.ZeroOrMany(z => z.Phon(IPA.IsConsonant)),
                             Q.End)))
                 .Rules(p => p
                     .Named("Segmentation de /o/ sous l’accent tonique")
