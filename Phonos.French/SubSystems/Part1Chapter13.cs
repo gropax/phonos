@@ -43,8 +43,7 @@ namespace Phonos.French.SubSystems
                 .Group("")
                 .From(0).To(100)
                 .Query(q => q
-                    .Match(m => m.Phon("m"))
-                    .Before(b => b.Phon(IPA.VOWELS).With("accent", "tonic"))
+                    .Match(m => m.Phon("m").With("accent", "tonic"))
                     .After(Q.End))
                 .Rules(
                     r => r
