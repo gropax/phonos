@@ -10,22 +10,22 @@ using Xunit;
 
 namespace Phonos.French.Tests
 {
-    public class Integration2Tests : RuleSystemTests
+    public class BlackBoxTests : RuleSystemTests
     {
-        public static IntegrationTestData TestData
+        public static BlackBoxTestData TestData
         {
             get
             {
                 var parser = new YamlParser();
-                var path = @".\Specs\Integration.yaml";
+                var path = @".\Specs\BlackBox.yaml";
                 using (StreamReader reader = File.OpenText(path))
-                    return new IntegrationTestData(parser.ParseIntegrationTests(reader).ToList());
+                    return new BlackBoxTestData(parser.ParseBlackBoxTests(reader).ToList());
             }
         }
 
         [Theory]
         [MemberData(nameof(TestData))]
-        public void Test(IntegrationTest integrationTest)
+        public void Test(BlackBoxTest integrationTest)
         {
             var latinParser = new Latin.WordParser();
             var word = latinParser.Parse(integrationTest.Latin);

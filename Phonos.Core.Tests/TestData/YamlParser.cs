@@ -7,20 +7,33 @@ using System.Text;
 
 namespace Phonos.Core.Tests.TestData
 {
-    public class IntegrationTest
-    {
-        public string Latin { get; }
-        public SampleOutput[] Outputs { get; }
-        public IntegrationTest(string latin, SampleOutput[] outputs)
-        {
-            Latin = latin;
-            Outputs = outputs;
-        }
-    }
-
     public class YamlParser
     {
-        public IEnumerable<IntegrationTest> ParseIntegrationTests(TextReader reader)
+        public IEnumerable<WhiteBoxTest> ParseWhiteBoxTests(TextReader reader)
+        {
+            var deserializer = new YamlDotNet.Serialization.Deserializer();
+            var result = deserializer.Deserialize(reader);
+
+            foreach (var kv in (Dictionary<object, dynamic>)result)
+            {
+                string latin = (string)kv.Key;
+
+                var fieldsKv = (Dictionary<object, dynamic>)kv.Value;
+                var steps = new List<WhiteBoxStep>();
+
+                foreach (var fieldKv in fieldsKv)
+                {
+                    string phono = (string)fieldKv.Key;
+                    var graphicalForms = ((string)fieldKv.Value).Split(',');
+
+                    steps.Add(new WhiteBoxStep(phono, graphicalForms));
+                }
+
+                yield return new WhiteBoxTest(latin, steps.ToArray());
+            }
+        }
+
+        public IEnumerable<BlackBoxTest> ParseBlackBoxTests(TextReader reader)
         {
             var deserializer = new YamlDotNet.Serialization.Deserializer();
             var result = deserializer.Deserialize(reader);
@@ -81,7 +94,7 @@ namespace Phonos.Core.Tests.TestData
                         new Word(outputPhono, graphicalForms, wordFields, metas)));
                 }
 
-                yield return new IntegrationTest(latin, outputs.ToArray());
+                yield return new BlackBoxTest(latin, outputs.ToArray());
             }
         }
 
@@ -279,60 +292,6 @@ namespace Phonos.Core.Tests.TestData
             }
 
             return new Alignment<string>(intervals);
-        }
-    }
-
-    public class RuleContextTest
-    {
-        public string Id { get; }
-        public string Source { get; }
-        public DateInfo From { get; }
-        public DateInfo To { get; }
-        //public string[] PostProcessing { get; }
-        public string[] PostProcessing { get; }
-        public string[] Rules { get; }
-        public RuleTestSample[] Samples { get; }
-
-        public RuleContextTest(string id, string source, string[] rules, DateInfo from, DateInfo to, RuleTestSample[] samples)
-        {
-            Id = id;
-            Source = source;
-            Rules = rules;
-            From = from;
-            To = to;
-            Samples = samples;
-        }
-    } 
-
-    public class RuleTestSample
-    {
-        public Word Input { get; }
-        public SampleOutput[] Outputs { get; }
-
-        public RuleTestSample(Word input, SampleOutput[] outputs)
-        {
-            Input = input;
-            Outputs = outputs;
-        }
-    }
-
-    public class SampleOutput
-    {
-        public Word Word { get; }
-        public SampleOutput(Word word)
-        {
-            Word = word;
-        }
-    }
-
-    public struct DateInfo
-    {
-        public int Date { get; }
-        public bool Certain { get; }
-        public DateInfo(int date, bool certain)
-        {
-            Date = date;
-            Certain = certain;
         }
     }
 }

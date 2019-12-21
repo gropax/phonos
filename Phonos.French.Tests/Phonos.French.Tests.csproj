@@ -21,7 +21,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Specs\Integration.yaml">
+    <None Update="Specs\WhiteBox.yaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Specs\BlackBox.yaml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Specs\Part1Chapter6.yaml">

@@ -21,10 +21,24 @@ namespace Phonos.Core
         public WordDerivation[] Derive(Word word)
         {
             var originalDerivation = WordDerivation.Origin(word);
+
             var derivations = new WordDerivation[] { originalDerivation };
+            var newDerivations = new List<WordDerivation>();
 
             foreach (var rule in Rules)
-                derivations = derivations.SelectMany(d => rule.Derive(d)).ToArray();
+            {
+                foreach (var derivation in derivations)
+                {
+                    var results = rule.Derive(derivation);
+                    if (results.Length > 0)
+                        newDerivations.AddRange(results);
+                    else
+                        newDerivations.Add(derivation);
+                }
+
+                derivations = newDerivations.ToArray();
+                newDerivations.Clear();
+            }
 
             return derivations.ToArray();
         }

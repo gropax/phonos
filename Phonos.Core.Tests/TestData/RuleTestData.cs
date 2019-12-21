@@ -15,9 +15,18 @@ namespace Phonos.Core.Tests.TestData
         }
     }
 
-    public class IntegrationTestData : TheoryData<IntegrationTest>
+    public class BlackBoxTestData : TheoryData<BlackBoxTest>
     {
-        public IntegrationTestData(IEnumerable<IntegrationTest> ruleTests)
+        public BlackBoxTestData(IEnumerable<BlackBoxTest> ruleTests)
+        {
+            foreach (var ruleTest in ruleTests)
+                Add(ruleTest);
+        }
+    }
+
+    public class WhiteBoxTestData : TheoryData<WhiteBoxTest>
+    {
+        public WhiteBoxTestData(IEnumerable<WhiteBoxTest> ruleTests)
         {
             foreach (var ruleTest in ruleTests)
                 Add(ruleTest);
