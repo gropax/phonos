@@ -57,10 +57,13 @@ namespace Phonos.French.Tests
                 for (int j = 0; j < seqs.Count; j++)
                 {
                     var seq = seqs[j];
-                    if (expected != seq[i])
-                        possibleSteps.Add(seq[i]);
-                    else
+
+                    if (i >= seq.Length)
+                        continue;
+                    else if (expected.Equals(seq[i]))
                         newSeqs.Add(seq);
+                    else
+                        possibleSteps.Add(seq[i]);
                 }
 
                 Assert.True(newSeqs.Count > 0,

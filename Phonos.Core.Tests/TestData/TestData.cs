@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Text;
 
 namespace Phonos.Core.Tests.TestData
@@ -30,6 +31,18 @@ namespace Phonos.Core.Tests.TestData
         {
             Phonemes = phonemes;
             GraphicalForms = graphicalForms;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is WhiteBoxStep step &&
+                   Phonemes == step.Phonemes &&
+                   Enumerable.SequenceEqual(GraphicalForms, step.GraphicalForms);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Phonemes, GraphicalForms);
         }
     }
 
