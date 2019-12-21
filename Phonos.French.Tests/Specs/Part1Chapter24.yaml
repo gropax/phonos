@@ -1,0 +1,10 @@
+﻿p1c24r1:
+    src: Zink p.158
+    context: Changement d'articulation de /r/
+    rules: Changement d'articulation de /r/
+    from: 1600
+    to: 1700
+    samples:
+        marbr:
+            _graph: m a r b re
+            maʁbʁ: m a r b re

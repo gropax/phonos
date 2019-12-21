@@ -26,6 +26,7 @@ namespace Phonos.French
                 .Concat(Part1Chapter8.Rules())
                 .Concat(Part1Chapter9.Rules())
                 .Concat(Part1Chapter13.Rules())
+                .Concat(Part1Chapter24.Rules())
                 .ToArray();
         }
     }
