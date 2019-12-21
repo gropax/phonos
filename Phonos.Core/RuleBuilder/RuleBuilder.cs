@@ -1,5 +1,6 @@
 ﻿using Intervals;
 using Phonos.Core.Queries;
+using Phonos.Core.Rules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +16,9 @@ namespace Phonos.Core.RuleBuilder
         private Func<string[], string[]> _phono;
         private GraphicalMap[] _graph;
 
-        public Rule Build()
+        public Operation Build()
         {
-            return new Rule(_name, _phono ?? Rule.Identity,
+            return new Operation(_name, _phono ?? Operation.Identity,
                 _graph ?? new[] { GraphicalMap.Identity },
                 _metas);
         }

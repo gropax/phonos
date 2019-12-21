@@ -28,7 +28,7 @@ namespace Phonos.French.SubSystems.Tests
         [MemberData(nameof(RuleData))]
         public void Test(RuleContextTest ruleTest)
         {
-            TestRules(Part1Chapter6.Rules(), ruleTest);
+            TestRules(Part1Chapter6.RuleComponents(), ruleTest);
         }
     }
 }

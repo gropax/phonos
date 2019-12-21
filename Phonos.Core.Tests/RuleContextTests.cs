@@ -1,4 +1,5 @@
 using Intervals;
+using Phonos.Core.Rules;
 using Phonos.Core.Tests;
 using Phonos.Core.Tests.Queries;
 using System;
@@ -15,15 +16,15 @@ namespace Phonos.Core.Queries.Tests
         {
             var l = new PhonemeQuery(new[] { "l" });
 
-            var rule = new RuleContext(
+            var rule = new Rule(
                 id: "test",
                 group: "test",
                 timeSpan: new Interval(0, 1),
                 queries: new[] {
                     new ContextualQuery(new SequenceQuery(new[] { l, l })),
                 },
-                rules: new[] {
-                    new Rule(
+                operation: new[] {
+                    new Operation(
                         name: "Test",
                         phonological: ps => new[] { "l" },
                         graphical: new[] {
@@ -54,15 +55,15 @@ namespace Phonos.Core.Queries.Tests
             var c = new PhonemeQuery(new[] { "b", "l" });
             var v = new PhonemeQuery(new[] { "a", "e" });
 
-            var rule = new RuleContext(
+            var rule = new Rule(
                 id: "test",
                 group: "test",
                 timeSpan: new Interval(0, 1),
                 queries: new[] {
                     new ContextualQuery(v, lookBehind: c, lookAhead: c, scope: "syllable"),
                 },
-                rules: new[] {
-                    new Rule(
+                operation: new[] {
+                    new Operation(
                         name: "Test",
                         phonological: ps => new[] { "o" },
                         graphical: new[] {

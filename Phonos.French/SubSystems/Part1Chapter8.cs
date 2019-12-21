@@ -1,5 +1,6 @@
 ﻿using Phonos.Core;
 using Phonos.Core.RuleBuilder;
+using Phonos.Core.Rules;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,7 +13,7 @@ namespace Phonos.French.SubSystems
     /// </summary>
     public static class Part1Chapter8
     {
-        public static RuleContext[] Rules()
+        public static Rule[] Rules()
         {
             return new[]
             {
@@ -21,7 +22,7 @@ namespace Phonos.French.SubSystems
             };
         }
 
-        public static RuleContext Rule1a()
+        public static Rule Rule1a()
         {
             return R.Rule(c => c
                 .Id("p1c8r1a")
@@ -45,7 +46,7 @@ namespace Phonos.French.SubSystems
                     })));
         }
 
-        public static RuleContext Rule1b()
+        public static Rule Rule1b()
         {
             return R.Rule(c => c
                 .Id("p1c8r1b")
@@ -59,7 +60,7 @@ namespace Phonos.French.SubSystems
         }
 
         // @interactions [OK] Don't affect /i/ from /iː/
-        public static RuleContext Rule1c()
+        public static Rule Rule1c()
         {
             return R.Rule(c => c
                 .Id("p1c8r1c")
@@ -75,7 +76,7 @@ namespace Phonos.French.SubSystems
         }
 
         // @interactions [OK] Don't affect /u/ from /uː/
-        public static RuleContext Rule1d()
+        public static Rule Rule1d()
         {
             return R.Rule(c => c
                 .Id("p1c8r1d")
@@ -91,7 +92,7 @@ namespace Phonos.French.SubSystems
                     .Rewrite(_ => "o")));
         }
 
-        public static RuleContext Rule1e()
+        public static Rule Rule1e()
         {
             return R.Rule(c => c
                 .Id("p1c8r1e")
@@ -106,7 +107,7 @@ namespace Phonos.French.SubSystems
         }
 
 
-        public static RuleContext Rule2a()
+        public static Rule Rule2a()
         {
             return R.Rule(c => c
                 .Id("p1c8r2a")
@@ -120,7 +121,7 @@ namespace Phonos.French.SubSystems
         }
 
         // @subrules
-        public static RuleContext Rule2b()
+        public static Rule Rule2b()
         {
             return R.Rule(c => c
                 .Id("p1c8r2b")
@@ -136,7 +137,7 @@ namespace Phonos.French.SubSystems
         // @subrules
         // @interactions Pas de diphtongaisons ultérieure du /ɔ/ (p. 51)
         // @evolution (p. 52)
-        public static RuleContext Rule2c()
+        public static Rule Rule2c()
         {
             return R.Rule(c => c
                 .Id("p1c8r2c")

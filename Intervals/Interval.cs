@@ -226,7 +226,7 @@ namespace Intervals
 
 
 
-        public static Interval Range(this IList<IInterval> intervals)
+        public static Interval Range(this IEnumerable<IInterval> intervals)
         {
             var ix = intervals.ToIntervals().ToList();
             var start = ix.Min(i => i.Start);

@@ -1,5 +1,6 @@
 ﻿using Phonos.Core;
 using Phonos.Core.RuleBuilder;
+using Phonos.Core.Rules;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,9 +12,9 @@ namespace Phonos.French.SubSystems
     /// </summary>
     public static class Part1Chapter9
     {
-        public static RuleContext[] Rules()
+        public static Rule[] Rules()
         {
-            return new RuleContext[]
+            return new Rule[]
             {
                 Rule1a(), Rule1b(), Rule1c(), Rule1d(),
                 Rule2a(), Rule2b(), Rule2c(), Rule2d(), Rule2e(), Rule2f(), Rule2g(), Rule2h(),
@@ -23,7 +24,7 @@ namespace Phonos.French.SubSystems
             };
         }
 
-        public static RuleContext Rule1a()
+        public static Rule Rule1a()
         {
             return R.Rule(c => c
                 .Id("p1c9r1a")
@@ -44,7 +45,7 @@ namespace Phonos.French.SubSystems
                     .Phono(_ => new[] { "ɛɛ̯" })));
         }
 
-        public static RuleContext Rule1b()
+        public static Rule Rule1b()
         {
             return R.Rule(c => c
                 .Id("p1c9r1b")
@@ -57,7 +58,7 @@ namespace Phonos.French.SubSystems
                     .Phono(_ => new[] { "iɛ̯" }).Rewrite(_ => "ie")));
         }
 
-        public static RuleContext Rule1c()
+        public static Rule Rule1c()
         {
             return R.Rule(c => c
                 .Id("p1c9r1c")
@@ -70,7 +71,7 @@ namespace Phonos.French.SubSystems
                     .Phono(_ => new[] { "ie̯" })));
         }
 
-        public static RuleContext Rule1d()
+        public static Rule Rule1d()
         {
             return R.Rule(c => c
                 .Id("p1c9r1d")
@@ -83,7 +84,7 @@ namespace Phonos.French.SubSystems
                     .Phono(_ => new[] { "j", "e" })));
         }
 
-        public static RuleContext Rule2a()
+        public static Rule Rule2a()
         {
             return R.Rule(c => c
                 .Id("p1c9r2a")
@@ -104,7 +105,7 @@ namespace Phonos.French.SubSystems
                     .Phono(_ => new[] { "ɔɔ̯" })));
         }
 
-        public static RuleContext Rule2b()
+        public static Rule Rule2b()
         {
             return R.Rule(c => c
                 .Id("p1c9r2b")
@@ -117,7 +118,7 @@ namespace Phonos.French.SubSystems
                     .Phono(_ => new[] { "uɔ̯" }).Rewrite(_ => "uo")));
         }
 
-        public static RuleContext Rule2c()
+        public static Rule Rule2c()
         {
             return R.Rule(c => c
                 .Id("p1c9r2c")
@@ -130,7 +131,7 @@ namespace Phonos.French.SubSystems
                     .Phono(_ => new[] { "uo̯" })));
         }
 
-        public static RuleContext Rule2d()
+        public static Rule Rule2d()
         {
             return R.Rule(c => c
                 .Id("p1c9r2d")
@@ -143,7 +144,7 @@ namespace Phonos.French.SubSystems
                     .Phono(_ => new[] { "ue̯" }).Rewrite(_ => "ue")));
         }
 
-        public static RuleContext Rule2e()
+        public static Rule Rule2e()
         {
             return R.Rule(c => c
                 .Id("p1c9r2e")
@@ -156,7 +157,7 @@ namespace Phonos.French.SubSystems
                     .Phono(_ => new[] { "ye̯" })));
         }
 
-        public static RuleContext Rule2f()
+        public static Rule Rule2f()
         {
             return R.Rule(c => c
                 .Id("p1c9r2f")
@@ -169,7 +170,7 @@ namespace Phonos.French.SubSystems
                     .Phono(_ => new[] { "yø̯" })));
         }
 
-        public static RuleContext Rule2g()
+        public static Rule Rule2g()
         {
             return R.Rule(c => c
                 .Id("p1c9r2g")
@@ -182,7 +183,7 @@ namespace Phonos.French.SubSystems
                     .Phono(_ => new[] { "ɥ", "ø" })));
         }
 
-        public static RuleContext Rule2h()
+        public static Rule Rule2h()
         {
             return R.Rule(c => c
                 .Id("p1c9r2h")
@@ -198,7 +199,7 @@ namespace Phonos.French.SubSystems
         }
 
         // @fixme Ne pas match si suivi d'un nasale
-        public static RuleContext Rule3a()
+        public static Rule Rule3a()
         {
             return R.Rule(c => c
                 .Id("p1c9r3a")
@@ -220,7 +221,7 @@ namespace Phonos.French.SubSystems
                     .Phono(_ => new[] { "aa̯" })));
         }
 
-        public static RuleContext Rule3b()
+        public static Rule Rule3b()
         {
             return R.Rule(c => c
                 .Id("p1c9r3b")
@@ -233,7 +234,7 @@ namespace Phonos.French.SubSystems
                     .Phono(_ => new[] { "aɛ̯" })));
         }
 
-        public static RuleContext Rule3c()
+        public static Rule Rule3c()
         {
             return R.Rule(c => c
                 .Id("p1c9r3c")
@@ -246,7 +247,7 @@ namespace Phonos.French.SubSystems
                     .Phono(_ => new[] { "ɛɛ̯" }).Rewrite(_ => "e")));
         }
 
-        public static RuleContext Rule3d()
+        public static Rule Rule3d()
         {
             return R.Rule(c => c
                 .Id("p1c9r3d")
@@ -259,7 +260,7 @@ namespace Phonos.French.SubSystems
                     .Phono(_ => new[] { "ɛː" })));
         }
 
-        public static RuleContext Rule3e()
+        public static Rule Rule3e()
         {
             return R.Rule(c => c
                 .Id("p1c9r3e")
@@ -272,7 +273,7 @@ namespace Phonos.French.SubSystems
                     .Phono(_ => new[] { "eː" })));
         }
 
-        public static RuleContext Rule3f()
+        public static Rule Rule3f()
         {
             return R.Rule(c => c
                 .Id("p1c9r3f")
@@ -286,7 +287,7 @@ namespace Phonos.French.SubSystems
         }
 
 
-        public static RuleContext Rule4a()
+        public static Rule Rule4a()
         {
             return R.Rule(c => c
                 .Id("p1c9r4a")
@@ -307,7 +308,7 @@ namespace Phonos.French.SubSystems
                     .Phono(_ => new[] { "ee̯" })));
         }
 
-        public static RuleContext Rule4b()
+        public static Rule Rule4b()
         {
             return R.Rule(c => c
                 .Id("p1c9r4b")
@@ -321,7 +322,7 @@ namespace Phonos.French.SubSystems
                     .Rewrite(_ => "ei")));
         }
 
-        public static RuleContext Rule4c()
+        public static Rule Rule4c()
         {
             return R.Rule(c => c
                 .Id("p1c9r4c")
@@ -335,7 +336,7 @@ namespace Phonos.French.SubSystems
                     .Rewrite(_ => "oi")));
         }
 
-        public static RuleContext Rule4d()
+        public static Rule Rule4d()
         {
             return R.Rule(c => c
                 .Id("p1c9r4d")
@@ -348,7 +349,7 @@ namespace Phonos.French.SubSystems
                     .Phono(_ => new[] { "oe̯" })));
         }
 
-        public static RuleContext Rule4e()
+        public static Rule Rule4e()
         {
             return R.Rule(c => c
                 .Id("p1c9r4e")
@@ -361,7 +362,7 @@ namespace Phonos.French.SubSystems
                     .Phono(_ => new[] { "ue̯" })));
         }
 
-        public static RuleContext Rule4f()
+        public static Rule Rule4f()
         {
             return R.Rule(c => c
                 .Id("p1c9r4f")
@@ -374,7 +375,7 @@ namespace Phonos.French.SubSystems
                     .Phono(_ => new[] { "w", "e" })));
         }
 
-        public static RuleContext Rule4g()
+        public static Rule Rule4g()
         {
             return R.Rule(c => c
                 .Id("p1c9r4g")
@@ -389,7 +390,7 @@ namespace Phonos.French.SubSystems
                     .Phono(_ => new[] { "w", "ɛ" })));
         }
 
-        public static RuleContext Rule4h()
+        public static Rule Rule4h()
         {
             return R.Rule(c => c
                 .Id("p1c9r4h")
@@ -410,7 +411,7 @@ namespace Phonos.French.SubSystems
                         .Phono(_ => new[] { "w", "a" })));
         }
 
-        public static RuleContext Rule4i()
+        public static Rule Rule4i()
         {
             return R.Rule(c => c
                 .Id("p1c9r4i")
@@ -423,7 +424,7 @@ namespace Phonos.French.SubSystems
                     .Phono(_ => new[] { "ɛ" }).Rewrite(gx => gx == "oi" ? "ai" : gx)));
         }
 
-        public static RuleContext Rule5a()
+        public static Rule Rule5a()
         {
             return R.Rule(c => c
                 .Id("p1c9r5a")
@@ -444,7 +445,7 @@ namespace Phonos.French.SubSystems
                     .Phono(_ => new[] { "oo̯" })));
         }
 
-        public static RuleContext Rule5b()
+        public static Rule Rule5b()
         {
             return R.Rule(c => c
                 .Id("p1c9r5b")
@@ -458,7 +459,7 @@ namespace Phonos.French.SubSystems
                     .Rewrite(_ => "ou")));
         }
 
-        public static RuleContext Rule5c()
+        public static Rule Rule5c()
         {
             return R.Rule(c => c
                 .Id("p1c9r5c")
@@ -476,7 +477,7 @@ namespace Phonos.French.SubSystems
                         .Meta("Est et Ouest")));
         }
 
-        public static RuleContext Rule5d()
+        public static Rule Rule5d()
         {
             return R.Rule(c => c
                 .Id("p1c9r5d")
@@ -489,7 +490,7 @@ namespace Phonos.French.SubSystems
                     .Phono(_ => new[] { "øu̯" })));
         }
 
-        public static RuleContext Rule5e()
+        public static Rule Rule5e()
         {
             return R.Rule(c => c
                 .Id("p1c9r5e")
@@ -502,7 +503,7 @@ namespace Phonos.French.SubSystems
                     .Phono(_ => new[] { "ø" })));
         }
 
-        public static RuleContext Rule5f()
+        public static Rule Rule5f()
         {
             return R.Rule(c => c
                 .Id("p1c9r5f")

@@ -5,42 +5,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Phonos.Core
+namespace Phonos.Core.Rules
 {
-    public class Rule
-    {
-        public static Func<string[], string[]> Identity = (x) => x;
-
-        public string Name { get; }
-        public string[] Metas { get; }
-        public Func<string[], string[]> Phonological { get; }
-        public GraphicalMap[] Graphical { get; }
-
-        public Rule(string name, Func<string[], string[]> phonological, GraphicalMap[] graphical, string[] metas = null)
-        {
-            Name = name;
-            Phonological = phonological;
-            Graphical = graphical;
-            Metas = metas ?? new string[0];
-        }
-    }
-
-    public class RuleContext
+    public class Rule : IRule
     {
         public string Id { get; }
         public string Group { get; }
         public Interval TimeSpan { get; }
         public ContextualQuery[] Queries { get; }
-        public Rule[] Rules { get; }
+        public Operation[] Operations { get; }
 
-        public RuleContext(string id, string group, Interval timeSpan,
-            ContextualQuery[] queries, Rule[] rules)
+        public Rule(string id, string group, Interval timeSpan,
+            ContextualQuery[] queries, Operation[] operation)
         {
             Id = id;
             Group = group;
             TimeSpan = timeSpan;
             Queries = queries;
-            Rules = rules;
+            Operations = operation;
+        }
+
+        public WordDerivation[] Derive(WordDerivation derivation)
+        {
+            return Apply(derivation.Derived)
+                .Select(w => new WordDerivation(this, derivation.Derived, w, derivation))
+                .ToArray();
         }
 
         public Word[] Apply(Word word)
@@ -49,20 +38,20 @@ namespace Phonos.Core
             if (matches.Count() == 0)
                 return new Word[0];
 
-            var words = Rules.Select(r => DeriveWord(r, word, matches)).ToArray();
+            var words = Operations.Select(r => DeriveWord(r, word, matches)).ToArray();
             return words;
         }
 
-        public Word DeriveWord(Rule rule, Word word, SortedIntervals<string[]> matches)
+        public Word DeriveWord(Operation operation, Word word, SortedIntervals<string[]> matches)
         {
-            var replacements = matches.Map(match => rule.Phonological(match));
+            var replacements = matches.Map(match => operation.Phonological(match));
             var alignment = word.Phonemes.AlignReplace(replacements);
 
             // Compute new phoneme sequence
             var phonemes = alignment.Right;
 
             // Compute every graphical forms
-            var graphicalForms = rule.Graphical.SelectMany(gmap =>
+            var graphicalForms = operation.Graphical.SelectMany(gmap =>
                 word.GraphicalForms.Select(gf =>
                     DeriveGraphicalForm(word, gmap, gf, replacements, alignment))).ToArray();
 
@@ -70,7 +59,7 @@ namespace Phonos.Core
             var fields = word.Fields.ToDictionary(kv => kv.Key,
                 kv => RealignField(kv.Value, replacements, alignment));
 
-            var metas = word.Metas.Concat(rule.Metas).ToArray();
+            var metas = word.Metas.Concat(operation.Metas).ToArray();
 
             return new Word(phonemes, graphicalForms, fields, metas);
         }
@@ -160,17 +149,6 @@ namespace Phonos.Core
             int start = mappings[interval.Start];
             int end = mappings[interval.End];
             return new Interval<T>(start, end - start, interval.Value);
-        }
-    }
-
-    public class GraphicalMap
-    {
-        public static GraphicalMap Identity => new GraphicalMap(_ => _);
-
-        public Func<string, string> Map { get; }
-        public GraphicalMap(Func<string, string> map)
-        {
-            Map = map;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Intervals;
 using Phonos.Core;
 using Phonos.Core.Analyzers;
+using Phonos.Core.Rules;
 using Phonos.Core.Tests.TestData;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace Phonos.French.Tests
         public Latin.WordParser WordParser => new Latin.WordParser();
         public IAnalyzer[] Analyzers { get; protected set; }
 
-        protected void TestRules(RuleContext[] rules, string[] data, Func<RuleContext[], IRuleSequencer> sequencerBuilder = null)
+        protected void TestRules(IRule[] rules, string[] data, Func<IRule[], IRuleSequencer> sequencerBuilder = null)
         {
             var testData = ParseData(data);
 
@@ -26,7 +27,7 @@ namespace Phonos.French.Tests
             sequencerBuilder = sequencerBuilder ?? (rx => new LinearRuleSequencer(rules));
 
             var sequencer = sequencerBuilder(rules);
-            var derived = sequencer.Apply(word).FinalWords().ToArray();
+            var derived = sequencer.Derive(word).Select(d => d.Derived).ToArray();
 
             Assert.Equal(testData.PhonologicalForms.Length, derived.Length);
 
@@ -49,7 +50,7 @@ namespace Phonos.French.Tests
             }
         }
 
-        protected void TestRules(RuleContext[] rules, RuleContextTest ruleTest)
+        protected void TestRules(IRule[] rules, RuleContextTest ruleTest)
         {
             var dict = rules.ToDictionary(r => r.Id, r => r);
             Assert.True(dict.TryGetValue(ruleTest.Id, out var rule),
@@ -57,14 +58,14 @@ namespace Phonos.French.Tests
             TestRule(rule, ruleTest);
         }
 
-        protected void TestRule(RuleContext rule, RuleContextTest ruleTest)
+        protected void TestRule(IRule rule, RuleContextTest ruleTest)
         {
             foreach (var sample in ruleTest.Samples)
                 TestSample(rule, ruleTest, sample);
         }
 
 
-        protected void TestSample(RuleContext rule, RuleContextTest ruleTest, RuleTestSample sample)
+        protected void TestSample(IRule rule, RuleContextTest ruleTest, RuleTestSample sample)
         {
             var word = sample.Input;
             var derived = rule.Apply(word);
@@ -118,7 +119,7 @@ namespace Phonos.French.Tests
                 real.Intervals.Select(i => i.Value).ToArray());
         }
 
-        protected void TestRule(RuleContext rule, string[] data)
+        protected void TestRule(Rule rule, string[] data)
         {
             var testData = ParseData(data);
 

@@ -1,5 +1,6 @@
 ﻿using Intervals;
 using Phonos.Core.Queries;
+using Phonos.Core.Rules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +16,9 @@ namespace Phonos.Core.RuleBuilder
         private int _start = 0;
         private int _end = 0;
         private ContextualQuery[] _queries;
-        private Rule[] _rules;
+        private Operation[] _rules;
 
-        public RuleContext Build()
+        public Rule Build()
         {
             //if (_id == null)
             //    throw new QueryBuilderException("Rule must have an ID.");
@@ -27,7 +28,7 @@ namespace Phonos.Core.RuleBuilder
             else if (_rules == null)
                 throw new QueryBuilderException("RuleContext must have at least one Rule.");
 
-            return new RuleContext(_id, _group, new Interval(_start, _end - _start),
+            return new Rule(_id, _group, new Interval(_start, _end - _start),
                 _queries, _rules);
         }
 

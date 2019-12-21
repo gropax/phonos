@@ -1,5 +1,6 @@
 ﻿using Phonos.Core;
 using Phonos.Core.RuleBuilder;
+using Phonos.Core.Rules;
 using Phonos.French.SubSystems;
 using System;
 using System.Linq;
@@ -8,7 +9,7 @@ namespace Phonos.French
 {
     public static class French
     {
-        public static RuleContext[] Rules()
+        public static Rule[] Rules()
         {
             return Chapter6.Rules()
                 .Concat(Part1Chapter8.Rules())
@@ -18,9 +19,9 @@ namespace Phonos.French
 
     public static class French2
     {
-        public static RuleContext[] Rules()
+        public static IRule[] Rules()
         {
-            return new RuleContext[0]
+            return new IRule[0]
                 .Concat(Part1Chapter6.Rules())
                 .Concat(Part1Chapter8.Rules())
                 .Concat(Part1Chapter9.Rules())

@@ -1,5 +1,6 @@
 ﻿using Phonos.Core;
 using Phonos.Core.RuleBuilder;
+using Phonos.Core.Rules;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,7 +12,7 @@ namespace Phonos.French.SubSystems
     /// </summary>
     public static class Chapter6
     {
-        public static RuleContext[] Rules()
+        public static Rule[] Rules()
         {
             return new[]
             {
@@ -25,7 +26,7 @@ namespace Phonos.French.SubSystems
         /// et une consonne liquide à l'arrière (r, l).
         /// [G. Zink, Phonétique historique du français, p. 39]
         /// </summary>
-        public static RuleContext Rule1()
+        public static Rule Rule1()
         {
             return R.Rule(c => c
                 .From(0).To(200)
@@ -43,7 +44,7 @@ namespace Phonos.French.SubSystems
         /// à l'avant (r, l, n, s) et une dentale à l'arrière.
         /// [G. Zink, Phonétique historique du français, p. 39]
         /// </summary>
-        public static RuleContext Rule2()
+        public static Rule Rule2()
         {
             return R.Rule(c => c
                 .From(0).To(200)
@@ -65,7 +66,7 @@ namespace Phonos.French.SubSystems
         ///     Cette règle s'applique-t-elle à toutes les voyelle ? (je n'ai
         ///     que des exemples de syncope du /i/).
         /// </remarks>
-        public static RuleContext Rule3()
+        public static Rule Rule3()
         {
             return R.Rule(c => c
                 .From(0).To(200)
@@ -83,7 +84,7 @@ namespace Phonos.French.SubSystems
         /// Consonification des post-toniques brèves en hiatus
         /// [G. Zink, Phonétique historique du français, p. 40]
         /// </summary>
-        public static RuleContext Rule4()
+        public static Rule Rule4()
         {
             return R.Rule(c => c
                 .From(0).To(100)
@@ -104,7 +105,7 @@ namespace Phonos.French.SubSystems
         ///    - Ici ont lieu des problèmes de séquençage.
         ///    - Il faut préciser la datation, voire scinder la règle
         /// </remarks>
-        public static RuleContext Rule5()
+        public static Rule Rule5()
         {
             return R.Rule(c => c
                 .From(200).To(500)
@@ -120,7 +121,7 @@ namespace Phonos.French.SubSystems
         /// Centralisation de /a/ pré-tonique en syllabe ouverte.
         /// [G. Zink, Phonétique historique du français, p. 41]
         /// </summary>
-        public static RuleContext Rule6()
+        public static Rule Rule6()
         {
             return R.Rule(c => c
                 .From(400).To(600)
@@ -139,7 +140,7 @@ namespace Phonos.French.SubSystems
         /// [G. Zink, Phonétique historique du français, p. 41]
         /// @interaction [?]
         /// </summary>
-        public static RuleContext Rule7()
+        public static Rule Rule7()
         {
             return R.Rule(c => c
                 .From(400).To(600)
@@ -160,7 +161,7 @@ namespace Phonos.French.SubSystems
         /// [G. Zink, Phonétique historique du français, p. 41]
         /// @interaction [?]
         /// </summary>
-        public static RuleContext Rule8()
+        public static Rule Rule8()
         {
             return R.Rule(c => c
                 .From(400).To(600)
@@ -183,7 +184,7 @@ namespace Phonos.French.SubSystems
         /// /u/ est contr-tonique et /ǐ/ pré-tonique, mais l'exemple du livre donne
         /// /u/ comme pré-tonique (/ǐ/ est donc à considéré comme /j/ ?).
         /// </summary>
-        public static RuleContext Rule9()
+        public static Rule Rule9()
         {
             return R.Rule(c => c
                 .From(400).To(600)

@@ -43,8 +43,7 @@ namespace Phonos.French.Tests
             var rules = French2.Rules();
             var sequencer = new LinearRuleSequencer(rules);
 
-            var derivation = sequencer.Apply(word);
-            var derived = derivation.FinalWords().ToArray();
+            var derived = sequencer.Derive(word).Select(d => d.Derived).ToArray();
 
             var expected = integrationTest.Outputs;
             Assert.Equal(expected.Length, derived.Length);

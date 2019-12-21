@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Phonos.Core.Rules;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,14 +7,14 @@ namespace Phonos.Core.RuleBuilder
 {
     public class RuleSystemBuilder
     {
-        private List<RuleContext> _rules = new List<RuleContext>();
+        private List<Rule> _rules = new List<Rule>();
 
-        public RuleContext[] Build()
+        public Rule[] Build()
         {
             return _rules.ToArray();
         }
 
-        public RuleSystemBuilder Rule(RuleContext rule)
+        public RuleSystemBuilder Rule(Rule rule)
         {
             _rules.Add(rule);
             return this;
@@ -31,7 +32,7 @@ namespace Phonos.Core.RuleBuilder
 
     public static class R
     {
-        public static RuleContext[] System(Action<RuleSystemBuilder> systemDefinition)
+        public static Rule[] System(Action<RuleSystemBuilder> systemDefinition)
         {
             var builder = new RuleSystemBuilder();
             systemDefinition(builder);
@@ -39,7 +40,7 @@ namespace Phonos.Core.RuleBuilder
             return system;
         }
 
-        public static RuleContext Rule(Action<RuleContextBuilder> ruleDefinition)
+        public static Rule Rule(Action<RuleContextBuilder> ruleDefinition)
         {
             var builder = new RuleContextBuilder();
             ruleDefinition(builder);
