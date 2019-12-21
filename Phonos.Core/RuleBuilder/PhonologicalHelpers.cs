@@ -20,6 +20,11 @@ namespace Phonos.Core.RuleBuilder
             return new string[0];
         }
 
+        public static string[] Nothing(string[] phonemes)
+        {
+            return phonemes;
+        }
+
         public static string[] Degeminate(string[] phonemes)
         {
             throw new NotImplementedException();

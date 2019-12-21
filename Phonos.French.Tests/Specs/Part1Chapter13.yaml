@@ -1,0 +1,31 @@
+﻿p1c13r1a:
+    src: Zink p.75
+    context: Chute des consonnes finales du latin
+    rules: Conservation du /m/ finale dans les monosyllabes
+    from: 0
+    to: 100
+    samples:
+        feminam:
+            _graph: f e m i n a m
+            _accent: tonic:2 post-tonic:2 final:3
+        rem:
+            _graph: r e m
+            _accent: tonic:3
+            rem: r e m
+            re: r e
+
+p1c13r1b:
+    src: Zink p.75
+    context: Chute des consonnes finales du latin
+    rules: Chute du /m/ finale
+    from: 0
+    to: 100
+    samples:
+        feminam:
+            _graph: f e m i n a m
+            _accent: tonic:2 post-tonic:2 final:3
+            femina: f e m i n a
+        rem:
+            _graph: r e m
+            _accent: tonic:3
+            re: r e
