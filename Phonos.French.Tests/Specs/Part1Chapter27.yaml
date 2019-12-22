@@ -1,0 +1,31 @@
+﻿p1c27r2a:
+    src: Zink p.167-168
+    context: Lois de position
+    rules: Ouverture de /ø/
+    from: 1550
+    to: 1600
+    samples:
+        pø:
+            _graph: p eut
+            _syllable: short:2
+            # no match
+        pøv:
+            _graph: p eu vent
+            _syllable: long:3
+            pœv: p eu vent
+
+p1c27r2b:
+    src: Zink p.167-168
+    context: Lois de position
+    rules: Ouverture de /e/
+    from: 1550
+    to: 1600
+    samples:
+        pre:
+            _graph: p r e
+            _syllable: short:2
+            # no match
+        mer:
+            _graph: m e r
+            _syllable: long:3
+            mɛr: m e r

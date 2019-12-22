@@ -14,15 +14,18 @@ namespace Phonos.Core.Rules
         public Interval TimeSpan { get; }
         public ContextualQuery[] Queries { get; }
         public Operation[] Operations { get; }
+        public string[] Analyzers { get; }
 
         public Rule(string id, string group, Interval timeSpan,
-            ContextualQuery[] queries, Operation[] operation)
+            ContextualQuery[] queries, Operation[] operation,
+            string[] analyzers = null)
         {
             Id = id;
             Group = group;
             TimeSpan = timeSpan;
             Queries = queries;
             Operations = operation;
+            Analyzers = analyzers ?? new string[0];
         }
 
         public WordDerivation[] Derive(WordDerivation derivation)

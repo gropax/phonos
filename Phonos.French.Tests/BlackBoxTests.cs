@@ -41,7 +41,10 @@ namespace Phonos.French.Tests
                 analyzer.Analyze(word);
 
             var rules = French2.Rules();
-            var sequencer = new LinearRuleSequencer(rules);
+            var sequencer = new LinearRuleSequencer(rules, new Dictionary<string, IAnalyzer>()
+            {
+                { "syllable", new Latin.SyllableAnalyzer() },
+            });
 
             var derived = sequencer.Derive(word).Select(d => d.Derived).ToArray();
 
@@ -49,7 +52,7 @@ namespace Phonos.French.Tests
             Assert.Equal(expected.Length, derived.Length);
 
             for (int i = 0; i < expected.Length; i++)
-                TestSampleOutput(expected, derived, i);
+                TestBlackBoxSample(expected, derived, i);
         }
     }
 }

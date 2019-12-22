@@ -1,4 +1,5 @@
-﻿using Phonos.Core.Rules;
+﻿using Phonos.Core.Analyzers;
+using Phonos.Core.Rules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +10,16 @@ namespace Phonos.Core
     public class LinearRuleSequencer : IRuleSequencer
     {
         public IRule[] Rules { get; }
+        public Dictionary<string, IAnalyzer> Analyzers { get; }
 
-        public LinearRuleSequencer(IEnumerable<IRule> rules)
+        public LinearRuleSequencer(IEnumerable<IRule> rules,
+            Dictionary<string, IAnalyzer> analyzers = null)
         {
             Rules = rules
                 .OrderBy(r => r.TimeSpan.Start)
                 .ThenBy(r => r.TimeSpan.End)
                 .ToArray();
+            Analyzers = analyzers ?? new Dictionary<string, IAnalyzer>();
         }
 
         public WordDerivation[] Derive(Word word)
@@ -29,6 +33,9 @@ namespace Phonos.Core
             {
                 foreach (var derivation in derivations)
                 {
+                    foreach (var analyzer in rule.Analyzers)
+                        Analyzers[analyzer].Analyze(derivation.Derived);
+
                     var results = rule.Derive(derivation);
                     if (results.Length > 0)
                         newDerivations.AddRange(results);

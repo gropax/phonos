@@ -10,12 +10,22 @@ namespace Phonos.Core.Rules
     {
         public string Id { get; }
         public IRule[] Rules { get; }
+        public string[] Analyzers { get; }
+
         public Interval TimeSpan => Rules.Select(r => r.TimeSpan).Range();
 
         public RuleSequence(string id, params IRule[] rules)
         {
             Id = id;
+            Analyzers = new string[0];
             Rules = rules;
+        }
+
+        public RuleSequence(string id, IRule[] rules, string[] analyzers)
+        {
+            Id = id;
+            Rules = rules;
+            Analyzers = analyzers ?? new string[0];
         }
 
         public WordDerivation[] Derive(WordDerivation derivation)

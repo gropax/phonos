@@ -9,6 +9,8 @@ namespace Phonos.Core.Rules
     {
         string Id { get; }
         Interval TimeSpan { get; }
+        string[] Analyzers { get; }
+
         WordDerivation[] Derive(WordDerivation derivation);
         Word[] Apply(Word word);
     }

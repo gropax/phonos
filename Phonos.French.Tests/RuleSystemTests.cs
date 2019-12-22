@@ -79,6 +79,30 @@ namespace Phonos.French.Tests
                 TestSampleOutput(sample.Outputs, derived, i);
         }
 
+        protected void TestBlackBoxSample(SampleOutput[] outputs,
+            Word[] derived, int index)
+        {
+            var output = outputs[index];
+            var expected = output.Word;
+            var real = derived[index];
+
+            Assert.Equal(expected.Phonemes, real.Phonemes);
+
+            Assert.Equal(expected.GraphicalForms.Length, real.GraphicalForms.Length);
+            for (int j = 0; j < expected.GraphicalForms.Length; j++)
+                TestGraphicalForm(expected.GraphicalForms, real.GraphicalForms, j, detailed: false);
+
+            Assert.Equal(expected.Metas, real.Metas);
+
+            foreach (var key in expected.Fields.Keys)
+            {
+                var expectedField = expected.Fields[key];
+                Assert.True(real.Fields.TryGetValue(key, out var realField),
+                    $"Missing field [{key}].");
+                Assert.Equal(DumpField(expectedField), DumpField(realField));
+            }
+        }
+
         protected void TestSampleOutput(SampleOutput[] outputs,
             Word[] derived, int index)
         {
@@ -109,14 +133,15 @@ namespace Phonos.French.Tests
         }
 
         private void TestGraphicalForm(Core.Alignment<string>[] expectedForms,
-            Core.Alignment<string>[] derived, int index)
+            Core.Alignment<string>[] derived, int index, bool detailed = true)
         {
-            var expected = expectedForms[index];
-            var real = derived[index];
+            var expected = expectedForms[index].Intervals.OrderBy(i => i.Start).ThenBy(i => i.End).Values().ToArray();
+            var real = derived[index].Intervals.OrderBy(i => i.Start).ThenBy(i => i.End).Values().ToArray();
 
-            Assert.Equal(
-                expected.Intervals.OrderBy(i => i.Start).ThenBy(i => i.End).Select(i => i.Value).ToArray(),
-                real.Intervals.OrderBy(i => i.Start).ThenBy(i => i.End).Select(i => i.Value).ToArray());
+            if (detailed)
+                Assert.Equal(expected, real);
+            else
+                Assert.Equal(string.Join("", expected), string.Join("", real));
         }
 
         protected void TestRule(Rule rule, string[] data)
