@@ -2,16 +2,20 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace Phonos.Core
 {
+    [DebuggerDisplay("{DebuggerDisplay}")]
     public class Word
     {
         public string[] Phonemes { get; }
         public Alignment<string>[] GraphicalForms { get; }
         public Dictionary<string, Alignment<string>> Fields { get; }
         public string[] Metas { get; }
+
+        public string DebuggerDisplay => $"/{string.Join("", Phonemes)}/ ({string.Join(", ", GraphicalForms.Select(g => g.ToString()))})";
 
         public Word(string[] phonemes, Alignment<string>[] graphicalForms,
             Dictionary<string, Alignment<string>> fields = null, string[] metas = null)
@@ -64,6 +68,12 @@ namespace Phonos.Core
         public Alignment(IEnumerable<Interval<T>> intervals)
         {
             Intervals = intervals.Sorted();
+        }
+
+        public override string ToString()
+        {
+            var values = Intervals.OrderBy(i => i.Start).ThenBy(i => i.End).Values();
+            return string.Join("", values.Select(v => v.ToString()));
         }
     }
 }

@@ -16,18 +16,21 @@ namespace Phonos.Core.Tests.TestData
 
             foreach (var kv in (Dictionary<object, dynamic>)result)
             {
-                string latin = (string)kv.Key;
+                string id = (string)kv.Key;
 
-                var fieldsKv = (Dictionary<object, dynamic>)kv.Value;
+                var stepsObj = (List<object>)kv.Value;
                 var steps = new List<WhiteBoxStep>();
 
-                foreach (var fieldKv in fieldsKv)
+                foreach (var stepObj in stepsObj)
                 {
-                    string phono = (string)fieldKv.Key;
-                    var graphicalForms = ((string)fieldKv.Value).Split(',');
+                    var parts = ((string)stepObj).Split(new string[] { "=>" }, StringSplitOptions.None);
+                    string phono = parts[0].Trim();
+                    var graphicalForms = parts[1].Split(',').Select(g => g.Trim()).ToArray();
 
                     steps.Add(new WhiteBoxStep(phono, graphicalForms));
                 }
+
+                var latin = steps[0].Phonemes;
 
                 yield return new WhiteBoxTest(latin, steps.ToArray());
             }

@@ -1,51 +1,51 @@
 ﻿ferum:
-    ferum: ferum
-    feru: feru
-    fɛru: feru
-    fɛɛ̯ru: feru
-    fiɛ̯ru: fieru
-    fiɛ̯ro: fiero
-    fiɛ̯r: fier  # @fixme Ordre incertain
-    fie̯r: fier
-    fjer: fier
-    fjɛr: fier
-    fjɛʁ: fier
+    - ferum => ferum
+    - feru => feru
+    - fɛru => feru
+    - fɛɛ̯ru => feru
+    - fiɛ̯ru => fieru
+    - fiɛ̯ro => fiero
+    - fiɛ̯r => fier  # @fixme Ordre incertain
+    - fie̯r => fier
+    - fjer => fier
+    - fjɛr => fier
+    - fjɛʁ => fier
 mel:
-    mel: mel
-    mɛl: mel
-    mɛɛ̯l: mel
-    miɛ̯l: miel
-    mie̯l: miel
-    mjel: miel
-    mjɛl: miel
-pira:
-    pira: pira
-    pera: pera
-    pee̯ra: pera
-    pei̯ra: peira
-    pei̯rə: peire
-    poi̯rə: poire
-    poe̯rə: poire
-    pue̯rə: poire
-    pwerə: poire
-    pwɛrə: poire
-    pwarə: poire
-    pwarœ: poire
-    pwar: poire
-    pwaʁ: poire
-pira:
-    pira: pira
-    pera: pera
-    pee̯ra: pera
-    pei̯ra: peira
-    pei̯rə: peire
-    poi̯rə: poire
-    poe̯rə: poire
-    pue̯rə: poire
-    pwerə: poire
-    pwɛrə: poire
-    pɛrə: poire
-    pɛrə: paire
-    pɛrœ: paire
-    pɛr: paire
-    pɛʁ: paire
+    - mel => mel
+    - mɛl => mel
+    - mɛɛ̯l => mel
+    - miɛ̯l => miel
+    - mie̯l => miel
+    - mjel => miel
+    - mjɛl => miel
+pira.1:
+    - pira => pira
+    - pera => pera
+    - pee̯ra => pera
+    - pei̯ra => peira
+    - pei̯rə => peire
+    - poi̯rə => poire
+    - poe̯rə => poire
+    - pue̯rə => poire
+    - pwerə => poire
+    - pwɛrə => poire
+    - pwarə => poire
+    - pwarœ => poire
+    - pwar => poire
+    - pwaʁ => poire
+pira.2:
+    - pira => pira
+    - pera => pera
+    - pee̯ra => pera
+    - pei̯ra => peira
+    - pei̯rə => peire
+    - poi̯rə => poire
+    - poe̯rə => poire
+    - pue̯rə => poire
+    - pwerə => poire
+    - pwɛrə => poire
+    - pɛrə => poire
+    - pɛrœ => poire
+    - pɛr => poire
+    - pɛʁ => poire
+    - pɛʁ => paire

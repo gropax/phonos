@@ -41,7 +41,10 @@ namespace Phonos.French.Tests
                 analyzer.Analyze(word);
 
             var rules = French2.Rules();
-            var sequencer = new LinearRuleSequencer(rules);
+            var sequencer = new LinearRuleSequencer(rules, new Dictionary<string, IAnalyzer>()
+            {
+                { "syllable", new Latin.SyllableAnalyzer() },
+            });
 
             var derivations = sequencer.Derive(word);
             var sequences = derivations.Select(d => ToSteps(d)).ToArray();
