@@ -103,9 +103,11 @@ namespace Phonos.Core.Rules
                 shift += realignedAnnotation.Length - orignalAnnotations.Length;
             }
 
-            while (enumerator.MoveNext())
+            do
+            {
                 if (enumerator.Current.Start + shift >= annotations.Last().End)
                     annotations.Add(enumerator.Current.Translate(shift));
+            } while (enumerator.MoveNext());
 
             return new Alignment<string>(annotations);
         }
@@ -148,9 +150,11 @@ namespace Phonos.Core.Rules
                 shift += replacedGraphemes.Length - orignalGraphemes.Length;
             }
 
-            while (enumerator.MoveNext())
+            do
+            {
                 if (enumerator.Current.Start + shift >= newGraphemes.Last().End)
                     newGraphemes.Add(enumerator.Current.Translate(shift));
+            } while (enumerator.MoveNext());
 
             return new Alignment<string>(newGraphemes);
         }

@@ -225,3 +225,48 @@ p1c6r3h:
         pɔrtas:
             _graph: p o r t a s
             _accent: tonic:3 final:3
+
+p1c6r4a:
+    src: Zink p.46-47
+    context: Production d'une consonne épenthétique
+    rules: Production d'un /b/ épenthétique
+    from: 0  # @fixme ?
+    to: 200  # @fixme ?
+    samples:
+        numru:
+            _graph: n u m r u
+            numbru: n u m b r u
+        kumlu:
+            _graph: c u m l u
+            kumblu: c u m b l u
+
+p1c6r4b:
+    src: Zink p.46-47
+    context: Production d'une consonne épenthétique
+    rules: Production d'un /d/ épenthétique
+    from: 0  # @fixme ?
+    to: 200  # @fixme ?
+    samples:
+        ponre:
+            _graph: p o n r e
+            pondre: p o n d r e
+        grajɲre:
+            _graph: g r a i n r e
+            grajɲdre: g r a i n d r e
+        kozre:
+            _graph: c o s r e
+            kozdre: c o s d r e
+        moɫre:
+            _graph: m o l r e
+            moɫdre: m o l d r e
+
+p1c6r4c:
+    src: Zink p.46-47
+    context: Production d'une consonne épenthétique
+    rules: Production d'un /t/ épenthétique
+    from: 0  # @fixme ?
+    to: 200  # @fixme ?
+    samples:
+        esre:
+            _graph: e s r e
+            estre: e s t r e

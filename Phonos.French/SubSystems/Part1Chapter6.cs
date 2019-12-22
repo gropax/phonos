@@ -15,6 +15,7 @@ namespace Phonos.French.SubSystems
             {
                 Rule1a(), Rule1b(), Rule1c(),
                 RuleSet3(),  // Voyelles finales
+                Rule4a(), Rule4b(), Rule4c(),
             };
         }
 
@@ -24,6 +25,7 @@ namespace Phonos.French.SubSystems
             {
                 Rule1a(), Rule1b(), Rule1c(),
                 Rule3a(), Rule3b(), Rule3c(), Rule3d(), Rule3e(), Rule3f(), Rule3g(), Rule3h(),
+                Rule4a(), Rule4b(), Rule4c(),
                 RuleSet3a(), RuleSet3b(), RuleSet3()
             };
         }
@@ -243,6 +245,54 @@ namespace Phonos.French.SubSystems
                     .Named("Affaiblissement de la voyelle finale entravée par /nt/")
                     .Phono(_ => new[] { "ə" })
                     .Rewrite(_ => "e")));
+        }
+
+        public static Rule Rule4a()
+        {
+            return R.Rule(c => c
+                .Id("p1c6r4a")
+                .Group("Production d'une consonne épenthétique")
+                //.From(0).To(200)
+                .Query(q => q
+                    .Before(b => b.Phon("m"))
+                    .Match(m => m.Nothing())
+                    .After(a => a.Phon("l", "r")))
+                .Rules(r => r
+                    .Named("Production d'un /b/ épenthétique")
+                    .Phono(_ => new[] { "b" })
+                    .Rewrite(_ => "b")));
+        }
+
+        public static Rule Rule4b()
+        {
+            return R.Rule(c => c
+                .Id("p1c6r4b")
+                .Group("Production d'une consonne épenthétique")
+                //.From(0).To(200)
+                .Query(q => q
+                    .Before(b => b.Phon("n", "ɲ", "z", "l", "ɫ"))
+                    .Match(m => m.Nothing())
+                    .After(a => a.Phon("r")))
+                .Rules(r => r
+                    .Named("Production d'un /d/ épenthétique")
+                    .Phono(_ => new[] { "d" })
+                    .Rewrite(_ => "d")));
+        }
+
+        public static Rule Rule4c()
+        {
+            return R.Rule(c => c
+                .Id("p1c6r4c")
+                .Group("Production d'une consonne épenthétique")
+                //.From(0).To(200)
+                .Query(q => q
+                    .Before(b => b.Phon("s"))
+                    .Match(m => m.Nothing())
+                    .After(a => a.Phon("r")))
+                .Rules(r => r
+                    .Named("Production d'un /t/ épenthétique")
+                    .Phono(_ => new[] { "t" })
+                    .Rewrite(_ => "t")));
         }
     }
 }
