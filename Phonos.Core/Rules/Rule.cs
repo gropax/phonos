@@ -67,7 +67,10 @@ namespace Phonos.Core.Rules
         public Alignment<string> RealignField(Alignment<string> field,
             SortedIntervals<string[]> replacements, Alignment<string, string[]> alignment)
         {
-            var enumerator = field.Intervals.GetEnumerator();
+            var enumerator = field.Intervals
+                .OrderBy(i => i.Start).ThenBy(i => i.End)
+                .GetEnumerator();
+
             var annotations = new List<Interval<string>>();
             int shift = 0;
 
@@ -98,7 +101,8 @@ namespace Phonos.Core.Rules
             }
 
             while (enumerator.MoveNext())
-                annotations.Add(enumerator.Current.Translate(shift));
+                if (enumerator.Current.Start + shift >= annotations.Last().End)
+                    annotations.Add(enumerator.Current.Translate(shift));
 
             return new Alignment<string>(annotations);
         }
@@ -107,7 +111,10 @@ namespace Phonos.Core.Rules
             Alignment<string> graphicalForm, SortedIntervals<string[]> replacements,
             Alignment<string, string[]> alignment)
         {
-            var enumerator = graphicalForm.Intervals.GetEnumerator();
+            var enumerator = graphicalForm.Intervals
+                .OrderBy(i => i.Start).ThenBy(i => i.End)
+                .GetEnumerator();
+
             var newGraphemes = new List<Interval<string>>();
             int shift = 0;
 
