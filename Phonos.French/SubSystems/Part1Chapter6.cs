@@ -13,6 +13,7 @@ namespace Phonos.French.SubSystems
         {
             return new[]
             {
+                Rule1a(), Rule1b(), Rule1c(),
                 RuleSet3(),  // Voyelles finales
             };
         }
@@ -21,7 +22,8 @@ namespace Phonos.French.SubSystems
         {
             return new[]
             {
-                Rule1a(), Rule1b(), Rule1c(), Rule1d(), Rule1e(), Rule1f(), Rule1g(), Rule1h(),
+                Rule1a(), Rule1b(), Rule1c(),
+                Rule3a(), Rule3b(), Rule3c(), Rule3d(), Rule3e(), Rule3f(), Rule3g(), Rule3h(),
                 RuleSet3a(), RuleSet3b(), RuleSet3()
             };
         }
@@ -36,22 +38,67 @@ namespace Phonos.French.SubSystems
         public static IRule RuleSet3a()
         {
             return new FirstRule("p1c6s3a",
-                Rule1a(),  // /a/
-                Rule1h(),  // /nt/
-                Rule1b(),  // cluster conjoints
-                Rule1c(),  // cluster disjoints
-                Rule1f(),  // accent d'écho
-                Rule1g());
+                Rule3a(),  // /a/
+                Rule3h(),  // /nt/
+                Rule3b(),  // cluster conjoints
+                Rule3c(),  // cluster disjoints
+                Rule3f(),  // accent d'écho
+                Rule3g());
         }
 
         public static IRule RuleSet3b()
         {
             return new FirstRule("p1c6s3b",
-                Rule1d(),  // voyelle de support cluster conjoint
-                Rule1e()); // voyelle de support cluster disjoint
+                Rule3d(),  // voyelle de support cluster conjoint
+                Rule3e()); // voyelle de support cluster disjoint
         }
 
         public static Rule Rule1a()
+        {
+            return R.Rule(c => c
+                .Id("p1c6r1a")
+                .Group("Amuïssements précoces des post-toniques")
+                .From(0).To(200)
+                .Query(q => q
+                    .Match(Q.PostTonicVowel)
+                    .Before(b => b.Phon("b", "k"))
+                    .After(a => a.Phon("l", "r")))
+                .Rules(r => r
+                    .Named("Syncope des voyelles post-toniques entre une occlusive orale et une consonne liquide")
+                    .Phono(P.Erase).Rewrite(G.Erase)));
+        }
+
+        public static Rule Rule1b()
+        {
+            return R.Rule(c => c
+                .Id("p1c6r1b")
+                .Group("Amuïssements précoces des post-toniques")
+                .From(0).To(200)
+                .Query(q => q
+                    .Match(Q.PostTonicVowel)
+                    .Before(b => b.Phon("r", "l", "n", "s"))
+                    .After(a => a.Phon("t", "d")))
+                .Rules(r => r
+                    .Named("Syncope des voyelles post-toniques entre une consonne homorganique et une dentale")
+                    .Phono(P.Erase).Rewrite(G.Erase)));
+        }
+
+        public static Rule Rule1c()
+        {
+            return R.Rule(c => c
+                .Id("p1c6r1c")
+                .Group("Amuïssements précoces des post-toniques")
+                .From(0).To(200)
+                .Query(q => q
+                    .Match(m => m.Phon(IPA.VOWELS).With("accent", "post-tonic"))
+                    .After(a => a.Seq(_ => _.Phon(IPA.CONSONANTS),
+                        q2 => q2.Maybe(_ => _.Phon(IPA.CONSONANTS)),
+                        q3 => q3.Phon("a", "a").With("accent", "final"))))
+                .Rules(r => r
+                    .Named("Syncope des voyelles post-toniques suivies d'un /a/ final")
+                    .Phono(P.Erase).Rewrite(G.Erase)));
+        }
+        public static Rule Rule3a()
         {
             return R.Rule(c => c
                 .Id("p1c6r3a")
@@ -65,7 +112,7 @@ namespace Phonos.French.SubSystems
                     .Rewrite(_ => "e")));
         }
 
-        public static Rule Rule1b()
+        public static Rule Rule3b()
         {
             return R.Rule(c => c
                 .Id("p1c6r3b")
@@ -81,7 +128,7 @@ namespace Phonos.French.SubSystems
                     .Rewrite(_ => "e")));
         }
 
-        public static Rule Rule1c()
+        public static Rule Rule3c()
         {
             return R.Rule(c => c
                 .Id("p1c6r3c")
@@ -106,7 +153,7 @@ namespace Phonos.French.SubSystems
                     .Rewrite(_ => "e")));
         }
 
-        public static Rule Rule1d()
+        public static Rule Rule3d()
         {
             return R.Rule(c => c
                 .Id("p1c6r3d")
@@ -122,7 +169,7 @@ namespace Phonos.French.SubSystems
                     .Rewrite(_ => "e")));
         }
 
-        public static Rule Rule1e()
+        public static Rule Rule3e()
         {
             return R.Rule(c => c
                 .Id("p1c6r3e")
@@ -151,7 +198,7 @@ namespace Phonos.French.SubSystems
                     .Rewrite(_ => "e")));
         }
 
-        public static Rule Rule1f()
+        public static Rule Rule3f()
         {
             return R.Rule(c => c
                 .Id("p1c6r3f")
@@ -167,7 +214,7 @@ namespace Phonos.French.SubSystems
                     .Rewrite(_ => "e")));
         }
 
-        public static Rule Rule1g()
+        public static Rule Rule3g()
         {
             return R.Rule(c => c
                 .Id("p1c6r3g")
@@ -183,7 +230,7 @@ namespace Phonos.French.SubSystems
                     .Rewrite(_ => "")));
         }
 
-        public static Rule Rule1h()
+        public static Rule Rule3h()
         {
             return R.Rule(c => c
                 .Id("p1c6r3h")

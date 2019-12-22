@@ -1,4 +1,68 @@
-﻿p1c6r3a:
+﻿p1c6r1a:
+    src: Zink p.39
+    context: Amuïssements précoces des post-toniques
+    rules: Syncope des voyelles post-toniques entre une occlusive orale et une consonne liquide
+    from: 0
+    to: 200
+    samples:
+        ambulat:
+            _graph: a m b u l a t
+            _accent: tonic:2 post-tonic:2 final:3
+            amblat: a m b l a t
+        ɔrikula:
+            _graph: au r i c u l a
+            _accent: initial:1 tonic:2 post-tonic:2 final:2
+            ɔrikla: au r i c l a
+        ɔkulum:
+            _graph: o c u l u m
+            _accent: tonic:1 post-tonic:2 final:3
+            ɔklum: o c l u m
+        tabula:
+            _graph: t a b u l a
+            _accent: tonic:2 post-tonic:2 final:2
+            tabla: t a b l a
+            
+p1c6r1b:
+    src: Zink p.39
+    context: Amuïssements précoces des post-toniques
+    rules: Syncope des voyelles post-toniques entre une consonne homorganique et une dentale
+    from: 0
+    to: 200
+    samples:
+        kalidum:
+            _graph: c a l i d u m
+            _accent: tonic:2 post-tonic:2 final:3
+            kaldum: c a l d u m
+        wiridem:
+            _graph: v i r i d e m
+            _accent: tonic:2 post-tonic:2 final:3
+            wirdem: v i r d e m
+        genita:
+            _graph: g e n i t a
+            _accent: tonic:2 post-tonic:2 final:2
+            genta: g e n t a
+        kɛsita:
+            _graph: qu ae s i t a
+            _accent: tonic:2 post-tonic:2 final:2
+            kɛsta: qu ae s t a
+
+p1c6r1c:
+    src: Zink p.39
+    context: Amuïssements précoces des post-toniques
+    rules: Syncope des voyelles post-toniques suivies d'un /a/ final
+    from: 0
+    to: 200
+    samples:
+        debita:
+            _graph: d e b i t a
+            _accent: tonic:2 post-tonic:2 final:2
+            debta: d e b t a
+        mowita:
+            _graph: m o v i t a
+            _accent: tonic:2 post-tonic:2 final:2
+            mowta: m o v t a
+
+p1c6r3a:
     src: Zink p.43-45
     context: Effacement des voyelles finales
     rules: Affaiblissement de /a/ final
