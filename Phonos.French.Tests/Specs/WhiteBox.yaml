@@ -1,4 +1,19 @@
-﻿ferum:
+﻿
+cor:
+    - kor => cor
+    - kɔr => cor
+    - kɔɔ̯r => cor
+    - kuɔ̯r => cuor
+    - kuo̯r => cuor
+    - kue̯r => cuer
+    - kye̯r => cuer
+    - kyø̯r => cuer
+    - kɥør => cuer
+    - kør => cœur
+    - kœr => cœur
+    - kœʁ => cœur
+
+ferum:
     - ferum => ferum
     - feru => feru
     - fɛru => feru
@@ -10,6 +25,20 @@
     - fjer => fier
     - fjɛr => fier
     - fjɛʁ => fier
+
+mare:
+    - mare => mare
+    - marɛ => mare
+    - maa̯rɛ => mare
+    - maɛ̯rɛ => mare
+    - mɛɛ̯rɛ => mere  # @fixme incertitude ordre chute de la finale
+    - mɛɛ̯r => mer
+    - mɛːr => mer
+    - meːr => mer
+    - mer => mer
+    - mɛr => mer
+    - mɛʁ => mer
+
 mel:
     - mel => mel
     - mɛl => mel
@@ -18,6 +47,7 @@ mel:
     - mie̯l => miel
     - mjel => miel
     - mjɛl => miel
+
 pira.1:
     - pira => pira
     - pera => pera
@@ -33,6 +63,7 @@ pira.1:
     - pwarœ => poire
     - pwar => poire
     - pwaʁ => poire
+
 pira.2:
     - pira => pira
     - pera => pera
@@ -49,3 +80,29 @@ pira.2:
     - pɛr => poire
     - pɛʁ => poire
     - pɛʁ => paire
+
+sal:
+    - sal => sal
+    - saa̯l => sal
+    - saɛ̯l => sal
+    - sɛɛ̯l => sel
+    - sɛːl => sel
+    - seːl => sel
+    - sel => sel
+    - sɛl => sel
+
+soror:
+    - soror => soror
+    - sɔrɔr => soror
+    - sɔɔ̯rɔr => soror
+    - suɔ̯rɔr => suoror
+    - suɔ̯rr => suorr  # @fixme fictif ?
+    - suɔ̯r => suor
+    - suo̯r => suor
+    - sue̯r => suer
+    - sye̯r => suer
+    - syø̯r => suer
+    - sɥør => suer
+    - sør => sœur
+    - sœr => sœur
+    - sœʁ => sœur

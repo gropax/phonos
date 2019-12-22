@@ -30,7 +30,7 @@ namespace Phonos.Core.Tests.TestData
                     steps.Add(new WhiteBoxStep(phono, graphicalForms));
                 }
 
-                var latin = steps[0].Phonemes;
+                var latin = steps[0].GraphicalForms[0];
 
                 yield return new WhiteBoxTest(latin, steps.ToArray());
             }
