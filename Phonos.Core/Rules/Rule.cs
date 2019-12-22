@@ -139,7 +139,8 @@ namespace Phonos.Core.Rules
             }
 
             while (enumerator.MoveNext())
-                newGraphemes.Add(enumerator.Current.Translate(shift));
+                if (enumerator.Current.Start + shift >= newGraphemes.Last().End)
+                    newGraphemes.Add(enumerator.Current.Translate(shift));
 
             return new Alignment<string>(newGraphemes);
         }

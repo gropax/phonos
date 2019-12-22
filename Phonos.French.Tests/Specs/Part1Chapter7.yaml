@@ -1,0 +1,61 @@
+﻿p1c7r1a:
+    src: Zink p.47-48
+    context: Évolution de /ə/ final
+    rules: Labialisation de /ə/
+    from: 1500
+    to: 1600
+    samples:
+        armə:
+            _graph: a r m e
+            armœ: a r m e
+
+p1c7r1b:
+    src: Zink p.47-48
+    context: Évolution de /ə/ final
+    rules: Effacement de /œ/ après consonne
+    from: 1600
+    to: 1700
+    samples:
+        armœ:
+            _graph: a r m e
+            arm: a r m e
+
+p1c7r1c:
+    src: Zink p.47-48
+    context: Évolution de /ə/ final
+    rules: Effacement de /œ/ et allongement de la voyelle précédente
+    from: 1600
+    to: 1700
+    samples:
+        ryœ:
+            _graph: r u e
+            ryː: r ue
+        viœ:
+            _graph: v i e
+            viː: v ie
+        amiœ:
+            _graph: a m i e
+            amiː: a m ie
+        porteœ:
+            _graph: p o r t é e
+            porteː: p o r t ée
+
+p1c7r1d:
+    src: Zink p.47-48
+    context: Évolution de /ə/ final
+    rules: Abrègement des voyelles longues finales
+    from: 1900
+    to: 1910
+    samples:
+        ʁyː:
+            _graph: r ue
+            ʁy: r ue
+        viː:
+            _graph: v ie
+            vi: v ie
+        amiː:
+            _graph: a m ie
+            ami: a m ie
+        porteː:
+            _graph: p o r t ée
+            porte: p o r t ée

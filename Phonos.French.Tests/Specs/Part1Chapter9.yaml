@@ -186,11 +186,11 @@ p1c9r2h:
     to: 1300
     samples:
         sɥør:
-            _graph: s ue r
+            _graph: s u e r
             _accent: tonic:3
             sør: s œu r
         kɥør:
-            _graph: c ue r
+            _graph: c u e r
             _accent: tonic:3
             kør: c œu r
 

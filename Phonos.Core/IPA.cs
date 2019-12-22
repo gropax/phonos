@@ -19,6 +19,13 @@ namespace Phonos.Core
             return VOWELS.Contains(phoneme[0].ToString());
         }
 
+        public static bool IsLongVowel(string phoneme)
+        {
+            return VOWELS.Contains(phoneme[0].ToString())
+                && phoneme[phoneme.Length - 1] == 'ː';
+        }
+
+
         public static string[] OCCLUSIVES = new []
         {
             "p", "b", "p̪", "b̪", "t̼", "d̼", "t", "d", "ʈ", "ɖ",

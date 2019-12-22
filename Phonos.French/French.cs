@@ -23,6 +23,7 @@ namespace Phonos.French
         {
             return new IRule[0]
                 .Concat(Part1Chapter6.Rules())
+                .Concat(Part1Chapter7.Rules())
                 .Concat(Part1Chapter8.Rules())
                 .Concat(Part1Chapter9.Rules())
                 .Concat(Part1Chapter13.Rules())
