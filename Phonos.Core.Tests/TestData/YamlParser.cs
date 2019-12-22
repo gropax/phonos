@@ -238,7 +238,7 @@ namespace Phonos.Core.Tests.TestData
             return new DateInfo(date, certain);
         }
 
-        public char[] Range1 = new[] { 'ʷ', 'ʰ', 'ː' };
+        public char[] Range1 = new[] { 'ʷ', 'ʰ', 'ː', '̃' };
         public char[] Range2 = new[] { '̯' };
         public string[] ParsePhonemes(string phonStr)
         {
