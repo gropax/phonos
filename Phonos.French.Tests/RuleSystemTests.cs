@@ -115,8 +115,8 @@ namespace Phonos.French.Tests
             var real = derived[index];
 
             Assert.Equal(
-                expected.Intervals.Select(i => i.Value).ToArray(),
-                real.Intervals.Select(i => i.Value).ToArray());
+                expected.Intervals.OrderBy(i => i.Start).ThenBy(i => i.End).Select(i => i.Value).ToArray(),
+                real.Intervals.OrderBy(i => i.Start).ThenBy(i => i.End).Select(i => i.Value).ToArray());
         }
 
         protected void TestRule(Rule rule, string[] data)
