@@ -62,6 +62,25 @@ p1c6r1c:
             _accent: tonic:2 post-tonic:2 final:2
             mowta: m o v t a
 
+p1c6r1d:
+    src: Zink p.40
+    context: Amuïssements précoces des post-toniques
+    rules: "Consonification de /ǐ/, /ě/ et /ǔ/ en hiatus"
+    from: 0
+    to: 100
+    samples:
+        gɔdia:
+            _graph: g au d i a
+            gɔdja: g au d i a
+        nɔsea:
+            _graph: n au s e a
+            nɔsja: n au s e a
+        widua:
+            _graph: v i d u a
+            widwa: v i d u a
+
+
+
 p1c6r3a:
     src: Zink p.43-45
     context: Effacement des voyelles finales
@@ -108,14 +127,14 @@ p1c6r3c:
     from: 600
     to: 700
     samples:
-        robʤo:
+        robʤʲo:
             _graph: r o b gi o
             _accent: tonic:3 final:2
-            robʤə: r o b gi e
-        ɔrʤo:
+            robʤʲə: r o b gi e
+        ɔrʤʲo:
             _graph: o r gi o
             _accent: tonic:2 final:2
-            ɔrʤə: o r gi e
+            ɔrʤʲə: o r gi e
         heɫmo:
             _graph: h e l m o
             _accent: tonic:3 final:2
@@ -160,10 +179,10 @@ p1c6r3e:
     from: 600
     to: 700
     samples:
-        robʤ:  # fictif
+        robʤʲ:  # fictif
             _graph: r o b gi
             _accent: tonic:4
-            robʤə: r o b gi e
+            robʤʲə: r o b gi e
         heɫm:  # fictif
             _graph: h e l m
             _accent: tonic:4

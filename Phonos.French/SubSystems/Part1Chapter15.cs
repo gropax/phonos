@@ -11,9 +11,8 @@ namespace Phonos.French.SubSystems
     {
         public static IRule[] Rules()
         {
-            return new IRule[]
-            {
-            };
+            return RuleComponents();
+            //return new IRule[] { };
         }
 
         public static IRule[] RuleComponents()
@@ -23,7 +22,7 @@ namespace Phonos.French.SubSystems
                 Rule1a(), Rule1b(), Rule1c(), Rule1d(), Rule1e(), Rule1f(),
                 Rule2a(), Rule2b(), Rule2c(), Rule2d(),
                 Rule3a(), Rule3b(), Rule3c(), Rule3d(), Rule3e(), Rule3f(), Rule3g(), Rule3h(), Rule3i(), Rule3j(), Rule3k(),
-                //Rule4a(), Rule4b(), Rule4c(), Rule4d(),
+                Rule4a(), Rule4b(), Rule4c(), Rule4d(),
                 //Rule5a(), Rule5b(), Rule5c(), Rule5d(), Rule5e(),
                 //Rule6a(), Rule6b(), Rule6c(), Rule6d(), Rule6e(), Rule6f(), Rule6g(), Rule6h(), Rule6i(),
             };
@@ -319,6 +318,67 @@ namespace Phonos.French.SubSystems
                 .Rules(r => r
                     .Named("Dentalisation de /kkʲ/")
                     .Phono(px => new[] { "t", "tʲ" })));
+        }
+
+
+
+        public static Rule Rule4a()
+        {
+            return R.Rule(c => c
+                .Id("p1c15r4a")
+                .From(200).To(300)
+                .Query(q => q
+                    .Before(b => b.Phon(IPA.IsVowel))
+                    .Match(m => m.Seq(s => s.Phon("s"), s => s.Phon("j")))
+                    .After(a => a.Phon(IPA.IsVowel)))
+                .Rules(r => r
+                    .Named("Palatalisation de /sj/ intervocalique")
+                    .Phono(px => new[] { "j", "sʲ" })
+                    .Rewrite(_ => "isi")));
+        }
+
+        public static Rule Rule4b()
+        {
+            return R.Rule(c => c
+                .Id("p1c15r4b")
+                .From(300).To(400)
+                .Query(q => q
+                    .Before(b => b.Phon("j"))
+                    .Match(m => m.Phon("sʲ"))
+                    .After(a => a.Phon(IPA.IsVowel)))
+                .Rules(r => r
+                    .Named("Sonorisation de /sʲ/ intervocalique")
+                    .Phono(px => new[] { "zʲ" })));
+        }
+
+        public static Rule Rule4c()
+        {
+            return R.Rule(c => c
+                .Id("p1c15r4c")
+                .From(200).To(300)
+                .Query(q => q
+                    .Before(b => b.Phon(IPA.IsVowel))
+                    .Match(m => m.Seq(s => s.Phon("s"), s => s.Phon("s"), s => s.Phon("j")))
+                    .After(a => a.Phon(IPA.IsVowel)))
+                .Rules(r => r
+                    .Named("Palatalisation de /ssj/ intervocalique")
+                    .Phono(px => new[] { "j", "s", "sʲ" })
+                    .Rewrite(_ => "issi")));
+        }
+
+        public static Rule Rule4d()
+        {
+            return R.Rule(c => c
+                .Id("p1c15r4d")
+                .From(200).To(300)
+                .Query(q => q
+                    .Before(b => b.Phon(IPA.IsVowel))
+                    .Match(m => m.Seq(s => s.Phon("r"), s => s.Phon("j")))
+                    .After(a => a.Phon(IPA.IsVowel)))
+                .Rules(r => r
+                    .Named("Palatalisation de /rj/ intervocalique")
+                    .Phono(px => new[] { "j", "rʲ" })
+                    .Rewrite(_ => "iri")));
         }
     }
 }

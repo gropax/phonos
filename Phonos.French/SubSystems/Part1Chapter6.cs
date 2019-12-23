@@ -13,7 +13,7 @@ namespace Phonos.French.SubSystems
         {
             return new[]
             {
-                Rule1a(), Rule1b(), Rule1c(),
+                Rule1a(), Rule1b(), Rule1c(), Rule1d(),
                 RuleSet3(),  // Voyelles finales
                 Rule4a(), Rule4b(), Rule4c(),
             };
@@ -23,7 +23,7 @@ namespace Phonos.French.SubSystems
         {
             return new[]
             {
-                Rule1a(), Rule1b(), Rule1c(),
+                Rule1a(), Rule1b(), Rule1c(), Rule1d(),
                 Rule3a(), Rule3b(), Rule3c(), Rule3d(), Rule3e(), Rule3f(), Rule3g(), Rule3h(),
                 Rule4a(), Rule4b(), Rule4c(),
                 RuleSet3a(), RuleSet3b(), RuleSet3()
@@ -100,6 +100,22 @@ namespace Phonos.French.SubSystems
                     .Named("Syncope des voyelles post-toniques suivies d'un /a/ final")
                     .Phono(P.Erase).Rewrite(G.Erase)));
         }
+
+        public static Rule Rule1d()
+        {
+            return R.Rule(c => c
+                .Id("p1c6r1d")
+                .From(0).To(100)
+                .Query(q => q
+                    .Match(m => m.Phon("i", "e", "u").Without("accent", "tonic"))
+                    .After(a => a.Phon(IPA.IsVowel)))
+                .Rules(r => r
+                    .Named("Consonification de /ǐ/, /ě/ et /ǔ/ en hiatus")
+                    .Phono(P.Consonify)));
+        }
+
+
+
         public static Rule Rule3a()
         {
             return R.Rule(c => c
@@ -139,7 +155,7 @@ namespace Phonos.French.SubSystems
                 .Query(
                     q => q
                         .Match(m => m.Phon(IPA.IsVowel).With("accent", "final"))
-                        .Before(b => b.Seq(s => s.Phon(IPA.CONSONANTS), s => s.Phon("ʤ"))),
+                        .Before(b => b.Seq(s => s.Phon(IPA.CONSONANTS), s => s.Phon("ʤʲ"))),
                     q => q
                         .Match(m => m.Phon(IPA.IsVowel).With("accent", "final"))
                         .Before(b => b.Seq(s => s.Phon("ɫ"), s => s.Phon("m", "n"))),
@@ -180,7 +196,7 @@ namespace Phonos.French.SubSystems
                 .Query(
                     q => q
                         .Match(m => m.Nothing())
-                        .Before(b => b.Seq(s => s.Phon(IPA.CONSONANTS), s => s.Phon("ʤ")))
+                        .Before(b => b.Seq(s => s.Phon(IPA.CONSONANTS), s => s.Phon("ʤʲ")))
                         .After(a => a.End()),
                     q => q
                         .Match(m => m.Nothing())

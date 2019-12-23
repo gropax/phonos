@@ -40,6 +40,20 @@ ferum:
     - fjɛr => fier
     - fjɛʁ => fier
 
+georgium:
+    - georgium => georgium
+    - georgiu => georgiu
+    - gjɔrgju => georgiu
+    - gʲɔrgʲu => georgiu
+    - dʲɔrdʲu => georgiu
+    - ʣʲɔrʣʲu => georgiu
+    - ʣʲɔrʣʲo => georgio
+    - ʣɔrʣo => georgio
+    - ʣɔrʣə => georgie
+    - ʒɔrʒə => georgie
+    - ʒɔrʒ => georgie
+    - ʒɔʁʒ => georgie
+
 mare:
     - mare => mare
     - marɛ => mare
