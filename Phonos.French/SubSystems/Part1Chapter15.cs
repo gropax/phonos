@@ -24,7 +24,7 @@ namespace Phonos.French.SubSystems
                 Rule3a(), Rule3b(), Rule3c(), Rule3d(), Rule3e(), Rule3f(), Rule3g(), Rule3h(), Rule3i(), Rule3j(), Rule3k(),
                 Rule4a(), Rule4b(), Rule4c(), Rule4d(),
                 Rule5a(), Rule5b(), Rule5c(), Rule5d(), Rule5e(),
-                //Rule6a(), Rule6b(), Rule6c(), Rule6d(), Rule6e(), Rule6f(), Rule6g(), Rule6h(), Rule6i(),
+                Rule6a(), Rule6b(), Rule6c(), Rule6d(), Rule6e(), Rule6f(), Rule6g(), Rule6h(),
             };
         }
 
@@ -444,6 +444,114 @@ namespace Phonos.French.SubSystems
                 .Rules(r => r
                     .Named("Dépalatalisation partielle de /jɲʲ/")
                     .Phono(px => new[] { "ɲ" })));
+        }
+
+
+
+        public static Rule Rule6a()
+        {
+            return R.Rule(c => c
+                .Id("p1c15r6a")
+                .From(-100).To(0)
+                .Query(q => q
+                    .Before(b => b.Phon("p"))
+                    .Match(m => m.Phon("j")))
+                .Rules(r => r
+                    .Named("Assourdissement de /j/ après /p/")
+                    .Phono(px => new[] { "j̊" })));
+        }
+
+        public static Rule Rule6b()
+        {
+            return R.Rule(c => c
+                .Id("p1c15r6b")
+                .From(200).To(250)
+                .Query(q => q
+                    .Before(b => b.Phon("p"))
+                    .Match(m => m.Phon("j̊")))
+                .Rules(r => r
+                    .Named("Palatalisation de /pj̊/")
+                    .Phono(px => new[] { "tʲ" })
+                    .Rewrite(_ => "ti")));
+        }
+
+        public static Rule Rule6c()
+        {
+            return R.Rule(c => c
+                .Id("p1c15r6c")
+                .From(250).To(300)
+                .Query(q => q
+                    .Before(b => b.Phon("p"))
+                    .Match(m => m.Phon("tʲ")))
+                .Rules(r => r
+                    .Named("Assibilation de /ptʲ/")
+                    .Phono(px => new[] { "ʧʲ" })
+                    .Rewrite(_ => "ti")));
+        }
+
+        public static Rule Rule6d()
+        {
+            return R.Rule(c => c
+                .Id("p1c15r6d")
+                .From(600).To(700)
+                .Query(q => q.Match(m => m.Phon("ʧʲ")))
+                .Rules(r => r
+                    .Named("Dépalatalisation de /ʧʲ/")
+                    .Phono(px => new[] { "ʧ" })));
+        }
+
+        public static Rule Rule6e()
+        {
+            return R.Rule(c => c
+                .Id("p1c15r6e")
+                .From(0).To(100)
+                .Query(q => q
+                    .Match(m => m.Phon("b"))
+                    .After(a => a.Phon("j")))
+                .Rules(r => r
+                    .Named("Spirantisation de /bj/")
+                    .Phono(px => new[] { "β" })));
+        }
+
+        public static Rule Rule6f()
+        {
+            return R.Rule(c => c
+                .Id("p1c15r6f")
+                .From(200).To(250)
+                .Query(q => q
+                    .Match(m => m.Seq(s => s.Phon("β"), s => s.Phon("j"))))
+                .Rules(r => r
+                    .Named("Palatalisation et renforcement de /βj/")
+                    .Phono(px => new[] { "b", "dʲ" })
+                    .Rewrite(bj => "bd" + bj[bj.Length - 1])));
+        }
+
+        public static Rule Rule6g()
+        {
+            return R.Rule(c => c
+                .Id("p1c15r6g")
+                .From(200).To(250)
+                .Query(q => q
+                    .Before(b => b.Phon("m"))
+                    .Match(m => m.Phon("j")))
+                .Rules(r => r
+                    .Named("Palatalisation de /mj/")
+                    .Phono(px => new[] { "dʲ" })
+                    .Rewrite(j => "d" + j)));
+        }
+
+        public static Rule Rule6h()
+        {
+            return R.Rule(c => c
+                .Id("p1c15r6h")
+                .From(250).To(300)
+                .Query(q => q
+                    .Match(m => m.Phon("m"))
+                    .After(a => a.Phon("dʲ")))
+                .Rules(r => r
+                    .Named("Assimilation de /m/ devant /dʲ/")
+                    .Phono(px => new[] { "n" })
+                    .Rewrite(_ => "n")));
         }
     }
 }

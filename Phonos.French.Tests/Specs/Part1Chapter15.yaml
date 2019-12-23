@@ -429,29 +429,29 @@ p1c15r5e:
 
 p1c15r6a:
     src: Zink p.101-102
-    context: "Groupes /pç/, /bj/, /mj/ et /vj/"
+    context: "Groupes /pj̊/, /bj/, /mj/ et /vj/"
     rules: Assourdissement de /j/ après /p/
     from: -100
     to: 0
     samples:
         sapja:
             _graph: s a p i a
-            sapça: s a p i a
+            sapj̊a: s a p i a
 
 p1c15r6b:
     src: Zink p.101-102
-    context: "Groupes /pç/, /bj/, /mj/ et /vj/"
-    rules: Palatalisation de /pç/
+    context: "Groupes /pj̊/, /bj/, /mj/ et /vj/"
+    rules: Palatalisation de /pj̊/
     from: 200
     to: 250
     samples:
-        sapça:
+        sapj̊a:
             _graph: s a p i a
             saptʲa: s a p ti a
 
 p1c15r6c:
     src: Zink p.101-102
-    context: "Groupes /pç/, /bj/, /mj/ et /vj/"
+    context: "Groupes /pj̊/, /bj/, /mj/ et /vj/"
     rules: Assibilation de /ptʲ/
     from: 250
     to: 300
@@ -462,7 +462,7 @@ p1c15r6c:
 
 p1c15r6d:
     src: Zink p.101-102
-    context: "Groupes /pç/, /bj/, /mj/ et /vj/"
+    context: "Groupes /pj̊/, /bj/, /mj/ et /vj/"
     rules: Dépalatalisation de /pʧʲ/
     from: 600
     to: 700
@@ -473,7 +473,7 @@ p1c15r6d:
 
 p1c15r6e:
     src: Zink p.101-102
-    context: "Groupes /pç/, /bj/, /mj/ et /vj/"
+    context: "Groupes /pj̊/, /bj/, /mj/ et /vj/"
     rules: Spirantisation de /bj/
     from: 0
     to: 100
@@ -484,7 +484,7 @@ p1c15r6e:
 
 p1c15r6f:
     src: Zink p.101-102
-    context: "Groupes /pç/, /bj/, /mj/ et /vj/"
+    context: "Groupes /pj̊/, /bj/, /mj/ et /vj/"
     rules: Palatalisation et renforcement de /βj/
     from: 200
     to: 250
@@ -495,20 +495,7 @@ p1c15r6f:
 
 p1c15r6g:
     src: Zink p.101-102
-    context: "Groupes /pç/, /bj/, /mj/ et /vj/"
-    rules: Assibilation de /bdʲ/
-    from: 250
-    to: 300
-    samples:
-        sabdʲa:
-            _graph: s a b di a
-            sabʤʲa: s a b di a
-
-# @check Dépalatalisation de /ʤʲ/ doit être faite plus haut
-
-p1c15r6h:
-    src: Zink p.101-102
-    context: "Groupes /pç/, /bj/, /mj/ et /vj/"
+    context: "Groupes /pj̊/, /bj/, /mj/ et /vj/"
     rules: Palatalisation de /mj/
     from: 200
     to: 250
@@ -520,18 +507,16 @@ p1c15r6h:
             _graph: c o m m e a t u
             kommdʲatu: c o m m de a t u
 
-# @check Assibilation de /dʲ/ doit être faite plus haut
-
-p1c15r6i:
+p1c15r6h:
     src: Zink p.101-102
-    context: "Groupes /pç/, /bj/, /mj/ et /vj/"
+    context: "Groupes /pj̊/, /bj/, /mj/ et /vj/"
     rules: Assimilation de /mdʲ/
     from: 250
     to: 300
     samples:
         simdʲu:
-            _graph: s i m i u
-            sindʲu: s i m di u
+            _graph: s i m di u
+            sindʲu: s i n di u
         komdʲatu:
             _graph: c o m de a t u
             kondʲatu: c o n de a t u
