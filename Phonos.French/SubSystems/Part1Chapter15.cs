@@ -21,7 +21,7 @@ namespace Phonos.French.SubSystems
             return new[]
             {
                 Rule1a(), Rule1b(), Rule1c(), Rule1d(), Rule1e(), Rule1f(),
-                //Rule2a(), Rule2b(), Rule2c(), Rule2d(),
+                Rule2a(), Rule2b(), Rule2c(), Rule2d(),
                 //Rule3a(), Rule3b(), Rule3c(), Rule3d(), Rule3e(), Rule3f(), Rule3g(), Rule3h(), Rule3i(), Rule3j(), Rule3k(),
                 //Rule4a(), Rule4b(), Rule4c(), Rule4d(),
                 //Rule5a(), Rule5b(), Rule5c(), Rule5d(), Rule5e(),
@@ -110,6 +110,62 @@ namespace Phonos.French.SubSystems
                         else
                             return "j";
                     })));
+        }
+
+
+
+        public static Rule Rule2a()
+        {
+            return R.Rule(c => c
+                .Id("p1c15r2a")
+                .From(0).To(100)
+                .Query(q => q
+                    .Before(b => b.Phon(IPA.IsVowel))
+                    .Match(m => m.Seq(s => s.Phon("d", "g"), s => s.Phon("j")))
+                    .After(a => a.Phon(IPA.IsVowel)))
+                .Rules(r => r
+                    .Named("Assimilation de /dj/ et /gj/ intervocalique")
+                    .Phono(px => new[] { "j", "j" })
+                    .Rewrite(g => "i")));
+        }
+
+        public static Rule Rule2b()
+        {
+            return R.Rule(c => c
+                .Id("p1c15r2b")
+                .From(200).To(250)
+                .Query(q => q
+                    .Scope("syllable")
+                    .Before(Q.Start)
+                    .Match(m => m.Seq(s => s.Phon("d"), s => s.Phon("j"))))
+                .Rules(r => r
+                    .Named("Palatalisation de /dj/ en position forte")
+                    .Phono(px => new[] { "dʲ" })));
+        }
+
+        public static Rule Rule2c()
+        {
+            return R.Rule(c => c
+                .Id("p1c15r2c")
+                .From(200).To(225)
+                .Query(q => q
+                    .Scope("syllable")
+                    .Before(Q.Start)
+                    .Match(m => m.Seq(s => s.Phon("g"), s => s.Phon("j"))))
+                .Rules(r => r
+                    .Named("Palatalisation de /gj/ en position forte")
+                    .Phono(px => new[] { "gʲ" })));
+        }
+
+        public static Rule Rule2d()
+        {
+            return R.Rule(c => c
+                .Id("p1c15r2d")
+                .From(225).To(250)
+                .Query(q => q.Match(m => m.Phon("gʲ")))
+                .Rules(r => r
+                    .Named("Dentalisation de /gʲ/")
+                    .Phono(px => new[] { "dʲ" })));
         }
     }
 }

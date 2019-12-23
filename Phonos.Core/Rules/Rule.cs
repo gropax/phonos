@@ -76,6 +76,7 @@ namespace Phonos.Core.Rules
 
             var annotations = new List<Interval<string>>();
             int shift = 0;
+            int lastPosition = 0;
 
             foreach (var i in replacements)
             {
@@ -96,10 +97,12 @@ namespace Phonos.Core.Rules
                 var realignedAnnotation = new Interval<string>(range, orignalAnnotations.Value);
 
                 while (enumerator.MoveNext() && enumerator.Current.End <= orignalAnnotations.Start)
-                    annotations.Add(enumerator.Current.Translate(shift));
+                    if (enumerator.Current.Start >= lastPosition)
+                        annotations.Add(enumerator.Current.Translate(shift));
 
                 annotations.Add(realignedAnnotation);
 
+                lastPosition = orignalAnnotations.End;
                 shift += realignedAnnotation.Length - orignalAnnotations.Length;
             }
 
@@ -122,6 +125,7 @@ namespace Phonos.Core.Rules
 
             var newGraphemes = new List<Interval<string>>();
             int shift = 0;
+            int lastPosition = 0;
 
             foreach (var i in replacements)
             {
@@ -142,11 +146,13 @@ namespace Phonos.Core.Rules
                 var replacedGraphemes = new Interval<string>(range, map.Map(orignalGraphemes.Value));
 
                 while (enumerator.MoveNext() && enumerator.Current.End <= orignalGraphemes.Start)
-                    newGraphemes.Add(enumerator.Current.Translate(shift));
+                    if (enumerator.Current.Start >= lastPosition)
+                        newGraphemes.Add(enumerator.Current.Translate(shift));
 
                 if (replacedGraphemes.Value.Length > 0)
                     newGraphemes.Add(replacedGraphemes);
 
+                lastPosition = orignalGraphemes.End;
                 shift += replacedGraphemes.Length - orignalGraphemes.Length;
             }
 

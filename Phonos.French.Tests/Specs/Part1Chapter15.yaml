@@ -118,7 +118,8 @@ p1c15r2b:
     samples:
         djurnu:
             _graph: d i u r n u
-            dʲurnu: d i u r n u
+            _syllable: long:4 short:2
+            dʲurnu: di u r n u
 
 p1c15r2c:
     src: Zink p.95-96
@@ -129,6 +130,7 @@ p1c15r2c:
     samples:
         gjorgju:
             _graph: g e o r g i u
+            _syllable: long:4 short:3
             gʲorgʲu: ge o r gi u
 
 p1c15r2d:
@@ -140,7 +142,8 @@ p1c15r2d:
     samples:
         gʲorgʲu:
             _graph: ge o r gi u
-            dʲordʲu:: ge o r gi u
+            _syllable: long:3 short:2
+            dʲordʲu: ge o r gi u
 
 
 
