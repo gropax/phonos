@@ -22,7 +22,7 @@ namespace Phonos.French.SubSystems
             {
                 Rule1a(), Rule1b(), Rule1c(), Rule1d(), Rule1e(), Rule1f(),
                 Rule2a(), Rule2b(), Rule2c(), Rule2d(),
-                //Rule3a(), Rule3b(), Rule3c(), Rule3d(), Rule3e(), Rule3f(), Rule3g(), Rule3h(), Rule3i(), Rule3j(), Rule3k(),
+                Rule3a(), Rule3b(), Rule3c(), Rule3d(), Rule3e(), Rule3f(), Rule3g(), Rule3h(), Rule3i(), Rule3j(), Rule3k(),
                 //Rule4a(), Rule4b(), Rule4c(), Rule4d(),
                 //Rule5a(), Rule5b(), Rule5c(), Rule5d(), Rule5e(),
                 //Rule6a(), Rule6b(), Rule6c(), Rule6d(), Rule6e(), Rule6f(), Rule6g(), Rule6h(), Rule6i(),
@@ -166,6 +166,159 @@ namespace Phonos.French.SubSystems
                 .Rules(r => r
                     .Named("Dentalisation de /gʲ/")
                     .Phono(px => new[] { "dʲ" })));
+        }
+
+
+
+        public static Rule Rule3a()
+        {
+            return R.Rule(c => c
+                .Id("p1c15r3a")
+                .From(100).To(150)
+                .Query(q => q
+                    .Scope("syllable")
+                    .Before(Q.Start)
+                    .Match(m => m.Seq(s => s.Phon("t"), s => s.Phon("j"))))
+                .Rules(r => r
+                    .Named("Palatalisation de /tj/ en position forte")
+                    .Phono(px => new[] { "tʲ" })));
+        }
+
+        public static Rule Rule3b()
+        {
+            return R.Rule(c => c
+                .Id("p1c15r3b")
+                .From(150).To(200)
+                .Query(q => q
+                    .Match(m => m.Phon("tʲ")))
+                .Rules(r => r
+                    .Named("Assibilation de /tʲ/")
+                    .Phono(px => new[] { "ʦʲ" })
+                    .Rewrite(_ => "tsi")));
+        }
+
+        public static Rule Rule3c()
+        {
+            return R.Rule(c => c
+                .Id("p1c15r3c")
+                .From(600).To(700)
+                .Query(q => q
+                    .Match(m => m.Phon("ʦʲ")))
+                .Rules(r => r
+                    .Named("Dépalatalisation de /ʦʲ/")
+                    .Phono(px => new[] { "ʦ" })
+                    .Rewrite(_ => "ts")));
+        }
+
+        public static Rule Rule3d()
+        {
+            return R.Rule(c => c
+                .Id("p1c15r3d")
+                .From(100).To(125)
+                .Query(q => q
+                    .Scope("syllable")
+                    .Before(Q.Start)
+                    .Match(m => m.Seq(s => s.Phon("k"), s => s.Phon("j"))))
+                .Rules(r => r
+                    .Named("Palatalisation de /kj/ en position forte")
+                    .Phono(px => new[] { "kʲ" })));
+        }
+
+        public static Rule Rule3e()
+        {
+            return R.Rule(c => c
+                .Id("p1c15r3e")
+                .From(125).To(150)
+                .Query(q => q
+                    .Match(m => m.Phon("kʲ")))
+                .Rules(r => r
+                    .Named("Dentalisation de /kʲ/")
+                    .Phono(px => new[] { "tʲ" })));
+        }
+
+        public static Rule Rule3f()
+        {
+            return R.Rule(c => c
+                .Id("p1c15r3f")
+                .From(100).To(150)
+                .Query(q => q
+                    .Before(b => b.Phon(IPA.IsVowel))
+                    .Match(m => m.Seq(s => s.Phon("t"), s => s.Phon("j")))
+                    .After(a => a.Phon(IPA.IsVowel)))
+                .Rules(r => r
+                    .Named("Palatalisation de /tj/ intervocalique")
+                    .Phono(px => new[] { "j", "tʲ" })
+                    .Rewrite(_ => "iti")));
+        }
+
+        public static Rule Rule3g()
+        {
+            return R.Rule(c => c
+                .Id("p1c15r3g")
+                .From(150).To(200)
+                .Query(q => q
+                    .Before(b => b.Phon("j"))
+                    .Match(m => m.Phon("tʲ"))
+                    .After(a => a.Phon(IPA.IsVowel)))
+                .Rules(r => r
+                    .Named("Assibilation de /tʲ/ intervocalique")
+                    .Phono(px => new[] { "ʦʲ" })
+                    .Rewrite(_ => "tsi")));
+        }
+
+        public static Rule Rule3h()
+        {
+            return R.Rule(c => c
+                .Id("p1c15r3h")
+                .From(300).To(400)
+                .Query(q => q
+                    .Before(b => b.Phon("j"))
+                    .Match(m => m.Phon("ʦʲ"))
+                    .After(a => a.Phon(IPA.IsVowel)))
+                .Rules(r => r
+                    .Named("Sonorisation de /ʦʲ/ intervocalique")
+                    .Phono(px => new[] { "ʣʲ" })
+                    .Rewrite(_ => "dzi")));
+        }
+
+        public static Rule Rule3i()
+        {
+            return R.Rule(c => c
+                .Id("p1c15r3i")
+                .From(600).To(700)
+                .Query(q => q
+                    .Before(b => b.Phon("j"))
+                    .Match(m => m.Phon("ʣʲ")))
+                .Rules(r => r
+                    .Named("Dépalatalisation de /ʣʲ/ intervocalique")
+                    .Phono(px => new[] { "ʣ" })
+                    .Rewrite(_ => "dz")));
+        }
+
+        public static Rule Rule3j()
+        {
+            return R.Rule(c => c
+                .Id("p1c15r3j")
+                .From(100).To(125)
+                .Query(q => q
+                    .Before(b => b.Phon(IPA.IsVowel))
+                    .Match(m => m.Seq(s => s.Phon("k"), s => s.Phon("j")))
+                    .After(a => a.Phon(IPA.IsVowel)))
+                .Rules(r => r
+                    .Named("Palatalisation et gémination de /kj/ intervocalique")
+                    .Phono(px => new[] { "k", "kʲ" })));
+        }
+
+        public static Rule Rule3k()
+        {
+            return R.Rule(c => c
+                .Id("p1c15r3k")
+                .From(125).To(150)
+                .Query(q => q
+                    .Match(m => m.Seq(s => s.Phon("k"), s => s.Phon("kʲ"))))
+                .Rules(r => r
+                    .Named("Dentalisation de /kkʲ/")
+                    .Phono(px => new[] { "t", "tʲ" })));
         }
     }
 }

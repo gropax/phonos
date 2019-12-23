@@ -156,10 +156,12 @@ p1c15r3a:
     samples:
         fortja:
             _graph: f o r t i a
-            fortʲa:: f o r ti a
+            _syllable: long:3 short:3
+            fortʲa: f o r ti a
         plattja:
             _graph: p l a t t i a
-            plattʲa:: p l a t ti a
+            _syllable: long:4 short:3
+            plattʲa: p l a t ti a
 
 p1c15r3b:
     src: Zink p.96-98
@@ -170,10 +172,10 @@ p1c15r3b:
     samples:
         fortʲa:
             _graph: f o r ti a
-            forʦʲa:: f o r tsi a
+            forʦʲa: f o r tsi a
         plattʲa:
             _graph: p l a t ti a
-            platʦʲa:: p l a t tsi a
+            platʦʲa: p l a t tsi a
 
 p1c15r3c:
     src: Zink p.96-98
@@ -184,10 +186,10 @@ p1c15r3c:
     samples:
         forʦʲa:
             _graph: f o r tsi a
-            forʦa:: f o r ts a
+            forʦa: f o r ts a
         platʦʲa:
             _graph: p l a t tsi a
-            platʦa:: p l a t ts a
+            platʦa: p l a t ts a
 
 p1c15r3d:
     src: Zink p.96-98
@@ -198,6 +200,7 @@ p1c15r3d:
     samples:
         lankja:
             _graph: l a n c e a
+            _syllable: long:3 short:3
             lankʲa: l a n ce a
 
 p1c15r3e:
@@ -222,9 +225,11 @@ p1c15r3f:
     samples:
         ratjone:
             _graph: r a t i o n e
+            _syllable: long:2 long:3 short:2
             rajtʲone: r a i ti o n e
         palatju:
             _graph: p a l a t i u
+            _syllable: short:2 long:2 short:3
             palajtʲu: p a l a i ti u
 
 p1c15r3g:
