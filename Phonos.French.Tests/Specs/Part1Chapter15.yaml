@@ -18,10 +18,12 @@ p1c15r1b:
     samples:
         maj:
             _graph: m a i
-            mai̯: m a i
+            _syllable: long:3
+            mai̯: m ai
         majrə:
             _graph: m a i r e
-            mai̯rə: m a i r e
+            _syllable: long:3 short:2
+            mai̯rə: m ai r e
 
 p1c15r1c:
     src: Zink p.93-94, http://www.diachronie.be/cours_grammaire/phonetique/457.html
@@ -76,14 +78,20 @@ p1c15r1f:
     to: 1300
     samples:
         ʤurer:
-            _graph: j u r a r e
-            ʒurare: j u r a r e
+            _graph: j u r e r 
+            ʒurer: j u r e r 
         ʤurn:
             _graph: di u r n
             ʒurn: j u r n
         ʤorʤə:
-            _graph: ge o r g e
-            ʒorʒə: ge o r g e
+            _graph: ge o r gi e
+            ʒorʒə: ge o r ge e
+        ʤurn:  # fictif
+            _graph: de u r n
+            ʒurn: j u r n
+        ʤurn:  # fictif
+            _graph: gi u r n
+            ʒurn: ge u r n
 
 # Rule 2
 
@@ -133,6 +141,8 @@ p1c15r2d:
         gʲorgʲu:
             _graph: ge o r gi u
             dʲordʲu:: ge o r gi u
+
+
 
 p1c15r3a:
     src: Zink p.96-98
@@ -242,7 +252,7 @@ p1c15r3h:
             _graph: p a l a i tsi u
             palajʣʲu: p a l a i dzi u
 
-p1c15r3h:
+p1c15r3i:
     src: Zink p.96-98
     context: Groupes /tj/ et /kj/
     rules: Dépalatalisation de /ʣʲ/ intervocalique
@@ -258,7 +268,7 @@ p1c15r3h:
 
 # @todo Formation de la diphtongue de coalescence
 
-p1c15r3i:
+p1c15r3j:
     src: Zink p.96-98
     context: Groupes /tj/ et /kj/
     rules: Palatalisation et gémination de /kj/
@@ -272,7 +282,7 @@ p1c15r3i:
             _graph: f a c i o
             fakkʲo: f a ci:2 o
 
-p1c15r3j:
+p1c15r3k:
     src: Zink p.96-98
     context: Groupes /tj/ et /kj/
     rules: Dentalisation de /kkʲ/
