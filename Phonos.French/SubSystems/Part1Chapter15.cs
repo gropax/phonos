@@ -23,7 +23,7 @@ namespace Phonos.French.SubSystems
                 Rule2a(), Rule2b(), Rule2c(), Rule2d(),
                 Rule3a(), Rule3b(), Rule3c(), Rule3d(), Rule3e(), Rule3f(), Rule3g(), Rule3h(), Rule3i(), Rule3j(), Rule3k(),
                 Rule4a(), Rule4b(), Rule4c(), Rule4d(),
-                //Rule5a(), Rule5b(), Rule5c(), Rule5d(), Rule5e(),
+                Rule5a(), Rule5b(), Rule5c(), Rule5d(), Rule5e(),
                 //Rule6a(), Rule6b(), Rule6c(), Rule6d(), Rule6e(), Rule6f(), Rule6g(), Rule6h(), Rule6i(),
             };
         }
@@ -379,6 +379,71 @@ namespace Phonos.French.SubSystems
                     .Named("Palatalisation de /rj/ intervocalique")
                     .Phono(px => new[] { "j", "rʲ" })
                     .Rewrite(_ => "iri")));
+        }
+
+
+
+        public static Rule Rule5a()
+        {
+            return R.Rule(c => c
+                .Id("p1c15r5a")
+                .From(100).To(200)
+                .Query(q => q
+                    .Before(b => b.Phon(IPA.IsVowel))
+                    .Match(m => m.Seq(s => s.Phon("l"), s => s.Phon("j")))
+                    .After(a => a.Phon(IPA.IsVowel)))
+                .Rules(r => r
+                    .Named("Palatalisation de /lj/ intervocalique")
+                    .Phono(px => new[] { "j", "ʎʲ" })
+                    .Rewrite(g => "i" + g)));
+        }
+
+        public static Rule Rule5b()
+        {
+            return R.Rule(c => c
+                .Id("p1c15r5b")
+                .From(600).To(700)
+                .Query(q => q.Match(m => m.Seq(s => s.Phon("j"), s => s.Phon("ʎʲ"))))
+                .Rules(r => r
+                    .Named("Dépalatalisation partielle de /jʎʲ/")
+                    .Phono(px => new[] { "ʎ" })));
+        }
+
+        public static Rule Rule5c()
+        {
+            return R.Rule(c => c
+                .Id("p1c15r5c")
+                .From(1700).To(1800)
+                .Query(q => q.Match(m => m.Phon("ʎ")))
+                .Rules(r => r
+                    .Named("Dépalatalisation de /ʎ/")
+                    .Phono(px => new[] { "j" })));
+        }
+
+        public static Rule Rule5d()
+        {
+            return R.Rule(c => c
+                .Id("p1c15r5d")
+                .From(100).To(200)
+                .Query(q => q
+                    .Before(b => b.Phon(IPA.IsVowel))
+                    .Match(m => m.Seq(s => s.Phon("n"), s => s.Phon("j")))
+                    .After(a => a.Phon(IPA.IsVowel)))
+                .Rules(r => r
+                    .Named("Palatalisation de /nj/ intervocalique")
+                    .Phono(px => new[] { "j", "ɲʲ" })
+                    .Rewrite(g => "i" + g)));
+        }
+
+        public static Rule Rule5e()
+        {
+            return R.Rule(c => c
+                .Id("p1c15r5e")
+                .From(600).To(700)
+                .Query(q => q.Match(m => m.Seq(s => s.Phon("j"), s => s.Phon("ɲʲ"))))
+                .Rules(r => r
+                    .Named("Dépalatalisation partielle de /jɲʲ/")
+                    .Phono(px => new[] { "ɲ" })));
         }
     }
 }
