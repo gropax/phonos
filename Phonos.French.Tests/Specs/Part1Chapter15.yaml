@@ -1,0 +1,519 @@
+﻿p1c15r1a:
+    src: Zink p.93-94
+    context: Évolution de /j/
+    rules: Dégémination de /jj/ intervocalique
+    from: 600
+    to: 700
+    samples:
+        majjo:
+            _graph: m a i:2 o
+            majo: m a i o
+
+p1c15r1b:
+    src: Zink p.93-94
+    context: Évolution de /j/
+    rules: Vocalisation de /j/ et formation d'une diphtongue de coalescence
+    from: 800
+    to: 900
+    samples:
+        maj:
+            _graph: m a i
+            mai̯: m a i
+        majrə:
+            _graph: m a i r e
+            mai̯rə: m a i r e
+
+p1c15r1c:
+    src: Zink p.93-94, http://www.diachronie.be/cours_grammaire/phonetique/457.html
+    context: Évolution de /j/
+    rules: Palatalisation de /j/ initial
+    from: 200
+    to: 250
+    samples:
+        jurare:
+            _graph: j u r a r e
+            dʲurare: j u r a r e
+
+p1c15r1d:
+    src: Zink p.93-94, http://www.diachronie.be/cours_grammaire/phonetique/457.html
+    context: Évolution de /j/
+    rules: Assibilation de /dʲ/
+    from: 250
+    to: 300
+    samples:
+        dʲurare:
+            _graph: j u r a r e
+            ʤʲurare: j u r a r e
+        dʲurnu:
+            _graph: di u r n u
+            ʤʲurnu: di u r n u
+        dʲordʲu:
+            _graph: ge o r gi u
+            ʤʲorʤʲu: ge o r gi u
+
+p1c15r1e:
+    src: Zink p.93-94, http://www.diachronie.be/cours_grammaire/phonetique/457.html
+    context: Évolution de /j/
+    rules: Dépalatalisation de /ʤʲ/
+    from: 600
+    to: 700
+    samples:
+        ʤʲurare:
+            _graph: j u r a r e
+            ʤurare: j u r a r e
+        ʤʲurnu:
+            _graph: di u r n u
+            ʤurnu: di u r n u
+        ʤʲorʤʲu:
+            _graph: ge o r gi u
+            ʤorʤu: ge o r gi u
+
+p1c15r1f:
+    src: Zink p.93-94, http://www.diachronie.be/cours_grammaire/phonetique/457.html
+    context: Évolution de /j/
+    rules: Réduction de /ʤ/
+    from: 1200
+    to: 1300
+    samples:
+        ʤurer:
+            _graph: j u r a r e
+            ʒurare: j u r a r e
+        ʤurn:
+            _graph: di u r n
+            ʒurn: j u r n
+        ʤorʤə:
+            _graph: ge o r g e
+            ʒorʒə: ge o r g e
+
+# Rule 2
+
+p1c15r2a:
+    src: Zink p.95-96
+    context: Groupes /dj/ et /gj/
+    rules: Assimilation de /dj/ et /gj/ intervocalique
+    from: 0
+    to: 100
+    samples:
+        au̯djo:
+            _graph: au d i o
+            au̯jjo: au i:2 o
+        fugjo:
+            _graph: f u g i o
+            fujjo: f u i:2 o
+
+p1c15r2b:
+    src: Zink p.95-96
+    context: Groupes /dj/ et /gj/
+    rules: Palatalisation de /dj/ en position forte
+    from: 200
+    to: 250
+    samples:
+        djurnu:
+            _graph: d i u r n u
+            dʲurnu: d i u r n u
+
+p1c15r2c:
+    src: Zink p.95-96
+    context: Groupes /dj/ et /gj/
+    rules: Palatalisation de /gj/ en position forte
+    from: 200
+    to: 225
+    samples:
+        gjorgju:
+            _graph: g e o r g i u
+            gʲorgʲu: ge o r gi u
+
+p1c15r2d:
+    src: Zink p.95-96
+    context: Groupes /dj/ et /gj/
+    rules: Dentalisation de /gʲ/
+    from: 225
+    to: 250
+    samples:
+        gʲorgʲu:
+            _graph: ge o r gi u
+            dʲordʲu:: ge o r gi u
+
+p1c15r3a:
+    src: Zink p.96-98
+    context: Groupes /tj/ et /kj/
+    rules: Palatalisation de /tj/ en position forte
+    from: 100
+    to: 150
+    samples:
+        fortja:
+            _graph: f o r t i a
+            fortʲa:: f o r ti a
+        plattja:
+            _graph: p l a t t i a
+            plattʲa:: p l a t ti a
+
+p1c15r3b:
+    src: Zink p.96-98
+    context: Groupes /tj/ et /kj/
+    rules: Assibilation de /tʲ/
+    from: 150
+    to: 200
+    samples:
+        fortʲa:
+            _graph: f o r ti a
+            forʦʲa:: f o r tsi a
+        plattʲa:
+            _graph: p l a t ti a
+            platʦʲa:: p l a t tsi a
+
+p1c15r3c:
+    src: Zink p.96-98
+    context: Groupes /tj/ et /kj/
+    rules: Dépalatalisation de /ʦʲ/
+    from: 600
+    to: 700
+    samples:
+        forʦʲa:
+            _graph: f o r tsi a
+            forʦa:: f o r ts a
+        platʦʲa:
+            _graph: p l a t tsi a
+            platʦa:: p l a t ts a
+
+p1c15r3d:
+    src: Zink p.96-98
+    context: Groupes /tj/ et /kj/
+    rules: Palatalisation de /kj/ en position forte
+    from: 100
+    to: 125
+    samples:
+        lankja:
+            _graph: l a n c e a
+            lankʲa: l a n ce a
+
+p1c15r3e:
+    src: Zink p.96-98
+    context: Groupes /tj/ et /kj/
+    rules: Dentalisation de /kʲ/
+    from: 125
+    to: 150
+    samples:
+        lankʲa:
+            _graph: l a n ce a
+            lantʲa: l a n ce a
+
+# @todo Assimilation de /kt/ => /tt/ p.233
+
+p1c15r3f:
+    src: Zink p.96-98
+    context: Groupes /tj/ et /kj/
+    rules: Palatalisation de /tj/ intervocalique
+    from: 100
+    to: 150
+    samples:
+        ratjone:
+            _graph: r a t i o n e
+            rajtʲone: r a i ti o n e
+        palatju:
+            _graph: p a l a t i u
+            palajtʲu: p a l a i ti u
+
+p1c15r3g:
+    src: Zink p.96-98
+    context: Groupes /tj/ et /kj/
+    rules: Assibilation de /tʲ/ intervocalique
+    from: 150
+    to: 200
+    samples:
+        rajtʲone:
+            _graph: r a i ti o n e
+            rajʦʲone: r a i tsi o n e
+        palajtʲu:
+            _graph: p a l a i ti u
+            palajʦʲu: p a l a i tsi u
+
+p1c15r3h:
+    src: Zink p.96-98
+    context: Groupes /tj/ et /kj/
+    rules: Sonorisation de /ʦʲ/ intervocalique
+    from: 300
+    to: 400
+    samples:
+        rajʦʲone:
+            _graph: r a i tsi o n e
+            rajʣʲone: r a i dzi o n e
+        palajʦʲu:
+            _graph: p a l a i tsi u
+            palajʣʲu: p a l a i dzi u
+
+p1c15r3h:
+    src: Zink p.96-98
+    context: Groupes /tj/ et /kj/
+    rules: Dépalatalisation de /ʣʲ/ intervocalique
+    from: 600
+    to: 700
+    samples:
+        rajʣʲone:
+            _graph: r a i dzi o n e
+            rajʣone: r a i dz o n e
+        palajʣʲu:
+            _graph: p a l a i dzi u
+            palajʣu: p a l a i dz u
+
+# @todo Formation de la diphtongue de coalescence
+
+p1c15r3i:
+    src: Zink p.96-98
+    context: Groupes /tj/ et /kj/
+    rules: Palatalisation et gémination de /kj/
+    from: 100
+    to: 125
+    samples:
+        fakja:
+            _graph: f a c i a
+            fakkʲa: f a ci:2 a
+        fakjo:
+            _graph: f a c i o
+            fakkʲo: f a ci:2 o
+
+p1c15r3j:
+    src: Zink p.96-98
+    context: Groupes /tj/ et /kj/
+    rules: Dentalisation de /kkʲ/
+    from: 125
+    to: 150
+    samples:
+        fakkʲa:
+            _graph: f a ci:2 a
+            fattʲa: f a ci:2 a
+        fakkʲo:
+            _graph: f a ci:2 o
+            fattʲo: f a ci:2 o
+
+
+
+
+p1c15r4a:
+    src: Zink p.98-99
+    context: "Groupes /sj/, /ssj/ et /rj/"
+    rules: Palatalisation de /sj/ intervocalique
+    from: 200
+    to: 300
+    samples:
+        basjare:
+            _graph: b a s i a r e
+            bajsʲare: b a i si a r e
+
+p1c15r4b:
+    src: Zink p.98-99
+    context: "Groupes /sj/, /ssj/ et /rj/"
+    rules: Sonorisation de /sʲ/ intervocalique
+    from: 300
+    to: 400
+    samples:
+        bajsʲare:
+            _graph: b a s i a r e
+            bajzʲare: b a i si a r e
+
+p1c15r4c:
+    src: Zink p.98-99
+    context: "Groupes /sj/, /ssj/ et /rj/"
+    rules: Palatalisation de /ssj/ intervocalique
+    from: 200
+    to: 300
+    samples:
+        bassjare:
+            _graph: b a s s i a r e
+            bajssʲare: b a i s si a r e
+
+p1c15r4d:
+    src: Zink p.98-99
+    context: "Groupes /sj/, /ssj/ et /rj/"
+    rules: Palatalisation de /rj/ intervocalique
+    from: 200
+    to: 300
+    samples:
+        warju:
+            _graph: v a r i u
+            wajrʲu: v a i ri u
+
+
+
+p1c15r5a:
+    src: Zink p.98-99
+    context: Groupes /lj/ et /nj/
+    rules: Palatalisation de /lj/ intervocalique
+    from: 100
+    to: 200
+    samples:
+        palja:
+            _graph: p a l e a
+            pajʎʲa: p a i le a
+        konselju:
+            _graph: c o n s e l i u
+            konsejʎʲu: c o n s e i li u
+
+p1c15r5b:
+    src: Zink p.98-99
+    context: Groupes /lj/ et /nj/
+    rules: Dépalatalisation partielle de /jʎʲ/
+    from: 600
+    to: 700
+    samples:
+        pajʎʲa:
+            _graph: p a i le a
+            paʎa: p a ill a
+        konsejʎʲu:
+            _graph: c o n s e i li u
+            konseʎu: c o n s e il u
+
+p1c15r5c:
+    src: Zink p.98-99
+    context: Groupes /lj/ et /nj/
+    rules: Dépalatalisation de /ʎ/
+    from: 1700
+    to: 1800
+    samples:
+        paʎ:
+            _graph: p a ille
+            paj: p a ille
+        kõseʎ:
+            _graph: c o n s e il
+            kõsej: c o n s e il
+
+p1c15r5d:
+    src: Zink p.98-99
+    context: Groupes /lj/ et /nj/
+    rules: Palatalisation de /nj/ intervocalique
+    from: 100
+    to: 200
+    samples:
+        montanja:
+            _graph: m o n t a n e a
+            montajɲʲa: m o n t a i ne a
+        kunju:
+            _graph: c u n e u
+            kujɲʲu: c u i ne u
+
+p1c15r5e:
+    src: Zink p.98-99
+    context: Groupes /lj/ et /nj/
+    rules: Dépalatalisation partielle de /jɲʲ/
+    from: 600
+    to: 700
+    samples:
+        montajɲʲə:
+            _graph: m o n t a i ne e
+            montaɲə: m o n t a gn e
+        kojɲʲu:
+            _graph: c o i ne u
+            koɲu: c o i gn u
+
+# @todo Dépalatalisation de /ɲ/ en finale
+
+
+
+p1c15r6a:
+    src: Zink p.101-102
+    context: "Groupes /pç/, /bj/, /mj/ et /vj/"
+    rules: Assourdissement de /j/ après /p/
+    from: -100
+    to: 0
+    samples:
+        sapja:
+            _graph: s a p i a
+            sapça: s a p i a
+
+p1c15r6b:
+    src: Zink p.101-102
+    context: "Groupes /pç/, /bj/, /mj/ et /vj/"
+    rules: Palatalisation de /pç/
+    from: 200
+    to: 250
+    samples:
+        sapça:
+            _graph: s a p i a
+            saptʲa: s a p ti a
+
+p1c15r6c:
+    src: Zink p.101-102
+    context: "Groupes /pç/, /bj/, /mj/ et /vj/"
+    rules: Assibilation de /ptʲ/
+    from: 250
+    to: 300
+    samples:
+        saptʲa:
+            _graph: s a p ti a
+            sapʧʲa: s a p ti a
+
+p1c15r6d:
+    src: Zink p.101-102
+    context: "Groupes /pç/, /bj/, /mj/ et /vj/"
+    rules: Dépalatalisation de /pʧʲ/
+    from: 600
+    to: 700
+    samples:
+        savʧʲa:
+            _graph: s a v ti a
+            savʧa: s a v ti a
+
+p1c15r6e:
+    src: Zink p.101-102
+    context: "Groupes /pç/, /bj/, /mj/ et /vj/"
+    rules: Spirantisation de /bj/
+    from: 0
+    to: 100
+    samples:
+        sabja:
+            _graph: s a b i a
+            saβja: s a b i a
+
+p1c15r6f:
+    src: Zink p.101-102
+    context: "Groupes /pç/, /bj/, /mj/ et /vj/"
+    rules: Palatalisation et renforcement de /βj/
+    from: 200
+    to: 250
+    samples:
+        saβja:
+            _graph: s a b i a
+            sabdʲa: s a b di a
+
+p1c15r6g:
+    src: Zink p.101-102
+    context: "Groupes /pç/, /bj/, /mj/ et /vj/"
+    rules: Assibilation de /bdʲ/
+    from: 250
+    to: 300
+    samples:
+        sabdʲa:
+            _graph: s a b di a
+            sabʤʲa: s a b di a
+
+# @check Dépalatalisation de /ʤʲ/ doit être faite plus haut
+
+p1c15r6h:
+    src: Zink p.101-102
+    context: "Groupes /pç/, /bj/, /mj/ et /vj/"
+    rules: Palatalisation de /mj/
+    from: 200
+    to: 250
+    samples:
+        simju:
+            _graph: s i m i u
+            simdʲu: s i m di u
+        kommjatu:
+            _graph: c o m m e a t u
+            kommdʲatu: c o m m de a t u
+
+# @check Assibilation de /dʲ/ doit être faite plus haut
+
+p1c15r6i:
+    src: Zink p.101-102
+    context: "Groupes /pç/, /bj/, /mj/ et /vj/"
+    rules: Assimilation de /mdʲ/
+    from: 250
+    to: 300
+    samples:
+        simdʲu:
+            _graph: s i m i u
+            sindʲu: s i m di u
+        komdʲatu:
+            _graph: c o m de a t u
+            kondʲatu: c o n de a t u
