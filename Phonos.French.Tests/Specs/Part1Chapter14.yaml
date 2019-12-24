@@ -289,13 +289,164 @@ p1c14r4e:
             _graph: v ai n
             vẽn: v ai n
 
-p1c14r4f:
+#p1c14r4f:
+#    src: Zink p.85-88
+#    context: Nasalisation des diphtongues /ai̯/ et /ei̯/
+#    rules: Ouverture de /ẽ/
+#    from: 1250
+#    to: 1300
+#    samples:
+#        vẽn:
+#            _graph: v ai n
+#            vɛ̃n: v ai n
+
+
+
+p1c14r5a:
     src: Zink p.85-88
-    context: Nasalisation des diphtongues /ai̯/ et /ei̯/
-    rules: Ouverture de /ẽ/
-    from: 1250
-    to: 1300
+    context: Nasalisation de la diphtongue /ou̯/
+    rules: Nasalisation de /ou̯/
+    from: 900
+    to: 1000
     samples:
-        vẽn:
-            _graph: v ai n
-            vɛ̃n: v ai n
+        dou̯n:
+            _graph: d ou n
+            doũ̯n: d ou n
+
+p1c14r5b:
+    src: Zink p.85-88
+    context: Nasalisation de la diphtongue /ou̯/
+    rules: Rapprochement de /oũ̯/
+    from: 1000
+    to: 1100
+    samples:
+        doũ̯n:
+            _graph: d o n
+            doõ̯n: d o n
+
+p1c14r5b:
+    src: Zink p.85-88
+    context: Nasalisation de la diphtongue /ou̯/
+    rules: Monophtongaison de /oõ̯/
+    from: 1100
+    to: 1200
+    samples:
+        doõ̯n:
+            _graph: d o n
+            dõn: d o n
+
+
+
+p1c14r6a:
+    src: Zink p.85-88
+    context: Nasalisation de la diphtongue /ie̯/
+    rules: Nasalisation de /ie̯/
+    from: 900
+    to: 1000
+    samples:
+        bie̯n:
+            _graph: b i e n
+            biẽ̯n: b i e n
+
+
+
+p1c14r7a:
+    src: Zink p.85-88
+    context: Nasalisation de la diphtongue /ue̯/
+    rules: Nasalisation de /uo̯/
+    from: 900
+    to: 1000
+    samples:
+        kuo̯ns:
+            _graph: c uo n s
+            kuõ̯ns: c uo n s
+
+p1c14r7b:
+    src: Zink p.85-88
+    context: Nasalisation de la diphtongue /ue̯/
+    rules: Différenciation du point d'articulation de /o̯/
+    from: 1000
+    to: 1050
+    samples:
+        kuõ̯ns:
+            _graph: c uo n s
+            kun̯ms: c ue n s
+
+p1c14r7c:
+    src: Zink p.85-88
+    context: Nasalisation de la diphtongue /ue̯/
+    rules: Antériorisation de /u/
+    from: 1050
+    to: 1100
+    samples:
+        kuẽ̯ns:
+            _graph: c uo n s
+            kyẽ̯ns: c ue n s
+
+p1c14r7d:
+    src: Zink p.85-88
+    context: Nasalisation de la diphtongue /ue̯/
+    rules: Consonantisation de /y/
+    from: 1100
+    to: 1200
+    samples:
+        kyẽ̯ns:
+            _graph: c uo n s
+            kɥẽns: c ue n s
+
+#p1c14r7e:
+#    src: Zink p.85-88
+#    context: Nasalisation de la diphtongue /ue̯/
+#    rules: Consonantisation de /y/
+#    from: 1200
+#    to: 1300
+#    samples:
+#        kɥẽns:
+#            _graph: c uo n s
+#            kɥɛ̃ns: c ue n s
+
+
+
+p1c14r8a:
+    src: Zink p.85-88
+    context: Nasalisation de la diphtongue /oi̯/
+    rules: Nasalisation de /oi̯/
+    from: 900
+    to: 1000
+    samples:
+        loi̯n:
+            _graph: l oi n
+            loĩ̯n: l oi n
+
+p1c14r8b:
+    src: Zink p.85-88
+    context: Nasalisation de la diphtongue /oi̯/
+    rules: Nasalisation de /oĩ̯/
+    from: 1000
+    to: 1100
+    samples:
+        loĩ̯n:
+            _graph: l oi n
+            lõĩ̯n: l oi n
+
+p1c14r8c:
+    src: Zink p.85-88
+    context: Nasalisation de la diphtongue /oi̯/
+    rules: Consonantisation de /u/
+    from: 1150
+    to: 1200
+    samples:
+        lũẽ̯n:
+            _graph: l oi n
+            lwẽ̯n: l oi n
+
+p1c14r8c:
+    src: Zink p.85-88
+    context: Nasalisation de la diphtongue /oi̯/
+    rules: Égalisation d'aperture de /õĩ̯/
+    from: 1100
+    to: 1150
+    samples:
+        lũẽ̯n:
+            _graph: l oi n
+            lũẽ̯n: l oi n
