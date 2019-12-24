@@ -124,12 +124,13 @@ namespace Phonos.Core.Rules
                 .GetEnumerator();
 
             var newGraphemes = new List<Interval<string>>();
+            Interval<string> originalGraphemes = null;
             int shift = 0;
             int lastPosition = 0;
 
             foreach (var i in replacements)
             {
-                var orignalGraphemes = graphicalForm.Intervals
+                originalGraphemes = graphicalForm.Intervals
                     .IntersectingWith(i, ContainsMode.STRICT)
                     .Union(g => string.Join(string.Empty, g))
                     .SingleOrDefault()
@@ -137,31 +138,37 @@ namespace Phonos.Core.Rules
 
                 var coveredPhonemes = alignment.Intervals
                     .Select(a => new Interval<IntervalAlignment<string[]>>(a.Left, a))
-                    .IntersectingWith(orignalGraphemes, ContainsMode.STRICT)
+                    .IntersectingWith(originalGraphemes, ContainsMode.STRICT)
                     .Values().Select(a => a.Right)
                     .AsEnumerable<IInterval>().ToList();
 
                 var range = coveredPhonemes.Range();
 
                 var before = string.Join("", graphicalForm.Intervals
-                    .Where(j => j.End <= orignalGraphemes.Start)
+                    .Where(j => j.End <= originalGraphemes.Start)
                     .Values());
                 var after = string.Join("", graphicalForm.Intervals
-                    .Where(j => j.Start >= orignalGraphemes.End)
+                    .Where(j => j.Start >= originalGraphemes.End)
                     .Values());
 
-                var replacedGraphemes = new Interval<string>(range,
-                    map.Map(before, orignalGraphemes.Value, after));
+                var replacedGraphemes = map
+                    .Map(before, originalGraphemes.Value, after, range.Length)
+                    .Translate(range.Start)
+                    .ToArray();
 
-                while (enumerator.MoveNext() && enumerator.Current.End <= orignalGraphemes.Start)
+                while (enumerator.MoveNext() && enumerator.Current.End <= originalGraphemes.Start)
                     if (enumerator.Current.Start >= lastPosition)
                         newGraphemes.Add(enumerator.Current.Translate(shift));
 
-                if (replacedGraphemes.Value.Length > 0)
-                    newGraphemes.Add(replacedGraphemes);
+                int replacementLength = 0;
+                if (replacedGraphemes.Length > 0)
+                {
+                    newGraphemes.AddRange(replacedGraphemes);
+                    replacementLength = replacedGraphemes.Range().Length;
+                }
 
-                lastPosition = orignalGraphemes.End;
-                shift += replacedGraphemes.Length - orignalGraphemes.Length;
+                lastPosition = originalGraphemes.End;
+                shift += replacementLength - originalGraphemes.Length;
             }
 
             do

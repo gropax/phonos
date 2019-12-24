@@ -67,7 +67,8 @@ namespace Phonos.French.SubSystems
                     .After(a => a.Phon("l", "r")))
                 .Rules(r => r
                     .Named("Syncope des voyelles post-toniques entre une occlusive orale et une consonne liquide")
-                    .Phono(P.Erase).Rewrite(G.Erase)));
+                    .Phono(P.Erase)
+                    .Rewrite(G.Erase)));
         }
 
         public static Rule Rule1b()
@@ -82,7 +83,8 @@ namespace Phonos.French.SubSystems
                     .After(a => a.Phon("t", "d")))
                 .Rules(r => r
                     .Named("Syncope des voyelles post-toniques entre une consonne homorganique et une dentale")
-                    .Phono(P.Erase).Rewrite(G.Erase)));
+                    .Phono(P.Erase)
+                    .Rewrite(G.Erase)));
         }
 
         public static Rule Rule1c()
