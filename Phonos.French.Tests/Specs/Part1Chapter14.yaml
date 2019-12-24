@@ -1,0 +1,189 @@
+﻿p1c14r1a:
+    src: Zink p.82
+    context: Nasalisation des voyelles simples
+    rules: Nasalisation de /a/ en syllabe fermée
+    from: 1000
+    to: 1100
+    samples:
+        enfant:
+            _graph: e n f a n t
+            enfãnt: e n f a n t
+
+p1c14r1b:
+    src: Zink p.82
+    context: Nasalisation des voyelles simples
+    rules: Nasalisation de /e/ en syllabe fermée
+    from: 1000
+    to: 1050
+    samples:
+        enfant:
+            _graph: e n f a n t
+            ẽnfant: e n f a n t
+
+p1c14r1c:
+    src: Zink p.82
+    context: Nasalisation des voyelles simples
+    rules: Nasalisation de /o/ en syllabe fermée
+    from: 1100
+    to: 1200
+    samples:
+        bon:
+            _graph: b o n
+            bõn: b o n
+
+p1c14r1d:
+    src: Zink p.82
+    context: Nasalisation des voyelles simples
+    rules: Nasalisation de /i/ en syllabe fermée
+    from: 1200
+    to: 1300
+    samples:
+        vwɛzin:
+            _graph: v oi:2 s i n
+            vwɛzĩn: v oi:2 s i n
+
+p1c14r1e:
+    src: Zink p.82
+    context: Nasalisation des voyelles simples
+    rules: Nasalisation de /y/ en syllabe fermée
+    from: 1300
+    to: 1400
+    samples:
+        bryn:
+            _graph: b r u n
+            brỹn: b r u n
+
+p1c14r1f:
+    src: Zink p.82
+    context: Nasalisation des voyelles simples
+    rules: Nasalisation de /a/ en syllabe ouverte
+    from: 1000
+    to: 1100
+    samples:
+        ami:
+            _graph: a m i
+            ãmi: a m i
+
+p1c14r1g:
+    src: Zink p.82
+    context: Nasalisation des voyelles simples
+    rules: Nasalisation de /e/ en syllabe ouverte
+    from: 1000
+    to: 1050
+    samples:
+        seɲeu̯r:
+            _graph: s ei gn eu r
+            sẽɲeu̯r: s ei gn eu r
+
+p1c14r1h:
+    src: Zink p.82
+    context: Nasalisation des voyelles simples
+    rules: Nasalisation de /o/ en syllabe ouverte
+    from: 1100
+    to: 1200
+    samples:
+        bonə:
+            _graph: b o n e
+            bõnə: b o n e
+
+
+
+p1c14r2a:
+    src: Zink p.82-83
+    context: Effet ouvrant de la nasalisation
+    rules: Ouverture de /ẽ/ en syllabe fermée
+    from: 1050
+    to: 1075
+    samples:
+        ẽnfãnt:
+            _graph: e n f a n t
+            ɛ̃nfãnt: e n f a n t
+
+p1c14r2b:
+    src: Zink p.82-83
+    context: Effet ouvrant de la nasalisation
+    rules: Ouverture de /ɛ̃/ en syllabe fermée
+    from: 1075
+    to: 1100
+    samples:
+        ɛ̃nfãnt:
+            _graph: e n f a n t
+            ãnfãnt: e n f a n t
+
+p1c14r2c:
+    src: Zink p.82-83
+    context: Effet ouvrant de la nasalisation
+    rules: Ouverture de /õ/ en syllabe fermée
+    from: 1200
+    to: 1300
+    samples:
+        bõn:
+            _graph: b o n
+            bɔ̃n: b o n
+
+p1c14r2d:
+    src: Zink p.82-83
+    context: Effet ouvrant de la nasalisation
+    rules: Ouverture de /ĩ/ en syllabe fermée
+    from: 1300
+    to: 1350
+    samples:
+        vwɛzĩn:
+            _graph: v oi:2 s i n
+            vwɛzẽn: v oi:2 s i n
+
+p1c14r2e:
+    src: Zink p.82-83
+    context: Effet ouvrant de la nasalisation
+    rules: Ouverture de /ẽ/ en syllabe fermée
+    from: 1350
+    to: 1400
+    samples:
+        vwɛzẽn:
+            _graph: v oi:2 s i n
+            vwɛzɛ̃n: v oi:2 s i n
+
+p1c14r1f:
+    src: Zink p.82-83
+    context: Nasalisation des voyelles simples
+    rules: Ouverture de /ỹ/ en syllabe fermée
+    from: 1400
+    to: 1450
+    samples:
+        brỹn:
+            _graph: b r u n
+            brø̃n: b r u n
+
+p1c14r1g:
+    src: Zink p.82-83
+    context: Nasalisation des voyelles simples
+    rules: Ouverture de /ø̃/ en syllabe fermée
+    from: 1450
+    to: 1500
+    samples:
+        brø̃n:
+            _graph: b r u n
+            brœ̃n: b r u n
+
+p1c14r2h:
+    src: Zink p.82-83
+    context: Effet ouvrant de la nasalisation
+    rules: Ouverture de /ẽ/ en syllabe ouverte
+    from: 1050
+    to: 1075
+    samples:
+        sẽɲeu̯r:
+            _graph: s ei gn eu r
+            sɛ̃ɲeu̯r: s ei gn eu r
+
+p1c14r2i:
+    src: Zink p.82-83
+    context: Effet ouvrant de la nasalisation
+    rules: Ouverture de /õ/ en syllabe ouverte
+    from: 1200
+    to: 1300
+    samples:
+        bõnə:
+            _graph: b o n e
+            bɔ̃nə: b o n e
+
