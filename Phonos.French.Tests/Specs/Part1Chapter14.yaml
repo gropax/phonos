@@ -187,3 +187,115 @@ p1c14r2i:
             _graph: b o n e
             bɔ̃nə: b o n e
 
+
+
+p1c14r3a:
+    src: Zink p.83-85
+    context: Dénasalisation partielle
+    rules: Dénasalisation de la voyelle en syllabe ouverte
+    from: 1550
+    to: 1650
+    samples:
+        ãmi:
+            _graph: a m i
+            ami: a m i
+        bɔ̃nə:
+            _graph: b o nn e
+            bɔnə: b o nn e
+        sɛ̃ɲeu̯r:
+            _graph: s ei gn eu r
+            sɛɲeu̯r: s ei gn eu r
+
+p1c14r3b:
+    src: Zink p.83-85
+    context: Dénasalisation partielle
+    rules: Amuïssement de la consonne nasale en syllabe fermée
+    from: 1550
+    to: 1650
+    samples:
+        ãnfãn:
+            _graph: e n f a n t:0
+            ãfã: en f an t:0
+        bɔ̃n:
+            _graph: b o n
+            bɔ̃: b on
+        vwɛzɛ̃n:
+            _graph: v oi:2 s i n
+            vwɛzɛ̃: v oi:2 s in
+        brœ̃n:
+            _graph: b r u n
+            brœ̃: b r un
+
+
+
+p1c14r4a:
+    src: Zink p.85-88
+    context: Nasalisation des diphtongues /ai̯/ et /ei̯/
+    rules: Nasalisation de /ai̯/ et /ei̯/
+    from: 900
+    to: 1000
+    samples:
+        vai̯n:
+            _graph: v ai n
+            vaĩ̯n: v ai n
+        plei̯n:
+            _graph: p l ei n
+            pleĩ̯n: p l ei n
+
+p1c14r4b:
+    src: Zink p.85-88
+    context: Nasalisation des diphtongues /ai̯/ et /ei̯/
+    rules: Nasalisation de /aĩ̯/ et /eĩ̯/
+    from: 1000
+    to: 1100
+    samples:
+        vaĩ̯n:
+            _graph: v ai n
+            vãĩ̯n: v ai n
+        pleĩ̯n:
+            _graph: p l ei n
+            plẽĩ̯n: p l ei n
+
+p1c14r4c:
+    src: Zink p.85-88
+    context: Nasalisation des diphtongues /ai̯/ et /ei̯/
+    rules: Fermeture de /ãĩ̯/
+    from: 1100
+    to: 1150
+    samples:
+        vãĩ̯n:
+            _graph: v ai n
+            vɛ̃ĩ̯n: v ai n
+
+p1c14r4d:
+    src: Zink p.85-88
+    context: Nasalisation des diphtongues /ai̯/ et /ei̯/
+    rules: Fermeture de /ɛ̃ĩ̯/
+    from: 1150
+    to: 1200
+    samples:
+        vɛ̃ĩ̯n:
+            _graph: v ai n
+            vẽĩ̯n: v ai n
+
+p1c14r4e:
+    src: Zink p.85-88
+    context: Nasalisation des diphtongues /ai̯/ et /ei̯/
+    rules: Monophtongaison de /ẽĩ̯/
+    from: 1200
+    to: 1250
+    samples:
+        vẽĩ̯n:
+            _graph: v ai n
+            vẽn: v ai n
+
+p1c14r4f:
+    src: Zink p.85-88
+    context: Nasalisation des diphtongues /ai̯/ et /ei̯/
+    rules: Ouverture de /ẽ/
+    from: 1250
+    to: 1300
+    samples:
+        vẽn:
+            _graph: v ai n
+            vɛ̃n: v ai n
