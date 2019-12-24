@@ -28,7 +28,7 @@ namespace Phonos.Core.Queries.Tests
                         name: "Test",
                         phonological: ps => new[] { "l" },
                         graphical: new[] {
-                            new GraphicalMap(ps => ps),
+                            new GraphicalMap((b, m, a) => m),
                         })
                 });
 
@@ -67,7 +67,7 @@ namespace Phonos.Core.Queries.Tests
                         name: "Test",
                         phonological: ps => new[] { "o" },
                         graphical: new[] {
-                            new GraphicalMap(ps => ps),
+                            new GraphicalMap((b, m, a) => m),
                         })
                 });
 

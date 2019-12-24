@@ -48,22 +48,4 @@ namespace Phonos.Core.RuleBuilder
             return system;
         }
     }
-
-    public static class Dev
-    {
-        public static void Method()
-        {
-            var rules = R.System(s => s
-                .Rule(r => r
-                    .From(0).To(200)
-                    .Query(q => q
-                        .Match(m => m.Phon("a").With("accent", "tonic"))
-                        .Before(b => b.Seq(Q.Start, q2 => q2.Phon("b").With("auie", "nrst")))
-                        .After(Q.End))
-                    .Rules(m => m
-                        .Named("My rule")
-                        .Phono(P.Degeminate)
-                        .Rewrite())));
-        }
-    }
 }

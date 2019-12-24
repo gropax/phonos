@@ -143,7 +143,15 @@ namespace Phonos.Core.Rules
 
                 var range = coveredPhonemes.Range();
 
-                var replacedGraphemes = new Interval<string>(range, map.Map(orignalGraphemes.Value));
+                var before = string.Join("", graphicalForm.Intervals
+                    .Where(j => j.End <= orignalGraphemes.Start)
+                    .Values());
+                var after = string.Join("", graphicalForm.Intervals
+                    .Where(j => j.Start >= orignalGraphemes.End)
+                    .Values());
+
+                var replacedGraphemes = new Interval<string>(range,
+                    map.Map(before, orignalGraphemes.Value, after));
 
                 while (enumerator.MoveNext() && enumerator.Current.End <= orignalGraphemes.Start)
                     if (enumerator.Current.Start >= lastPosition)
