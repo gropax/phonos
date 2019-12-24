@@ -421,7 +421,8 @@ namespace Phonos.French.SubSystems
                     Match(m => m.Phon("ɛ").With("accent", "tonic")))
                 .Rules(p => p
                     .Named("(Orthographique) réécriture du son /ɛ/ écrit \"oi\" en \"ai\"")
-                    .Phono(_ => new[] { "ɛ" }).Rewrite(gx => gx == "oi" ? "ai" : gx)));
+                    .Phono(_ => new[] { "ɛ" })
+                    .Rewrite(gx => gx == "oi" ? "ai" : gx)));
         }
 
         public static Rule Rule5a()

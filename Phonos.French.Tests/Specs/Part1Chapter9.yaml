@@ -449,11 +449,11 @@ p1c9r4i:
     to: 1800
     samples:
         pɛrə:
-            _graph: p oi:2 r e
+            _graph: p oi r e
             _accent: tonic:2 final:2
             pɛrə: p ai r e
         trɛ:
-            _graph: t r oi:2 s:0
+            _graph: t r oi s:0
             _accent: tonic:4
             trɛ: t r ai s:0
 
