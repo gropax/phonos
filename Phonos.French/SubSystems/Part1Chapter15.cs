@@ -125,7 +125,7 @@ namespace Phonos.French.SubSystems
                 .Rules(r => r
                     .Named("Assimilation de /dj/ et /gj/ intervocalique")
                     .Phono(px => new[] { "j", "j" })
-                    .Rewrite(g => "i")));
+                    .Rewrite(g => "i:2")));
         }
 
         public static Rule Rule2b()
@@ -247,7 +247,7 @@ namespace Phonos.French.SubSystems
                 .Rules(r => r
                     .Named("Palatalisation de /tj/ intervocalique")
                     .Phono(px => new[] { "j", "tʲ" })
-                    .Rewrite(_ => "iti")));
+                    .Rewrite(_ => "i ti")));
         }
 
         public static Rule Rule3g()
@@ -334,7 +334,7 @@ namespace Phonos.French.SubSystems
                 .Rules(r => r
                     .Named("Palatalisation de /sj/ intervocalique")
                     .Phono(px => new[] { "j", "sʲ" })
-                    .Rewrite(_ => "isi")));
+                    .Rewrite(_ => "i si")));
         }
 
         public static Rule Rule4b()
@@ -363,7 +363,7 @@ namespace Phonos.French.SubSystems
                 .Rules(r => r
                     .Named("Palatalisation de /ssj/ intervocalique")
                     .Phono(px => new[] { "j", "s", "sʲ" })
-                    .Rewrite(_ => "issi")));
+                    .Rewrite(_ => "i s si")));
         }
 
         public static Rule Rule4d()
@@ -378,7 +378,7 @@ namespace Phonos.French.SubSystems
                 .Rules(r => r
                     .Named("Palatalisation de /rj/ intervocalique")
                     .Phono(px => new[] { "j", "rʲ" })
-                    .Rewrite(_ => "iri")));
+                    .Rewrite(_ => "i ri")));
         }
 
 
@@ -395,7 +395,7 @@ namespace Phonos.French.SubSystems
                 .Rules(r => r
                     .Named("Palatalisation de /lj/ intervocalique")
                     .Phono(px => new[] { "j", "ʎʲ" })
-                    .Rewrite(g => "i" + g)));
+                    .Rewrite(g => "i " + g)));
         }
 
         public static Rule Rule5b()
@@ -406,7 +406,8 @@ namespace Phonos.French.SubSystems
                 .Query(q => q.Match(m => m.Seq(s => s.Phon("j"), s => s.Phon("ʎʲ"))))
                 .Rules(r => r
                     .Named("Dépalatalisation partielle de /jʎʲ/")
-                    .Phono(px => new[] { "ʎ" })));
+                    .Phono(px => new[] { "ʎ" })
+                    .Rewrite(g => "ill")));
         }
 
         public static Rule Rule5c()
@@ -432,7 +433,7 @@ namespace Phonos.French.SubSystems
                 .Rules(r => r
                     .Named("Palatalisation de /nj/ intervocalique")
                     .Phono(px => new[] { "j", "ɲʲ" })
-                    .Rewrite(g => "i" + g)));
+                    .Rewrite(g => "i " + g)));
         }
 
         public static Rule Rule5e()
@@ -443,7 +444,8 @@ namespace Phonos.French.SubSystems
                 .Query(q => q.Match(m => m.Seq(s => s.Phon("j"), s => s.Phon("ɲʲ"))))
                 .Rules(r => r
                     .Named("Dépalatalisation partielle de /jɲʲ/")
-                    .Phono(px => new[] { "ɲ" })));
+                    .Phono(px => new[] { "ɲ" })
+                    .Rewrite(g => "gn")));
         }
 
 
@@ -523,7 +525,7 @@ namespace Phonos.French.SubSystems
                 .Rules(r => r
                     .Named("Palatalisation et renforcement de /βj/")
                     .Phono(px => new[] { "b", "dʲ" })
-                    .Rewrite(bj => "bd" + bj[bj.Length - 1])));
+                    .Rewrite(bj => "b d" + bj[bj.Length - 1])));
         }
 
         public static Rule Rule6g()
