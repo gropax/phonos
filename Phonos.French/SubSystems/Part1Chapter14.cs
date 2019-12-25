@@ -69,7 +69,7 @@ namespace Phonos.French.SubSystems
                     .After(a => a.Phon(p => !IPA.IsVowel(p))))
                 .Rules(r => r
                     .Named("Nasalisation de /o/ en syllabe fermée")
-                    .Phono(px => new[] { "õ" })));
+                    .Phono(px => new[] { "õ" })));
         }
 
         public static Rule Rule1d()
@@ -142,7 +142,7 @@ namespace Phonos.French.SubSystems
                         s => s.Phon(IPA.IsVowel))))
                 .Rules(r => r
                     .Named("Nasalisation de /o/ en syllabe ouverte")
-                    .Phono(px => new[] { "õ" })));
+                    .Phono(px => new[] { "õ" })));
         }
 
 
@@ -182,10 +182,10 @@ namespace Phonos.French.SubSystems
                 .From(1200).To(1300)
                 .Query(q => q
                     .Scope("syllable")
-                    .Match(m => m.Phon("õ"))
+                    .Match(m => m.Phon("õ"))
                     .After(a => a.Phon(p => !IPA.IsVowel(p))))
                 .Rules(r => r
-                    .Named("Ouverture de /õ/ en syllabe fermée")
+                    .Named("Ouverture de /õ/ en syllabe fermée")
                     .Phono(px => new[] { "ɔ̃" })));
         }
 
@@ -266,12 +266,12 @@ namespace Phonos.French.SubSystems
                 .Id("p1c14r2i")
                 .From(1200).To(1300)
                 .Query(q => q
-                    .Match(m => m.Phon("õ"))
+                    .Match(m => m.Phon("õ"))
                     .After(a => a.Seq(
                         s => s.Phon(p => !IPA.IsVowel(p)),
                         s => s.Phon(IPA.IsVowel))))
                 .Rules(r => r
-                    .Named("Ouverture de /õ/ en syllabe ouverte")
+                    .Named("Ouverture de /õ/ en syllabe ouverte")
                     .Phono(px => new[] { "ɔ̃" })));
         }
 
@@ -398,11 +398,11 @@ namespace Phonos.French.SubSystems
                 .Id("p1c14r5b")
                 .From(1000).To(1100)
                 .Query(q => q
-                    .Match(m => m.Phon("oũ̯"))
+                    .Match(m => m.Phon("oũ̯"))
                     .After(a => a.Phon(IPA.IsNasalConsonant)))
                 .Rules(r => r
-                    .Named("Rapprochement de /oũ̯/")
-                    .Phono(_ => new[] { "oõ̯" })));
+                    .Named("Rapprochement de /oũ̯/")
+                    .Phono(_ => new[] { "oõ̯" })));
         }
 
         public static Rule Rule5c()
@@ -411,11 +411,11 @@ namespace Phonos.French.SubSystems
                 .Id("p1c14r5c")
                 .From(1100).To(1200)
                 .Query(q => q
-                    .Match(m => m.Phon("oõ̯"))
+                    .Match(m => m.Phon("oõ̯"))
                     .After(a => a.Phon(IPA.IsNasalConsonant)))
                 .Rules(r => r
-                    .Named("Monophtongaison de /oõ̯/")
-                    .Phono(_ => new[] { "õ" })));
+                    .Named("Monophtongaison de /oõ̯/")
+                    .Phono(_ => new[] { "õ" })));
         }
 
 
@@ -454,7 +454,7 @@ namespace Phonos.French.SubSystems
                 .Id("p1c14r7b")
                 .From(1000).To(1050)
                 .Query(q => q
-                    .Match(m => m.Phon("uõ̯"))
+                    .Match(m => m.Phon("uõ̯"))
                     .After(a => a.Phon(IPA.IsNasalConsonant)))
                 .Rules(r => r
                     .Named("Différenciation du point d'articulation de /o̯/")
@@ -523,11 +523,11 @@ namespace Phonos.French.SubSystems
                 .Id("p1c14r8c")
                 .From(1100).To(1150)
                 .Query(q => q
-                    .Match(m => m.Phon("õĩ̯"))
+                    .Match(m => m.Phon("õĩ̯"))
                     .After(a => a.Phon(IPA.IsNasalConsonant)))
                 .Rules(r => r
-                    .Named("Égalisation d'aperture de /õĩ̯/")
-                    .Phono(_ => new[] { "ũẽ̯" })));
+                    .Named("Égalisation d'aperture de /õĩ̯/")
+                    .Phono(_ => new[] { "ũẽ̯" })));
         }
 
         public static Rule Rule8d()
@@ -536,7 +536,7 @@ namespace Phonos.French.SubSystems
                 .Id("p1c14r8d")
                 .From(1150).To(1200)
                 .Query(q => q
-                    .Match(m => m.Phon("ũẽ̯"))
+                    .Match(m => m.Phon("ũẽ̯"))
                     .After(a => a.Phon(IPA.IsNasalConsonant)))
                 .Rules(r => r
                     .Named("Consonantisation de /u/")

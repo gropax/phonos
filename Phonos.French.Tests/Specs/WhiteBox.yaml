@@ -1,4 +1,26 @@
-﻿
+﻿bonum:
+    - bonum => bonum
+    - bonu => bonu
+    - bɔnu => bonu
+    - bɔno => bono
+    - bono => bono
+    - bon => bon
+    - bõn => bon
+    - bɔ̃n => bon
+    - bɔ̃ => bon
+
+bonam:
+    - bonam => bonam
+    - bona => bona
+    - bɔna => bona
+    - bona => bona
+    - bonə => bone
+    - bõnə => bone
+    - bɔ̃nə => bone
+    - bɔ̃nœ => bone
+    - bɔnœ => bone
+    - bɔn => bone
+
 cor:
     - kor => cor
     - kɔr => cor

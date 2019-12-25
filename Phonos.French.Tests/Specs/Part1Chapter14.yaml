@@ -32,7 +32,7 @@ p1c14r1c:
         bon:
             _graph: b o n
             _syllable: long:3
-            bõn: b o n
+            bõn: b o n
 
 p1c14r1d:
     src: Zink p.82
@@ -89,7 +89,7 @@ p1c14r1h:
     samples:
         bonə:
             _graph: b o n e
-            bõnə: b o n e
+            bõnə: b o n e
 
 
 
@@ -124,7 +124,7 @@ p1c14r2c:
     from: 1200
     to: 1300
     samples:
-        bõn:
+        bõn:
             _graph: b o n
             _syllable: long:3
             bɔ̃n: b o n
@@ -195,7 +195,7 @@ p1c14r2i:
     from: 1200
     to: 1300
     samples:
-        bõnə:
+        bõnə:
             _graph: b o n e
             bɔ̃nə: b o n e
 
@@ -327,29 +327,29 @@ p1c14r5a:
     samples:
         dou̯n:
             _graph: d ou n
-            doũ̯n: d ou n
+            doũ̯n: d ou n
 
 p1c14r5b:
     src: Zink p.85-88
     context: Nasalisation de la diphtongue /ou̯/
-    rules: Rapprochement de /oũ̯/
+    rules: Rapprochement de /oũ̯/
     from: 1000
     to: 1100
     samples:
-        doũ̯n:
+        doũ̯n:
             _graph: d o n
-            doõ̯n: d o n
+            doõ̯n: d o n
 
 p1c14r5c:
     src: Zink p.85-88
     context: Nasalisation de la diphtongue /ou̯/
-    rules: Monophtongaison de /oõ̯/
+    rules: Monophtongaison de /oõ̯/
     from: 1100
     to: 1200
     samples:
-        doõ̯n:
+        doõ̯n:
             _graph: d o n
-            dõn: d o n
+            dõn: d o n
 
 
 
@@ -375,7 +375,7 @@ p1c14r7a:
     samples:
         kuo̯ns:
             _graph: c uo n s
-            kuõ̯ns: c uo n s
+            kuõ̯ns: c uo n s
 
 p1c14r7b:
     src: Zink p.85-88
@@ -384,7 +384,7 @@ p1c14r7b:
     from: 1000
     to: 1050
     samples:
-        kuõ̯ns:
+        kuõ̯ns:
             _graph: c uo n s
             kuẽ̯ns: c ue n s
 
@@ -432,18 +432,18 @@ p1c14r8b:
     samples:
         loĩ̯n:
             _graph: l oi n
-            lõĩ̯n: l oi n
+            lõĩ̯n: l oi n
 
 p1c14r8c:
     src: Zink p.85-88
     context: Nasalisation de la diphtongue /oi̯/
-    rules: Égalisation d'aperture de /õĩ̯/
+    rules: Égalisation d'aperture de /õĩ̯/
     from: 1100
     to: 1150
     samples:
-        lõĩ̯n:
+        lõĩ̯n:
             _graph: l oi n
-            lũẽ̯n: l oi n
+            lũẽ̯n: l oi n
 
 p1c14r8d:
     src: Zink p.85-88
@@ -452,6 +452,6 @@ p1c14r8d:
     from: 1150
     to: 1200
     samples:
-        lũẽ̯n:
+        lũẽ̯n:
             _graph: l oi n
             lwẽ̯n: l oi n
