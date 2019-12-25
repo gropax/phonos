@@ -21,7 +21,7 @@ namespace Phonos.French.SubSystems
             {
                 Rule1a(), Rule1b(), Rule1c(), Rule1d(), Rule1e(), Rule1f(), Rule1g(), Rule1h(),
                 Rule2a(), Rule2b(), Rule2c(), Rule2d(), Rule2e(), Rule2f(), Rule2g(), Rule2h(), Rule2i(),
-                //Rule3a(), Rule3b(),
+                Rule3a(), Rule3b(),
                 //Rule4a(), Rule4b(), Rule4c(), Rule4d(), Rule4e(),
                 //Rule5a(), Rule5b(),
                 //Rule6a(),
@@ -41,7 +41,7 @@ namespace Phonos.French.SubSystems
                     .After(a => a.Phon(p => !IPA.IsVowel(p))))
                 .Rules(r => r
                     .Named("Nasalisation de /a/ en syllabe fermée")
-                    .Phono(px => new[] { "ã" })));
+                    .Phono(px => new[] { "ã" })));
         }
 
         public static Rule Rule1b()
@@ -55,7 +55,7 @@ namespace Phonos.French.SubSystems
                     .After(a => a.Phon(p => !IPA.IsVowel(p))))
                 .Rules(r => r
                     .Named("Nasalisation de /e/ en syllabe fermée")
-                    .Phono(px => new[] { "ẽ" })));
+                    .Phono(px => new[] { "ẽ" })));
         }
 
         public static Rule Rule1c()
@@ -83,7 +83,7 @@ namespace Phonos.French.SubSystems
                     .After(a => a.Phon(p => !IPA.IsVowel(p))))
                 .Rules(r => r
                     .Named("Nasalisation de /i/ en syllabe fermée")
-                    .Phono(px => new[] { "ĩ" })));
+                    .Phono(px => new[] { "ĩ" })));
         }
 
         public static Rule Rule1e()
@@ -112,7 +112,7 @@ namespace Phonos.French.SubSystems
                         s => s.Phon(IPA.IsVowel))))
                 .Rules(r => r
                     .Named("Nasalisation de /a/ en syllabe ouverte")
-                    .Phono(px => new[] { "ã" })));
+                    .Phono(px => new[] { "ã" })));
         }
 
         public static Rule Rule1g()
@@ -127,7 +127,7 @@ namespace Phonos.French.SubSystems
                         s => s.Phon(IPA.IsVowel))))
                 .Rules(r => r
                     .Named("Nasalisation de /e/ en syllabe ouverte")
-                    .Phono(px => new[] { "ẽ" })));
+                    .Phono(px => new[] { "ẽ" })));
         }
 
         public static Rule Rule1h()
@@ -154,10 +154,10 @@ namespace Phonos.French.SubSystems
                 .From(1050).To(1075)
                 .Query(q => q
                     .Scope("syllable")
-                    .Match(m => m.Phon("ẽ"))
+                    .Match(m => m.Phon("ẽ"))
                     .After(a => a.Phon(p => !IPA.IsVowel(p))))
                 .Rules(r => r
-                    .Named("Ouverture de /ẽ/ en syllabe fermée")
+                    .Named("Ouverture de /ẽ/ en syllabe fermée")
                     .Phono(px => new[] { "ɛ̃" })));
         }
 
@@ -172,7 +172,7 @@ namespace Phonos.French.SubSystems
                     .After(a => a.Phon(p => !IPA.IsVowel(p))))
                 .Rules(r => r
                     .Named("Ouverture de /ɛ̃/ en syllabe fermée")
-                    .Phono(px => new[] { "ã" })));
+                    .Phono(px => new[] { "ã" })));
         }
 
         public static Rule Rule2c()
@@ -196,11 +196,11 @@ namespace Phonos.French.SubSystems
                 .From(1300).To(1350)
                 .Query(q => q
                     .Scope("syllable")
-                    .Match(m => m.Phon("ĩ"))
+                    .Match(m => m.Phon("ĩ"))
                     .After(a => a.Phon(p => !IPA.IsVowel(p))))
                 .Rules(r => r
-                    .Named("Ouverture de /ĩ/ en syllabe fermée")
-                    .Phono(px => new[] { "ẽ" })));
+                    .Named("Ouverture de /ĩ/ en syllabe fermée")
+                    .Phono(px => new[] { "ẽ" })));
         }
 
         public static Rule Rule2e()
@@ -210,10 +210,10 @@ namespace Phonos.French.SubSystems
                 .From(1350).To(1400)
                 .Query(q => q
                     .Scope("syllable")
-                    .Match(m => m.Phon("ẽ"))
+                    .Match(m => m.Phon("ẽ"))
                     .After(a => a.Phon(p => !IPA.IsVowel(p))))
                 .Rules(r => r
-                    .Named("Ouverture de /ẽ/ en syllabe fermée")
+                    .Named("Ouverture de /ẽ/ en syllabe fermée")
                     .Phono(px => new[] { "ɛ̃" })));
         }
 
@@ -251,12 +251,12 @@ namespace Phonos.French.SubSystems
                 .Id("p1c14r2h")
                 .From(1050).To(1075)
                 .Query(q => q
-                    .Match(m => m.Phon("ẽ"))
+                    .Match(m => m.Phon("ẽ"))
                     .After(a => a.Seq(
                         s => s.Phon(p => !IPA.IsVowel(p)),
                         s => s.Phon(IPA.IsVowel))))
                 .Rules(r => r
-                    .Named("Ouverture de /ẽ/ en syllabe ouverte")
+                    .Named("Ouverture de /ẽ/ en syllabe ouverte")
                     .Phono(px => new[] { "ɛ̃" })));
         }
 
@@ -273,6 +273,41 @@ namespace Phonos.French.SubSystems
                 .Rules(r => r
                     .Named("Ouverture de /õ/ en syllabe ouverte")
                     .Phono(px => new[] { "ɔ̃" })));
+        }
+
+
+
+        public static Rule Rule3a()
+        {
+            return R.Rule(c => c
+                .Id("p1c14r3a")
+                .From(1550).To(1650)
+                .Query(q => q
+                    .Match(m => m.Phon(IPA.IsNasalVowel))
+                    .After(a => a.Seq(
+                        s => s.Phon(p => !IPA.IsVowel(p)),
+                        s => s.Phon(IPA.IsVowel))))
+                .Rules(r => r
+                    .Named("Dénasalisation de la voyelle en syllabe ouverte")
+                    .Phono(px => new[] { px[0].Replace("\u0303", "") })));
+        }
+
+        public static Rule Rule3b()
+        {
+            return R.Rule(c => c
+                .Id("p1c14r3b")
+                .From(1550).To(1650)
+                .Query(q => q
+                    .Scope("syllable")
+                    .Match(m => m.Seq(
+                        s => s.Phon(IPA.IsNasalVowel),
+                        s => s.Phon(IPA.IsNasalConsonant)))
+                    .After(a => a.Seq(
+                        s => s.Maybe(m => m.Phon(p => !IPA.IsVowel(p))),
+                        Q.End)))
+                .Rules(r => r
+                    .Named("Amuïssement de la consonne nasale en syllabe fermée")
+                    .Phono(px => new[] { px[0] })));
         }
     }
 }

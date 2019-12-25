@@ -85,6 +85,11 @@ namespace Phonos.Core
             return NASAL_CONSONANTS.Contains(phoneme[0].ToString());
         }
 
+        public static bool IsNasalVowel(string phoneme)
+        {
+            return IsVowel(phoneme.Substring(0, 1)) && phoneme.Contains('\u0303');
+        }
+
         public static string[] CONSONANTS = OCCLUSIVES.Concat(FRICATIVES).Concat(LIQUIDES).Concat(NASAL_CONSONANTS).Concat(OTHER_CONSONANTS).ToArray();
         public static bool IsConsonant(string phoneme)
         {

@@ -8,7 +8,7 @@
         enfant:
             _graph: e n f a n t
             _syllable: long:2 long:4
-            enfãnt: e n f a n t
+            enfãnt: e n f a n t
 
 p1c14r1b:
     src: Zink p.82
@@ -20,7 +20,7 @@ p1c14r1b:
         enfant:
             _graph: e n f a n t
             _syllable: long:2 long:4
-            ẽnfant: e n f a n t
+            ẽnfant: e n f a n t
 
 p1c14r1c:
     src: Zink p.82
@@ -44,7 +44,7 @@ p1c14r1d:
         vwɛzin:
             _graph: v oi:2 s i n
             _syllable: short:3 long:3
-            vwɛzĩn: v oi:2 s i n
+            vwɛzĩn: v oi:2 s i n
 
 p1c14r1e:
     src: Zink p.82
@@ -67,7 +67,7 @@ p1c14r1f:
     samples:
         ami:
             _graph: a m i
-            ãmi: a m i
+            ãmi: a m i
 
 p1c14r1g:
     src: Zink p.82
@@ -78,7 +78,7 @@ p1c14r1g:
     samples:
         seɲeu̯r:
             _graph: s ei gn eu r
-            sẽɲeu̯r: s ei gn eu r
+            sẽɲeu̯r: s ei gn eu r
 
 p1c14r1h:
     src: Zink p.82
@@ -96,14 +96,14 @@ p1c14r1h:
 p1c14r2a:
     src: Zink p.82-83
     context: Effet ouvrant de la nasalisation
-    rules: Ouverture de /ẽ/ en syllabe fermée
+    rules: Ouverture de /ẽ/ en syllabe fermée
     from: 1050
     to: 1075
     samples:
-        ẽnfãnt:
+        ẽnfãnt:
             _graph: e n f a n t
             _syllable: long:2 long:4
-            ɛ̃nfãnt: e n f a n t
+            ɛ̃nfãnt: e n f a n t
 
 p1c14r2b:
     src: Zink p.82-83
@@ -112,10 +112,10 @@ p1c14r2b:
     from: 1075
     to: 1100
     samples:
-        ɛ̃nfãnt:
+        ɛ̃nfãnt:
             _graph: e n f a n t
             _syllable: long:2 long:4
-            ãnfãnt: e n f a n t
+            ãnfãnt: e n f a n t
 
 p1c14r2c:
     src: Zink p.82-83
@@ -136,10 +136,10 @@ p1c14r2d:
     from: 1300
     to: 1350
     samples:
-        vwɛzĩn:
+        vwɛzĩn:
             _graph: v oi:2 s i n
             _syllable: short:3 long:3
-            vwɛzẽn: v oi:2 s i n
+            vwɛzẽn: v oi:2 s i n
 
 p1c14r2e:
     src: Zink p.82-83
@@ -148,7 +148,7 @@ p1c14r2e:
     from: 1350
     to: 1400
     samples:
-        vwɛzẽn:
+        vwɛzẽn:
             _graph: v oi:2 s i n
             _syllable: short:3 long:3
             vwɛzɛ̃n: v oi:2 s i n
@@ -180,11 +180,11 @@ p1c14r2g:
 p1c14r2h:
     src: Zink p.82-83
     context: Effet ouvrant de la nasalisation
-    rules: Ouverture de /ẽ/ en syllabe ouverte
+    rules: Ouverture de /ẽ/ en syllabe ouverte
     from: 1050
     to: 1075
     samples:
-        sẽɲeu̯r:
+        sẽɲeu̯r:
             _graph: s ei gn eu r
             sɛ̃ɲeu̯r: s ei gn eu r
 
@@ -208,7 +208,7 @@ p1c14r3a:
     from: 1550
     to: 1650
     samples:
-        ãmi:
+        ãmi:
             _graph: a m i
             ami: a m i
         bɔ̃nə:
@@ -225,17 +225,21 @@ p1c14r3b:
     from: 1550
     to: 1650
     samples:
-        ãnfãn:
+        ãnfãn:
             _graph: e n f a n t:0
-            ãfã: en f an t:0
+            _syllable: long:2 long:3
+            ãfã: en f an t:0
         bɔ̃n:
             _graph: b o n
+            _syllable: long:3
             bɔ̃: b on
         vwɛzɛ̃n:
             _graph: v oi:2 s i n
+            _syllable: short:3 long:3
             vwɛzɛ̃: v oi:2 s in
         brœ̃n:
             _graph: b r u n
+            _syllable: long:4
             brœ̃: b r un
 
 
@@ -249,66 +253,66 @@ p1c14r4a:
     samples:
         vai̯n:
             _graph: v ai n
-            vaĩ̯n: v ai n
+            vaĩ̯n: v ai n
         plei̯n:
             _graph: p l ei n
-            pleĩ̯n: p l ei n
+            pleĩ̯n: p l ei n
 
 p1c14r4b:
     src: Zink p.85-88
     context: Nasalisation des diphtongues /ai̯/ et /ei̯/
-    rules: Nasalisation de /aĩ̯/ et /eĩ̯/
+    rules: Nasalisation de /aĩ̯/ et /eĩ̯/
     from: 1000
     to: 1100
     samples:
-        vaĩ̯n:
+        vaĩ̯n:
             _graph: v ai n
-            vãĩ̯n: v ai n
-        pleĩ̯n:
+            vãĩ̯n: v ai n
+        pleĩ̯n:
             _graph: p l ei n
-            plẽĩ̯n: p l ei n
+            plẽĩ̯n: p l ei n
 
 p1c14r4c:
     src: Zink p.85-88
     context: Nasalisation des diphtongues /ai̯/ et /ei̯/
-    rules: Fermeture de /ãĩ̯/
+    rules: Fermeture de /ãĩ̯/
     from: 1100
     to: 1150
     samples:
-        vãĩ̯n:
+        vãĩ̯n:
             _graph: v ai n
-            vɛ̃ĩ̯n: v ai n
+            vɛ̃ĩ̯n: v ai n
 
 p1c14r4d:
     src: Zink p.85-88
     context: Nasalisation des diphtongues /ai̯/ et /ei̯/
-    rules: Fermeture de /ɛ̃ĩ̯/
+    rules: Fermeture de /ɛ̃ĩ̯/
     from: 1150
     to: 1200
     samples:
-        vɛ̃ĩ̯n:
+        vɛ̃ĩ̯n:
             _graph: v ai n
-            vẽĩ̯n: v ai n
+            vẽĩ̯n: v ai n
 
 p1c14r4e:
     src: Zink p.85-88
     context: Nasalisation des diphtongues /ai̯/ et /ei̯/
-    rules: Monophtongaison de /ẽĩ̯/
+    rules: Monophtongaison de /ẽĩ̯/
     from: 1200
     to: 1250
     samples:
-        vẽĩ̯n:
+        vẽĩ̯n:
             _graph: v ai n
-            vẽn: v ai n
+            vẽn: v ai n
 
 #p1c14r4f:
 #    src: Zink p.85-88
 #    context: Nasalisation des diphtongues /ai̯/ et /ei̯/
-#    rules: Ouverture de /ẽ/
+#    rules: Ouverture de /ẽ/
 #    from: 1250
 #    to: 1300
 #    samples:
-#        vẽn:
+#        vẽn:
 #            _graph: v ai n
 #            vɛ̃n: v ai n
 
@@ -358,7 +362,7 @@ p1c14r6a:
     samples:
         bie̯n:
             _graph: b i e n
-            biẽ̯n: b i e n
+            biẽ̯n: b i e n
 
 
 
@@ -391,9 +395,9 @@ p1c14r7c:
     from: 1050
     to: 1100
     samples:
-        kuẽ̯ns:
+        kuẽ̯ns:
             _graph: c uo n s
-            kyẽ̯ns: c ue n s
+            kyẽ̯ns: c ue n s
 
 p1c14r7d:
     src: Zink p.85-88
@@ -402,9 +406,9 @@ p1c14r7d:
     from: 1100
     to: 1200
     samples:
-        kyẽ̯ns:
+        kyẽ̯ns:
             _graph: c uo n s
-            kɥẽns: c ue n s
+            kɥẽns: c ue n s
 
 #p1c14r7e:
 #    src: Zink p.85-88
@@ -413,7 +417,7 @@ p1c14r7d:
 #    from: 1200
 #    to: 1300
 #    samples:
-#        kɥẽns:
+#        kɥẽns:
 #            _graph: c uo n s
 #            kɥɛ̃ns: c ue n s
 
@@ -428,29 +432,29 @@ p1c14r8a:
     samples:
         loi̯n:
             _graph: l oi n
-            loĩ̯n: l oi n
+            loĩ̯n: l oi n
 
 p1c14r8b:
     src: Zink p.85-88
     context: Nasalisation de la diphtongue /oi̯/
-    rules: Nasalisation de /oĩ̯/
+    rules: Nasalisation de /oĩ̯/
     from: 1000
     to: 1100
     samples:
-        loĩ̯n:
+        loĩ̯n:
             _graph: l oi n
-            lõĩ̯n: l oi n
+            lõĩ̯n: l oi n
 
 p1c14r8c:
     src: Zink p.85-88
     context: Nasalisation de la diphtongue /oi̯/
-    rules: Égalisation d'aperture de /õĩ̯/
+    rules: Égalisation d'aperture de /õĩ̯/
     from: 1100
     to: 1150
     samples:
-        lõĩ̯n:
+        lõĩ̯n:
             _graph: l oi n
-            lũẽ̯n: l oi n
+            lũẽ̯n: l oi n
 
 p1c14r8d:
     src: Zink p.85-88
@@ -459,6 +463,6 @@ p1c14r8d:
     from: 1150
     to: 1200
     samples:
-        lũẽ̯n:
+        lũẽ̯n:
             _graph: l oi n
-            lwẽ̯n: l oi n
+            lwẽ̯n: l oi n
