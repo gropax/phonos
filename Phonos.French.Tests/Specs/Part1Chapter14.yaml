@@ -102,6 +102,7 @@ p1c14r2a:
     samples:
         ẽnfãnt:
             _graph: e n f a n t
+            _syllable: long:2 long:4
             ɛ̃nfãnt: e n f a n t
 
 p1c14r2b:
@@ -113,6 +114,7 @@ p1c14r2b:
     samples:
         ɛ̃nfãnt:
             _graph: e n f a n t
+            _syllable: long:2 long:4
             ãnfãnt: e n f a n t
 
 p1c14r2c:
@@ -124,6 +126,7 @@ p1c14r2c:
     samples:
         bõn:
             _graph: b o n
+            _syllable: long:3
             bɔ̃n: b o n
 
 p1c14r2d:
@@ -135,6 +138,7 @@ p1c14r2d:
     samples:
         vwɛzĩn:
             _graph: v oi:2 s i n
+            _syllable: short:3 long:3
             vwɛzẽn: v oi:2 s i n
 
 p1c14r2e:
@@ -146,6 +150,7 @@ p1c14r2e:
     samples:
         vwɛzẽn:
             _graph: v oi:2 s i n
+            _syllable: short:3 long:3
             vwɛzɛ̃n: v oi:2 s i n
 
 p1c14r2f:
@@ -157,6 +162,7 @@ p1c14r2f:
     samples:
         brỹn:
             _graph: b r u n
+            _syllable: long:4
             brø̃n: b r u n
 
 p1c14r2g:
@@ -168,6 +174,7 @@ p1c14r2g:
     samples:
         brø̃n:
             _graph: b r u n
+            _syllable: long:4
             brœ̃n: b r u n
 
 p1c14r2h:
