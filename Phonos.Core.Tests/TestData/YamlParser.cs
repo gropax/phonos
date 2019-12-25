@@ -256,8 +256,24 @@ namespace Phonos.Core.Tests.TestData
                 }
                 else if (Range2.Contains(current))
                 {
-                    phonemes.Add(phonStr.Substring(i - 2, 3));
-                    i -= 2;
+                    if (Range1.Contains(phonStr[i - 1]))
+                    {
+                        if (Range1.Contains(phonStr[i - 3]))
+                        {
+                            phonemes.Add(phonStr.Substring(i - 4, 5));
+                            i -= 4;
+                        }
+                        else
+                        {
+                            phonemes.Add(phonStr.Substring(i - 3, 4));
+                            i -= 3;
+                        }
+                    }
+                    else
+                    {
+                        phonemes.Add(phonStr.Substring(i - 2, 3));
+                        i -= 2;
+                    }
                 }
                 else
                     phonemes.Add(phonStr[i].ToString());

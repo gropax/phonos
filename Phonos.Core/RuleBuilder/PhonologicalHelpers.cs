@@ -46,6 +46,24 @@ namespace Phonos.Core.RuleBuilder
             else
                 return new[] { glide };
         }
+
+        public static string[] NasalizeDiphtongue(string[] phonemes)
+        {
+            string d = phonemes[0];
+            return new[]
+            {
+                d.Substring(0, 1) + "\u0303" + d.Substring(1),
+            };
+        }
+
+        public static string[] NasalizeDiphtongue2(string[] phonemes)
+        {
+            string d = phonemes[0];
+            return new[]
+            {
+                d.Substring(0, d.Length - 1) + "\u0303" + d.Last().ToString(),
+            };
+        }
     }
 
     [Serializable]

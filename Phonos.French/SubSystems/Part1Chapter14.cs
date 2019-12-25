@@ -22,7 +22,7 @@ namespace Phonos.French.SubSystems
                 Rule1a(), Rule1b(), Rule1c(), Rule1d(), Rule1e(), Rule1f(), Rule1g(), Rule1h(),
                 Rule2a(), Rule2b(), Rule2c(), Rule2d(), Rule2e(), Rule2f(), Rule2g(), Rule2h(), Rule2i(),
                 Rule3a(), Rule3b(),
-                //Rule4a(), Rule4b(), Rule4c(), Rule4d(), Rule4e(),
+                Rule4a(), Rule4b(), Rule4c(), Rule4d(), Rule4e(),
                 //Rule5a(), Rule5b(),
                 //Rule6a(),
                 //Rule7a(), Rule7b(), Rule7c(), Rule7d(),
@@ -308,6 +308,73 @@ namespace Phonos.French.SubSystems
                 .Rules(r => r
                     .Named("Amuïssement de la consonne nasale en syllabe fermée")
                     .Phono(px => new[] { px[0] })));
+        }
+
+
+
+        public static Rule Rule4a()
+        {
+            return R.Rule(c => c
+                .Id("p1c14r4a")
+                .From(900).To(1000)
+                .Query(q => q
+                    .Match(m => m.Phon("ai̯", "ei̯"))
+                    .After(a => a.Phon(IPA.IsNasalConsonant)))
+                .Rules(r => r
+                    .Named("Nasalisation de /ai̯/ et /ei̯/")
+                    .Phono(P.NasalizeDiphtongue2)));
+        }
+
+        public static Rule Rule4b()
+        {
+            return R.Rule(c => c
+                .Id("p1c14r4b")
+                .From(1000).To(1100)
+                .Query(q => q
+                    .Match(m => m.Phon("aĩ̯", "eĩ̯"))
+                    .After(a => a.Phon(IPA.IsNasalConsonant)))
+                .Rules(r => r
+                    .Named("Nasalisation de /aĩ̯/ et /eĩ̯/")
+                    .Phono(P.NasalizeDiphtongue)));
+        }
+
+        public static Rule Rule4c()
+        {
+            return R.Rule(c => c
+                .Id("p1c14r4c")
+                .From(1100).To(1150)
+                .Query(q => q
+                    .Match(m => m.Phon("ãĩ̯"))
+                    .After(a => a.Phon(IPA.IsNasalConsonant)))
+                .Rules(r => r
+                    .Named("Fermeture de /ãĩ̯/")
+                    .Phono(_ => new[] { "ɛ̃ĩ̯" })));
+        }
+
+        public static Rule Rule4d()
+        {
+            return R.Rule(c => c
+                .Id("p1c14r4d")
+                .From(1150).To(1200)
+                .Query(q => q
+                    .Match(m => m.Phon("ɛ̃ĩ̯"))
+                    .After(a => a.Phon(IPA.IsNasalConsonant)))
+                .Rules(r => r
+                    .Named("Fermeture de /ɛ̃ĩ̯/")
+                    .Phono(_ => new[] { "ẽĩ̯" })));
+        }
+
+        public static Rule Rule4e()
+        {
+            return R.Rule(c => c
+                .Id("p1c14r4e")
+                .From(1200).To(1250)
+                .Query(q => q
+                    .Match(m => m.Phon("ẽĩ̯"))
+                    .After(a => a.Phon(IPA.IsNasalConsonant)))
+                .Rules(r => r
+                    .Named("Monophtongaison de /ẽĩ̯/")
+                    .Phono(_ => new[] { "ẽ" })));
         }
     }
 }
