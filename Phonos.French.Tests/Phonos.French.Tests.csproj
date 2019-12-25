@@ -21,6 +21,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Specs\Part1Chapter14.yaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Specs\Part1Chapter27.yaml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

@@ -7,6 +7,7 @@
     samples:
         enfant:
             _graph: e n f a n t
+            _syllable: long:2 long:4
             enfãnt: e n f a n t
 
 p1c14r1b:
@@ -18,6 +19,7 @@ p1c14r1b:
     samples:
         enfant:
             _graph: e n f a n t
+            _syllable: long:2 long:4
             ẽnfant: e n f a n t
 
 p1c14r1c:
@@ -29,6 +31,7 @@ p1c14r1c:
     samples:
         bon:
             _graph: b o n
+            _syllable: long:3
             bõn: b o n
 
 p1c14r1d:
@@ -40,6 +43,7 @@ p1c14r1d:
     samples:
         vwɛzin:
             _graph: v oi:2 s i n
+            _syllable: short:3 long:3
             vwɛzĩn: v oi:2 s i n
 
 p1c14r1e:
@@ -51,6 +55,7 @@ p1c14r1e:
     samples:
         bryn:
             _graph: b r u n
+            _syllable: long:4
             brỹn: b r u n
 
 p1c14r1f:
@@ -143,7 +148,7 @@ p1c14r2e:
             _graph: v oi:2 s i n
             vwɛzɛ̃n: v oi:2 s i n
 
-p1c14r1f:
+p1c14r2f:
     src: Zink p.82-83
     context: Nasalisation des voyelles simples
     rules: Ouverture de /ỹ/ en syllabe fermée
@@ -154,7 +159,7 @@ p1c14r1f:
             _graph: b r u n
             brø̃n: b r u n
 
-p1c14r1g:
+p1c14r2g:
     src: Zink p.82-83
     context: Nasalisation des voyelles simples
     rules: Ouverture de /ø̃/ en syllabe fermée
@@ -432,6 +437,17 @@ p1c14r8b:
 p1c14r8c:
     src: Zink p.85-88
     context: Nasalisation de la diphtongue /oi̯/
+    rules: Égalisation d'aperture de /õĩ̯/
+    from: 1100
+    to: 1150
+    samples:
+        lõĩ̯n:
+            _graph: l oi n
+            lũẽ̯n: l oi n
+
+p1c14r8d:
+    src: Zink p.85-88
+    context: Nasalisation de la diphtongue /oi̯/
     rules: Consonantisation de /u/
     from: 1150
     to: 1200
@@ -439,14 +455,3 @@ p1c14r8c:
         lũẽ̯n:
             _graph: l oi n
             lwẽ̯n: l oi n
-
-p1c14r8c:
-    src: Zink p.85-88
-    context: Nasalisation de la diphtongue /oi̯/
-    rules: Égalisation d'aperture de /õĩ̯/
-    from: 1100
-    to: 1150
-    samples:
-        lũẽ̯n:
-            _graph: l oi n
-            lũẽ̯n: l oi n
