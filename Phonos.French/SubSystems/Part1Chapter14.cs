@@ -23,10 +23,10 @@ namespace Phonos.French.SubSystems
                 Rule2a(), Rule2b(), Rule2c(), Rule2d(), Rule2e(), Rule2f(), Rule2g(), Rule2h(), Rule2i(),
                 Rule3a(), Rule3b(),
                 Rule4a(), Rule4b(), Rule4c(), Rule4d(), Rule4e(),
-                //Rule5a(), Rule5b(),
-                //Rule6a(),
-                //Rule7a(), Rule7b(), Rule7c(), Rule7d(),
-                //Rule8a(), Rule8b(), Rule8c(), Rule8d(),
+                Rule5a(), Rule5b(), Rule5c(),
+                Rule6a(),
+                Rule7a(), Rule7b(), Rule7c(), Rule7d(),
+                Rule8a(), Rule8b(), Rule8c(), Rule8d(),
             };
         }
 
@@ -375,6 +375,172 @@ namespace Phonos.French.SubSystems
                 .Rules(r => r
                     .Named("Monophtongaison de /ẽĩ̯/")
                     .Phono(_ => new[] { "ẽ" })));
+        }
+
+
+
+        public static Rule Rule5a()
+        {
+            return R.Rule(c => c
+                .Id("p1c14r5a")
+                .From(900).To(1000)
+                .Query(q => q
+                    .Match(m => m.Phon("ou̯"))
+                    .After(a => a.Phon(IPA.IsNasalConsonant)))
+                .Rules(r => r
+                    .Named("Nasalisation de /ou̯/")
+                    .Phono(P.NasalizeDiphtongue2)));
+        }
+
+        public static Rule Rule5b()
+        {
+            return R.Rule(c => c
+                .Id("p1c14r5b")
+                .From(1000).To(1100)
+                .Query(q => q
+                    .Match(m => m.Phon("oũ̯"))
+                    .After(a => a.Phon(IPA.IsNasalConsonant)))
+                .Rules(r => r
+                    .Named("Rapprochement de /oũ̯/")
+                    .Phono(_ => new[] { "oõ̯" })));
+        }
+
+        public static Rule Rule5c()
+        {
+            return R.Rule(c => c
+                .Id("p1c14r5c")
+                .From(1100).To(1200)
+                .Query(q => q
+                    .Match(m => m.Phon("oõ̯"))
+                    .After(a => a.Phon(IPA.IsNasalConsonant)))
+                .Rules(r => r
+                    .Named("Monophtongaison de /oõ̯/")
+                    .Phono(_ => new[] { "õ" })));
+        }
+
+
+
+        public static Rule Rule6a()
+        {
+            return R.Rule(c => c
+                .Id("p1c14r6a")
+                .From(900).To(1000)
+                .Query(q => q
+                    .Match(m => m.Phon("ie̯"))
+                    .After(a => a.Phon(IPA.IsNasalConsonant)))
+                .Rules(r => r
+                    .Named("Nasalisation de /ie̯/")
+                    .Phono(P.NasalizeDiphtongue2)));
+        }
+
+
+
+        public static Rule Rule7a()
+        {
+            return R.Rule(c => c
+                .Id("p1c14r7a")
+                .From(900).To(1000)
+                .Query(q => q
+                    .Match(m => m.Phon("uo̯"))
+                    .After(a => a.Phon(IPA.IsNasalConsonant)))
+                .Rules(r => r
+                    .Named("Nasalisation de /uo̯/")
+                    .Phono(P.NasalizeDiphtongue2)));
+        }
+
+        public static Rule Rule7b()
+        {
+            return R.Rule(c => c
+                .Id("p1c14r7b")
+                .From(1000).To(1050)
+                .Query(q => q
+                    .Match(m => m.Phon("uõ̯"))
+                    .After(a => a.Phon(IPA.IsNasalConsonant)))
+                .Rules(r => r
+                    .Named("Différenciation du point d'articulation de /o̯/")
+                    .Phono(_ => new[] { "uẽ̯" })
+                    .Rewrite(_ => "ue")));
+        }
+
+        public static Rule Rule7c()
+        {
+            return R.Rule(c => c
+                .Id("p1c14r7c")
+                .From(1050).To(1100)
+                .Query(q => q
+                    .Match(m => m.Phon("uẽ̯"))
+                    .After(a => a.Phon(IPA.IsNasalConsonant)))
+                .Rules(r => r
+                    .Named("Antériorisation de /u/")
+                    .Phono(_ => new[] { "yẽ̯" })));
+        }
+
+        public static Rule Rule7d()
+        {
+            return R.Rule(c => c
+                .Id("p1c14r7d")
+                .From(1100).To(1200)
+                .Query(q => q
+                    .Match(m => m.Phon("yẽ̯"))
+                    .After(a => a.Phon(IPA.IsNasalConsonant)))
+                .Rules(r => r
+                    .Named("Consonantisation de /y/")
+                    .Phono(_ => new[] { "ɥ", "ẽ" })
+                    .Rewrite(_ => "u e")));
+        }
+
+
+
+        public static Rule Rule8a()
+        {
+            return R.Rule(c => c
+                .Id("p1c14r8a")
+                .From(900).To(1000)
+                .Query(q => q
+                    .Match(m => m.Phon("oi̯"))
+                    .After(a => a.Phon(IPA.IsNasalConsonant)))
+                .Rules(r => r
+                    .Named("Nasalisation de /oi̯/")
+                    .Phono(P.NasalizeDiphtongue2)));
+        }
+
+        public static Rule Rule8b()
+        {
+            return R.Rule(c => c
+                .Id("p1c14r8b")
+                .From(1000).To(1100)
+                .Query(q => q
+                    .Match(m => m.Phon("oĩ̯"))
+                    .After(a => a.Phon(IPA.IsNasalConsonant)))
+                .Rules(r => r
+                    .Named("Nasalisation de /oĩ̯/")
+                    .Phono(P.NasalizeDiphtongue)));
+        }
+
+        public static Rule Rule8c()
+        {
+            return R.Rule(c => c
+                .Id("p1c14r8c")
+                .From(1100).To(1150)
+                .Query(q => q
+                    .Match(m => m.Phon("õĩ̯"))
+                    .After(a => a.Phon(IPA.IsNasalConsonant)))
+                .Rules(r => r
+                    .Named("Égalisation d'aperture de /õĩ̯/")
+                    .Phono(_ => new[] { "ũẽ̯" })));
+        }
+
+        public static Rule Rule8d()
+        {
+            return R.Rule(c => c
+                .Id("p1c14r8d")
+                .From(1150).To(1200)
+                .Query(q => q
+                    .Match(m => m.Phon("ũẽ̯"))
+                    .After(a => a.Phon(IPA.IsNasalConsonant)))
+                .Rules(r => r
+                    .Named("Consonantisation de /u/")
+                    .Phono(_ => new[] { "wẽ̯" })));
         }
     }
 }

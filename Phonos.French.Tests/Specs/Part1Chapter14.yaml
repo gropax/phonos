@@ -340,7 +340,7 @@ p1c14r5b:
             _graph: d o n
             doõ̯n: d o n
 
-p1c14r5b:
+p1c14r5c:
     src: Zink p.85-88
     context: Nasalisation de la diphtongue /ou̯/
     rules: Monophtongaison de /oõ̯/
@@ -386,7 +386,7 @@ p1c14r7b:
     samples:
         kuõ̯ns:
             _graph: c uo n s
-            kun̯ms: c ue n s
+            kuẽ̯ns: c ue n s
 
 p1c14r7c:
     src: Zink p.85-88
@@ -396,7 +396,7 @@ p1c14r7c:
     to: 1100
     samples:
         kuẽ̯ns:
-            _graph: c uo n s
+            _graph: c ue n s
             kyẽ̯ns: c ue n s
 
 p1c14r7d:
@@ -407,19 +407,8 @@ p1c14r7d:
     to: 1200
     samples:
         kyẽ̯ns:
-            _graph: c uo n s
-            kɥẽns: c ue n s
-
-#p1c14r7e:
-#    src: Zink p.85-88
-#    context: Nasalisation de la diphtongue /ue̯/
-#    rules: Consonantisation de /y/
-#    from: 1200
-#    to: 1300
-#    samples:
-#        kɥẽns:
-#            _graph: c uo n s
-#            kɥɛ̃ns: c ue n s
+            _graph: c ue n s
+            kɥẽns: c u e n s
 
 
 
