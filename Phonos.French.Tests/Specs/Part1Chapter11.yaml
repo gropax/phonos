@@ -1,0 +1,13 @@
+﻿p1c11r1:
+    src: Zink p.67
+    context: Prosthèses vocaliques
+    rules: Production d'un /i/ prosthétique
+    from: 100
+    to: 200
+    samples:
+        spatha:
+            _graph: s p a t h a
+            ispatha: i s p a t h a
+        skribere:
+            _graph: s c r i b e r e
+            iskribere: i s c r i b e r e

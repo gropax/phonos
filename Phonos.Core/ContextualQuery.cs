@@ -98,7 +98,12 @@ namespace Phonos.Core
                 }
 
                 yield return match;
+
                 index = match.End;
+
+                // Prevent infinite loop when empty match
+                if (match.Length == 0)
+                    index++;
             }
         }
     }
