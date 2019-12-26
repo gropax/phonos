@@ -1,0 +1,77 @@
+﻿p1c18r1:
+    src: Zink p.129
+    context: Palatalisation de /u/
+    rules: Palatalisation de /u/
+    from: 700
+    to: 800
+    samples:
+        wirtute:
+            _graph: v i r t u t e
+            wirtyte: v i r t u t e
+
+p1c18r2a:
+    src: Zink p.129
+    context: Vocalisation de //
+    rules: Vélarisation de /l/ en coda
+    from: 250
+    to: 300
+    samples:
+        alba:
+            _graph: a l b a
+            _syllable: long:2 short:2
+            aɫba: a l b a
+        kaballus:
+            _graph: c a b a l l u s
+            _syllable: short:2 long:3 long:3
+            # no match
+        kabals:
+            _graph: c a b a l s
+            _syllable: short:2 long:4
+            kabaɫs: c a b a l s
+
+p1c18r2b:
+    src: Zink p.130-131, http://www.diachronie.be/cours_grammaire/phonetique/619.html 
+    context: Vocalisation de /ɫ/
+    rules: Vocalisation de /ɫ/
+    from: 900
+    to: 1000
+    samples:
+        aɫbə:
+            _graph: a l b a
+            au̯bə: au b a
+        kabaɫs:
+            _graph: c a b a l s
+            kabau̯s: c a b au s
+
+p1c18r2c:
+    src: Zink p.130-131, http://www.diachronie.be/cours_grammaire/phonetique/619.html 
+    context: Vocalisation de /ɫ/
+    rules: Épenthèse
+    from: 700
+    to: 750
+    samples:
+        konseʎs:
+            _graph: c o n s e il s
+            konseʎʦ: c o n s e il s
+
+p1c18r2d:
+    src: Zink p.130-131, http://www.diachronie.be/cours_grammaire/phonetique/619.html 
+    context: Vocalisation de /ɫ/
+    rules: Dépalatalisation de /ʎ/ devant /s/
+    from: 750
+    to: 800
+    samples:
+        konseʎʦ:
+            _graph: c o n s e il s
+            konselʦ: c o n s e il s
+
+p1c18r2e:
+    src: Zink p.130-131, http://www.diachronie.be/cours_grammaire/phonetique/619.html 
+    context: Vocalisation de /ɫ/
+    rules: Vélarisationt de /l/ devant /s/
+    from: 800
+    to: 900
+    samples:
+        konselʦ:
+            _graph: c o n s e il s
+            konseɫʦ: c o n s e il s
