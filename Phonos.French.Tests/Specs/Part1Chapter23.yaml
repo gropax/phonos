@@ -1,0 +1,81 @@
+﻿p1c23r1a:
+    src: Zink p.153
+    context: Réduction des consonnes géminées
+    rules: Dégémination de /ll/ devant voyelle longue
+    from: 300
+    to: 400
+    samples:
+        steːlla:
+            _graph: s t e l l a
+            steːla: s t e l a
+        nuːllu:
+            _graph: n u l l u
+            nuːlu: n u l u
+        steːla:  # fictif
+            _graph: s t e l a
+            # no match
+
+p1c23r1b:
+    src: Zink p.153
+    context: Réduction des consonnes géminées
+    rules: Dégémination en intervocalique (excepté /rr/)
+    from: 600
+    to: 700
+    samples:
+        abbate:
+            _graph: a b b a t e
+            abate: a bb a t e
+        appellare:
+            _graph: a p p e l l a r e
+            apelare: a pp e ll a r e
+        karreus:
+            _graph: c a r r e u s
+            # no match
+
+p1c23r1c:
+    src: Zink p.153
+    context: Réduction des consonnes géminées
+    rules: Dégémination de /rr/
+    from: 1600
+    to: 1700
+    samples:
+        karro:
+            _graph: c a r r eaux
+            karo: c a rr eaux
+
+p1c23r1d:
+    src: Zink p.153
+    context: Réduction des consonnes géminées
+    rules: Assimilation de /mn/
+    from: 900
+    to: 1000
+    samples:
+        kolomnə:
+            _graph: c o l o m n e
+            kolommə: c o l o m m e
+            kolonnə: c o l o n n e
+
+p1c23r1e:
+    src: Zink p.153
+    context: Réduction des consonnes géminées
+    rules: Assimilation de /nm/
+    from: 900
+    to: 1000
+    samples:
+        ardenment:
+            _graph: a r d e n m e n t
+            ardemment: a r d e m m e n t
+
+p1c23r1f:
+    src: Zink p.153
+    context: Réduction des consonnes géminées
+    rules: Dégémination
+    from: 1100
+    to: 1200
+    samples:
+        kolonnə:
+            _graph: c o l o n n e
+            kolonə: c o l o nn e
+        kolommə:
+            _graph: c o l o m m e
+            kolomə: c o l o mm e

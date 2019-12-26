@@ -53,6 +53,15 @@ namespace Phonos.Core.RuleBuilder
             return this;
         }
 
+        public MatchQueryBuilder Twice(Action<MatchQueryBuilder> queryDefinition)
+        {
+            var queryBuilder = new MatchQueryBuilder();
+            queryDefinition(queryBuilder);
+            var query = queryBuilder.Build();
+            SetQuery(new TwiceQuery(query));
+            return this;
+        }
+
         public MatchQueryBuilder Seq(params Action<MatchQueryBuilder>[] queriesDefinitions)
         {
             var queries = queriesDefinitions.Select(qd =>
@@ -133,6 +142,15 @@ namespace Phonos.Core.RuleBuilder
             queryDefinition(queryBuilder);
             var query = queryBuilder.Build();
             SetQuery(new ZeroOrManyQuery(query));
+            return this;
+        }
+
+        public ContextQueryBuilder Twice(Action<ContextQueryBuilder> queryDefinition)
+        {
+            var queryBuilder = new ContextQueryBuilder();
+            queryDefinition(queryBuilder);
+            var query = queryBuilder.Build();
+            SetQuery(new TwiceQuery(query));
             return this;
         }
 
