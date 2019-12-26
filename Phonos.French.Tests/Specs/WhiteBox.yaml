@@ -1,15 +1,21 @@
-﻿bonum:
-    - bonum => bonum
-    - bonu => bonu
-    - bɔnu => bonu
-    - bɔno => bono
-    - bono => bono
-    - bon => bon
-    - bõn => bon
-    - bɔ̃n => bon
-    - bɔ̃ => bon
+﻿amarum:
+    - amārum
+    - amaːrum => amarum
+    - amaːru => amaru
+    - amaru => amaru
+    - amaro => amaro
+    - amaa̯ro => amaro
+    - amaɛ̯ro => amaro
+    - amaɛ̯r => amar
+    - amɛr => amer
+    - amer => amer
+    - ãmer => amer
+    - amer => amer
+    - amɛr => amer
 
+# p.84 : traité comme proclitiques atones, en précession immédiate du nom
 bonam:
+    - bonam
     - bonam => bonam
     - bona => bona
     - bɔna => bona
@@ -21,7 +27,32 @@ bonam:
     - bɔnœ => bone
     - bɔn => bone
 
+# p.84 : traité comme proclitiques atones, en précession immédiate du nom
+bonum:
+    - bonum
+    - bonum => bonum
+    - bonu => bonu
+    - bɔnu => bonu
+    - bɔno => bono
+    - bono => bono
+    - bon => bon
+    - bõn => bon
+    - bɔ̃n => bon
+    - bɔ̃ => bon
+
+brunam:
+    - brūnam
+    - bruːnam => brunam
+    - bruːna => bruna
+    - bruna => bruna
+    - brunə => brune
+    - brynə => brune
+    - brynœ => brune
+    - bryn => brune
+    - bʁyn => brune
+
 cor:
+    - cor
     - kor => cor
     - kɔr => cor
     - kɔɔ̯r => cor
@@ -36,6 +67,7 @@ cor:
     - kœʁ => cœur
 
 feretrum:
+    - feretrum
     - feretrum => feretrum
     - feretru => feretru
     - fɛrɛtru => feretru
@@ -50,6 +82,7 @@ feretrum:
     - fjɛʁtʁ => fiertre
 
 ferum:
+    - ferum
     - ferum => ferum
     - feru => feru
     - fɛru => feru
@@ -62,7 +95,20 @@ ferum:
     - fjɛr => fier
     - fjɛʁ => fier
 
+infantem:
+    - infantem
+    - infantem => infantem
+    - infante => infante
+    - enfantɛ => enfante
+    - enfant => enfant
+    - ẽnfãnt => enfant
+    - ɛ̃nfãnt => enfant
+    - ãnfãnt => enfant
+    - ãnfãn => enfant
+    - ãfã => enfant
+
 georgium:
+    - georgium
     - georgium => georgium
     - georgiu => georgiu
     - gjɔrgju => georgiu
@@ -77,6 +123,7 @@ georgium:
     - ʒɔʁʒ => georgie
 
 mare:
+    - mare
     - mare => mare
     - marɛ => mare
     - maa̯rɛ => mare
@@ -90,6 +137,7 @@ mare:
     - mɛʁ => mer
 
 mel:
+    - mel
     - mel => mel
     - mɛl => mel
     - mɛɛ̯l => mel
@@ -99,6 +147,7 @@ mel:
     - mjɛl => miel
 
 pira.1:
+    - pira
     - pira => pira
     - pera => pera
     - pee̯ra => pera
@@ -115,6 +164,7 @@ pira.1:
     - pwaʁ => poire
 
 pira.2:
+    - pira
     - pira => pira
     - pera => pera
     - pee̯ra => pera
@@ -132,6 +182,7 @@ pira.2:
     - pɛʁ => paire
 
 sal:
+    - sal
     - sal => sal
     - saa̯l => sal
     - saɛ̯l => sal
@@ -142,6 +193,7 @@ sal:
     - sɛl => sel
 
 soror:
+    - soror
     - soror => soror
     - sɔrɔr => soror
     - sɔɔ̯rɔr => soror
@@ -156,3 +208,21 @@ soror:
     - sør => sœur
     - sœr => sœur
     - sœʁ => sœur
+
+vanum:
+    - vanum
+    - wanum => vanum
+    - wanu => vanu
+    - wano => vano
+    - waa̯no => vano
+    - vaa̯no => vano
+    - vaɛ̯no => vano
+    - vaɛ̯n => van
+    - vai̯n => vain
+    - vaĩ̯n => vain
+    - vãĩ̯n => vain
+    - vɛ̃ĩ̯n => vain
+    - vẽĩ̯n => vain
+    - vẽn => vain
+    - vɛ̃n => vain
+    - vɛ̃ => vain

@@ -21,7 +21,9 @@ namespace Phonos.Core.Tests.TestData
                 var stepsObj = (List<object>)kv.Value;
                 var steps = new List<WhiteBoxStep>();
 
-                foreach (var stepObj in stepsObj)
+                var latin = (string)stepsObj[0];
+
+                foreach (var stepObj in stepsObj.Skip(1))
                 {
                     var parts = ((string)stepObj).Split(new string[] { "=>" }, StringSplitOptions.None);
                     string phono = parts[0].Trim();
@@ -29,8 +31,6 @@ namespace Phonos.Core.Tests.TestData
 
                     steps.Add(new WhiteBoxStep(phono, graphicalForms));
                 }
-
-                var latin = steps[0].GraphicalForms[0];
 
                 yield return new WhiteBoxTest(latin, steps.ToArray());
             }

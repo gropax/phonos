@@ -122,16 +122,49 @@ namespace Phonos.Latin
                     throw new Exception($"Unsupported character: `{monogram}`.");
             }
 
+            var normalizedGraphemes = graphemes.Map((string g) => NormalizeDiacritics(g));
+
             return new Word(
                 phonemes: allPhonemes.ToArray(),
                 graphicalForms: new[] {
-                    new Core.Alignment<string>(graphemes.ToArray()),
+                    new Core.Alignment<string>(normalizedGraphemes.ToArray()),
                 });
         }
 
         private bool IsVowel(char v)
         {
             return VOWELS.Contains(v.ToString());
+        }
+
+        private Dictionary<char, char> DIACRITICS =
+            new Dictionary<char, char>()
+            {
+                { 'ā', 'a' }, { 'ã', 'a' }, { 'â', 'a' }, { 'ǎ', 'a' },
+                { 'ē', 'e' }, { 'ẽ', 'e' }, { 'ê', 'e' }, { 'ě', 'e' },
+                { 'ī', 'i' }, { 'ĩ', 'i' }, { 'î', 'i' }, { 'ǐ', 'i' },
+                { 'ō', 'o' }, { 'õ', 'o' }, { 'ô', 'o' }, { 'ǒ', 'o' },
+                { 'ū', 'u' }, { 'ũ', 'u' }, { 'û', 'u' }, { 'ǔ', 'u' },
+                { 'ȳ', 'y' }, { 'ỹ', 'y' }, { 'ŷ', 'y' },
+            };
+        private string NormalizeDiacritics(string s)
+        {
+            var clean = s
+                .Replace("\u0304", "")  // macron
+                .Replace("\u007E", "")  // tilde
+                .Replace("\u0302", "")  // circumflex
+                .Replace("\u030C", ""); // reversed circumflex
+
+            var builder = new StringBuilder();
+
+            foreach (char c in clean)
+            {
+                if (DIACRITICS.TryGetValue(c, out var c2))
+                    builder.Append(c2);
+                else
+                    builder.Append(c);
+            }
+
+            return builder.ToString();
         }
     }
 
