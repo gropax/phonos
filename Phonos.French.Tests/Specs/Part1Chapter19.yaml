@@ -1,0 +1,248 @@
+﻿p1c19r1a:
+    src: Zink p.132-134
+    context: Diphtongues par coalescence de /-i/
+    rules: Vocalisation de /j/ et diphtongaison par soudure 
+    from: 900
+    to: 1000
+    samples:
+        playə:
+            _graph: p l a i e
+            plai̯ə: p l ai e
+        vendray:
+            _graph: v e n d r a i
+            vendrai̯: v e n d r ai
+
+p1c19r1b:
+    src: Zink p.132-134
+    context: Diphtongues par coalescence de /-i/
+    rules: Fermeture de /a/
+    from: 1100
+    to: 1150
+    samples:
+        plai̯ə:
+            _graph: p l ai e
+            plɛi̯ə: p l ai e
+        vendrai̯:
+            _graph: v e n d r ai
+            vendrɛi̯: v e n d r ai
+
+p1c19r1c:
+    src: Zink p.132-134
+    context: Diphtongues par coalescence de /-i/
+    rules: Monophtongaison de /ɛi̯/
+    from: 1150
+    to: 1200
+    samples:
+        plɛi̯ə:
+            _graph: p l ai e
+            plɛə: p l ai e
+        vendrɛi̯:
+            _graph: v e n d r ai
+            vendrɛ: v e n d r ai
+
+p1c19r1d:
+    src: Zink p.132-134
+    context: Diphtongues par coalescence de /-i/
+    rules: Fermeture de /ɛ/ en finale absolue
+    from: 1200
+    to: 1300
+    samples:
+        plɛə:
+            _graph: p l ai e
+            # no match
+        vendrɛ:
+            _graph: v e n d r ai
+            vendre: v e n d r ai
+
+p1c19r1e:
+    src: Zink p.132-134
+    context: Diphtongues par coalescence de /-i/
+    rules: Ouverture de /e/ en finale absolue
+    from: 1900
+    to: 2000
+    samples:
+        vãdre:
+            _graph: v en d r ai
+            vãdrɛ: v en d r ai
+
+
+
+p1c19r2:
+    src: Zink p.132-134
+    context: Diphtongues par coalescence de /-i/
+    rules: Vocalisation de /j/ et diphtongaison par soudure 
+    from: 900
+    to: 1000
+    samples:
+        tejt:
+            _graph: t e i t
+            tei̯t: t ei t
+
+
+
+p1c19r3a:
+    src: Zink p.132-134
+    context: Diphtongues par coalescence de /-i/
+    rules: Vocalisation de /j/ et diphtongaison par soudure 
+    from: 600
+    to: 700
+    samples:
+        ujs:
+            _graph: u i s
+            ui̯s: ui s
+
+p1c19r3b:
+    src: Zink p.132-134
+    context: Diphtongues par coalescence de /-i/
+    rules: Palatalisation de /u/
+    from: 700
+    to: 800
+    samples:
+        ui̯s:
+            _graph: u i s
+            yi̯s: ui s
+
+# Possible duplicat
+p1c19r3c:
+    src: Zink p.132-134
+    context: Diphtongues par coalescence de /-i/
+    rules: Consonantisation de /y/
+    from: 1100
+    to: 1200
+    samples:
+        yi̯s:
+            _graph: u i s
+            ɥis: ui s
+
+
+
+p1c19r4a:
+    src: Zink p.135-137
+    context: Diphtongues par coalescence de /-u/
+    rules: Assimilation de /u/
+    from: 1300
+    to: 1500
+    samples:
+        au̯bə:
+            _graph: au b e
+            ao̯bə: au b e
+
+p1c19r4b:
+    src: Zink p.135-137
+    context: Diphtongues par coalescence de /-u/
+    rules: Assimilation de /a/
+    from: 1500
+    to: 1525
+    samples:
+        ao̯bə:
+            _graph: au b e
+            ɑo̯bə: au b e
+
+p1c19r4c:
+    src: Zink p.135-137
+    context: Diphtongues par coalescence de /-u/
+    rules: Assimilation de /ɑ/
+    from: 1525
+    to: 1550
+    samples:
+        ɑo̯bə:
+            _graph: au b e
+            oo̯bə: au b e
+
+p1c19r4d:
+    src: Zink p.135-137
+    context: Diphtongues par coalescence de /-u/
+    rules: Monophtongaison de /oo̯/
+    from: 1550
+    to: 1600
+    samples:
+        oo̯bə:
+            _graph: au b e
+            obə: au b e
+
+
+
+p1c19r5a:
+    src: Zink p.135-137
+    context: Diphtongues par coalescence de /-u/
+    rules: Labialisation de /e/
+    from: 1100
+    to: 1150
+    samples:
+        ʧəveu̯s:
+            _graph: ch e v eu s
+            ʧəvøu̯s: ch e v eu s
+
+p1c19r5b:
+    src: Zink p.135-137
+    context: Diphtongues par coalescence de /-u/
+    rules: Labialisation de /e/
+    from: 1150
+    to: 1200
+    samples:
+        ʧəveu̯s:
+            _graph: ch e v eu s
+            ʧəvøs: ch e v eu s
+
+
+
+
+p1c19r6a:
+    src: Zink p.135-137
+    context: Diphtongues par coalescence de /-u/
+    rules: Labialisation de /u/
+    from: 1000
+    to: 1050
+    samples:
+        fiu̯ts:
+            _graph: f iu t s
+            fiy̯ts: f iu t s
+
+p1c19r6b:
+    src: Zink p.135-137
+    context: Diphtongues par coalescence de /-u/
+    rules: Assimilation de /iy̯/
+    from: 1050
+    to: 1100
+    samples:
+        fiy̯ts:
+            _graph: f iu t s
+            fits: f i t s
+
+
+
+
+p1c19r7a:
+    src: Zink p.135-137
+    context: Diphtongues par coalescence de /-u/
+    rules: Fermeture de /ɔ/
+    from: 1100
+    to: 1150
+    samples:
+        pɔu̯:
+            _graph: p ou
+            pou̯: p ou
+
+p1c19r7b:
+    src: Zink p.135-137
+    context: Diphtongues par coalescence de /-u/
+    rules: Assimilation de /o/
+    from: 1150
+    to: 1200
+    samples:
+        pou̯:
+            _graph: p ou
+            pu: p ou
+
+
+
+p1c19r8:
+    src: Zink p.135-137
+    context: Diphtongues par coalescence de /-u/
+    rules: Assimilation de /u/
+    from: 1000
+    to: 1100
+    samples:
+        nyu̯s:
+            _graph: n u s
+            nys: n u s
