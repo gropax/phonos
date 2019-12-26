@@ -9,6 +9,9 @@
             _graph: e n f a n t
             _syllable: long:2 long:4
             enfãnt: e n f a n t
+        alteru:
+            _graph: a l t e r u
+            _syllable: long:2 short:2 short:2
 
 p1c14r1b:
     src: Zink p.82

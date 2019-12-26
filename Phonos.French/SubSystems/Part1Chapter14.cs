@@ -38,7 +38,7 @@ namespace Phonos.French.SubSystems
                 .Query(q => q
                     .Scope("syllable")
                     .Match(m => m.Phon("a"))
-                    .After(a => a.Phon(p => !IPA.IsVowel(p))))
+                    .After(a => a.Phon(IPA.IsNasalConsonant)))
                 .Rules(r => r
                     .Named("Nasalisation de /a/ en syllabe fermée")
                     .Phono(px => new[] { "ã" })));
@@ -52,7 +52,7 @@ namespace Phonos.French.SubSystems
                 .Query(q => q
                     .Scope("syllable")
                     .Match(m => m.Phon("e"))
-                    .After(a => a.Phon(p => !IPA.IsVowel(p))))
+                    .After(a => a.Phon(IPA.IsNasalConsonant)))
                 .Rules(r => r
                     .Named("Nasalisation de /e/ en syllabe fermée")
                     .Phono(px => new[] { "ẽ" })));
@@ -66,7 +66,7 @@ namespace Phonos.French.SubSystems
                 .Query(q => q
                     .Scope("syllable")
                     .Match(m => m.Phon("o"))
-                    .After(a => a.Phon(p => !IPA.IsVowel(p))))
+                    .After(a => a.Phon(IPA.IsNasalConsonant)))
                 .Rules(r => r
                     .Named("Nasalisation de /o/ en syllabe fermée")
                     .Phono(px => new[] { "õ" })));
@@ -80,7 +80,7 @@ namespace Phonos.French.SubSystems
                 .Query(q => q
                     .Scope("syllable")
                     .Match(m => m.Phon("i"))
-                    .After(a => a.Phon(p => !IPA.IsVowel(p))))
+                    .After(a => a.Phon(IPA.IsNasalConsonant)))
                 .Rules(r => r
                     .Named("Nasalisation de /i/ en syllabe fermée")
                     .Phono(px => new[] { "ĩ" })));
@@ -94,7 +94,7 @@ namespace Phonos.French.SubSystems
                 .Query(q => q
                     .Scope("syllable")
                     .Match(m => m.Phon("y"))
-                    .After(a => a.Phon(p => !IPA.IsVowel(p))))
+                    .After(a => a.Phon(IPA.IsNasalConsonant)))
                 .Rules(r => r
                     .Named("Nasalisation de /y/ en syllabe fermée")
                     .Phono(px => new[] { "ỹ" })));
@@ -108,7 +108,7 @@ namespace Phonos.French.SubSystems
                 .Query(q => q
                     .Match(m => m.Phon("a"))
                     .After(a => a.Seq(
-                        s => s.Phon(p => !IPA.IsVowel(p)),
+                        s => s.Phon(IPA.IsNasalConsonant),
                         s => s.Phon(IPA.IsVowel))))
                 .Rules(r => r
                     .Named("Nasalisation de /a/ en syllabe ouverte")
@@ -123,7 +123,7 @@ namespace Phonos.French.SubSystems
                 .Query(q => q
                     .Match(m => m.Phon("e"))
                     .After(a => a.Seq(
-                        s => s.Phon(p => !IPA.IsVowel(p)),
+                        s => s.Phon(IPA.IsNasalConsonant),
                         s => s.Phon(IPA.IsVowel))))
                 .Rules(r => r
                     .Named("Nasalisation de /e/ en syllabe ouverte")
@@ -138,7 +138,7 @@ namespace Phonos.French.SubSystems
                 .Query(q => q
                     .Match(m => m.Phon("o"))
                     .After(a => a.Seq(
-                        s => s.Phon(p => !IPA.IsVowel(p)),
+                        s => s.Phon(IPA.IsNasalConsonant),
                         s => s.Phon(IPA.IsVowel))))
                 .Rules(r => r
                     .Named("Nasalisation de /o/ en syllabe ouverte")

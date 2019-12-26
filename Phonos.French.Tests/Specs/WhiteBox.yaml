@@ -1,10 +1,13 @@
-﻿alba:
+﻿alba:  # Validé
     - alba
     - alba => alba
     - aɫba => alba
     - aɫbə => albe
     - au̯bə => aube
-    - au̯bœ => aube
+    - ao̯bə => aube
+    - ɑo̯bə => aube  # < Décision arbitraire (alteru p.135)
+    - ɑo̯bœ => aube  # <
+    - oo̯bœ => aube
     - obœ => aube
     - ob => aube
 
@@ -218,6 +221,22 @@ soror:
     - sør => sœur
     - sœr => sœur
     - sœʁ => sœur
+
+ustium:
+    - ūstium
+    - uːstium => ustium
+    - uːstiu => ustiu
+    - uːstju => ustiu
+    - ustju => ustiu
+    - ustʲju => ustiu
+    - usʦʲju => ustsiu
+    - ujssʲju => uissiu
+    - ujssʲjo => uissio
+    - ujs => uis
+    - ui̯s => uis
+    - yi̯s => uis
+    - ɥis => uis
+    - ɥi => uis  # introduire ortho. "huis"
 
 vanum:
     - vanum
