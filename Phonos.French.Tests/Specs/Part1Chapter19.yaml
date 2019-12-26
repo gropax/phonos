@@ -5,10 +5,10 @@
     from: 900
     to: 1000
     samples:
-        playə:
+        plajə:
             _graph: p l a i e
             plai̯ə: p l ai e
-        vendray:
+        vendraj:
             _graph: v e n d r a i
             vendrai̯: v e n d r ai
 
@@ -99,7 +99,7 @@ p1c19r3b:
     to: 800
     samples:
         ui̯s:
-            _graph: u i s
+            _graph: ui s
             yi̯s: ui s
 
 # Possible duplicat
@@ -111,8 +111,8 @@ p1c19r3c:
     to: 1200
     samples:
         yi̯s:
-            _graph: u i s
-            ɥis: ui s
+            _graph: ui s
+            ɥis: u i s
 
 
 
@@ -176,11 +176,11 @@ p1c19r5a:
 p1c19r5b:
     src: Zink p.135-137
     context: Diphtongues par coalescence de /-u/
-    rules: Labialisation de /e/
+    rules: Monophtongaison de /øu̯/
     from: 1150
     to: 1200
     samples:
-        ʧəveu̯s:
+        ʧəvøu̯s:
             _graph: ch e v eu s
             ʧəvøs: ch e v eu s
 
