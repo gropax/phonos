@@ -1,0 +1,325 @@
+﻿p1c17r1:
+    src: Zink p.121
+    context: Réduction des groups intérieurs de 3 consonnes
+    rules: Réduction des groups intérieurs de 3 consonnes
+    from: 200
+    to: 300
+    samples:
+        komptare:
+            _graph: k o m p t a r e
+            komtare: k o m t a r e
+        firmtate:
+            _graph: f i r m t a t e
+            firtate: f i r t a t e
+        blastmare:
+            _graph: b l a s t m a r e
+            blasmare: b l a s m a r e
+        presbter:
+            _graph: p r e s b t e r
+            prester: p r e s t e r
+
+p1c17r2a:
+    src: Zink p.121
+    context: Effacement de l'implosive en groupe disjoint
+    rules: "Amuïssement de /n/ devant /s/ et /f/, hors préfixes in- et con-"
+    from: 100?
+    to: 200?
+    samples:
+        infans:
+            _graph: i n f a n s
+            _morpheme: in:2
+            infas: i n f a s
+        insula:
+            _graph: i n s u l a
+            # no match
+        inferi:
+            _graph: i n f e r i
+            iferi: i f e r i
+        konsiliu:
+            _graph: c o n s i l i u
+            _morpheme: con:3
+            konsiliu: c o n s i l i u
+
+p1c17r2b:
+    src: Zink p.121-124
+    context: Effacement de l'implosive en groupe disjoint
+    rules: Amuïssement de /z/ antéconsonantique
+    from: 1050
+    to: 1100
+    samples:
+        izlə:
+            _graph: i s l e
+            iːlə: î l e
+
+p1c17r2c:
+    src: Zink p.121-124
+    context: Effacement de l'implosive en groupe disjoint
+    rules: Amuïssement de /s/ antéconsonantique, allongement et ouverture de /ɔ/
+    from: 1150
+    to: 1200
+    samples:
+        ɔstə:
+            _graph: h:0 o s t e
+            oːtə: h:0 ô t e
+
+p1c17r2d:
+    src: Zink p.121-124
+    context: Effacement de l'implosive en groupe disjoint
+    rules: Amuïssement de /s/ antéconsonantique, allongement et vélarisation de /a/
+    from: 1150
+    to: 1200
+    samples:
+        asnə:
+            _graph: a s n e
+            ɑːnə: â n e
+
+p1c17r2d:
+    src: Zink p.121-124
+    context: Effacement de l'implosive en groupe disjoint
+    rules: Amuïssement de /s/ antéconsonantique, allongement et ouverture de /e/
+    from: 1150
+    to: 1200
+    samples:
+        krestə:
+            _graph: c r e s t e
+            _syllabe: tonic:4 final:2
+            krɛːtə: c r ê t e
+
+p1c17r2e:
+    src: Zink p.121-124
+    context: Effacement de l'implosive en groupe disjoint
+    rules: Amuïssement de /s/ antéconsonantique, allongement de /e/
+    from: 1150
+    to: 1200
+    samples:
+        respõndrə:
+            _graph: r e s p o n d r e
+            _syllabe: initial:3 tonic:4 final:2
+            reːpõndrə: r é p o n d r e
+
+p1c17r2f:
+    src: Zink p.121-124
+    context: Effacement de l'implosive en groupe disjoint
+    rules: Spirantisation de /p/ devant dentale
+    from: 600
+    to: 700
+    samples:
+        roptə:
+            _graph: r o p t e
+            roftə: r o f t e
+
+p1c17r2g:
+    src: Zink p.121-124
+    context: Effacement de l'implosive en groupe disjoint
+    rules: Amuïssement de /f/ et /v/ devant dentale
+    from: 800
+    to: 900
+    samples:
+        roftə:
+            _graph: r o f t e
+            rotə: r o t e
+        tie̯vdə:
+            _graph: t ie v d e
+            tie̯də:  t ie d e
+
+# Possible duplicat
+p1c17r2h:
+    src: Zink p.121-124
+    context: Effacement de l'implosive en groupe disjoint
+    rules: Assimilation de /m/
+    from: 600
+    to: 700
+    samples:
+        komtə:
+            _graph: c o m t e
+            kontə: c o n t e
+
+
+
+p1c17r3a:
+    src: Zink p.125-128
+    context: Réduction des groupes consonantiques finals
+    rules: Amuïssement de /j/ final post-consonantique
+    from: 600
+    to: 700
+    samples:
+        kojɲj:
+            _graph: c o i n i
+            kojɲ: c o i ng
+        kojɲjs:
+            _graph: c o i n i s
+            kojɲs: c o i n s
+
+p1c17r3b:
+    src: Zink p.125-128
+    context: Réduction des groupes consonantiques finals
+    rules: Formation d'un /t/ transitoire
+    from: 600
+    to: 700
+    samples:
+        forns:
+            _graph: f o r n s
+            forʦ: f o r ts
+        pojɲɲs:
+            _graph: p o i n ni s
+            pojnʦ: p o i n ts
+        kojɲs:
+            _graph: c o i n s
+            kojnʦ: c o i n ts
+        konseʎjs:
+            _graph: c o n s e l i s
+            konselʦ: c o n s e l ts
+
+p1c17r3c:
+    src: Zink p.125-128
+    context: Réduction des groupes consonantiques finals
+    rules: Amuïssement de la consonne médiane
+    from: 600
+    to: 700
+    samples:
+        arks:
+            _graph: a r c s
+            ars: a r s
+        burgs:
+            _graph: b u r g s
+            burs: b u r s
+
+p1c17r3d:
+    src: Zink p.125-128
+    context: Réduction des groupes consonantiques finals
+    rules: Réduction des dentales devant /t/
+    from: 600
+    to: 700
+    samples:
+        vendt:
+            _graph: v e n d t
+            vent: v e n t
+        ventt:  # fictif
+            _graph: v e n t t
+            vent: v e n t
+        venðt:  # fictif
+            _graph: v e n d t
+            vent: v e n t
+
+p1c17r3e:
+    src: Zink p.125-128
+    context: Réduction des groupes consonantiques finals
+    rules: Réduction des dentales devant /s/
+    from: 600
+    to: 700
+    samples:
+        vends:
+            _graph: v e n d s
+            venʦ: v e n ts
+        vents:  # fictif
+            _graph: v e n t s
+            venʦ: v e n ts
+        venðs:  # fictif
+            _graph: v e n d s
+            venʦ: v e n ts
+        venʦʲs:  # fictif
+            _graph: v e n ts s
+            venʦ: v e n ts
+        venʣʲs:  # fictif
+            _graph: v e n ts s
+            venʦ: v e n ts
+        osts:
+            _graph: o s t s
+            oʦ: o ts
+
+p1c17r3f:
+    src: Zink p.125-128
+    context: Réduction des groupes consonantiques finals
+    rules: Réduction de /ss/ final
+    from: 600
+    to: 700
+    samples:
+        wiss:
+            _graph: v i s s
+            wis: v i s
+        dosss:
+            _graph: d o s s s
+            dos: d o s
+
+p1c17r3g:
+    src: Zink p.125-128
+    context: Réduction des groupes consonantiques finals
+    rules: Dévoisement devant /s/ final
+    from: 600
+    to: 700
+    samples:
+        deivs:
+            _graph: d e i v s
+            deifs: d e i f s
+        deibs:  # fictif
+            _graph: d e i b s
+            deips: d e i p s
+        deigs:  # fictif
+            _graph: d e i g s
+            deiks: d e i g s
+
+p1c17r3g:
+    src: Zink p.125-128
+    context: Réduction des groupes consonantiques finals
+    rules: Amuïssement devant /s/ final
+    from: 600
+    to: 700
+    samples:
+        deifs:
+            _graph: d e i f s
+            deis: d e i s
+        deips:  # fictif
+            _graph: d e i p s
+            deis: d e i s
+        deiks:  # fictif
+            _graph: d e i k s
+            deis: d e i s
+
+
+
+p1c17r4a:
+    src: Zink p.125-128
+    context: Réduction des affriques
+    rules: Réduction de /ʧ/
+    from: 600
+    to: 700
+    samples:
+        ʧars:
+            _graph: ch a r s
+            ʃars: ch a r s
+
+p1c17r4b:
+    src: Zink p.125-128
+    context: Réduction des affriques
+    rules: Réduction de /ʤ/
+    from: 600
+    to: 700
+    samples:
+        ʤorts:
+            _graph: j o r t s
+            ʒorts: j o r t s
+
+p1c17r4c:
+    src: Zink p.125-128
+    context: Réduction des affriques
+    rules: Réduction de /ʦ/
+    from: 600
+    to: 700
+    samples:
+        forʦ:
+            _graph: f o r ts
+            fors: f o r s
+
+p1c17r4d:
+    src: Zink p.125-128
+    context: Réduction des affriques
+    rules: Réduction de /ʣ/
+    from: 600
+    to: 700
+    samples:
+        pleʣir:
+            _graph: p l ai dz i r
+            plezir: p l ai s i r
+
+
+

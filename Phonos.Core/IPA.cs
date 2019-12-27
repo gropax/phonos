@@ -39,7 +39,7 @@ namespace Phonos.Core
         public static string[] FRICATIVES = new []
         {
             "f", "v", "s", "z", "ʃ", "ʒ", "ɸ", "β", "f", "v",
-            "θ", "ð", "x", "ɣ", "χ", "ʁ", "h",
+            "θ", "ð", "x", "ɣ", "χ", "h",
         };
         public static bool IsFricative(string phoneme)
         {
@@ -48,7 +48,7 @@ namespace Phonos.Core
 
         public static string[] LIQUIDES = new []
         {
-            "l", "r", "ʁ"
+            "l", "r", "ʁ",
         };
         public static bool IsLiquide(string phoneme)
         {

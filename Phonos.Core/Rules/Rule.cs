@@ -37,11 +37,17 @@ namespace Phonos.Core.Rules
 
         public Word[] Apply(Word word)
         {
-            var matches = Queries.SelectMany(q => q.Match(word)).Sorted();
+            var matches = new List<Interval<string[]>>();
+
+            foreach (var query in Queries)
+                foreach (var match in query.Match(word))
+                    if (matches.IntersectingWith(match).Count() == 0)
+                        matches.Add(match);
+
             if (matches.Count() == 0)
                 return new Word[0];
 
-            var words = Operations.Select(r => DeriveWord(r, word, matches)).ToArray();
+            var words = Operations.Select(r => DeriveWord(r, word, matches.Sorted())).ToArray();
             return words;
         }
 
