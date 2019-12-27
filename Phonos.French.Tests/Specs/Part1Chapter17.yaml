@@ -18,7 +18,9 @@
             _graph: p r e s b t e r
             prester: p r e s t e r
 
-p1c17r2a:
+
+
+p1c17r2:
     src: Zink p.121
     context: Effacement de l'implosive en groupe disjoint
     rules: "Amuïssement de /n/ devant /s/ et /f/, hors préfixes in- et con-"
@@ -29,29 +31,88 @@ p1c17r2a:
             _graph: i n f a n s
             _morpheme: in:2
             infas: i n f a s
-        insula:
-            _graph: i n s u l a
-            # no match
         inferi:
             _graph: i n f e r i
             iferi: i f e r i
         konsiliu:
             _graph: c o n s i l i u
             _morpheme: con:3
-            konsiliu: c o n s i l i u
+            # no match
+        konsiliu:
+            _graph: c o n s i l i u
+            kosiliu: c o s i l i u
 
-p1c17r2b:
+
+
+p1c17r3a:
     src: Zink p.121-124
     context: Effacement de l'implosive en groupe disjoint
-    rules: Amuïssement de /z/ antéconsonantique
+    rules: Amuïssement de /z/ antéconsonantique, allongement et ouverture de /ɔ/
     from: 1050
     to: 1100
     samples:
-        izlə:
-            _graph: i s l e
-            iːlə: î l e
+        ɔztə:
+            _graph: h:0 o s t e
+            _syllable: long:2 short:2
+            oːtə: h:0 ô t e
 
-p1c17r2c:
+p1c17r3b:
+    src: Zink p.121-124
+    context: Effacement de l'implosive en groupe disjoint
+    rules: Amuïssement de /z/ antéconsonantique, allongement et vélarisation de /a/
+    from: 1050
+    to: 1100
+    samples:
+        aznə:  # fictif
+            _graph: a s n e
+            _syllable: long:2 short:2
+            ɑːnə: â n e
+
+p1c17r3c:
+    src: Zink p.121-124
+    context: Effacement de l'implosive en groupe disjoint
+    rules: Amuïssement de /z/ antéconsonantique, allongement et ouverture de /e/
+    from: 1050
+    to: 1100
+    samples:
+        kreztə:
+            _graph: c r e s t e
+            _syllable: long:4 short:2
+            _accent: tonic:4 final:2
+            krɛːtə: c r ê t e
+
+p1c17r3d:
+    src: Zink p.121-124
+    context: Effacement de l'implosive en groupe disjoint
+    rules: Amuïssement de /z/ antéconsonantique, allongement de /e/
+    from: 1150
+    to: 1200
+    samples:
+        rezpõndrə:  # fictif
+            _graph: r e s p o n d r e
+            _syllable: long:3 long:3 final:3
+            _accent: initial:3 tonic:3 final:3
+            reːpõndrə: r é p o n d r e
+
+p1c17r3e:
+    src: Zink p.121-124
+    context: Effacement de l'implosive en groupe disjoint
+    rules: Amuïssement de /z/ antéconsonantique, allongement de la voyelle précédente
+    from: 1050
+    to: 1100
+    samples:
+        kuzt:  # fictif
+            _graph: c ou s t
+            _syllable: long:4
+            kuːt: c oû t
+        izle:  # fictif
+            _graph: i s l e
+            _syllable: long:2 short:2
+            iːle: î l e
+
+
+
+p1c17r4a:
     src: Zink p.121-124
     context: Effacement de l'implosive en groupe disjoint
     rules: Amuïssement de /s/ antéconsonantique, allongement et ouverture de /ɔ/
@@ -60,9 +121,10 @@ p1c17r2c:
     samples:
         ɔstə:
             _graph: h:0 o s t e
+            _syllable: long:2 short:2
             oːtə: h:0 ô t e
 
-p1c17r2d:
+p1c17r4b:
     src: Zink p.121-124
     context: Effacement de l'implosive en groupe disjoint
     rules: Amuïssement de /s/ antéconsonantique, allongement et vélarisation de /a/
@@ -71,9 +133,10 @@ p1c17r2d:
     samples:
         asnə:
             _graph: a s n e
+            _syllable: long:2 short:2
             ɑːnə: â n e
 
-p1c17r2d:
+p1c17r4c:
     src: Zink p.121-124
     context: Effacement de l'implosive en groupe disjoint
     rules: Amuïssement de /s/ antéconsonantique, allongement et ouverture de /e/
@@ -82,10 +145,11 @@ p1c17r2d:
     samples:
         krestə:
             _graph: c r e s t e
-            _syllabe: tonic:4 final:2
+            _syllable: long:4 short:2
+            _accent: tonic:4 final:2
             krɛːtə: c r ê t e
 
-p1c17r2e:
+p1c17r4d:
     src: Zink p.121-124
     context: Effacement de l'implosive en groupe disjoint
     rules: Amuïssement de /s/ antéconsonantique, allongement de /e/
@@ -94,10 +158,29 @@ p1c17r2e:
     samples:
         respõndrə:
             _graph: r e s p o n d r e
-            _syllabe: initial:3 tonic:4 final:2
+            _syllable: long:3 long:3 final:3
+            _accent: initial:3 tonic:3 final:3
             reːpõndrə: r é p o n d r e
 
-p1c17r2f:
+p1c17r4e:
+    src: Zink p.121-124
+    context: Effacement de l'implosive en groupe disjoint
+    rules: Amuïssement de /s/ antéconsonantique, allongement de la voyelle précédente
+    from: 1150
+    to: 1200
+    samples:
+        kust:  # fictif
+            _graph: c ou s t
+            _syllable: long:4
+            kuːt: c oû t
+        isle:  # fictif
+            _graph: i s l e
+            _syllable: long:2 short:2
+            iːle: î l e
+
+
+
+p1c17r5a:
     src: Zink p.121-124
     context: Effacement de l'implosive en groupe disjoint
     rules: Spirantisation de /p/ devant dentale
@@ -108,7 +191,7 @@ p1c17r2f:
             _graph: r o p t e
             roftə: r o f t e
 
-p1c17r2g:
+p1c17r5b:
     src: Zink p.121-124
     context: Effacement de l'implosive en groupe disjoint
     rules: Amuïssement de /f/ et /v/ devant dentale
@@ -123,7 +206,7 @@ p1c17r2g:
             tie̯də:  t ie d e
 
 # Possible duplicat
-p1c17r2h:
+p1c17r5c:
     src: Zink p.121-124
     context: Effacement de l'implosive en groupe disjoint
     rules: Assimilation de /m/
@@ -136,7 +219,7 @@ p1c17r2h:
 
 
 
-p1c17r3a:
+p1c17r6a:
     src: Zink p.125-128
     context: Réduction des groupes consonantiques finals
     rules: Amuïssement de /j/ final post-consonantique
@@ -150,7 +233,7 @@ p1c17r3a:
             _graph: c o i n i s
             kojɲs: c o i n s
 
-p1c17r3b:
+p1c17r6b:
     src: Zink p.125-128
     context: Réduction des groupes consonantiques finals
     rules: Formation d'un /t/ transitoire
@@ -170,7 +253,7 @@ p1c17r3b:
             _graph: c o n s e l i s
             konselʦ: c o n s e l ts
 
-p1c17r3c:
+p1c17r6c:
     src: Zink p.125-128
     context: Réduction des groupes consonantiques finals
     rules: Amuïssement de la consonne médiane
@@ -184,7 +267,7 @@ p1c17r3c:
             _graph: b u r g s
             burs: b u r s
 
-p1c17r3d:
+p1c17r6d:
     src: Zink p.125-128
     context: Réduction des groupes consonantiques finals
     rules: Réduction des dentales devant /t/
@@ -201,7 +284,7 @@ p1c17r3d:
             _graph: v e n d t
             vent: v e n t
 
-p1c17r3e:
+p1c17r6e:
     src: Zink p.125-128
     context: Réduction des groupes consonantiques finals
     rules: Réduction des dentales devant /s/
@@ -227,7 +310,7 @@ p1c17r3e:
             _graph: o s t s
             oʦ: o ts
 
-p1c17r3f:
+p1c17r6f:
     src: Zink p.125-128
     context: Réduction des groupes consonantiques finals
     rules: Réduction de /ss/ final
@@ -241,7 +324,7 @@ p1c17r3f:
             _graph: d o s s s
             dos: d o s
 
-p1c17r3g:
+p1c17r6g:
     src: Zink p.125-128
     context: Réduction des groupes consonantiques finals
     rules: Dévoisement devant /s/ final
@@ -258,7 +341,7 @@ p1c17r3g:
             _graph: d e i g s
             deiks: d e i g s
 
-p1c17r3g:
+p1c17r6g:
     src: Zink p.125-128
     context: Réduction des groupes consonantiques finals
     rules: Amuïssement devant /s/ final
@@ -277,7 +360,7 @@ p1c17r3g:
 
 
 
-p1c17r4a:
+p1c17r8a:
     src: Zink p.125-128
     context: Réduction des affriques
     rules: Réduction de /ʧ/
@@ -288,7 +371,7 @@ p1c17r4a:
             _graph: ch a r s
             ʃars: ch a r s
 
-p1c17r4b:
+p1c17r8b:
     src: Zink p.125-128
     context: Réduction des affriques
     rules: Réduction de /ʤ/
@@ -299,7 +382,7 @@ p1c17r4b:
             _graph: j o r t s
             ʒorts: j o r t s
 
-p1c17r4c:
+p1c17r8c:
     src: Zink p.125-128
     context: Réduction des affriques
     rules: Réduction de /ʦ/
@@ -310,7 +393,7 @@ p1c17r4c:
             _graph: f o r ts
             fors: f o r s
 
-p1c17r4d:
+p1c17r8d:
     src: Zink p.125-128
     context: Réduction des affriques
     rules: Réduction de /ʣ/
