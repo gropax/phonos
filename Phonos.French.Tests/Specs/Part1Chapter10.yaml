@@ -139,7 +139,7 @@ p1c10r2c:
 p1c10r2d:
     src: Zink p.61-63
     context: Évolution des bilabiales sourdes intervocaliques
-    rules: Renforcement de /ɸ/ intervocalique avec entourage palatal
+    rules: Sonorisation de /ɸ/ intervocalique avec entourage palatal
     from: 350
     to: 400
     samples:
@@ -156,7 +156,7 @@ p1c10r2d:
 p1c10r2e:
     src: Zink p.61-63
     context: Évolution des bilabiales sonores intervocaliques
-    rules: Vélarisation de /ɸ/ intervocalique en voisinage vélaire
+    rules: Vélarisation de /ɸ/ intervocalique
     from: 350
     to: 400
     samples:
@@ -236,7 +236,7 @@ p1c10r3e:
     samples:
         degoris:  # fictif
             _graph: d e g o r i s
-            deɣoris: d e ɣ o r i s
+            deɣoris: d e g o r i s
 
 p1c10r3f:
     src: Zink p.62-63
@@ -343,14 +343,14 @@ p1c10r5d:
         meðre:
             _graph: m e d r e
             mere: m e r e
-            merre: m e rr e
+            merre: m e r r e
 
 
 
 p1c10r6:
     src: Zink p.62-63
     context: Évolution de /s/ intervocalique
-    rules: Sonorisation de /s/
+    rules: Sonorisation de /s/ intervocalique
     from: 300
     to: 400
     samples:

@@ -279,7 +279,8 @@ namespace Phonos.French.SubSystems
                     .After(b => b.Phon(IPA.IsVelarVowel)))
                 .Rules(r => r
                     .Named("Sonorisation de /k/ intervocalique devant vélaire")
-                    .Phono(_ => new[] { "g" })));
+                    .Phono(_ => new[] { "g" })
+                    .Rewrite(_ => "g")));
         }
 
         public static Rule Rule3e()
@@ -368,7 +369,7 @@ namespace Phonos.French.SubSystems
                     .After(b => b.Phon(IPA.IsVowel)))
                 .Rules(r => r
                     .Named("Amuïssement de /ð/ intervocalique")
-                    .Phono(_ => new[] { "ð" })
+                    .Phono(P.Erase)
                     .Rewrite(G.Erase)));
         }
 
