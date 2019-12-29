@@ -25,6 +25,25 @@ amarum:
     - ãmer => amer
     - amer => amer
     - amɛr => amer
+    - amɛʁ => amer
+
+# Validé
+arcum:
+    - arcum
+    - arkum => arcum
+    - arku => arcu
+    - arko => arco
+    - ark => arc
+    - aʁk => arc
+
+arcus:
+    - arcus
+    - arkus => arcus
+    - arkos => arcos
+    - arks => arcs
+    - ars => ars, arcs
+    - ar => ars, arcs    # Manque chute du /s/
+    - aʁ => ars, arcs
 
 # p.84 : traité comme proclitiques atones, en précession immédiate du nom
 bonam:
@@ -78,6 +97,28 @@ cor:
     - kør => cœur
     - kœr => cœur
     - kœʁ => cœur
+
+burgum:
+    - burgum
+    - burgum => burgum
+    - burgu => burgu
+    - bɔrgɔ => borgo
+    - bɔrg => borg
+    - bɔrk => borg
+    - burk => bourg
+    - bur => bourg
+    - buʁ => bourg
+
+crista:
+    - crista
+    - krista => crista
+    - kresta => cresta
+    - krestə => creste
+    - krɛːtə => crête
+    - krɛːtœ => crête
+    - krɛːt => crête
+    - kʁɛːt => crête
+    - kʁɛt => crête   # Manque abrègement
 
 feretrum:
     - feretrum
@@ -134,6 +175,17 @@ georgium:
     - ʒɔrʒə => georgie
     - ʒɔrʒ => georgie
     - ʒɔʁʒ => georgie
+
+hostis:
+    - hostis
+    - hostis => hostis
+    - ostis => ostis, hostis  # Manque chute du /h/
+    - ɔstes => ostes, hostes
+    - ɔsts => osts, hosts
+    - ɔʦ => ots, hots   # Manque orthographe en "z"
+    - ɔs => os, hos
+    - ɔ => os, hos   # Manque chute du /s/
+                     # /ɔ/ ou /o/ ?
 
 mare:
     - mare
@@ -193,6 +245,35 @@ pira.2:
     - pɛr => poire
     - pɛʁ => poire
     - pɛʁ => paire
+
+pugnus:
+    - pugnus
+    - puŋnus => pugnus
+    - pujɲɲus => puignus
+    - pojɲɲus => poignus
+    - pojɲɲos => poignos
+    - pojɲɲs => poigns
+    - pojnʦ => points
+    - poi̯nʦ => points
+    - poĩ̯nʦ => points
+    - põĩ̯nʦ => points
+    - pũẽ̯nʦ => points
+    - pwẽnʦ => points
+    - pwẽns => points
+    - pwẽn => points
+    - pwɛ̃ => points
+
+rupta:
+    - rupta
+    - rupta => rupta
+    - ropta => ropta
+    - roptə => ropte  # < Ordre arbitraire
+    - roftə => rofte  # <
+    - rotə => rote
+    - rutə => route   # Pq /o/ => /u/ ?
+    - rutœ => route
+    - rut => route
+    - ʁut => route
 
 sal:
     - sal

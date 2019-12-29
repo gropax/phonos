@@ -100,7 +100,8 @@ namespace Phonos.French.SubSystems
                         q3 => q3.Phon("a", "a").With("accent", "final"))))
                 .Rules(r => r
                     .Named("Syncope des voyelles post-toniques suivies d'un /a/ final")
-                    .Phono(P.Erase).Rewrite(G.Erase)));
+                    .Phono(P.Erase)
+                    .Rewrite(G.Erase)));
         }
 
         public static Rule Rule1d()
@@ -246,8 +247,8 @@ namespace Phonos.French.SubSystems
                         .Without("echo", "echo")))
                 .Rules(r => r
                     .Named("Disparition de la voyelle finale hors de l'accent d'écho")
-                    .Phono(_ => new string[0])
-                    .Rewrite(_ => "")));
+                    .Phono(P.Erase)
+                    .Rewrite(G.Erase)));
         }
 
         public static Rule Rule3h()

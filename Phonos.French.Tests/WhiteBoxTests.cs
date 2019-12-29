@@ -97,7 +97,10 @@ namespace Phonos.French.Tests
         {
             var phonemes = string.Join("", word.Phonemes);
             var graphicalForms = word.GraphicalForms
-                .Select(g => string.Join("", g.Intervals.Values()))
+                .Select(g => string.Join("", g.Intervals
+                    .OrderBy(i => i.Start)
+                    .ThenBy(i => i.End)
+                    .Values()))
                 .ToArray();
             return new WhiteBoxStep(phonemes, graphicalForms);
         }

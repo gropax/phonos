@@ -322,9 +322,6 @@ p1c17r6g:
         venʣʲs:  # fictif
             _graph: v e n ts s
             venʦ: v e n ts
-        osts:
-            _graph: o s t s
-            oʦ: o ts
 
 p1c17r6h:
     src: Zink p.125-128
@@ -345,7 +342,7 @@ p1c17r6i:
     context: Réduction des groupes consonantiques finals
     rules: Dévoisement devant /s/ final
     from: 600
-    to: 700
+    to: 650
     samples:
         deivs:
             _graph: d e i v s
@@ -361,7 +358,7 @@ p1c17r6j:
     src: Zink p.125-128
     context: Réduction des groupes consonantiques finals
     rules: Amuïssement devant /s/ final
-    from: 600
+    from: 650
     to: 700
     samples:
         deifs:
@@ -373,6 +370,17 @@ p1c17r6j:
         deiks:  # fictif
             _graph: d e i k s
             deis: d e i s
+
+p1c17r6k:
+    src: Zink p.125-128
+    context: Réduction des groupes consonantiques finals
+    rules: Réduction des dentales devant /s/
+    from: 600
+    to: 700
+    samples:
+        osts:
+            _graph: o s t s
+            oʦ: o ts
 
 
 

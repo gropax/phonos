@@ -36,11 +36,18 @@ namespace Phonos.Core
                     foreach (var analyzer in rule.Analyzers)
                         Analyzers[analyzer].Analyze(derivation.Derived);
 
-                    var results = rule.Derive(derivation);
-                    if (results.Length > 0)
-                        newDerivations.AddRange(results);
-                    else
-                        newDerivations.Add(derivation);
+                    try
+                    {
+                        var results = rule.Derive(derivation);
+                        if (results.Length > 0)
+                            newDerivations.AddRange(results);
+                        else
+                            newDerivations.Add(derivation);
+                    }
+                    catch (Exception e)
+                    {
+                        throw new RuleException(rule, e);
+                    }
                 }
 
                 derivations = newDerivations.ToArray();

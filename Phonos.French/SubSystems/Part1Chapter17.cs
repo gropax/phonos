@@ -24,7 +24,9 @@ namespace Phonos.French.SubSystems
                 Rule3a(), Rule3b(), Rule3c(), Rule3d(), Rule3e(),
                 Rule4a(), Rule4b(), Rule4c(), Rule4d(), Rule4e(),
                 Rule5a(), Rule5b(), Rule5c(), 
-                Rule6a(), Rule6b(), Rule6c(), Rule6d(), Rule6e(), Rule6f(), Rule6g(), Rule6h(), Rule6i(), Rule6j(),
+                Rule6a(), Rule6b(), Rule6c(), Rule6d(),
+                Rule6k(),  // Should be placed before 6e
+                Rule6e(), Rule6f(), Rule6g(), Rule6h(), Rule6i(), Rule6j(),
                 Rule7a(), Rule7b(), Rule7c(), Rule7d(), 
             };
         }
@@ -379,7 +381,7 @@ namespace Phonos.French.SubSystems
                 .Id("p1c17r6e")
                 .From(600).To(700)
                 .Query(q => q
-                    .After(a => a.Phon(IPA.IsConsonant))
+                    .Before(a => a.Phon(IPA.IsConsonant))
                     .Match(a => a.Phon(IPA.IsConsonant))
                     .After(a => a.Seq(
                         s => s.Phon(IPA.IsConsonant),
@@ -413,18 +415,28 @@ namespace Phonos.French.SubSystems
             return R.Rule(c => c
                 .Id("p1c17r6g")
                 .From(600).To(700)
-                .Query(
-                    q => q
-                        .Match(a => a.Seq(
-                            s => s.Phon("s"),
-                            s => s.Phon("t"),
-                            s => s.Phon("s")))
-                        .After(Q.End),
-                    q => q
-                        .Match(a => a.Seq(
-                            s => s.Phon("t", "d", "ð", "ʦʲ", "ʣʲ"),
-                            s => s.Phon("s")))
-                        .After(Q.End))
+                .Query(q => q
+                    .Match(a => a.Seq(
+                        s => s.Phon("t", "d", "ð", "ʦʲ", "ʣʲ"),
+                        s => s.Phon("s")))
+                    .After(Q.End))
+                .Rules(r => r
+                    .Named("Réduction des dentales devant /s/")
+                    .Phono(_ => new[] { "ʦ" })
+                    .Rewrite(_ => "ts")));
+        }
+
+        public static Rule Rule6k()
+        {
+            return R.Rule(c => c
+                .Id("p1c17r6k")
+                .From(600).To(700)
+                .Query(q => q
+                    .Match(a => a.Seq(
+                        s => s.Phon("s"),
+                        s => s.Phon("t"),
+                        s => s.Phon("s")))
+                    .After(Q.End))
                 .Rules(r => r
                     .Named("Réduction des dentales devant /s/")
                     .Phono(_ => new[] { "ʦ" })
@@ -452,7 +464,7 @@ namespace Phonos.French.SubSystems
         {
             return R.Rule(c => c
                 .Id("p1c17r6i")
-                .From(600).To(700)
+                .From(600).To(650)
                 .Query(q => q
                     .Match(m => m.Phon("v", "b", "g"))
                     .After(a => a.Seq(
@@ -468,7 +480,7 @@ namespace Phonos.French.SubSystems
         {
             return R.Rule(c => c
                 .Id("p1c17r6j")
-                .From(600).To(700)
+                .From(650).To(700)
                 .Query(q => q
                     .Match(m => m.Phon("f", "p", "k"))
                     .After(a => a.Seq(
