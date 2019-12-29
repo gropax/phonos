@@ -23,6 +23,9 @@ namespace Phonos.French.SubSystems
                 Rule2(),
                 Rule3a(), Rule3b(), Rule3c(), Rule3d(), Rule3e(),
                 Rule4a(), Rule4b(), Rule4c(), Rule4d(), Rule4e(),
+                Rule5a(), Rule5b(), Rule5c(), 
+                Rule6a(), Rule6b(), Rule6c(), Rule6d(), Rule6e(), Rule6f(), Rule6g(), Rule6h(), Rule6i(), Rule6j(),
+                Rule7a(), Rule7b(), Rule7c(), Rule7d(), 
             };
         }
 
@@ -255,6 +258,273 @@ namespace Phonos.French.SubSystems
                     .Named("Amuïssement de /s/ antéconsonantique, allongement de la voyelle précédente")
                     .Phono(px => new[] { $"{px[0]}ː" })
                     .Rewrite(g => g.Substring(0, g.Length - 1) + "\u0302")));
+        }
+
+
+
+        public static Rule Rule5a()
+        {
+            return R.Rule(c => c
+                .Id("p1c17r5a")
+                .From(600).To(700)
+                .Query(q => q
+                    .Match(m => m.Phon("p"))
+                    .After(a => a.Phon("t")))
+                .Rules(r => r
+                    .Named("Spirantisation de /p/ devant /t/")
+                    .Phono(_ => new[] { "f" })
+                    .Rewrite(_ => "f")));
+        }
+
+        public static Rule Rule5b()
+        {
+            return R.Rule(c => c
+                .Id("p1c17r5b")
+                .From(800).To(900)
+                .Query(q => q
+                    .Match(m => m.Phon("f", "v"))
+                    .After(a => a.Phon("t", "d")))
+                .Rules(r => r
+                    .Named("Amuïssement de /f/ et /v/ devant dentale")
+                    .Phono(P.Erase)
+                    .Rewrite(G.Erase)));
+        }
+
+        public static Rule Rule5c()
+        {
+            return R.Rule(c => c
+                .Id("p1c17r5c")
+                .From(600).To(700)
+                .Query(q => q
+                    .Match(m => m.Phon("m"))
+                    .After(a => a.Phon("t")))
+                .Rules(r => r
+                    .Named("Assimilation de /m/")
+                    .Phono(_ => new[] { "n" })
+                    .Rewrite(_ => "n")));
+        }
+
+
+
+        public static Rule Rule6a()
+        {
+            return R.Rule(c => c
+                .Id("p1c17r6a")
+                .From(600).To(700)
+                .Query(q => q
+                    .Before(b => b.Phon(IPA.IsConsonant))
+                    .Match(m => m.Phon("j"))
+                    .After(a => a.Seq(
+                        s => s.Maybe(m => m.Phon(IPA.IsConsonant)),
+                        Q.End)))
+                .Rules(r => r
+                    .Named("Amuïssement de /j/ final post-consonantique")
+                    .Phono(P.Erase)
+                    .Rewrite(G.Erase)));
+        }
+
+        public static Rule Rule6b()
+        {
+            return R.Rule(c => c
+                .Id("p1c17r6b")
+                .From(600).To(700)
+                .Query(q => q
+                    .Before(b => b.Phon(IPA.IsConsonant))
+                    .Match(m => m.Seq(
+                        s => s.Phon("n"),
+                        s => s.Phon("s")))
+                    .After(Q.End))
+                .Rules(r => r
+                    .Named("Formation d'un /t/ transitoire")
+                    .Phono(_ => new[] { "ʦ" })
+                    .Rewrite(_ => "ts")));
+        }
+
+        public static Rule Rule6c()
+        {
+            return R.Rule(c => c
+                .Id("p1c17r6c")
+                .From(600).To(700)
+                .Query(q => q
+                    .Match(m => m.Seq(
+                        s => s.Phon("ɲ"),
+                        s => s.Maybe(a => a.Phon("ɲ")),
+                        s => s.Phon("s")))
+                    .After(Q.End))
+                .Rules(r => r
+                    .Named("Formation d'un /t/ transitoire")
+                    .Phono(_ => new[] { "n", "ʦ" })
+                    .Rewrite(_ => "n ts")));
+        }
+
+        public static Rule Rule6d()
+        {
+            return R.Rule(c => c
+                .Id("p1c17r6d")
+                .From(600).To(700)
+                .Query(q => q
+                    .Match(m => m.Seq(
+                        s => s.Phon("ʎ"),
+                        s => s.Phon("s")))
+                    .After(Q.End))
+                .Rules(r => r
+                    .Named("Formation d'un /t/ transitoire")
+                    .Phono(_ => new[] { "l", "ʦ" })
+                    .Rewrite(_ => "l ts")));
+        }
+
+        public static Rule Rule6e()
+        {
+            return R.Rule(c => c
+                .Id("p1c17r6e")
+                .From(600).To(700)
+                .Query(q => q
+                    .After(a => a.Phon(IPA.IsConsonant))
+                    .Match(a => a.Phon(IPA.IsConsonant))
+                    .After(a => a.Seq(
+                        s => s.Phon(IPA.IsConsonant),
+                        Q.End)))
+                .Rules(r => r
+                    .Named("Amuïssement de la consonne médiane")
+                    .Phono(P.Erase)
+                    .Rewrite(
+                        G.Erase,
+                        g => $"{g}:0")));
+        }
+
+        public static Rule Rule6f()
+        {
+            return R.Rule(c => c
+                .Id("p1c17r6f")
+                .From(600).To(700)
+                .Query(q => q
+                    .Match(a => a.Seq(
+                        s => s.Phon("t", "d", "ð"),
+                        s => s.Phon("t")))
+                    .After(Q.End))
+                .Rules(r => r
+                    .Named("Réduction des dentales devant /t/")
+                    .Phono(_ => new[] { "t" })
+                    .Rewrite(_ => "t")));
+        }
+
+        public static Rule Rule6g()
+        {
+            return R.Rule(c => c
+                .Id("p1c17r6g")
+                .From(600).To(700)
+                .Query(
+                    q => q
+                        .Match(a => a.Seq(
+                            s => s.Phon("s"),
+                            s => s.Phon("t"),
+                            s => s.Phon("s")))
+                        .After(Q.End),
+                    q => q
+                        .Match(a => a.Seq(
+                            s => s.Phon("t", "d", "ð", "ʦʲ", "ʣʲ"),
+                            s => s.Phon("s")))
+                        .After(Q.End))
+                .Rules(r => r
+                    .Named("Réduction des dentales devant /s/")
+                    .Phono(_ => new[] { "ʦ" })
+                    .Rewrite(_ => "ts")));
+        }
+
+        public static Rule Rule6h()
+        {
+            return R.Rule(c => c
+                .Id("p1c17r6h")
+                .From(600).To(700)
+                .Query(q => q
+                    .Match(a => a.Seq(
+                        s => s.Phon("s"),
+                        s => s.Phon("s"),
+                        s => s.Maybe(mm => mm.Phon("s"))))
+                    .After(Q.End))
+                .Rules(r => r
+                    .Named("Réduction de /ss/ final")
+                    .Phono(_ => new[] { "s" })
+                    .Rewrite(_ => "s")));
+        }
+
+        public static Rule Rule6i()
+        {
+            return R.Rule(c => c
+                .Id("p1c17r6i")
+                .From(600).To(700)
+                .Query(q => q
+                    .Match(m => m.Phon("v", "b", "g"))
+                    .After(a => a.Seq(
+                        s => s.Phon("s"),
+                        Q.End)))
+                .Rules(r => r
+                    .Named("Dévoisement devant /s/ final")
+                    .Phono(P.Unvoice)
+                    .Rewrite(G.Unvoice)));
+        }
+
+        public static Rule Rule6j()
+        {
+            return R.Rule(c => c
+                .Id("p1c17r6j")
+                .From(600).To(700)
+                .Query(q => q
+                    .Match(m => m.Phon("f", "p", "k"))
+                    .After(a => a.Seq(
+                        s => s.Phon("s"),
+                        Q.End)))
+                .Rules(r => r
+                    .Named("Amuïssement devant /s/ final")
+                    .Phono(P.Erase)
+                    .Rewrite(G.Erase)));
+        }
+
+
+
+        public static Rule Rule7a()
+        {
+            return R.Rule(c => c
+                .Id("p1c17r7a")
+                .From(1200).To(1300)
+                .Query(q => q.Match(m => m.Phon("ʧ")))
+                .Rules(r => r
+                    .Named("Réduction de /ʧ/")
+                    .Phono(_ => new[] { "ʃ" })));
+        }
+
+        public static Rule Rule7b()
+        {
+            return R.Rule(c => c
+                .Id("p1c17r7b")
+                .From(1200).To(1300)
+                .Query(q => q.Match(m => m.Phon("ʤ")))
+                .Rules(r => r
+                    .Named("Réduction de /ʤ/")
+                    .Phono(_ => new[] { "ʒ" })));
+        }
+
+        public static Rule Rule7c()
+        {
+            return R.Rule(c => c
+                .Id("p1c17r7c")
+                .From(1200).To(1300)
+                .Query(q => q.Match(m => m.Phon("ʦ")))
+                .Rules(r => r
+                    .Named("Réduction de /ʦ/")
+                    .Phono(_ => new[] { "s" })
+                    .Rewrite(_ => "s")));
+        }
+
+        public static Rule Rule7d()
+        {
+            return R.Rule(c => c
+                .Id("p1c17r7d")
+                .From(1200).To(1300)
+                .Query(q => q.Match(m => m.Phon("ʣ")))
+                .Rules(r => r
+                    .Named("Réduction de /ʣ/")
+                    .Phono(_ => new[] { "z" })));
         }
     }
 }

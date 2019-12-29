@@ -88,6 +88,16 @@ namespace Phonos.Core.RuleBuilder
             return this;
         }
 
+        public MatchQueryBuilder Maybe(Action<MatchQueryBuilder> queryDefinition)
+        {
+            var queryBuilder = new MatchQueryBuilder();
+            queryDefinition(queryBuilder);
+            var query = queryBuilder.Build();
+            SetQuery(new MaybeQuery(query));
+            return this;
+        }
+
+
         public MatchQueryBuilder With(string key, params string[] values)
         {
             WrapQuery(new WithQuery(_query, key, values));

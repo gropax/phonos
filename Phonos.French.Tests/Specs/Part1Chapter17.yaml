@@ -183,7 +183,7 @@ p1c17r4e:
 p1c17r5a:
     src: Zink p.121-124
     context: Effacement de l'implosive en groupe disjoint
-    rules: Spirantisation de /p/ devant dentale
+    rules: Spirantisation de /p/ devant /t/
     from: 600
     to: 700
     samples:
@@ -228,7 +228,7 @@ p1c17r6a:
     samples:
         kojɲj:
             _graph: c o i n i
-            kojɲ: c o i ng
+            kojɲ: c o i n
         kojɲjs:
             _graph: c o i n i s
             kojɲs: c o i n s
@@ -243,17 +243,33 @@ p1c17r6b:
         forns:
             _graph: f o r n s
             forʦ: f o r ts
+
+p1c17r6c:
+    src: Zink p.125-128
+    context: Réduction des groupes consonantiques finals
+    rules: Formation d'un /t/ transitoire
+    from: 600
+    to: 700
+    samples:
         pojɲɲs:
             _graph: p o i n ni s
             pojnʦ: p o i n ts
         kojɲs:
             _graph: c o i n s
             kojnʦ: c o i n ts
-        konseʎjs:
-            _graph: c o n s e l i s
+
+p1c17r6d:
+    src: Zink p.125-128
+    context: Réduction des groupes consonantiques finals
+    rules: Formation d'un /t/ transitoire
+    from: 600
+    to: 700
+    samples:
+        konseʎs:
+            _graph: c o n s e li s
             konselʦ: c o n s e l ts
 
-p1c17r6c:
+p1c17r6e:
     src: Zink p.125-128
     context: Réduction des groupes consonantiques finals
     rules: Amuïssement de la consonne médiane
@@ -262,12 +278,12 @@ p1c17r6c:
     samples:
         arks:
             _graph: a r c s
-            ars: a r s
+            ars: a r s, a r c:0 s
         burgs:
-            _graph: b u r g s
-            burs: b u r s
+            _graph: b ou r g s
+            burs: b ou r s, b ou r g:0 s
 
-p1c17r6d:
+p1c17r6f:
     src: Zink p.125-128
     context: Réduction des groupes consonantiques finals
     rules: Réduction des dentales devant /t/
@@ -284,7 +300,7 @@ p1c17r6d:
             _graph: v e n d t
             vent: v e n t
 
-p1c17r6e:
+p1c17r6g:
     src: Zink p.125-128
     context: Réduction des groupes consonantiques finals
     rules: Réduction des dentales devant /s/
@@ -310,7 +326,7 @@ p1c17r6e:
             _graph: o s t s
             oʦ: o ts
 
-p1c17r6f:
+p1c17r6h:
     src: Zink p.125-128
     context: Réduction des groupes consonantiques finals
     rules: Réduction de /ss/ final
@@ -324,7 +340,7 @@ p1c17r6f:
             _graph: d o s s s
             dos: d o s
 
-p1c17r6g:
+p1c17r6i:
     src: Zink p.125-128
     context: Réduction des groupes consonantiques finals
     rules: Dévoisement devant /s/ final
@@ -341,7 +357,7 @@ p1c17r6g:
             _graph: d e i g s
             deiks: d e i g s
 
-p1c17r6g:
+p1c17r6j:
     src: Zink p.125-128
     context: Réduction des groupes consonantiques finals
     rules: Amuïssement devant /s/ final
@@ -360,48 +376,48 @@ p1c17r6g:
 
 
 
-p1c17r8a:
+p1c17r7a:
     src: Zink p.125-128
     context: Réduction des affriques
     rules: Réduction de /ʧ/
-    from: 600
-    to: 700
+    from: 1200
+    to: 1300
     samples:
         ʧars:
             _graph: ch a r s
             ʃars: ch a r s
 
-p1c17r8b:
+p1c17r7b:
     src: Zink p.125-128
     context: Réduction des affriques
     rules: Réduction de /ʤ/
-    from: 600
-    to: 700
+    from: 1200
+    to: 1300
     samples:
         ʤorts:
             _graph: j o r t s
             ʒorts: j o r t s
 
-p1c17r8c:
+p1c17r7c:
     src: Zink p.125-128
     context: Réduction des affriques
     rules: Réduction de /ʦ/
-    from: 600
-    to: 700
+    from: 1200
+    to: 1300
     samples:
         forʦ:
             _graph: f o r ts
             fors: f o r s
 
-p1c17r8d:
+p1c17r7d:
     src: Zink p.125-128
     context: Réduction des affriques
     rules: Réduction de /ʣ/
-    from: 600
-    to: 700
+    from: 1200
+    to: 1300
     samples:
         pleʣir:
-            _graph: p l ai dz i r
+            _graph: p l ai s i r
             plezir: p l ai s i r
 
 

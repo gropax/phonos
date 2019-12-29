@@ -29,7 +29,7 @@ namespace Phonos.Core
         public static string[] OCCLUSIVES = new []
         {
             "p", "b", "p̪", "b̪", "t̼", "d̼", "t", "d", "ʈ", "ɖ",
-            "c", "ɟ", "k", "ɡ", "q", "ɢ", "ʡ", "ʔ",
+            "c", "ɟ", "k", "g", "q", "ɢ", "ʡ", "ʔ",
         };
         public static bool IsOcclusive(string phoneme)
         {

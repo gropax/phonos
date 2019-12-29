@@ -64,6 +64,15 @@ namespace Phonos.Core.RuleBuilder
                 d.Substring(0, d.Length - 1) + "\u0303" + d.Last().ToString(),
             };
         }
+
+        public static Dictionary<string, string> UNVOICE = new Dictionary<string, string>()
+        {
+            { "g", "k" }, { "b", "p" }, { "v", "f" },
+        };
+        public static string[] Unvoice(string[] phonemes)
+        {
+            return phonemes.Select(p => UNVOICE[p]).ToArray();
+        }
     }
 
     [Serializable]
