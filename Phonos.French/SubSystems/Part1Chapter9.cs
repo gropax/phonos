@@ -292,7 +292,7 @@ namespace Phonos.French.SubSystems
             return R.Rule(c => c
                 .Id("p1c9r4a")
                 .Group("Diphtongaison de /e/ tonique libre ou monosyllabique")
-                .From(200).To(300)
+                .From(500).To(550)
                 .Query(
                     q => q  // tonique libre
                         .Scope("syllable")
@@ -313,7 +313,7 @@ namespace Phonos.French.SubSystems
             return R.Rule(c => c
                 .Id("p1c9r4b")
                 .Group("Diphtongaison de /e/ tonique libre ou monosyllabique")
-                .From(300).To(400)
+                .From(550).To(600)
                 .Query(q => q.
                     Match(m => m.Phon("ee̯").With("accent", "tonic")))
                 .Rules(p => p

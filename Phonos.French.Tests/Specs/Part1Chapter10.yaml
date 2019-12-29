@@ -128,13 +128,13 @@ p1c10r2c:
     samples:
         sabere:
             _graph: s a b e r e
-            savere: s a v e r e
+            saβere: s a b e r e
         sabunt:
             _graph: s a b u n t
-            savunt: s a v u n t
+            saβunt: s a b u n t
         nebote:
             _graph: n e b o t e
-            nevote: n e v o t e
+            neβote: n e b o t e
 
 p1c10r2d:
     src: Zink p.61-63
@@ -180,6 +180,23 @@ p1c10r2f:
         luwu:
             _graph: l u w u
             luu: l u u
+
+p1c10r2g:
+    src: Zink p.62-63
+    context: Évolution des bilabiales sourdes intervocaliques
+    rules: Renforcement de /β/ intervocalique
+    from: 450
+    to: 500
+    samples:
+        saβere:
+            _graph: s a b e r e
+            savere: s a v e r e
+        saβunt:
+            _graph: s a b u n t
+            savunt: s a v u n t
+        neβote:
+            _graph: n e b o t e
+            nevote: n e v o t e
 
 
 

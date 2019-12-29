@@ -248,6 +248,17 @@ pira.1:
     - pwar => poire
     - pwaʁ => poire
 
+nuba:
+    - nūba
+    - nuːba => nuba
+    - nuːβa => nuba
+    - nuβa => nuba
+    - nuwa => nuba   # Pb: fourche /w/ ou /v/
+    - nua => nua
+    - nuə => nue
+    - nyœ => nue
+    - ny => nue
+
 pira.2:
     - pira
     - pira => pira
@@ -305,6 +316,24 @@ sal:
     - seːl => sel
     - sel => sel
     - sɛl => sel
+
+sapere:
+    - sapēre
+    - sapeːre => sapere
+    - saperɛ => sapere
+    - saberɛ => sabere
+    - saβerɛ => sabere
+    - saverɛ => savere
+    - savee̯rɛ => savere
+    - savei̯rɛ => saveire
+    - savei̯r => saveir
+    - savoi̯r => savoir
+    - savoe̯r => savoir
+    - savue̯r => savoir
+    - savwer => savoir
+    - savwɛr => savoir
+    - savwar => savoir
+    - savwaʁ => savoir
 
 soror:
     - soror

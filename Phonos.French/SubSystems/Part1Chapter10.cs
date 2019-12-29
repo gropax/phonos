@@ -19,7 +19,7 @@ namespace Phonos.French.SubSystems
             return new[]
             {
                 Rule1a(), Rule1b(), Rule1c(), Rule1d(), Rule1e(), Rule1f(),
-                Rule2a(), Rule2b(), Rule2c(), Rule2d(), Rule2e(), Rule2f(),
+                Rule2a(), Rule2b(), Rule2c(), Rule2d(), Rule2e(), Rule2f(), Rule2g(),
                 Rule3a(), Rule3b(), Rule3c(), Rule3d(), Rule3e(), Rule3f(), Rule3g(),
                 Rule4a(), Rule4b(), Rule4c(),
                 Rule5a(), Rule5b(), Rule5c(), Rule5d(),
@@ -169,8 +169,7 @@ namespace Phonos.French.SubSystems
                     .After(b => b.Phon(IPA.IsVowel)))
                 .Rules(r => r
                     .Named("Spirantisation de /b/ entre voyelles mixtes")
-                    .Phono(_ => new[] { "v" })
-                    .Rewrite(_ => "v")));
+                    .Phono(_ => new[] { "β" })));
         }
 
         public static Rule Rule2d()
@@ -221,6 +220,21 @@ namespace Phonos.French.SubSystems
                     .Named("Amuïssement de /w/ intervocalique")
                     .Phono(P.Erase)
                     .Rewrite(G.Erase)));
+        }
+
+        public static Rule Rule2g()
+        {
+            return R.Rule(c => c
+                .Id("p1c10r2g")
+                .From(450).To(500)
+                .Query(q => q
+                    .Before(b => b.Phon(IPA.IsVowel))
+                    .Match(m => m.Phon("β"))
+                    .After(b => b.Phon(IPA.IsVowel)))
+                .Rules(r => r
+                    .Named("Renforcement de /β/ intervocalique")
+                    .Phono(_ => new[] { "v" })
+                    .Rewrite(_ => "v")));
         }
 
 

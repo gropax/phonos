@@ -302,8 +302,8 @@ p1c9r4a:
     src: Zink p.58-59, http://www.diachronie.be/cours_grammaire/phonetique/043.html
     context: Diphtongaison de /e/ tonique libre ou monosyllabique
     rules: Segmentation de /e/ sous l’accent tonique
-    from: 200?
-    to: 300?
+    from: 500
+    to: 550
     samples:
         pera:
             _graph: p e r a
@@ -320,8 +320,8 @@ p1c9r4b:
     src: Zink p.58-59, http://www.diachronie.be/cours_grammaire/phonetique/043.html
     context: Diphtongaison de /e/ tonique libre ou monosyllabique
     rules: Dissimilation d’aperture de /e̯/
-    from: 300
-    to: 400
+    from: 550
+    to: 600
     samples:
         pee̯ra:
             _graph: p e r a
