@@ -158,7 +158,7 @@ namespace Phonos.Core.Rules
                     .Values());
 
                 var replacedGraphemes = map
-                    .Map(before, originalGraphemes.Value, after, range.Length)
+                    .Map(before, originalGraphemes.Value, after, i.Value.Length)
                     .Translate(range.Start)
                     .ToArray();
 
