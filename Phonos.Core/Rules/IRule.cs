@@ -11,7 +11,7 @@ namespace Phonos.Core.Rules
         Interval TimeSpan { get; }
         string[] Analyzers { get; }
 
-        WordDerivation[] Derive(WordDerivation derivation);
-        Word[] Apply(Word word);
+        WordDerivation[] Derive(ExecutionContext context, WordDerivation derivation);
+        Word[] Apply(ExecutionContext context, Word word);
     }
 }

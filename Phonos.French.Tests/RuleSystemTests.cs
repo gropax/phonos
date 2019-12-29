@@ -3,6 +3,7 @@ using Phonos.Core;
 using Phonos.Core.Analyzers;
 using Phonos.Core.Rules;
 using Phonos.Core.Tests.TestData;
+using Phonos.Latin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,41 +13,14 @@ namespace Phonos.French.Tests
 {
     public class RuleSystemTests
     {
-        public Latin.WordParser WordParser => new Latin.WordParser();
-        public IAnalyzer[] Analyzers { get; protected set; }
-
-        protected void TestRules(IRule[] rules, string[] data, Func<IRule[], IRuleSequencer> sequencerBuilder = null)
+        public ExecutionContext ExecutionContext
         {
-            var testData = ParseData(data);
-
-            var word = WordParser.Parse(testData.Latin);
-
-            foreach (var analyzer in Analyzers)
-                analyzer.Analyze(word);
-
-            sequencerBuilder = sequencerBuilder ?? (rx => new LinearRuleSequencer(rules));
-
-            var sequencer = sequencerBuilder(rules);
-            var derived = sequencer.Derive(word).Select(d => d.Derived).ToArray();
-
-            Assert.Equal(testData.PhonologicalForms.Length, derived.Length);
-
-            for (int i = 0; i < testData.PhonologicalForms.Length; i++)
+            get
             {
-                var expected = testData.PhonologicalForms[i];
-                var real = derived[i];
-
-                Assert.Equal(expected.Phonemes, string.Join(string.Empty, real.Phonemes));
-                Assert.Equal(expected.GraphicalForms.Length, real.GraphicalForms.Length);
-
-                for (int j = 0; j < expected.GraphicalForms.Length; j++)
+                return new ExecutionContext(new Dictionary<string, IAnalyzer>()
                 {
-                    var expectedG = expected.GraphicalForms[j];
-                    var realG = real.GraphicalForms[j];
-                    var realStr = string.Join(string.Empty, realG.Intervals.SelectMany(k => k.Value));
-
-                    Assert.Equal(expectedG, realStr);
-                }
+                    { "syllable", new SyllableAnalyzer() },
+                });
             }
         }
 
@@ -68,7 +42,7 @@ namespace Phonos.French.Tests
         protected void TestSample(IRule rule, RuleContextTest ruleTest, RuleTestSample sample)
         {
             var word = sample.Input;
-            var derived = rule.Apply(word);
+            var derived = rule.Apply(ExecutionContext, word);
 
             int expectedNb = sample.Outputs.Length;
 
@@ -142,38 +116,6 @@ namespace Phonos.French.Tests
                 Assert.Equal(expected, real);
             else
                 Assert.Equal(string.Join("", expected), string.Join("", real));
-        }
-
-        protected void TestRule(Rule rule, string[] data)
-        {
-            var testData = ParseData(data);
-
-            var word = WordParser.Parse(testData.Latin);
-
-            foreach (var analyzer in Analyzers)
-                analyzer.Analyze(word);
-
-            var derived = rule.Apply(word);
-
-            Assert.Equal(testData.PhonologicalForms.Length, derived.Length);
-
-            for (int i = 0; i < testData.PhonologicalForms.Length; i++)
-            {
-                var expected = testData.PhonologicalForms[i];
-                var real = derived[i];
-
-                Assert.Equal(expected.Phonemes, string.Join(string.Empty, real.Phonemes));
-                Assert.Equal(expected.GraphicalForms.Length, real.GraphicalForms.Length);
-
-                for (int j = 0; j < expected.GraphicalForms.Length; j++)
-                {
-                    var expectedG = expected.GraphicalForms[j];
-                    var realG = real.GraphicalForms[j];
-                    var realStr = string.Join(string.Empty, realG.Intervals.SelectMany(k => k.Value));
-
-                    Assert.Equal(expectedG, realStr);
-                }
-            }
         }
 
 

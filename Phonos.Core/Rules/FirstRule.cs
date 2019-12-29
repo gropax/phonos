@@ -27,14 +27,17 @@ namespace Phonos.Core.Rules
             Analyzers = analyzers ?? new string[0];
         }
 
-        public WordDerivation[] Derive(WordDerivation derivation)
+        public WordDerivation[] Derive(ExecutionContext context, WordDerivation derivation)
         {
-            return First(r => r.Derive(derivation));
+            return First(r => r.Derive(context, derivation));
         }
 
-        public Word[] Apply(Word word)
+        public Word[] Apply(ExecutionContext context, Word word)
         {
-            return First(r => r.Apply(word));
+            foreach (var analyzer in Analyzers)
+                context.RunAnalyzer(analyzer, word);
+
+            return First(r => r.Apply(context, word));
         }
 
         private T[] First<T>(Func<IRule, T[]> func)

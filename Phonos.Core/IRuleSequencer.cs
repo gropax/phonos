@@ -7,6 +7,6 @@ namespace Phonos.Core
     public interface IRuleSequencer
     {
         //WordDerivation Apply(Word word);
-        WordDerivation[] Derive(Word word);
+        WordDerivation[] Derive(ExecutionContext context, Word word);
     }
 }

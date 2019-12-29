@@ -28,8 +28,11 @@ namespace Phonos.Core.Rules
             Analyzers = analyzers ?? new string[0];
         }
 
-        public WordDerivation[] Derive(WordDerivation derivation)
+        public WordDerivation[] Derive(ExecutionContext context, WordDerivation derivation)
         {
+            foreach (var analyzer in Analyzers)
+                context.RunAnalyzer(analyzer, derivation.Derived);
+
             var derivations = new WordDerivation[] { derivation };
             var newDerivations = new List<WordDerivation>();
 
@@ -37,7 +40,7 @@ namespace Phonos.Core.Rules
             {
                 foreach (var d in derivations)
                 {
-                    var results = rule.Derive(d);
+                    var results = rule.Derive(context, d);
                     if (results.Length > 0)
                         newDerivations.AddRange(results);
                     else
@@ -53,12 +56,12 @@ namespace Phonos.Core.Rules
             return derivations.ToArray();
         }
 
-        public Word[] Apply(Word word)
+        public Word[] Apply(ExecutionContext context, Word word)
         {
             var words = new Word[] { word };
 
             foreach (var rule in Rules)
-                words = words.SelectMany(w => rule.Apply(w)).ToArray();
+                words = words.SelectMany(w => rule.Apply(context, w)).ToArray();
 
             return words.ToArray();
         }

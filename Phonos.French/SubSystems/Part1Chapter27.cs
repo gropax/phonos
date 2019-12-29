@@ -30,6 +30,9 @@ namespace Phonos.French.SubSystems
             };
         }
 
+        /// <summary>
+        /// Lois de position : ouvertures de /e/ et /ø/ en syllabe fermée
+        /// </summary>
         public static IRule RuleSet1()
         {
             return new RuleSequence("p1c27s1", new []

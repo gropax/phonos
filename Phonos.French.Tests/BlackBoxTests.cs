@@ -2,6 +2,7 @@
 using Phonos.Core;
 using Phonos.Core.Analyzers;
 using Phonos.Core.Tests.TestData;
+using Phonos.Latin;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -46,13 +47,24 @@ namespace Phonos.French.Tests
                 { "syllable", new Latin.SyllableAnalyzer() },
             });
 
-            var derived = sequencer.Derive(word).Select(d => d.Derived).ToArray();
+            var derived = sequencer.Derive(ExecutionContext, word).Select(d => d.Derived).ToArray();
 
             var expected = integrationTest.Outputs;
             Assert.Equal(expected.Length, derived.Length);
 
             for (int i = 0; i < expected.Length; i++)
                 TestBlackBoxSample(expected, derived, i);
+        }
+
+        public ExecutionContext ExecutionContext
+        {
+            get
+            {
+                return new ExecutionContext(new Dictionary<string, IAnalyzer>()
+                {
+                    { "syllable", new SyllableAnalyzer() },
+                });
+            }
         }
     }
 }

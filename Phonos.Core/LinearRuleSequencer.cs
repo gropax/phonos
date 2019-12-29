@@ -10,7 +10,6 @@ namespace Phonos.Core
     public class LinearRuleSequencer : IRuleSequencer
     {
         public IRule[] Rules { get; }
-        public Dictionary<string, IAnalyzer> Analyzers { get; }
 
         public LinearRuleSequencer(IEnumerable<IRule> rules,
             Dictionary<string, IAnalyzer> analyzers = null)
@@ -19,10 +18,9 @@ namespace Phonos.Core
                 .OrderBy(r => r.TimeSpan.Start)
                 .ThenBy(r => r.TimeSpan.End)
                 .ToArray();
-            Analyzers = analyzers ?? new Dictionary<string, IAnalyzer>();
         }
 
-        public WordDerivation[] Derive(Word word)
+        public WordDerivation[] Derive(ExecutionContext context, Word word)
         {
             var originalDerivation = WordDerivation.Origin(word);
 
@@ -33,12 +31,9 @@ namespace Phonos.Core
             {
                 foreach (var derivation in derivations)
                 {
-                    foreach (var analyzer in rule.Analyzers)
-                        Analyzers[analyzer].Analyze(derivation.Derived);
-
                     try
                     {
-                        var results = rule.Derive(derivation);
+                        var results = rule.Derive(context, derivation);
                         if (results.Length > 0)
                             newDerivations.AddRange(results);
                         else
@@ -55,6 +50,21 @@ namespace Phonos.Core
             }
 
             return derivations.ToArray();
+        }
+    }
+
+    public class ExecutionContext
+    {
+        private Dictionary<string, IAnalyzer> _analyzers;
+
+        public ExecutionContext(Dictionary<string, IAnalyzer> analyzers = null)
+        {
+            _analyzers = analyzers ?? new Dictionary<string, IAnalyzer>();
+        }
+
+        public void RunAnalyzer(string name, Word word)
+        {
+            _analyzers[name].Analyze(word);
         }
     }
 

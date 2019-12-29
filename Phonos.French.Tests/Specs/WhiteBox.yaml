@@ -207,6 +207,7 @@ hostis:
     - ɔ => os, hos   # Manque chute du /s/
                      # /ɔ/ ou /o/ ?
 
+# Validé
 mare:
     - mare
     - mare => mare
@@ -221,6 +222,29 @@ mare:
     - mɛr => mer
     - mɛʁ => mer
 
+# Validé
+matrem:
+    - mātrem
+    - maːtrem => matrem
+    - maːtre => matre
+    - maːtrɛ => matre
+    - matrɛ => matre
+    - madrɛ => madre
+    - maa̯drɛ => madre
+    - maɛ̯drɛ => madre
+    - maɛ̯ðrɛ => madre
+    - mɛɛ̯ðrɛ => medre
+    - mɛɛ̯ðrə => medre
+    - mɛːðrə => medre
+    - meːðrə => medre
+    - meðrə => medre
+    - merə => mere
+    - merœ => mere
+    - mer => mere
+    - mɛr => mère   # accent
+    - mɛʁ => mère   # règle de réécriture "oi" -> "ai" créé un doublon
+
+# Validé
 mel:
     - mel
     - mel => mel
@@ -248,6 +272,7 @@ pira.1:
     - pwar => poire
     - pwaʁ => poire
 
+# Validé
 nuba:
     - nūba
     - nuːba => nuba
@@ -294,6 +319,19 @@ pugnus:
     - pwẽn => points
     - pwɛ̃ => points
 
+# Validé
+ripa:
+    - rīpa
+    - riːpa => ripa
+    - ripa => ripa
+    - riba => riba
+    - riβa => riba
+    - riva => riva
+    - rivə => rive
+    - rivœ => rive
+    - riv => rive
+    - ʁiv => rive
+
 rupta:
     - rupta
     - rupta => rupta
@@ -306,6 +344,7 @@ rupta:
     - rut => route
     - ʁut => route
 
+# Validé
 sal:
     - sal
     - sal => sal
@@ -317,6 +356,7 @@ sal:
     - sel => sel
     - sɛl => sel
 
+# Validé
 sapere:
     - sapēre
     - sapeːre => sapere

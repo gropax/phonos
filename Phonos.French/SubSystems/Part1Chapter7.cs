@@ -13,7 +13,7 @@ namespace Phonos.French.SubSystems
         {
             return new[]
             {
-                Rule1a(), Rule1b(), Rule1c(), Rule1d(),
+                Rule1a(), RuleSet1(), Rule1d(),
             };
         }
 
@@ -22,7 +22,21 @@ namespace Phonos.French.SubSystems
             return new[]
             {
                 Rule1a(), Rule1b(), Rule1c(), Rule1d(),
+                RuleSet1(),
             };
+        }
+
+        /// <summary>
+        /// Effacement de /œ/ final
+        /// </summary>
+        public static IRule RuleSet1()
+        {
+            return new RuleSequence("p1c7s1", new []
+            {
+                Rule1b(),
+                Rule1c(),
+                Part1Chapter27.RuleSet1(),  // Lois de position
+            });
         }
 
         public static Rule Rule1a()

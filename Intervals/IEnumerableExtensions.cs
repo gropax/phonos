@@ -104,7 +104,7 @@ namespace Intervals
                 int shift2 = rightIdx - leftIdx;
                 for (int i = 0; i < final.Length; i++)
                 {
-                    var finalInterval = new Interval<T[]>(leftIdx, 1, new[] { final[i] });
+                    var finalInterval = new Interval<T[]>(leftIdx + i, 1, new[] { final[i] });
                     intervalAlignments.Add(new IntervalAlignment<T[]>(finalInterval,
                         finalInterval.Translate(shift2), true));
                 }

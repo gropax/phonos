@@ -140,9 +140,10 @@ namespace Phonos.French.SubSystems
                 .Group("Effacement des voyelles finales")
                 .From(600).To(700)
                 .Query(q => q
-                    .Scope("syllable")
-                    .Match(m => m.Phon(IPA.IsVowel).With("accent", "final"))
-                    .Before(b => b.Seq(s => s.Phon(IPA.CONSONANTS), s => s.Phon(IPA.CONSONANTS))))
+                    //.Scope("syllable")
+                    //.Before(b => b.Seq(s => s.Phon(IPA.CONSONANTS), s => s.Phon(IPA.CONSONANTS)))
+                    .Before(Q.ConjointCluster)
+                    .Match(m => m.Phon(IPA.IsVowel).With("accent", "final")))
                 .Rules(r => r
                     .Named("Affaiblissement de la voyelle finale précédée d'un groupe consonantique conjoint")
                     .Phono(_ => new[] { "ə" })

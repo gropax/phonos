@@ -28,15 +28,19 @@ namespace Phonos.Core.Rules
             Analyzers = analyzers ?? new string[0];
         }
 
-        public WordDerivation[] Derive(WordDerivation derivation)
+        public WordDerivation[] Derive(ExecutionContext context,
+            WordDerivation derivation)
         {
-            return Apply(derivation.Derived)
+            return Apply(context, derivation.Derived)
                 .Select(w => new WordDerivation(this, derivation.Derived, w, derivation))
                 .ToArray();
         }
 
-        public Word[] Apply(Word word)
+        public Word[] Apply(ExecutionContext context, Word word)
         {
+            foreach (var analyzer in Analyzers)
+                context.RunAnalyzer(analyzer, word);
+
             var matches = new List<Interval<string[]>>();
 
             foreach (var query in Queries)
