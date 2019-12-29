@@ -1,0 +1,358 @@
+﻿p1c10r1a:
+    src: Zink p.61-63
+    context: Évolution des bilabiales sonores intervocaliques
+    rules: Spirantisation de /b/ intervocalique
+    from: 0
+    to: 100
+    samples:
+        abere:
+            _graph: h:0 a b e r e
+            aβere: h:0 a b e r e
+
+p1c10r1b:
+    src: Zink p.61-63
+    context: Évolution des bilabiales sonores intervocaliques
+    rules: Renforcement de /β/ entre voyelles palatales
+    from: 200
+    to: 300
+    samples:
+        deβere:
+            _graph: d e b e r e
+            devere: d e v e r e
+        aβere:
+            _graph: h:0 a b e r e
+            avere: h:0 a v e r e
+        deβare:  # fictif
+            _graph: d e b e r e
+            # no match
+
+p1c10r1c:
+    src: Zink p.61-63
+    context: Évolution des bilabiales sonores intervocaliques
+    rules: Vélarisation de /β/ entre voyelles vélaires
+    from: 200
+    to: 300
+    samples:
+        suβumbrare:
+            _graph: s u b u m b r a r e
+            suwumbrare: s u w u m b r a r e
+        aβutu:
+            _graph: h:0 a b u t u
+            awutu: h:0 a w u t u
+        deβutu:
+            _graph: d e b u t u
+            # no match
+
+p1c10r1d:
+    src: Zink p.61-63
+    context: Évolution des bilabiales sonores intervocaliques
+    rules: Évolution de /β/ entre voyelles hétérogènes
+    from: 200
+    to: 300
+    samples:
+        deβutu:
+            _graph: d e b u t u
+            devutu: d e v u t u
+            dewutu: d e w u t u
+        proβare:
+            _graph: p r o b a r e
+            provare: p r o v a r e
+            proware: p r o w a r e
+        proβyteru:
+            _graph: p r o b y t e r u
+            provyteru: p r o v y t e r u
+            prowyteru: p r o w y t e r u
+        deβare:  # fictif
+            _graph: d e b a r e
+            devare: d e v a r e
+            deware: d e w a r e
+
+p1c10r1e:
+    src: Zink p.61-63
+    context: Évolution des bilabiales sonores intervocaliques
+    rules: Renforcement de /w/ intervocalique avec entourage palatal
+    from: 0
+    to: 100
+    samples:
+        dewere:  # fictif
+            _graph: d e w e r e
+            deβere: d e b e r e
+        awere:  # fictif
+            _graph: h:0 a w e r e
+            aβere: h:0 a b e r e
+        wiwa:
+            _graph: v i v a
+            wiβa: v i b a
+
+p1c10r1f:
+    src: Zink p.61-63
+    context: Évolution des bilabiales sonores intervocaliques
+    rules: Amuïssement de /w/ intervocalique avec entourage vélaire
+    from: 200
+    to: 300
+    samples:
+        pawore:
+            _graph: p a v o r e
+            paore: p a o r e
+
+
+p1c10r2a:
+    src: Zink p.62-63
+    context: Évolution des bilabiales sourdes intervocaliques
+    rules: Sonorisation de /p/ intervocalique
+    from: 350
+    to: 400
+    samples:
+        sapere:
+            _graph: s a p e r e
+            sabere: s a b e r e
+
+p1c10r2b:
+    src: Zink p.62-63
+    context: Évolution des bilabiales sourdes intervocaliques
+    rules: Vélarisation de /b/ entre voyelles vélaires
+    from: 400
+    to: 450
+    samples:
+        lubu:
+            _graph: l u b u
+            luwu: l u w u
+
+p1c10r2c:
+    src: Zink p.62-63
+    context: Évolution des bilabiales sourdes intervocaliques
+    rules: Spirantisation de /b/ entre voyelles mixtes
+    from: 400
+    to: 450
+    samples:
+        sabere:
+            _graph: s a b e r e
+            savere: s a v e r e
+        sabunt:
+            _graph: s a b u n t
+            savunt: s a v u n t
+        nebote:
+            _graph: n e b o t e
+            nevote: n e v o t e
+
+p1c10r2d:
+    src: Zink p.61-63
+    context: Évolution des bilabiales sourdes intervocaliques
+    rules: Renforcement de /ɸ/ intervocalique avec entourage palatal
+    from: 350
+    to: 400
+    samples:
+        deɸere:  # fictif
+            _graph: d e w e r e
+            deβere: d e b e r e
+        aɸere:  # fictif
+            _graph: h:0 a w e r e
+            aβere: h:0 a b e r e
+        maliɸatius:
+            _graph: m a l i f a t i u s
+            maliβatius: m a l i b a t i u s
+
+p1c10r2e:
+    src: Zink p.61-63
+    context: Évolution des bilabiales sonores intervocaliques
+    rules: Vélarisation de /ɸ/ intervocalique en voisinage vélaire
+    from: 350
+    to: 400
+    samples:
+        paɸore:  # fictif
+            _graph: p a f o r e
+            pawore: p a w o r e
+        deɸoris:
+            _graph: d e f o r i s
+            deworis: d e w o r i s
+
+p1c10r2f:
+    src: Zink p.62-63
+    context: Évolution des bilabiales sourdes intervocaliques
+    rules: Amuïssement de /w/ intervocalique
+    from: 450
+    to: 500
+    samples:
+        deworis:
+            _graph: d e w o r i s
+            deoris: d e o r i s
+        luwu:
+            _graph: l u w u
+            luu: l u u
+
+
+
+p1c10r3a:
+    src: Zink p.62-63
+    context: Évolution des palato-vélaires intervocaliques
+    rules: Spirantisation de /g/ intervocalique devant vélaire
+    from: 300
+    to: 325
+    samples:
+        degoris:  # fictif
+            _graph: d e g o r i s
+            deɣoris: d e g o r i s
+
+p1c10r3b:
+    src: Zink p.62-63
+    context: Évolution des palato-vélaires intervocaliques
+    rules: Vélarisation de /ɣ/ intervocalique
+    from: 325
+    to: 350
+    samples:
+        deɣoris:  # fictif
+            _graph: d e g o r i s
+            deworis: d e w o r i s
+
+p1c10r3c:
+    src: Zink p.62-63
+    context: Évolution des palato-vélaires intervocaliques
+    rules: Amuïssement de /w/ intervocalique
+    from: 350
+    to: 400
+    samples:
+        deworis:  # fictif
+            _graph: d e w o r i s
+            deoris: d e o r i s
+
+p1c10r3d:
+    src: Zink p.62-63
+    context: Évolution des palato-vélaires intervocaliques
+    rules: Sonorisation de /k/ intervocalique devant vélaire
+    from: 300
+    to: 350
+    samples:
+        dekoris:  # fictif
+            _graph: d e k o r i s
+            degoris: d e g o r i s
+
+p1c10r3e:
+    src: Zink p.62-63
+    context: Évolution des palato-vélaires intervocaliques
+    rules: Spirantisation de /g/ intervocalique devant vélaire
+    from: 400
+    to: 450
+    samples:
+        degoris:  # fictif
+            _graph: d e g o r i s
+            deɣoris: d e ɣ o r i s
+
+p1c10r3f:
+    src: Zink p.62-63
+    context: Évolution des palato-vélaires intervocaliques
+    rules: Vélarisation de /ɣ/ intervocalique
+    from: 450
+    to: 475
+    samples:
+        deɣoris:  # fictif
+            _graph: d e g o r i s
+            deworis: d e w o r i s
+
+p1c10r3g:
+    src: Zink p.62-63
+    context: Évolution des palato-vélaires intervocaliques
+    rules: Amuïssement de /w/ intervocalique
+    from: 475
+    to: 500
+    samples:
+        deworis:  # fictif
+            _graph: d e w o r i s
+            deoris: d e o r i s
+
+
+
+p1c10r4a:
+    src: Zink p.62-63
+    context: Évolution des dentales intervocaliques
+    rules: Sonorisation de /t/ intervocalique
+    from: 350
+    to: 400
+    samples:
+        mutare:
+            _graph: m u t a r e
+            mudare: m u d a r e
+
+p1c10r4b:
+    src: Zink p.62-63
+    context: Évolution des dentales intervocaliques
+    rules: Spirantisation de /d/ intervocalique
+    from: 500
+    to: 600
+    samples:
+        mudare:
+            _graph: m u d a r e
+            muðare: m u d a r e
+
+p1c10r4c:
+    src: Zink p.62-63
+    context: Évolution des dentales intervocaliques
+    rules: Amuïssement de /ð/ intervocalique
+    from: 1000
+    to: 1100
+    samples:
+        muðare:
+            _graph: m u d a r e
+            muare: m u a r e
+
+
+
+p1c10r5a:
+    src: Zink p.62-63
+    context: Évolution des groupes labiale + /r/ intervocaliques
+    rules: Renforcement en /vr/
+    from: 200
+    to: 300
+    samples:
+        biβre:
+            _graph: b i b r e
+            bivre: b i v r e
+        biɸre:  # fictif
+            _graph: b i f r e
+            bivre: b i v r e
+
+p1c10r5b:
+    src: Zink p.62-63
+    context: Évolution des groupes dentale + /r/ intervocaliques
+    rules: Sonorisation de /t/
+    from: 300
+    to: 400
+    samples:
+        matre:
+            _graph: m a t r e
+            madre: m a d r e
+
+p1c10r5c:
+    src: Zink p.62-63
+    context: Évolution des groupes dentale + /r/ intervocaliques
+    rules: Spirantisation de /d/
+    from: 500
+    to: 600
+    samples:
+        medre:
+            _graph: m e d r e
+            meðre: m e d r e
+
+p1c10r5c:
+    src: Zink p.62-63
+    context: Évolution des groupes dentale + /r/ intervocaliques
+    rules: Assimilation de /ð/
+    from: 1000
+    to: 1100
+    samples:
+        meðre:
+            _graph: m e d r e
+            mere: m e r e
+            merre: m e rr e
+
+
+
+p1c10r6:
+    src: Zink p.62-63
+    context: Évolution de /s/ intervocalique
+    rules: Sonorisation de /s/
+    from: 300
+    to: 400
+    samples:
+        nasu:
+            _graph: n a s u
+            nazu: n a s u
