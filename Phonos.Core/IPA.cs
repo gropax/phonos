@@ -19,6 +19,25 @@ namespace Phonos.Core
             return VOWELS.Contains(phoneme[0].ToString());
         }
 
+        public static string[] VELAR_VOWELS = new []
+        {
+            "ɯ", "u", "ʊ", "ɤ", "o", "ʌ", "ɔ", "ɑ", "ɒ",
+        };
+        public static bool IsVelarVowel(string phoneme)
+        {
+            return VELAR_VOWELS.Contains(phoneme[0].ToString());
+        }
+
+        public static string[] PALATAL_VOWELS = new []
+        {
+            "i", "y", "ɪ", "ʏ", "e", "ø",
+            //"ɛ", "œ",
+        };
+        public static bool IsPalatalVowel(string phoneme)
+        {
+            return PALATAL_VOWELS.Contains(phoneme[0].ToString());
+        }
+
         public static bool IsLongVowel(string phoneme)
         {
             return VOWELS.Contains(phoneme[0].ToString())

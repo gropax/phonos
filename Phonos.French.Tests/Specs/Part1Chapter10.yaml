@@ -87,13 +87,14 @@ p1c10r1e:
 p1c10r1f:
     src: Zink p.61-63
     context: Évolution des bilabiales sonores intervocaliques
-    rules: Amuïssement de /w/ intervocalique avec entourage vélaire
+    rules: Amuïssement de /w/ intervocalique
     from: 200
     to: 300
     samples:
         pawore:
             _graph: p a v o r e
             paore: p a o r e
+
 
 
 p1c10r2a:
@@ -332,7 +333,7 @@ p1c10r5c:
             _graph: m e d r e
             meðre: m e d r e
 
-p1c10r5c:
+p1c10r5d:
     src: Zink p.62-63
     context: Évolution des groupes dentale + /r/ intervocaliques
     rules: Assimilation de /ð/
