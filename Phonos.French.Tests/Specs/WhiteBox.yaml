@@ -45,6 +45,26 @@ arcus:
     - ar => ars, arcs    # Manque chute du /s/
     - aʁ => ars, arcs
 
+arborem:
+    - arborem
+    - arborem => arborem
+    - arbore => arbore
+    - arbre => arbre
+    - arbrɛ => arbre
+    - arbr => arbr    # Fictif: devrait conditionner chute de /e/ à absence de grp consonantique
+    - arbrə => arbre
+    - arbrœ => arbre
+    - arbr => arbre
+    - aʁbʁ => arbre
+
+arma:
+    - arma
+    - arma => arma
+    - armə => arme
+    - armœ => arme
+    - arm => arme
+    - aʁm => arme
+
 # p.84 : traité comme proclitiques atones, en précession immédiate du nom
 bonam:
     - bonam
