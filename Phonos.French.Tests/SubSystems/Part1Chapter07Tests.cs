@@ -11,14 +11,14 @@ using Xunit;
 
 namespace Phonos.French.SubSystems.Tests
 {
-    public class Part1Chapter7Tests : RuleSystemTests
+    public class Part1Chapter07Tests : RuleSystemTests
     {
         public static RuleTestData RuleData
         {
             get
             {
                 var parser = new YamlParser();
-                var path = @".\Specs\Part1Chapter7.yaml";
+                var path = @".\Specs\Part1Chapter07.yaml";
                 using (StreamReader reader = File.OpenText(path))
                     return new RuleTestData(parser.ParseRuleTests(reader).ToList());
             }
@@ -28,7 +28,7 @@ namespace Phonos.French.SubSystems.Tests
         [MemberData(nameof(RuleData))]
         public void Test(RuleContextTest ruleTest)
         {
-            TestRules(Part1Chapter7.RuleComponents(), ruleTest);
+            TestRules(Part1Chapter07.RuleComponents(), ruleTest);
         }
     }
 }

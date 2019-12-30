@@ -11,7 +11,7 @@ namespace Phonos.French.SubSystems
     /// Évolutions des voyelles du latin classique au latin vulgaire.
     /// [G. Zink, Phonétique historique du français, ch. VIII]
     /// </summary>
-    public static class Part1Chapter8
+    public static class Part1Chapter08
     {
         public static Rule[] Rules()
         {

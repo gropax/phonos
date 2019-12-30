@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Phonos.French.SubSystems
 {
-    public static class Part1Chapter6
+    public static class Part1Chapter06
     {
         public static IRule[] Rules()
         {

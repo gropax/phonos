@@ -54,7 +54,7 @@
     <None Update="Specs\Part1Chapter11.yaml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Specs\Part1Chapter7.yaml">
+    <None Update="Specs\Part1Chapter07.yaml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Specs\WhiteBox.yaml">
@@ -63,13 +63,13 @@
     <None Update="Specs\BlackBox.yaml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Specs\Part1Chapter6.yaml">
+    <None Update="Specs\Part1Chapter06.yaml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Specs\Part1Chapter8.yaml">
+    <None Update="Specs\Part1Chapter08.yaml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Specs\Part1Chapter9.yaml">
+    <None Update="Specs\Part1Chapter09.yaml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

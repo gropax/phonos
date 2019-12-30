@@ -10,7 +10,7 @@ namespace Phonos.French.SubSystems
     /// <summary>
     /// [G. Zink, Phonétique historique du français, ch. VI]
     /// </summary>
-    public static class Part1Chapter9
+    public static class Part1Chapter09
     {
         public static Rule[] Rules()
         {

@@ -12,7 +12,7 @@ namespace Phonos.French
         public static Rule[] Rules()
         {
             return Chapter6.Rules()
-                .Concat(Part1Chapter8.Rules())
+                .Concat(Part1Chapter08.Rules())
                 .ToArray();
         }
     }
@@ -22,10 +22,10 @@ namespace Phonos.French
         public static IRule[] Rules()
         {
             return new IRule[0]
-                .Concat(Part1Chapter6.Rules())
-                .Concat(Part1Chapter7.Rules())
-                .Concat(Part1Chapter8.Rules())
-                .Concat(Part1Chapter9.Rules())
+                .Concat(Part1Chapter06.Rules())
+                .Concat(Part1Chapter07.Rules())
+                .Concat(Part1Chapter08.Rules())
+                .Concat(Part1Chapter09.Rules())
                 .Concat(Part1Chapter10.Rules())
                 .Concat(Part1Chapter11.Rules())
                 .Concat(Part1Chapter13.Rules())
