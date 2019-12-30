@@ -126,6 +126,23 @@ georgium:
     - ʒɔrʒ => georgie
     - ʒɔʁʒ => georgie
 
+hordeum:
+    - hordeum
+    - hordeum => hordeum
+    - hordeu => hordeu
+    - hordju => hordiu
+    - ordju => ordiu
+    - ɔrdju => ordiu
+    - ɔrdʲu => ordiu
+    - ɔrʤʲu => orgiu
+    - ɔrʤʲo => orgio
+    - ɔrʤʲə => orgie
+    - ɔrʤə => orge
+    - ɔrʒə => orge
+    - ɔrʒœ => orge
+    - ɔrʒ => orge
+    - ɔʁʒ => orge
+
 hostis:
     - hostis
     - hostis => hostis
@@ -216,6 +233,25 @@ soror:
     - sør => sœur
     - sœr => sœur
     - sœʁ => sœur
+
+stella:
+    - stēlla
+    - steːlla => stella
+    - isteːlla => istella
+    - esteːlla => estella
+    - esteːla => estela
+    - estee̯la => estela
+    - estei̯la => esteila
+    - estei̯lə => esteile
+    - estoi̯lə => estoile
+    - eːtoi̯lə => étoile
+    - eːtoe̯lə => étoile
+    - eːtue̯lə => étoile
+    - eːtwelə => étoile
+    - eːtwɛlə => étoile
+    - eːtwalə => étoile
+    - eːtwalœ => étoile
+    - eːtwal => étoile
 
 ustium:
     - ūstium

@@ -49,11 +49,11 @@ namespace Phonos.Latin
         {
             { "ae", new [] { Phonemes.a_i } },
             { "au", new [] { Phonemes.a_u } },
-            { "ei", new [] { Phonemes.e_i } },
-            { "eu", new [] { Phonemes.e_u } },
+            //{ "ei", new [] { Phonemes.e_i } },
+            //{ "eu", new [] { Phonemes.e_u } },
             { "oe", new [] { Phonemes.o_i } },
-            { "ui", new [] { Phonemes.u_i } },
-            { "yi", new [] { Phonemes.y_i } },
+            //{ "ui", new [] { Phonemes.u_i } },
+            //{ "yi", new [] { Phonemes.y_i } },
             { "ch", new [] { Phonemes.kh } },
             { "gn", new [] { Phonemes.ng, Phonemes.n } },  // /!\ mots grecs
             { "gu", new [] { Phonemes.gw } },  // (!) si pas de voyelle après
