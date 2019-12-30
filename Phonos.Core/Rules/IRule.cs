@@ -12,6 +12,5 @@ namespace Phonos.Core.Rules
         string[] Analyzers { get; }
 
         WordDerivation[] Derive(ExecutionContext context, WordDerivation derivation);
-        Word[] Apply(ExecutionContext context, Word word);
     }
 }

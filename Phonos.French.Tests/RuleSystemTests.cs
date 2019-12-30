@@ -42,7 +42,9 @@ namespace Phonos.French.Tests
         protected void TestSample(IRule rule, RuleContextTest ruleTest, RuleTestSample sample)
         {
             var word = sample.Input;
-            var derived = rule.Apply(ExecutionContext, word);
+            var initialDerivation = WordDerivation.Origin(word);
+            var derivation = rule.Derive(ExecutionContext, initialDerivation);
+            var derived = derivation.Select(d => d.Derived).ToArray();
 
             int expectedNb = sample.Outputs.Length;
 

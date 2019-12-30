@@ -37,7 +37,11 @@ namespace Phonos.Core.Queries.Tests
                 GraphicalForms(Alignment.Parse("B E L L A")),
                 Fields(Field("type", Alignment.Parse("C V C C V")))); 
 
-            var newWords = rule.Apply(new ExecutionContext(), word);
+            var context = new ExecutionContext();
+            var originalDerivation = WordDerivation.Origin(word);
+            var derivation = rule.Derive(context, originalDerivation);
+            var newWords = derivation.Select(d => d.Derived).ToArray();
+
             var expected = new[]
             {
                 new Word(
@@ -74,9 +78,13 @@ namespace Phonos.Core.Queries.Tests
             var word = new Word(
                 Phonemes("b", "e", "l", "l", "a", "b", "e", "l"), 
                 GraphicalForms(Alignment.Parse("B E L L A B E L")),
-                Fields(Field("syllable", Alignment.Parse("long:3 short:2 long:3")))); 
+                Fields(Field("syllable", Alignment.Parse("long:3 short:2 long:3"))));
 
-            var newWords = rule.Apply(new ExecutionContext(), word);
+            var context = new ExecutionContext();
+            var originalDerivation = WordDerivation.Origin(word);
+            var derivation = rule.Derive(context, originalDerivation);
+            var newWords = derivation.Select(d => d.Derived).ToArray();
+
             var expected = new[]
             {
                 new Word(

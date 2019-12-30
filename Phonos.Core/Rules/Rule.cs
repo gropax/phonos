@@ -33,19 +33,23 @@ namespace Phonos.Core.Rules
         public WordDerivation[] Derive(ExecutionContext context,
             WordDerivation derivation)
         {
-            return Apply(context, derivation.Derived)
+            var newDerivations = new List<WordDerivation>();
+            if (Optional)
+                newDerivations.Add(derivation);
+
+            var ruleDerivations = Apply(context, derivation.Derived)
                 .Select(w => new WordDerivation(this, derivation.Derived, w, derivation))
                 .ToArray();
+
+            newDerivations.AddRange(ruleDerivations);
+
+            return newDerivations.ToArray();
         }
 
-        public Word[] Apply(ExecutionContext context, Word word)
+        private Word[] Apply(ExecutionContext context, Word word)
         {
             foreach (var analyzer in Analyzers)
                 context.RunAnalyzer(analyzer, word);
-
-            var words = new List<Word>();
-            if (Optional)
-                words.Add(word);
 
             var matches = new List<Interval<string[]>>();
 
@@ -55,12 +59,11 @@ namespace Phonos.Core.Rules
                         matches.Add(match);
 
             if (matches.Count() == 0)
-                return words.ToArray();
+                return new Word[0];
 
             var derived = Operations.Select(r => DeriveWord(r, word, matches.Sorted())).ToArray();
-            words.AddRange(derived);
 
-            return words.ToArray();
+            return derived;
         }
 
         public Word DeriveWord(Operation operation, Word word, SortedIntervals<string[]> matches)

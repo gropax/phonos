@@ -52,18 +52,6 @@ namespace Phonos.Core.Rules
             }
 
             return derivations.ToArray();
-
-            return derivations.ToArray();
-        }
-
-        public Word[] Apply(ExecutionContext context, Word word)
-        {
-            var words = new Word[] { word };
-
-            foreach (var rule in Rules)
-                words = words.SelectMany(w => rule.Apply(context, w)).ToArray();
-
-            return words.ToArray();
         }
     }
 }

@@ -32,14 +32,6 @@ namespace Phonos.Core.Rules
             return First(r => r.Derive(context, derivation));
         }
 
-        public Word[] Apply(ExecutionContext context, Word word)
-        {
-            foreach (var analyzer in Analyzers)
-                context.RunAnalyzer(analyzer, word);
-
-            return First(r => r.Apply(context, word));
-        }
-
         private T[] First<T>(Func<IRule, T[]> func)
         {
             foreach (var rule in Rules)
