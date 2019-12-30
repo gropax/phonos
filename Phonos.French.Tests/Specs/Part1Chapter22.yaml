@@ -1,0 +1,24 @@
+﻿p1c22r1a:
+    src: Zink p.151
+    context: Évolution de /h/
+    rules: Amuïssement de /h/ (latin)
+    from: 0
+    to: 100
+    samples:
+        hordjum:
+            _graph: h o r d e u m
+            ordjum: o r d e u m
+        prehendo:
+            _graph: p r e h e n d o
+            preendo: p r e e n d o
+
+p1c22r1b:
+    src: Zink p.151
+    context: Évolution de /h/
+    rules: Amuïssement de /h/ (germanique)
+    from: 1600
+    to: 1700
+    samples:
+        honte:
+            _graph: h o n t e
+            onte: h:0 o n t e

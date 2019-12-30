@@ -130,7 +130,7 @@ namespace Phonos.Core.Rules
 
             do
             {
-                if (enumerator.Current.Start + shift >= annotations.Last().End)
+                if (enumerator.Current.Start + shift >= (annotations.LastOrDefault()?.End ?? 0))
                     annotations.Add(enumerator.Current.Translate(shift));
             } while (enumerator.MoveNext());
 
@@ -199,7 +199,7 @@ namespace Phonos.Core.Rules
 
             do
             {
-                if (enumerator.Current.Start + shift >= newGraphemes.Last().End)
+                if (enumerator.Current.Start + shift >= (newGraphemes.LastOrDefault()?.End ?? 0))
                     newGraphemes.Add(enumerator.Current.Translate(shift));
             } while (enumerator.MoveNext());
 
