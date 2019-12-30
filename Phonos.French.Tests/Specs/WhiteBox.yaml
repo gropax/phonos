@@ -67,6 +67,23 @@ ferum:
     - fjɛr => fier
     - fjɛʁ => fier
 
+hordeum:
+    - hordeum
+    - hordeum => hordeum
+    - hordeu => hordeu
+    - hordju => hordiu
+    - ordju => ordiu
+    - ɔrdju => ordiu
+    - ɔrdʲu => ordiu
+    - ɔrʤʲu => orgiu
+    - ɔrʤʲo => orgio
+    - ɔrʤʲə => orgie
+    - ɔrʤə => orge
+    - ɔrʒə => orge
+    - ɔrʒœ => orge
+    - ɔrʒ => orge
+    - ɔʁʒ => orge
+
 mare:
     - mare
     - mare => mare

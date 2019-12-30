@@ -48,10 +48,10 @@ p1c15r1d:
             ʤʲurare: j u r a r e
         dʲurnu:
             _graph: di u r n u
-            ʤʲurnu: di u r n u
+            ʤʲurnu: j u r n u
         dʲordʲu:
-            _graph: ge o r gi u
-            ʤʲorʤʲu: ge o r gi u
+            _graph: gi o r gi u
+            ʤʲorʤʲu: gi o r gi u
 
 p1c15r1e:
     src: Zink p.93-94, http://www.diachronie.be/cours_grammaire/phonetique/457.html
@@ -64,11 +64,11 @@ p1c15r1e:
             _graph: j u r a r e
             ʤurare: j u r a r e
         ʤʲurnu:
-            _graph: di u r n u
-            ʤurnu: di u r n u
+            _graph: gi u r n u
+            ʤurnu: ge u r n u
         ʤʲorʤʲu:
-            _graph: ge o r gi u
-            ʤorʤu: ge o r gi u
+            _graph: gi o r gi u
+            ʤorʤu: ge o r ge u
 
 p1c15r1f:
     src: Zink p.93-94, http://www.diachronie.be/cours_grammaire/phonetique/457.html
@@ -84,13 +84,13 @@ p1c15r1f:
             _graph: di u r n
             ʒurn: j u r n
         ʤorʤə:
-            _graph: ge o r gi e
+            _graph: ge o r ge e
             ʒorʒə: ge o r ge e
         ʤurn:  # fictif
             _graph: de u r n
             ʒurn: j u r n
         ʤurn:  # fictif
-            _graph: gi u r n
+            _graph: ge u r n
             ʒurn: ge u r n
 
 # Rule 2

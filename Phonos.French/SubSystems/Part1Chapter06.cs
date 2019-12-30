@@ -108,13 +108,14 @@ namespace Phonos.French.SubSystems
         {
             return R.Rule(c => c
                 .Id("p1c6r1d")
-                .From(0).To(100)
+                .From(-100).To(0)
                 .Query(q => q
                     .Match(m => m.Phon("i", "e", "u").Without("accent", "tonic"))
                     .After(a => a.Phon(IPA.IsVowel)))
                 .Rules(r => r
                     .Named("Consonification de /ǐ/, /ě/ et /ǔ/ en hiatus")
-                    .Phono(P.Consonify)));
+                    .Phono(P.Consonify)
+                    .Rewrite(g => g == "e" ? "i" : g)));
         }
 
 

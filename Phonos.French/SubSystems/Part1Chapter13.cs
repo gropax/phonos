@@ -41,7 +41,7 @@ namespace Phonos.French.SubSystems
             return R.Rule(c => c
                 .Id("p1c13r1a")
                 .Group("")
-                .From(0).To(100)
+                .From(-200).To(-100)
                 .Query(q => q
                     .Match(m => m.Phon("m").With("accent", "tonic"))
                     .After(Q.End))
@@ -60,7 +60,7 @@ namespace Phonos.French.SubSystems
             return R.Rule(c => c
                 .Id("p1c13r1b")
                 .Group("")
-                .From(0).To(100)
+                .From(-200).To(-100)
                 .Query(q => q
                     .Match(m => m.Phon("m"))
                     .After(Q.End))

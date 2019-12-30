@@ -66,15 +66,15 @@ p1c6r1d:
     src: Zink p.40
     context: Amuïssements précoces des post-toniques
     rules: "Consonification de /ǐ/, /ě/ et /ǔ/ en hiatus"
-    from: 0
-    to: 100
+    from: -100
+    to: 0
     samples:
         gɔdia:
             _graph: g au d i a
             gɔdja: g au d i a
         nɔsea:
             _graph: n au s e a
-            nɔsja: n au s e a
+            nɔsja: n au s i a
         widua:
             _graph: v i d u a
             widwa: v i d u a

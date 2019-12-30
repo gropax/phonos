@@ -79,7 +79,14 @@ namespace Phonos.French.SubSystems
                 .Query(q => q .Match(m => m.Phon("dʲ")))
                 .Rules(r => r
                     .Named("Assibilation de /dʲ/")
-                    .Phono(px => new[] { "ʤʲ" })));
+                    .Phono(px => new[] { "ʤʲ" })
+                    .Rewrite((b, m, a) =>
+                    {
+                        if (m == "j" || (b.Length == 0 && !m.Contains("g")))
+                            return "j";
+                        else
+                            return "gi";
+                    })));
         }
 
         public static Rule Rule1e()
@@ -90,7 +97,16 @@ namespace Phonos.French.SubSystems
                 .Query(q => q.Match(m => m.Phon("ʤʲ")))
                 .Rules(r => r
                     .Named("Dépalatalisation de /ʤʲ/")
-                    .Phono(px => new[] { "ʤ" })));
+                    .Phono(px => new[] { "ʤ" })
+                    .Rewrite((b, m, a) =>
+                    {
+                        if (m == "j")
+                            return "j";
+                        else if (a.Length == 0 || a.StartsWith("o") || a.StartsWith("u"))
+                            return "ge";
+                        else
+                            return "g";
+                    })));
         }
 
         public static Rule Rule1f()
@@ -101,14 +117,7 @@ namespace Phonos.French.SubSystems
                 .Query(q => q.Match(m => m.Phon("ʤ")))
                 .Rules(r => r
                     .Named("Réduction de /ʤ/")
-                    .Phono(px => new[] { "ʒ" })
-                    .Rewrite(g =>
-                    {
-                        if (g.StartsWith("g"))
-                            return "ge";
-                        else
-                            return "j";
-                    })));
+                    .Phono(px => new[] { "ʒ" })));
         }
 
 
