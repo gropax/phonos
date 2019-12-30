@@ -9,7 +9,7 @@ using System.IO;
 using System.Linq;
 using Xunit;
 
-namespace Phonos.French.Tests
+namespace Phonos.French.Tests.Integration
 {
     public class WhiteBoxTests : RuleSystemTests
     {

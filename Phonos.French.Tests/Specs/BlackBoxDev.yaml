@@ -1,0 +1,82 @@
+﻿asinum:
+    ɑn: âne
+
+calidum:
+    ʃo: chaud
+
+comitem:
+    kɔ̃t: comte
+
+cor:
+    kuʁ:
+        _graph: cour
+        _meta: Est et Ouest
+    kœʁ:
+        _graph: cœur
+        _meta: Nord et Centre
+
+deu:
+    djø: dieu
+
+duplum:
+    dubl: double
+
+#helmum:
+#    om: heaume
+
+hordeum:
+    ɔʁʒ: orge
+
+hospitem:
+    ot: hôte
+
+matrem:
+    mɛr: mère
+
+pera:
+    pwaʁ: 
+        _graph: poire
+        _meta: Populaire
+    pɛʁ: 
+        _graph: paire
+        _meta: Savant
+
+pejor:
+    piʁ: pire
+
+portas:
+    pɔʁt: portes
+
+portat:
+    pɔʁt: porte
+
+portant:
+    pɔʁt: portent
+
+rubium:
+    ʁuʒ: rouge
+    
+somnum:
+    sɔm: somme
+
+soror:
+    suʁ:
+        _graph: sour
+        _meta: Est et Ouest
+    sœʁ:
+        _graph: sœur
+        _meta: Nord et Centre
+
+tepidum:
+    tjɛd: tiède
+
+tres:
+    tʁwa:
+        _graph: trois
+        _meta: Populaire
+    tʁɛ:
+        _graph: trais
+        _meta: Savant
+
+viridem:
+    vɛʁ: vert

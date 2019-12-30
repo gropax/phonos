@@ -9,7 +9,7 @@ using System.IO;
 using System.Linq;
 using Xunit;
 
-namespace Phonos.French.Tests
+namespace Phonos.French.Tests.Dev
 {
     public class BlackBoxTests : RuleSystemTests
     {
@@ -18,7 +18,7 @@ namespace Phonos.French.Tests
             get
             {
                 var parser = new YamlParser();
-                var path = @".\Specs\BlackBox.yaml";
+                var path = @".\Specs\BlackBoxDev.yaml";
                 using (StreamReader reader = File.OpenText(path))
                     return new BlackBoxTestData(parser.ParseBlackBoxTests(reader).ToList());
             }
