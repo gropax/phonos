@@ -200,7 +200,7 @@ namespace Intervals
             return new Interval<T[]>(start, end - start, ix.Select(i => i.Value).ToArray());
         }
 
-        public static Interval<U> Range<T, U>(this IList<IInterval<T>> intervals, Func<IEnumerable<T>, U> reduce)
+        public static Interval<U> Range<T, U>(this IEnumerable<IInterval<T>> intervals, Func<IEnumerable<T>, U> reduce)
         {
             var ix = intervals.ToIntervals().ToList();
             var start = ix.Min(i => i.Start);

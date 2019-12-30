@@ -16,43 +16,51 @@ p1c12r1a:
             koːperire: c o p e r i r e
 
 # Doit être placé après changement vocalique du latin vulgaire
-p1c12r1b:
-    src: Zink p.68
-    context: Évolution des voyelles atones en syllabe initiale
-    rules: Absorption des voyelles de part et d'autre de /r/
-    from: 200
-    to: 300
-    samples:
-        kiritare:
-            _graph: qu i r i t a r e
-            kriːtare: qu i r i t a r e
-        korrotulare:
-            _graph: c o r r o t u l a r e
-            kroːtulare: c o r r o t u l a r e
-        derɛctu:
-            _graph: d e r e c t u
-            drɛːctu: d e r e c t u
+# Pb: nécessite des requêtes avec dépendences
+#
+#p1c12r1b:
+#    src: Zink p.68
+#    context: Évolution des voyelles atones en syllabe initiale
+#    rules: Absorption des voyelles de part et d'autre de /r/
+#    from: 200?
+#    to: 300?
+#    samples:
+#        kiritare:
+#            _graph: qu i r i t a r e
+#            kriːtare: qu i r i t a r e
+#        korrotulare:
+#            _graph: c o r r o t u l a r e
+#            kroːtulare: c o r r o t u l a r e
+#        derɛctu:
+#            _graph: d e r e c t u
+#            drɛːctu: d e r e c t u
 
 
 
 p1c12r2a:
     src: Zink p.68
     context: Évolution des voyelles atones en syllabe initiale
-    rules: Centralisation de /a/ en hiatus avec une voyelle accentuée
+    rules: Centralisation de /a/ initial en hiatus avec une voyelle accentuée
     from: 700
     to: 800
     samples:
         ayt:
             _graph: a u t
+            _accent: initial:1 tonic:2
             əyt: e u t
         mayr:
             _graph: m a u r
+            _accent: initial:2 tonic:2
             məyr: m e u r
+        mayra:  # fictif
+            _graph: m a u r
+            _accent: initial:2 pretonic:1 tonic:2
+            # no match
 
 p1c12r2b:
     src: Zink p.68
     context: Évolution des voyelles atones en syllabe initiale
-    rules: Fermeture de /a/ initial en syllabe ouvert après une vélaire palatalisée
+    rules: Fermeture de /a/ initial libre après une vélaire palatalisée
     from: 400
     to: 500
     samples:
@@ -60,12 +68,12 @@ p1c12r2b:
             _graph: c a d e r e
             _syllabe: short:2 short:2 short:2
             _accent: initial:2 tonic:2 final:2
-            kʲedere: c a d e r e
+            kʲedere: c e d e r e
         gʲadere:  # fictif
             _graph: c a d e r e
             _syllabe: short:2 short:2 short:2
             _accent: initial:2 tonic:2 final:2
-            gʲedere: c a d e r e
+            gʲedere: c e d e r e
         kʲardere:  # fictif
             _graph: c a r d e r e
             _syllabe: long:3 short:2 short:2
@@ -83,10 +91,12 @@ p1c12r3a:
     samples:
         wɛnirɛ:
             _graph: v e n i r e
-            wenirɛ: e u t
+            _accent: initial:2 tonic:2 final:2
+            wenirɛ: v e n i r e
         pɛrdɛntɛ:
-            _graph: m a u r
-            perdɛntɛ: m e u r
+            _graph: p e r d e n t e
+            _accent: initial:3 tonic:3 final:2
+            perdɛntɛ: p e r d e n t e
 
 p1c12r3b:
     src: Zink p.68
@@ -97,9 +107,11 @@ p1c12r3b:
     samples:
         wɔlere:
             _graph: v o l e r e
+            _accent: initial:2 tonic:2 final:2
             wolere: v o l e r e
         tɔrmento:
             _graph: t o r m e n t o
+            _accent: initial:3 tonic:3 final:2
             tormento: t o r m e n t o
 
 p1c12r3c:
@@ -123,10 +135,10 @@ p1c12r3d:
     to: 1100
     samples:
         venir:
-            _graph: v e n i r e
-            _accent: initial:2 tonic:2 final:2
-            _syllable: short:2 short:2 short:2
-            vənir: v e n i r e
+            _graph: v e n i r
+            _accent: initial:2 tonic:3
+            _syllable: short:2 short:3
+            vənir: v e n i r
 
 p1c12r3e:
     src: Zink p.68
@@ -152,7 +164,7 @@ p1c12r3f:
             _graph: v o l ei r
             _accent: initial:2 tonic:3
             _syllable: short:2 long:3
-            vulei̯r: v o l ei r
+            vulei̯r: v ou l ei r
         tormant:
             _graph: t o r m a n t
             _accent: initial:3 tonic:4
@@ -208,30 +220,42 @@ p1c12r3h:
 p1c12r4a:
     src: Zink p.68
     context: Évolution des voyelles atones en syllabe initiale
-    rules: Fermeture de /ə/ initial (réforme Érasmienne)
+    rules: Fermeture de /ə/ initial libre (réforme Érasmienne)
     from: 1600
     to: 1700
     samples:
         fəlon:
             _graph: f e l o n
+            _classical_latin: e:1:1
             _accent: initial:2 tonic:3
             _syllable: short:2 long:3
             fəlon: f e l o n
             felon: f é l o n
+        fəlon:
+            _graph: f e l o n
+            _accent: initial:2 tonic:3
+            _syllable: short:2 long:3
+            fəlon: f e l o n
 
 p1c12r4b:
     src: Zink p.68
     context: Évolution des voyelles atones en syllabe initiale
-    rules: Fermeture de /ə/ initial (réforme Érasmienne)
+    rules: Ouverture de /u/ initial (réforme Érasmienne)
     from: 1600
     to: 1700
     samples:
         sulɛj:
             _graph: s ou l e il
+            _classical_latin: o:1:1
             _accent: initial:2 tonic:3
             _syllable: short:2 long:3
             sulɛj: s ou l e il
             solɛj: s o l e il
+        sulɛj:
+            _graph: s ou l e il
+            _accent: initial:2 tonic:3
+            _syllable: short:2 long:3
+            sulɛj: s ou l e il
 
 
 

@@ -15,10 +15,11 @@ namespace Phonos.Core.Rules
         public ContextualQuery[] Queries { get; }
         public Operation[] Operations { get; }
         public string[] Analyzers { get; }
+        public bool Optional { get; }
 
         public Rule(string id, string group, Interval timeSpan,
             ContextualQuery[] queries, Operation[] operation,
-            string[] analyzers = null)
+            string[] analyzers = null, bool optional = false)
         {
             Id = id;
             Group = group;
@@ -26,6 +27,7 @@ namespace Phonos.Core.Rules
             Queries = queries;
             Operations = operation;
             Analyzers = analyzers ?? new string[0];
+            Optional = optional;
         }
 
         public WordDerivation[] Derive(ExecutionContext context,
@@ -41,6 +43,10 @@ namespace Phonos.Core.Rules
             foreach (var analyzer in Analyzers)
                 context.RunAnalyzer(analyzer, word);
 
+            var words = new List<Word>();
+            if (Optional)
+                words.Add(word);
+
             var matches = new List<Interval<string[]>>();
 
             foreach (var query in Queries)
@@ -49,10 +55,12 @@ namespace Phonos.Core.Rules
                         matches.Add(match);
 
             if (matches.Count() == 0)
-                return new Word[0];
+                return words.ToArray();
 
-            var words = Operations.Select(r => DeriveWord(r, word, matches.Sorted())).ToArray();
-            return words;
+            var derived = Operations.Select(r => DeriveWord(r, word, matches.Sorted())).ToArray();
+            words.AddRange(derived);
+
+            return words.ToArray();
         }
 
         public Word DeriveWord(Operation operation, Word word, SortedIntervals<string[]> matches)
@@ -90,30 +98,34 @@ namespace Phonos.Core.Rules
 
             foreach (var i in replacements)
             {
-                var orignalAnnotations = field.Intervals
+                var intersected = field.Intervals
                     .IntersectingWith(i, ContainsMode.STRICT)
-                    .Union(g => g.First())
-                    .SingleOrDefault()
-                    ?? new Interval<string>(i, string.Empty);
+                    .OrderBy(j => j.Start)
+                    .ThenBy(j => j.End)
+                    .ToArray();
+
+                var originalAnnotations = intersected.Length > 0
+                    ? intersected.Range(g => string.Join(string.Empty, g))
+                    : new Interval<string>(i, string.Empty);
 
                 var coveredPhonemes = alignment.Intervals
                     .Select(a => new Interval<IntervalAlignment<string[]>>(a.Left, a))
-                    .IntersectingWith(orignalAnnotations, ContainsMode.STRICT)
+                    .IntersectingWith(originalAnnotations, ContainsMode.STRICT)
                     .Values().Select(a => a.Right)
                     .AsEnumerable<IInterval>().ToList();
 
                 var range = coveredPhonemes.Range();
 
-                var realignedAnnotation = new Interval<string>(range, orignalAnnotations.Value);
+                var realignedAnnotation = new Interval<string>(range, originalAnnotations.Value);
 
-                while (enumerator.MoveNext() && enumerator.Current.End <= orignalAnnotations.Start)
+                while (enumerator.MoveNext() && enumerator.Current.End <= originalAnnotations.Start)
                     if (enumerator.Current.Start >= lastPosition)
                         annotations.Add(enumerator.Current.Translate(shift));
 
                 annotations.Add(realignedAnnotation);
 
-                lastPosition = orignalAnnotations.End;
-                shift += realignedAnnotation.Length - orignalAnnotations.Length;
+                lastPosition = originalAnnotations.End;
+                shift += realignedAnnotation.Length - originalAnnotations.Length;
             }
 
             do
@@ -140,11 +152,15 @@ namespace Phonos.Core.Rules
 
             foreach (var i in replacements)
             {
-                originalGraphemes = graphicalForm.Intervals
+                var intersected = graphicalForm.Intervals
                     .IntersectingWith(i, ContainsMode.STRICT)
-                    .Union(g => string.Join(string.Empty, g))
-                    .SingleOrDefault()
-                    ?? new Interval<string>(i, string.Empty);
+                    .OrderBy(j => j.Start)
+                    .ThenBy(j => j.End)
+                    .ToArray();
+
+                originalGraphemes = intersected.Length > 0
+                    ? intersected.Range(g => string.Join(string.Empty, g))
+                    : new Interval<string>(i, string.Empty);
 
                 var coveredPhonemes = alignment.Intervals
                     .Select(a => new Interval<IntervalAlignment<string[]>>(a.Left, a))
