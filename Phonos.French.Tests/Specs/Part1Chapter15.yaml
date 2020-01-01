@@ -520,3 +520,609 @@ p1c15r6h:
         komdʲatu:
             _graph: c o m de a t u
             kondʲatu: c o n de a t u
+
+
+
+p1c15r7a:
+    src: Zink p.102-105
+    context: "Évolution de /k/ et /g/ devant /e/ et /i/"
+    rules: Palatalisation de /k/ en position forte
+    from: 200
+    to: 230
+    samples:
+        kerwu:
+            _graph: c e r w u
+            kʲerwu: c e r w u
+        radkina:
+            _graph: r a d c i n a
+            radkʲina: r a d c i n a
+
+p1c15r7b:
+    src: Zink p.102-105
+    context: "Évolution de /k/ et /g/ devant /e/ et /i/"
+    rules: Dentalisation de /kʲ/ en position forte
+    from: 230
+    to: 260
+    samples:
+        kʲerwu:
+            _graph: c e r w u
+            tʲerwu: c e r w u
+        radkʲina:
+            _graph: r a d c i n a
+            radtʲina: r a d c i n a
+
+p1c15r7c:
+    src: Zink p.102-105
+    context: "Évolution de /k/ et /g/ devant /e/ et /i/"
+    rules: Assibilation de /tʲ/ en position forte
+    from: 260
+    to: 300
+    samples:
+        tʲerwu:
+            _graph: c e r w u
+            ʦʲerwu: c e r w u
+        radtʲina:
+            _graph: r a d c i n a
+            radʦʲina: r a d c i n a
+
+p1c15r7d:
+    src: Zink p.102-105
+    context: "Évolution de /k/ et /g/ devant /e/ et /i/"
+    rules: Palatalisation de /g/ en position forte
+    from: 200
+    to: 230
+    samples:
+        gente:
+            _graph: g e n t e
+            gʲente: g e n t e
+        argilla:
+            _graph: a r g i l l a
+            argʲilla: a r g i l l a
+
+p1c15r7e:
+    src: Zink p.102-105
+    context: "Évolution de /k/ et /g/ devant /e/ et /i/"
+    rules: Dentalisation de /gʲ/ en position forte
+    from: 230
+    to: 260
+    samples:
+        gʲente:
+            _graph: g e n t e
+            dʲente: g e n t e
+        argʲilla:
+            _graph: a r g i l l a
+            ardʲilla: a r g i l l a
+
+p1c15r7f:
+    src: Zink p.102-105
+    context: "Évolution de /k/ et /g/ devant /e/ et /i/"
+    rules: Assibilation de /dʲ/ en position forte
+    from: 260
+    to: 300
+    samples:
+        dʲente:
+            _graph: g e n t e
+            ʤʲente: g e n t e
+        ardʲilla:
+            _graph: a r g i l l a
+            arʤʲilla: a r g i l l a
+
+p1c15r7g:
+    src: Zink p.102-105
+    context: "Évolution de /k/ et /g/ devant /e/ et /i/"
+    rules: Palatalisation de /k/ intervocalique
+    from: 200
+    to: 230
+    samples:
+        plakere:
+            _graph: p l a c e r e
+            plajkʲere: p l a c e r e
+        woke:
+            _graph: v o c e
+            wojkʲe: v o c e
+
+p1c15r7h:
+    src: Zink p.102-105
+    context: "Évolution de /k/ et /g/ devant /e/ et /i/"
+    rules: Dentalisation de /kʲ/ intervocalique
+    from: 230
+    to: 260
+    samples:
+        plajkʲere:
+            _graph: p l a c e r e
+            plajtʲere: p l a c e r e
+        wojkʲe:
+            _graph: v o c e
+            wojtʲe: v o c e
+
+p1c15r7i:
+    src: Zink p.102-105
+    context: "Évolution de /k/ et /g/ devant /e/ et /i/"
+    rules: Assibilation de /tʲ/ intervocalique
+    from: 260
+    to: 300
+    samples:
+        plajtʲere:
+            _graph: p l a c e r e
+            plajʦʲere: p l a c e r e
+        wojtʲe:
+            _graph: v o c e
+            wojʦʲe: v o c e
+
+p1c15r7j:
+    src: Zink p.102-105
+    context: "Évolution de /k/ et /g/ devant /e/ et /i/"
+    rules: Déocclusion et avancée de /g/ intervocalique
+    from: 200
+    to: 300
+    samples:
+        lege:
+            _graph: l e g e
+            leyye: l e g e
+
+
+
+p1c15r8a:
+    src: Zink p.102-105
+    context: "Évolution de /k/ et /g/ devant /l/ et /r/"
+    rules: Spirantisation de /kl/ intervocalique
+    from: 200
+    to: 250
+    samples:
+        makla:
+            _graph: m a c l a
+            maxla: m a c l a
+
+p1c15r8b:
+    src: Zink p.102-105
+    context: "Évolution de /k/ et /g/ devant /l/ et /r/"
+    rules: Palatalisation de /xl/ intervocalique
+    from: 250
+    to: 300
+    samples:
+        maxla:
+            _graph: m a c l a
+            majʎa: m a i li a
+
+p1c15r8c:
+    src: Zink p.102-105
+    context: "Évolution de /k/ et /g/ devant /l/ et /r/"
+    rules: Spirantisation de /gl/ intervocalique
+    from: 200
+    to: 250
+    samples:
+        braglare:
+            _graph: b r a g l a r e
+            braɣlare: b r a g l a r e
+
+p1c15r8d:
+    src: Zink p.102-105
+    context: "Évolution de /k/ et /g/ devant /l/ et /r/"
+    rules: Palatalisation de /xl/ intervocalique
+    from: 250
+    to: 300
+    samples:
+        braɣlare:
+            _graph: b r a g l a r e
+            brajʎare: b r a i li a r e
+
+p1c15r8e:
+    src: Zink p.102-105
+    context: "Évolution de /k/ et /g/ devant /l/ et /r/"
+    rules: Sonorisation de /kr/ intervocalique
+    from: 300
+    to: 350
+    samples:
+        lakrima:
+            _graph: l a c r i m a
+            lagrima: l a c r i m a
+
+p1c15r8f:
+    src: Zink p.102-105
+    context: "Évolution de /k/ et /g/ devant /l/ et /r/"
+    rules: Spirantisation de /gr/ intervocalique
+    from: 350
+    to: 400
+    samples:
+        lagrima:
+            _graph: l a c r i m a
+            laɣrima: l a c r i m a
+
+p1c15r8g:
+    src: Zink p.102-105
+    context: "Évolution de /k/ et /g/ devant /l/ et /r/"
+    rules: Palatalisation de /ɣr/ intervocalique
+    from: 400
+    to: 450
+    samples:
+        laɣrima:
+            _graph: l a c r i m a
+            lajrima: l a c r i m a
+
+p1c15r8h:
+    src: Zink p.102-105
+    context: "Évolution de /k/ et /g/ devant /l/ et /r/"
+    rules: Spirantisation de /gr/ intervocalique
+    from: 300
+    to: 350
+    samples:
+        lagrima:
+            _graph: l a c r i m a
+            laɣrima: l a c r i m a
+
+p1c15r8i:
+    src: Zink p.102-105
+    context: "Évolution de /k/ et /g/ devant /l/ et /r/"
+    rules: Palatalisation de /ɣr/ intervocalique
+    from: 350
+    to: 400
+    samples:
+        laɣrima:
+            _graph: l a c r i m a
+            lajrima: l a c r i m a
+
+
+
+p1c15r9a:
+    src: Zink p.102-105
+    context: "Évolution de /k/ devant /s/ et /t/"
+    rules: Spirantisation de /kt/ intervocalique
+    from: 200
+    to: 250
+    samples:
+        fakta:
+            _graph: f a c t a
+            faxta: f a c t a
+
+p1c15r9b:
+    src: Zink p.102-105
+    context: "Évolution de /k/ devant /s/ et /t/"
+    rules: Palatalisation de /xt/ intervocalique
+    from: 250
+    to: 300
+    samples:
+        faxta:
+            _graph: f a c t a
+            fajtʲa: f a i ti a
+
+p1c15r9c:
+    src: Zink p.102-105
+    context: "Évolution de /k/ devant /s/ et /t/"
+    rules: Spirantisation de /ks/ intervocalique
+    from: 200
+    to: 250
+    samples:
+        laksare:
+            _graph: l a x a r e
+            laxsare: l a x a r e
+
+p1c15r9d:
+    src: Zink p.102-105
+    context: "Évolution de /k/ devant /s/ et /t/"
+    rules: Palatalisation de /xs/ intervocalique
+    from: 250
+    to: 300
+    samples:
+        laxsare:
+            _graph: l a x a r e
+            lajsʲare: l a i si a r e 
+
+
+
+p1c15r10a:
+    src: Zink p.102-105
+    context: "Évolution de /k/ et /g/ devant /a/"
+    rules: Palatalisation de /k/ en position forte
+    from: 400
+    to: 430
+    samples:
+        kastellu:
+            _graph: c a s t e l l u
+            kʲastellu: c a s t e l l u
+        kau̯sa:
+            _graph: c au s a
+            kʲau̯sa: c au s a
+
+p1c15r10b:
+    src: Zink p.102-105
+    context: "Évolution de /k/ et /g/ devant /a/"
+    rules: Dentalisation de /kʲ/ en position forte
+    from: 430
+    to: 460
+    samples:
+        kʲastellu:
+            _graph: c a s t e l l u
+            tʲastellu: c a s t e l l u
+        kʲau̯sa:
+            _graph: c au s a
+            tʲau̯sa: c au s a
+
+p1c15r10c:
+    src: Zink p.102-105
+    context: "Évolution de /k/ et /g/ devant /a/"
+    rules: Assibilation de /tʲ/ en position forte
+    from: 460
+    to: 500
+    samples:
+        tʲastellu:
+            _graph: c a s t e l l u
+            ʧʲastellu: c a s t e l l u
+        tʲau̯sa:
+            _graph: c au s a
+            ʧʲau̯sa: c au s a
+
+p1c15r10d:
+    src: Zink p.102-105
+    context: "Évolution de /k/ et /g/ devant /a/"
+    rules: Palatalisation de /g/ en position forte
+    from: 400
+    to: 430
+    samples:
+        gamba:
+            _graph: g a m b a
+            gʲamba: g a m b a
+        gau̯dia:
+            _graph: g au d i a
+            gʲau̯dia: g au d i a
+
+p1c15r10e:
+    src: Zink p.102-105
+    context: "Évolution de /k/ et /g/ devant /a/"
+    rules: Dentalisation de /gʲ/ en position forte
+    from: 430
+    to: 460
+    samples:
+        gʲamba:
+            _graph: g a m b a
+            dʲamba: g a m b a
+        gʲau̯dia:
+            _graph: g au d i a
+            dʲau̯dia: g au d i a
+
+p1c15r10f:
+    src: Zink p.102-105
+    context: "Évolution de /k/ et /g/ devant /a/"
+    rules: Assibilation de /dʲ/ en position forte
+    from: 460
+    to: 500
+    samples:
+        dʲamba:
+            _graph: g a m b a
+            ʤʲamba: g a m b a
+        dʲau̯dia:
+            _graph: g au d i a
+            ʤʲau̯dia: g au d i a
+
+
+
+p1c15r11a:
+    src: Zink p.102-105
+    context: "Évolution de /k/ et /g/ devant /a/"
+    rules: Spirantisation de /g/ intervocalique
+    from: 300
+    to: 350
+    samples:
+        negare:
+            _graph: n e g a r e
+            neɣare: n e g a r e
+        ruga:
+            _graph: r u g a
+            ruɣa: r u g a
+
+p1c15r11b:
+    src: Zink p.102-105
+    context: "Évolution de /k/ et /g/ devant /a/"
+    rules: Palatalisation de /ɣ/ intervocalique
+    from: 350
+    to: 400
+    samples:
+        neɣare:
+            _graph: n e g a r e
+            nejjare: n e i i a r e
+
+p1c15r11c:
+    src: Zink p.102-105
+    context: "Évolution de /k/ et /g/ devant /a/"
+    rules: Vélarisation de /ɣ/ intervocalique
+    from: 350
+    to: 375
+    samples:
+        ruɣa:
+            _graph: r u g a
+            ruwa: r u w a
+
+p1c15r11d:
+    src: Zink p.102-105
+    context: "Évolution de /k/ et /g/ devant /a/"
+    rules: Amuïssement de /w/ intervocalique
+    from: 375
+    to: 400
+    samples:
+        ruwa:
+            _graph: r u w a
+            rua: r u a
+
+p1c15r11e:
+    src: Zink p.102-105
+    context: "Évolution de /k/ et /g/ devant /a/"
+    rules: Sonorisation de /k/ intervocalique
+    from: 300
+    to: 400
+    samples:
+        nekare:
+            _graph: n e c a r e
+            negare: n e c a r e
+        karruka:
+            _graph: c a r r u c a
+            karruga: c a r r u c a
+
+p1c15r11f:
+    src: Zink p.102-105
+    context: "Évolution de /k/ et /g/ devant /a/"
+    rules: Spirantisation de /g/ intervocalique
+    from: 400
+    to: 450
+    samples:
+        negare:
+            _graph: n e g a r e
+            neɣare: n e g a r e
+        ruga:
+            _graph: r u g a
+            ruɣa: r u g a
+
+p1c15r11g:
+    src: Zink p.102-105
+    context: "Évolution de /k/ et /g/ devant /a/"
+    rules: Palatalisation de /ɣ/ intervocalique
+    from: 450
+    to: 500
+    samples:
+        neɣare:
+            _graph: n e g a r e
+            nejjare: n e i i a r e
+
+p1c15r11h:
+    src: Zink p.102-105
+    context: "Évolution de /k/ et /g/ devant /a/"
+    rules: Vélarisation de /ɣ/ intervocalique
+    from: 450
+    to: 475
+    samples:
+        ruɣa:
+            _graph: r u g a
+            ruwa: r u w a
+
+p1c15r11i:
+    src: Zink p.102-105
+    context: "Évolution de /k/ et /g/ devant /a/"
+    rules: Amuïssement de /w/ intervocalique
+    from: 475
+    to: 500
+    samples:
+        ruwa:
+            _graph: r u w a
+            rua: r u a
+
+
+
+p1c15r12a:
+    src: Zink p.102-105
+    context: "Évolution de /k/ et /g/ devant /o/ et /u/"
+    rules: Spirantisation de /g/ intervocalique
+    from: 300
+    to: 350
+    samples:
+        hugone:
+            _graph: h u g o n e
+            huɣone: h u g o n e
+
+p1c15r12b:
+    src: Zink p.102-105
+    context: "Évolution de /k/ et /g/ devant /o/ et /u/"
+    rules: Sonorisation de /k/ intervocalique
+    from: 300
+    to: 400
+    samples:
+        sekuru:
+            _graph: s e c u r u
+            seguru: s e g u r u
+
+p1c15r12c:
+    src: Zink p.102-105
+    context: "Évolution de /k/ et /g/ devant /o/ et /u/"
+    rules: Spirantisation de /g/ intervocalique
+    from: 400
+    to: 450
+    samples:
+        seguru:
+            _graph: s e g u r u
+            _accent: initial:2 tonic:2 final:2
+            seɣuru: s e g u r u
+        weragu:
+            _graph: v e r a g u
+            _accent: initial:2 tonic:2 final:2
+            # no match
+
+p1c15r12d:
+    src: Zink p.102-105
+    context: "Évolution de /k/ et /g/ devant /o/ et /u/"
+    rules: Palatalisation de /ɣ/ intervocalique
+    from: 400
+    to: 450
+    samples:
+        weragu:
+            _graph: v e r a g u
+            _accent: initial:2 tonic:2 final:2
+            werajju: v e r a i i u
+        seguru:
+            _graph: s e g u r u
+            _accent: initial:2 tonic:2 final:2
+            # no match
+
+
+
+p1c15r13a:
+    src: Zink p.102-105
+    context: Évolution de /ŋ/
+    rules: Palatalisation de /ŋgʲ/
+    from: 230
+    to: 260
+    samples:
+        loŋgʲe:
+            _graph: l o n g e
+            lojɲdʲe: l o i n g e
+
+p1c15r13b:
+    src: Zink p.102-105
+    context: Évolution de /ŋ/
+    rules: Assimilation de /ɲdʲ/
+    from: 260
+    to: 300
+    samples:
+        lojɲdʲe:
+            _graph: l o n g e
+            lojɲɲe: l o i n g e
+
+p1c15r13c:
+    src: Zink p.102-105
+    context: Évolution de /ŋ/
+    rules: Spirantisation de /k/
+    from: 200
+    to: 230
+    samples:
+        saŋktu:
+            _graph: s a n c t u
+            saŋxtu: s a n c t u
+
+p1c15r13d:
+    src: Zink p.102-105
+    context: Évolution de /ŋ/
+    rules: Palatalisation de /xt/
+    from: 230
+    to: 260
+    samples:
+        saŋxtu:
+            _graph: s a n c t u
+            saŋjtʲu: s a n c t u
+
+p1c15r13e:
+    src: Zink p.102-105
+    context: Évolution de /ŋ/
+    rules: Palatalisation de /ŋ/
+    from: 260
+    to: 300
+    samples:
+        saŋjtʲu:
+            _graph: s a n c t u
+            sajɲtʲu: s a i n t u
+
+p1c15r13f:
+    src: Zink p.102-105
+    context: Évolution de /ŋ/
+    rules: Palatalisation de /ŋn/
+    from: 200
+    to: 300
+    samples:
+        seŋnu:
+            _graph: s e g n u
+            sejɲɲu: s e i n u
