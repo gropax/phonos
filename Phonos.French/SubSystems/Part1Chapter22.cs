@@ -11,8 +11,11 @@ namespace Phonos.French.SubSystems
     {
         public static IRule[] Rules()
         {
-            return RuleComponents();
-            //return new IRule[] { };
+            return new[]
+            {
+                RuleSet1(),   // Chute du /h/ latin
+                Rule1b(),     // Chute du /h/ germanique
+            };
         }
 
         public static IRule[] RuleComponents()
@@ -20,7 +23,15 @@ namespace Phonos.French.SubSystems
             return new[]
             {
                 Rule1a(), Rule1b(),
+                RuleSet1(),
             };
+        }
+
+        public static IRule RuleSet1()
+        {
+            return new RuleSequence("p1c22s1",
+                Rule1a(),  // Chute du /h/ latin
+                Part1Chapter12.Rule1a()); // Résolution des hiatus
         }
 
         public static Rule Rule1a()

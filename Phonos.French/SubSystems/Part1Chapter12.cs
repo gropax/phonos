@@ -12,7 +12,15 @@ namespace Phonos.French.SubSystems
     {
         public static IRule[] Rules()
         {
-            return RuleComponents();
+            return new[]
+            {
+                //Rule1a(),  // Used in Part1Chapter22
+                /*Rule1b(),*/
+                Rule2a(), Rule2b(),
+                Rule3a(), Rule3b(), Rule3c(), Rule3d(), Rule3e(), Rule3f(), Rule3g(), Rule3h(),
+                Rule4a(), Rule4b(),
+                Rule5(),
+            };
         }
 
         public static IRule[] RuleComponents()

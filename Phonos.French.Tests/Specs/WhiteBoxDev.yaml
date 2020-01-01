@@ -171,6 +171,22 @@ nuba:
     - nyœ => nue
     - ny => nue
 
+# PB: gérer l'orthographe de la terminaison de la 1ère personne ("prends")
+prehendo:
+    - prehendo
+    - prehendo => prehendo
+    - preendo => prendo
+    - preːndo => prendo
+    - prendo => prendɔ
+    - prend => prend  # < PB: assourdissement de /d/
+    - prent => prent  # < PB: amuïssement de /t/
+    - prẽnt => prent
+    - prɛ̃nt => prent
+    - prãnt => prent
+    - prãn => prent
+    - prã => prent
+    - pʁã => prent
+
 pugnus:
     - pugnus
     - puŋnus => pugnus
