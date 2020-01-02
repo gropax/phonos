@@ -13,9 +13,9 @@ namespace Phonos.French.SubSystems
         {
             return new[]
             {
-                Rule1a(), Rule1b(), Rule1c(), Rule1d(), Rule1e(),
+                RuleSet1a(), RuleSet1b(),
+                Rule1e(),
                 RuleSet3(),  // Voyelles finales
-                Rule4a(), Rule4b(), Rule4c(),
             };
         }
 
@@ -53,6 +53,42 @@ namespace Phonos.French.SubSystems
             return new FirstRule("p1c6s3b",
                 Rule3d(),  // voyelle de support cluster conjoint
                 Rule3e()); // voyelle de support cluster disjoint
+        }
+
+        /// <summary>
+        /// Production d'une consonne épenthétique
+        /// </summary>
+        public static IRule RuleSet4()
+        {
+            return new RuleSequence("p1c6s4",
+                Rule4a(),  // /b/ épenthétique
+                Rule4b(),  // /d/ épenthétique
+                Rule4c()); // /t/ épenthétique
+        }
+
+
+        /// <summary>
+        /// Syncopes précoces des post-toniques
+        /// </summary>
+        public static IRule RuleSet1a()
+        {
+            return new RuleSequence("p1c6s1a",
+                Rule1a(),  // occlusive + liquide
+                Rule1b(),  // homorganique + dentale
+                Rule1c(),  // finale en /a/
+                Part1Chapter17.Rule1(),  // réduction groupes 3 consonnes
+                RuleSet4());  // consonnes épenthétiques
+        }
+
+        /// <summary>
+        /// Syncopes des post-toniques restantes
+        /// </summary>
+        public static IRule RuleSet1b()
+        {
+            return new RuleSequence("p1c6s1b",
+                Rule1d(),
+                Part1Chapter17.Rule1(),  // réduction groupes 3 consonnes
+                RuleSet4());  // consonnes épenthétiques
         }
 
         public static Rule Rule1a()
@@ -118,6 +154,9 @@ namespace Phonos.French.SubSystems
                     .Rewrite(G.Erase)));
         }
 
+        /// <summary>
+        /// Consonification de /ǐ/, /ě/ et /ǔ/ en hiatus
+        /// </summary>
         public static Rule Rule1e()
         {
             return R.Rule(c => c
@@ -287,7 +326,6 @@ namespace Phonos.French.SubSystems
             return R.Rule(c => c
                 .Id("p1c6r4a")
                 .Group("Production d'une consonne épenthétique")
-                //.From(0).To(200)
                 .Query(q => q
                     .Before(b => b.Phon("m"))
                     .Match(m => m.Nothing())
@@ -303,7 +341,6 @@ namespace Phonos.French.SubSystems
             return R.Rule(c => c
                 .Id("p1c6r4b")
                 .Group("Production d'une consonne épenthétique")
-                //.From(0).To(200)
                 .Query(q => q
                     .Before(b => b.Phon("n", "ɲ", "z", "l", "ɫ"))
                     .Match(m => m.Nothing())
@@ -319,7 +356,6 @@ namespace Phonos.French.SubSystems
             return R.Rule(c => c
                 .Id("p1c6r4c")
                 .Group("Production d'une consonne épenthétique")
-                //.From(0).To(200)
                 .Query(q => q
                     .Before(b => b.Phon("s"))
                     .Match(m => m.Nothing())

@@ -11,8 +11,17 @@ namespace Phonos.French.SubSystems
     {
         public static IRule[] Rules()
         {
-            return RuleComponents();
-            //return new IRule[] { };
+            return new IRule[]
+            {
+                Rule2(),
+                Rule3a(), Rule3b(), Rule3c(), Rule3d(), Rule3e(),
+                Rule4a(), Rule4b(), Rule4c(), Rule4d(), Rule4e(),
+                Rule5a(), Rule5b(), Rule5c(), 
+                Rule6a(), Rule6b(), Rule6c(), Rule6d(),
+                Rule6k(),  // Should be placed before 6e
+                Rule6e(), Rule6f(), Rule6g(), Rule6h(), Rule6i(), Rule6j(),
+                Rule7a(), Rule7b(), Rule7c(), Rule7d(), 
+            };
         }
 
         public static IRule[] RuleComponents()
@@ -31,11 +40,13 @@ namespace Phonos.French.SubSystems
             };
         }
 
+        /// <summary>
+        /// Réduction des groupes intérieurs de 3 consonnes
+        /// </summary>
         public static Rule Rule1()
         {
             return R.Rule(c => c
                 .Id("p1c17r1")
-                .From(200).To(300)
                 .Query(
                     q => q.Match(m => m.Seq(
                         s => s.Phon(p => IPA.IsConsonant(p) && !IPA.IsLiquide(p)
@@ -48,7 +59,7 @@ namespace Phonos.French.SubSystems
                         s => s.Phon(p => IPA.IsConsonant(p) && !IPA.IsLiquide(p)
                             && !IPA.IsFricative(p) && !IPA.IsGlide(p)))))
                 .Rules(r => r
-                    .Named("Réduction des groups intérieurs de 3 consonnes")
+                    .Named("Réduction des groupes intérieurs de 3 consonnes")
                     .Phono(px => new[] { px[0], px[2] })
                     .Rewrite(_ => _)
                     .Rewrite(g => $"{g[0]} {g[2]}")));

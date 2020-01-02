@@ -5,6 +5,7 @@ using Phonos.Core.Tests.TestData;
 using Phonos.French;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
@@ -68,32 +69,70 @@ namespace Phonos.Cmd
             }
         }
 
-        private static WhiteBoxStep[] ToSteps(WordDerivation derivation)
+        private static DerivationStep[] ToSteps(WordDerivation derivation)
         {
-            var steps = new List<WhiteBoxStep>();
-
-            steps.Add(ToStep(derivation.Derived));
+            var steps = new List<DerivationStep>();
 
             var d = derivation;
             while (d.Previous != null)
             {
-                steps.Add(ToStep(d.Original));
+                steps.Add(ToStep(d));
                 d = d.Previous;
             }
 
             return steps.AsEnumerable().Reverse().ToArray();
         }
 
-        private static WhiteBoxStep ToStep(Word word)
+        private static DerivationStep ToStep(WordDerivation d)
         {
-            var phonemes = string.Join("", word.Phonemes);
-            var graphicalForms = word.GraphicalForms
+            var phonemes = string.Join("", d.Derived.Phonemes);
+            var graphicalForms = d.Derived.GraphicalForms
                 .Select(g => string.Join("", g.Intervals
                     .OrderBy(i => i.Start)
                     .ThenBy(i => i.End)
                     .Values()))
                 .ToArray();
-            return new WhiteBoxStep(phonemes, graphicalForms);
+            return new DerivationStep(
+                phonemes,
+                graphicalForms,
+                d.Rule.Id,
+                d.Rule.TimeSpan.Start,
+                d.Rule.TimeSpan.End,
+                string.Join(" / ", d.Rule.Operations.Select(o => o.Name)));
+        }
+    }
+
+    [DebuggerDisplay("{DebuggerDisplay}")]
+    public class DerivationStep
+    {
+        public string Phonemes { get; }
+        public string[] GraphicalForms { get; }
+        public string RuleId { get; }
+        public int StartDate { get; }
+        public int EndDate { get; }
+        public string Operations { get; }
+        public string DebuggerDisplay => $"{Phonemes} ({string.Join(", ", GraphicalForms)})\t{RuleId}\t{StartDate}-{EndDate}\t{Operations}";
+
+        public DerivationStep(string phonemes, string[] graphicalForms, string ruleId, int startDate, int endDate, string operations)
+        {
+            Phonemes = phonemes;
+            GraphicalForms = graphicalForms;
+            RuleId = ruleId;
+            StartDate = startDate;
+            EndDate = endDate;
+            Operations = operations;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is DerivationStep step &&
+                   Phonemes == step.Phonemes &&
+                   Enumerable.SequenceEqual(GraphicalForms, step.GraphicalForms);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Phonemes, GraphicalForms);
         }
     }
 }
