@@ -108,6 +108,22 @@ mel:
     - mjel => miel
     - mjɛl => miel
 
+numeru:
+    - numeru
+    - numeru => numeru
+    - numru => numru
+    - numbru => numbru
+    - nombru => nombru
+    - nombro => nombro
+    - nombrə => nombre
+    - nõmbrə => nombre
+    - nɔ̃mbrə => nombre
+    - nɔ̃mbrœ => nombre
+    - nɔ̃brœ => nombre
+    - nɔ̃br => nombre
+    - nɔ̃bʁ => nombre
+
+
 pira.1:
     - pira
     - pira => pira

@@ -72,12 +72,13 @@ namespace Phonos.French.SubSystems
         /// </summary>
         public static IRule RuleSet1a()
         {
-            return new RuleSequence("p1c6s1a",
+            return new RuleSequence("p1c6s1a", new[] {
                 Rule1a(),  // occlusive + liquide
                 Rule1b(),  // homorganique + dentale
                 Rule1c(),  // finale en /a/
                 Part1Chapter17.Rule1(),  // réduction groupes 3 consonnes
-                RuleSet4());  // consonnes épenthétiques
+                RuleSet4()  // consonnes épenthétiques
+            }, postAnalyzers: new[] { "syllable" });
         }
 
         /// <summary>
@@ -85,10 +86,11 @@ namespace Phonos.French.SubSystems
         /// </summary>
         public static IRule RuleSet1b()
         {
-            return new RuleSequence("p1c6s1b",
+            return new RuleSequence("p1c6s1b", new[] {
                 Rule1d(),
                 Part1Chapter17.Rule1(),  // réduction groupes 3 consonnes
-                RuleSet4());  // consonnes épenthétiques
+                RuleSet4()  // consonnes épenthétiques
+            }, postAnalyzers: new[] { "syllable" });
         }
 
         public static Rule Rule1a()
