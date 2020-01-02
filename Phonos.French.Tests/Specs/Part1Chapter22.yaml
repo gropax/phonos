@@ -22,3 +22,20 @@ p1c22r1b:
         honte:
             _graph: h o n t e
             onte: h:0 o n t e
+
+p1c22r1c:
+    src: Zink p.151
+    context: Évolution de /h/
+    rules: Amuïssement de /ʰ/
+    from: 0
+    to: 100
+    samples:
+        kokʰlearium:
+            _graph: c o ch l e a r i u m
+            koklearium: c o c l e a r i u m
+        antʰraks:
+            _graph: a n th r a x:2
+            antraks: a n t r a x:2
+        kolapʰus:
+            _graph: c o l a ph u s
+            kolapus: c o l a p u s
