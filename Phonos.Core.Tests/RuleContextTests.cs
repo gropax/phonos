@@ -39,7 +39,7 @@ namespace Phonos.Core.Queries.Tests
 
             var context = new ExecutionContext();
             var originalDerivation = WordDerivation.Origin(word);
-            var derivation = rule.Derive(context, originalDerivation);
+            var derivation = rule.DeriveImplementation(context, originalDerivation);
             var newWords = derivation.Select(d => d.Derived).ToArray();
 
             var expected = new[]
@@ -82,7 +82,7 @@ namespace Phonos.Core.Queries.Tests
 
             var context = new ExecutionContext();
             var originalDerivation = WordDerivation.Origin(word);
-            var derivation = rule.Derive(context, originalDerivation);
+            var derivation = rule.DeriveImplementation(context, originalDerivation);
             var newWords = derivation.Select(d => d.Derived).ToArray();
 
             var expected = new[]

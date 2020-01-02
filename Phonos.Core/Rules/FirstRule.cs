@@ -6,28 +6,24 @@ using System.Text;
 
 namespace Phonos.Core.Rules
 {
-    public class FirstRule : IRule
+    public class FirstRule : RuleBase
     {
-        public string Id { get; }
         public IRule[] Rules { get; }
-        public string[] Analyzers { get; }
-        public Interval TimeSpan => Rules.Select(r => r.TimeSpan).Range();
 
         public FirstRule(string id, params IRule[] rules)
+            : base(id, rules.Select(r => r.TimeSpan).Range(), null, null)
         {
-            Id = id;
             Rules = rules;
-            Analyzers = new string[0];
         }
 
-        public FirstRule(string id, IRule[] rules, string[] analyzers = null)
+        public FirstRule(string id, IRule[] rules, string[] preAnalyzers = null,
+            string[] postAnalyzers = null)
+            : base(id, rules.Select(r => r.TimeSpan).Range(), preAnalyzers, postAnalyzers)
         {
-            Id = id;
             Rules = rules;
-            Analyzers = analyzers ?? new string[0];
         }
 
-        public WordDerivation[] Derive(ExecutionContext context, WordDerivation derivation)
+        public override WordDerivation[] DeriveImplementation(ExecutionContext context, WordDerivation derivation)
         {
             return First(r => r.Derive(context, derivation));
         }

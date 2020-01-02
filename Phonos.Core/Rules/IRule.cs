@@ -9,7 +9,8 @@ namespace Phonos.Core.Rules
     {
         string Id { get; }
         Interval TimeSpan { get; }
-        string[] Analyzers { get; }
+        string[] PreAnalyzers { get; }
+        string[] PostAnalyzers { get; }
 
         WordDerivation[] Derive(ExecutionContext context, WordDerivation derivation);
     }

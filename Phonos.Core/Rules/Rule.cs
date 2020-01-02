@@ -7,30 +7,26 @@ using System.Text;
 
 namespace Phonos.Core.Rules
 {
-    public class Rule : IRule
+    public class Rule : RuleBase
     {
-        public string Id { get; }
         public string Group { get; }
-        public Interval TimeSpan { get; }
         public ContextualQuery[] Queries { get; }
         public Operation[] Operations { get; }
-        public string[] Analyzers { get; }
         public bool Optional { get; }
 
         public Rule(string id, string group, Interval timeSpan,
             ContextualQuery[] queries, Operation[] operation,
-            string[] analyzers = null, bool optional = false)
+            string[] preAnalyzers = null, string[] postAnalyzers = null,
+            bool optional = false)
+            : base(id, timeSpan, preAnalyzers, postAnalyzers)
         {
-            Id = id;
             Group = group;
-            TimeSpan = timeSpan;
             Queries = queries;
             Operations = operation;
-            Analyzers = analyzers ?? new string[0];
             Optional = optional;
         }
 
-        public WordDerivation[] Derive(ExecutionContext context,
+        public override WordDerivation[] DeriveImplementation(ExecutionContext context,
             WordDerivation derivation)
         {
             var newDerivations = new List<WordDerivation>();
@@ -48,7 +44,7 @@ namespace Phonos.Core.Rules
 
         private Word[] Apply(ExecutionContext context, Word word)
         {
-            foreach (var analyzer in Analyzers)
+            foreach (var analyzer in PreAnalyzers)
                 context.RunAnalyzer(analyzer, word);
 
             var matches = new List<Interval<string[]>>();

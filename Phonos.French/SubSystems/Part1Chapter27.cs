@@ -39,7 +39,7 @@ namespace Phonos.French.SubSystems
             {
                 Rule2a(),
                 Rule2b(),
-            }, analyzers: new[] { "syllable" });
+            }, preAnalyzers: new[] { "syllable" });
         }
 
         public static Rule Rule2a()
