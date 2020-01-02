@@ -142,7 +142,7 @@ namespace Phonos.French.SubSystems
             return R.Rule(c => c
                 .Id("p1c8r2c")
                 .Group("Monophtongaison des diphtongues latines")
-                .From(100).To(200)
+                .From(400).To(500)
                 .Query(q => q
                     .Match(m => m.Phon("au̯")))
                 .Rules(p => p

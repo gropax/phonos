@@ -63,6 +63,22 @@ p1c6r1c:
             mowta: m o v t a
 
 p1c6r1d:
+    src: Zink p.39
+    context: Amuïssements précoces des post-toniques
+    rules: Syncope des voyelles post-toniques
+    from: 200
+    to: 500
+    samples:
+        debito:  # fictif
+            _graph: d e b i t o
+            _accent: tonic:2 post-tonic:2 final:2
+            debto: d e b t o
+        mowiti:  # fictif
+            _graph: m o v i t i
+            _accent: tonic:2 post-tonic:2 final:2
+            mowti: m o v t i
+
+p1c6r1e:
     src: Zink p.40
     context: Amuïssements précoces des post-toniques
     rules: "Consonification de /ǐ/, /ě/ et /ǔ/ en hiatus"

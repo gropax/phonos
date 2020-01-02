@@ -114,8 +114,8 @@ p1c8r2c:
     src: Zink p.51-52
     context: Monophtongaison des diphtongues latines
     rules: Monophtongaison de /au̯/
-    from: 300? # 100
-    to: 400? # 200
+    from: 400
+    to: 500
     samples:
         au̯ru:
             _graph: au:2 r u

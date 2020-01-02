@@ -13,7 +13,7 @@ namespace Phonos.French.SubSystems
         {
             return new[]
             {
-                Rule1a(), Rule1b(), Rule1c(), Rule1d(),
+                Rule1a(), Rule1b(), Rule1c(), Rule1d(), Rule1e(),
                 RuleSet3(),  // Voyelles finales
                 Rule4a(), Rule4b(), Rule4c(),
             };
@@ -23,7 +23,7 @@ namespace Phonos.French.SubSystems
         {
             return new[]
             {
-                Rule1a(), Rule1b(), Rule1c(), Rule1d(),
+                Rule1a(), Rule1b(), Rule1c(), Rule1d(), Rule1e(),
                 Rule3a(), Rule3b(), Rule3c(), Rule3d(), Rule3e(), Rule3f(), Rule3g(), Rule3h(),
                 Rule4a(), Rule4b(), Rule4c(),
                 RuleSet3a(), RuleSet3b(), RuleSet3()
@@ -108,6 +108,20 @@ namespace Phonos.French.SubSystems
         {
             return R.Rule(c => c
                 .Id("p1c6r1d")
+                .Group("Amuïssements des post-toniques")
+                .From(200).To(500)
+                .Query(q => q
+                    .Match(m => m.Phon(IPA.VOWELS).With("accent", "post-tonic")))
+                .Rules(r => r
+                    .Named("Syncope des voyelles post-toniques")
+                    .Phono(P.Erase)
+                    .Rewrite(G.Erase)));
+        }
+
+        public static Rule Rule1e()
+        {
+            return R.Rule(c => c
+                .Id("p1c6r1e")
                 .From(-100).To(0)
                 .Query(q => q
                     .Match(m => m.Phon("i", "e", "u").Without("accent", "tonic"))
