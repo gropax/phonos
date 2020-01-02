@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Phonos.Core.Tests\Phonos.Core.Tests.csproj" />
+    <ProjectReference Include="..\Phonos.Core\Phonos.Core.csproj" />
+    <ProjectReference Include="..\Phonos.French\Phonos.French.csproj" />
+    <ProjectReference Include="..\Phonos.Latin\Phonos.Latin.csproj" />
+  </ItemGroup>
+
+</Project>

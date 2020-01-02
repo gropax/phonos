@@ -26,6 +26,8 @@ namespace Phonos.Core
             Metas = metas ?? new string[0];
         }
 
+        public string PrettyPhonemes => string.Join("", Phonemes);
+
         public Alignment<string> GetField(string name)
         {
             if (Fields.TryGetValue(name, out var field))

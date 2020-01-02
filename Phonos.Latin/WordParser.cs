@@ -65,6 +65,8 @@ namespace Phonos.Latin
 
         public Word Parse(string word)
         {
+            word = NormalizeDiacritics(word);
+
             var l = 0;
             var allPhonemes = new List<string>();
             var graphemes = new List<Interval<string>>();
@@ -122,7 +124,7 @@ namespace Phonos.Latin
                     throw new Exception($"Unsupported character: `{monogram}`.");
             }
 
-            var normalizedGraphemes = graphemes.Map((string g) => NormalizeDiacritics(g));
+            var normalizedGraphemes = graphemes.Map((string g) => RemoveDiacritics(g));
 
             return new Word(
                 phonemes: allPhonemes.ToArray(),
@@ -136,6 +138,17 @@ namespace Phonos.Latin
             return VOWELS.Contains(v.ToString());
         }
 
+        private string NormalizeDiacritics(string s)
+        {
+            return s
+                .Replace("a\u0304", "ā").Replace("a\u0302", "ā")
+                .Replace("e\u0304", "ē").Replace("e\u0302", "ē")
+                .Replace("i\u0304", "ī").Replace("i\u0302", "ī")
+                .Replace("o\u0304", "ō").Replace("o\u0302", "ō")
+                .Replace("u\u0304", "ū").Replace("u\u0302", "ū")
+                .Replace("y\u0304", "ȳ").Replace("y\u0302", "ȳ");
+        }
+
         private Dictionary<char, char> DIACRITICS =
             new Dictionary<char, char>()
             {
@@ -146,7 +159,7 @@ namespace Phonos.Latin
                 { 'ū', 'u' }, { 'ũ', 'u' }, { 'û', 'u' }, { 'ǔ', 'u' },
                 { 'ȳ', 'y' }, { 'ỹ', 'y' }, { 'ŷ', 'y' },
             };
-        private string NormalizeDiacritics(string s)
+        private string RemoveDiacritics(string s)
         {
             var clean = s
                 .Replace("\u0304", "")  // macron
