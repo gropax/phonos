@@ -27,6 +27,27 @@ arma:
     - arm => arme
     - aʁm => arme
 
+bibere:
+    - bibere
+    - bibere => bibere
+    - biβere => bibere
+    - biβre => bibre
+    - biβrɛ => bibre
+    - beβrɛ => bebre
+    - bevrɛ => bevre
+    - bee̯vrɛ => bevre
+    - bei̯vrɛ => beivre
+    - bei̯vrə => beivre
+    - boi̯vrə => boivre
+    - boe̯vrə => boivre
+    - bue̯vrə => boivre
+    - bwevrə => boivre
+    - bwɛvrə => boivre
+    - bwavrə => boivre
+    - bwavrœ => boivre
+    - bwavr => boivre
+    - bwavʁ => boivre
+
 brunam:
     - brūnam
     - bruːnam => brunam
@@ -109,6 +130,24 @@ ferum:
     - fjɛr => fier
     - fjɛʁ => fier
 
+habere:
+    - habēre
+    - habeːre => habere
+    - haβeːre => habere
+    - aβeːre => abere
+    - aβerɛ => abere
+    - averɛ => avere
+    - avee̯rɛ => avere
+    - avei̯rɛ => aveire
+    - avei̯r => aveir
+    - avoi̯r => avoir
+    - avoe̯r => avoir
+    - avue̯r => avoir
+    - avwer => avoir
+    - avwɛr => avoir
+    - avwar => avoir
+    - avwaʁ => avoir
+
 hordeum:
     - hordeum
     - hordeum => hordeum
@@ -150,6 +189,30 @@ mel:
     - mjel => miel
     - mjɛl => miel
 
+nuba.1:
+    - nūba
+    - nuːba => nuba
+    - nuːβa => nuba
+    - nuβa => nuba
+    - nuva => nuva
+    - nuvə => nuve
+    - nyvə => nuve
+    - nyvœ => nuve
+    - nyv => nuve
+
+nuba.2:
+    - nūba
+    - nuːba => nuba
+    - nuːβa => nuba
+    - nuβa => nuba
+    - nuwa => nuwa
+    - nua => nua
+    - nuə => nue
+    - nyə => nue
+    - nyœ => nue
+    - nyː => nue
+    - ny => nue
+
 numeru:
     - numeru
     - numeru => numeru
@@ -165,6 +228,14 @@ numeru:
     - nɔ̃br => nombre
     - nɔ̃bʁ => nombre
 
+paraula:
+    - paraula
+    - parau̯la => paraula
+    - parɔla => parola
+    - parɔlə => parole
+    - parɔlœ => parole
+    - parɔl => parole
+    - paʁɔl => parole
 
 pira.1:
     - pira
