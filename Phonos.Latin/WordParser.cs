@@ -55,6 +55,8 @@ namespace Phonos.Latin
             //{ "ui", new [] { Phonemes.u_i } },
             //{ "yi", new [] { Phonemes.y_i } },
             { "ch", new [] { Phonemes.kh } },
+            { "ng", new [] { Phonemes.ng, Phonemes.g } },  // /!\ mots grecs
+            { "nc", new [] { Phonemes.ng, Phonemes.k } },  // /!\ mots grecs
             { "gn", new [] { Phonemes.ng, Phonemes.n } },  // /!\ mots grecs
             { "gu", new [] { Phonemes.gw } },  // (!) si pas de voyelle après
             { "ph", new [] { Phonemes.ph } },

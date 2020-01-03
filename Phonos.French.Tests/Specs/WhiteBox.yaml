@@ -53,6 +53,21 @@ cor:
     - kœr => cœur
     - kœʁ => cœur
 
+cumulum:
+    - cumulum
+    - kumulum => cumulum
+    - kumulu => cumulu
+    - kumlu => cumlu
+    - kumblu => cumblu
+    - komblu => comblu
+    - komblo => comblo
+    - komblə => comble
+    - kõmblə => comble
+    - kɔ̃mblə => comble
+    - kɔ̃mblœ => comble
+    - kɔ̃blœ => comble
+    - kɔ̃bl => comble
+
 ferum:
     - ferum
     - ferum => ferum
@@ -159,6 +174,21 @@ pira.2:
     - pɛʁ => poire
     - pɛʁ => paire
 
+poena:
+    - poena
+    - poi̯na => poena
+    - pena => pena
+    - pee̯na => pena
+    - pei̯na => peina
+    - pei̯nə => peine
+    - peĩ̯nə => peine
+    - pẽĩ̯nə => peine
+    - pẽnə => peine
+    - pẽnœ => peine
+    - penœ => peine
+    - pen => peine
+    - pɛn => peine
+
 ripa:
     - rīpa
     - riːpa => ripa
@@ -199,3 +229,17 @@ sapere:
     - savwɛr => savoir
     - savwar => savoir
     - savwaʁ => savoir
+
+solum:
+    - sōlum
+    - soːlum => solum
+    - soːlu => solu
+    - solu => solu
+    - solo => solo
+    - soo̯lo => solo
+    - sou̯lo => soulo
+    - sou̯l => soul
+    - seu̯l => seul
+    - søu̯l => seul
+    - søl => seul
+    - sœl => seul

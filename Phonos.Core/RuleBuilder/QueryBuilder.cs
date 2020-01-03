@@ -97,10 +97,15 @@ namespace Phonos.Core.RuleBuilder
             return this;
         }
 
-
         public MatchQueryBuilder With(string key, params string[] values)
         {
             WrapQuery(new WithQuery(_query, key, values));
+            return this;
+        }
+
+        public MatchQueryBuilder WithGraph(params string[] values)
+        {
+            WrapQuery(new WithGraphQuery(_query, values));
             return this;
         }
 

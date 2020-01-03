@@ -418,7 +418,9 @@ namespace Phonos.French.SubSystems
                 .Group("Diphtongaison de /e/ tonique libre ou monosyllabique")
                 .From(1700).To(1800)
                 .Query(q => q.
-                    Match(m => m.Phon("ɛ").With("accent", "tonic")))
+                    Match(m => m.Phon("ɛ")
+                        .With("accent", "tonic")
+                        .WithGraph("oi")))
                 .Rules(p => p
                     .Named("(Orthographique) réécriture du son /ɛ/ écrit \"oi\" en \"ai\"")
                     .Phono(_ => new[] { "ɛ" })

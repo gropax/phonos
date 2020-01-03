@@ -117,7 +117,8 @@ namespace Phonos.French.SubSystems
                     .Match(m => m.Phon("oi̯")))
                 .Rules(p => p
                     .Named("Évolution de /oi̯/ en latin vulgaire")
-                    .Phono(px => new [] { "e" })));
+                    .Phono(px => new [] { "e" })
+                    .Rewrite(_ => "e")));
         }
 
         // @subrules
