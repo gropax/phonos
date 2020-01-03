@@ -858,10 +858,10 @@ p1c15r10c:
     samples:
         tʲastellu:
             _graph: c a s t e l l u
-            ʧʲastellu: c a s t e l l u
+            ʧʲastellu: ch a s t e l l u
         tʲau̯sa:
             _graph: c au s a
-            ʧʲau̯sa: c au s a
+            ʧʲau̯sa: ch au s a
 
 p1c15r10d:
     src: Zink p.102-105
@@ -1050,26 +1050,28 @@ p1c15r12c:
             _graph: s e g u r u
             _accent: initial:2 tonic:2 final:2
             seɣuru: s e g u r u
-        weragu:
-            _graph: v e r a g u
-            _accent: initial:2 tonic:2 final:2
+        #weragu:
+        #    _graph: v e r a g u
+        #    _accent: initial:2 tonic:2 final:2
             # no match
 
-p1c15r12d:
-    src: Zink p.102-105
-    context: "Évolution de /k/ et /g/ devant /o/ et /u/"
-    rules: Palatalisation de /ɣ/ intervocalique
-    from: 400
-    to: 450
-    samples:
-        weragu:
-            _graph: v e r a g u
-            _accent: initial:2 tonic:2 final:2
-            werajju: v e r a i i u
-        seguru:
-            _graph: s e g u r u
-            _accent: initial:2 tonic:2 final:2
-            # no match
+# @fixme Harmoniser les différents cas de palatalisation
+#
+#p1c15r12d:
+#    src: Zink p.102-105
+#    context: "Évolution de /k/ et /g/ devant /o/ et /u/"
+#    rules: Palatalisation de /ɣ/ intervocalique
+#    from: 400
+#    to: 450
+#    samples:
+#        weragu:
+#            _graph: v e r a g u
+#            _accent: initial:2 tonic:2 final:2
+#            werajju: v e r a i i u
+#        seguru:
+#            _graph: s e g u r u
+#            _accent: initial:2 tonic:2 final:2
+#            # no match
 
 
 
@@ -1092,13 +1094,13 @@ p1c15r13b:
     to: 300
     samples:
         lojɲdʲe:
-            _graph: l o n g e
+            _graph: l o i n g e
             lojɲɲe: l o i n g e
 
 p1c15r13c:
     src: Zink p.102-105
     context: Évolution de /ŋ/
-    rules: Spirantisation de /k/
+    rules: Spirantisation de /ŋkt/
     from: 200
     to: 230
     samples:
@@ -1137,4 +1139,4 @@ p1c15r13f:
     samples:
         seŋnu:
             _graph: s e g n u
-            sejɲɲu: s e i n u
+            sejɲɲu: s e i g n u
