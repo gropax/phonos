@@ -148,6 +148,11 @@ p1c17r4c:
             _syllable: long:4 short:2
             _accent: tonic:4 final:2
             krɛːtə: c r ê t e
+        respõndrə:
+            _graph: r e s p o n d r e
+            _syllable: long:3 long:3 final:3
+            _accent: initial:3 tonic:3 final:3
+            # no match
 
 p1c17r4d:
     src: Zink p.121-124

@@ -27,6 +27,7 @@ namespace Phonos.French.SubSystems
             return R.Rule(c => c
                 .Id("p1c11r1")
                 .From(100).To(200)
+                .PostAnalyzers("syllable")
                 .Query(q => q
                     .Before(Q.Start)
                     .Match(m => m.Nothing())

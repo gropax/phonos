@@ -54,16 +54,17 @@ p1c19r1d:
             _graph: v e n d r ai
             vendre: v e n d r ai
 
-p1c19r1e:
-    src: Zink p.132-134
-    context: Diphtongues par coalescence de /-i/
-    rules: Ouverture de /e/ en finale absolue
-    from: 1900
-    to: 2000
-    samples:
-        vãdre:
-            _graph: v en d r ai
-            vãdrɛ: v en d r ai
+# @fixme Dépend de la classe du mot
+#p1c19r1e:
+#    src: Zink p.132-134
+#    context: Diphtongues par coalescence de /-i/
+#    rules: Ouverture de /e/ en finale absolue
+#    from: 1900
+#    to: 2000
+#    samples:
+#        vãdre:
+#            _graph: v en d r ai
+#            vãdrɛ: v en d r ai
 
 
 

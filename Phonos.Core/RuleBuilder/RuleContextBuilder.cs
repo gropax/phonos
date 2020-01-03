@@ -16,6 +16,7 @@ namespace Phonos.Core.RuleBuilder
         private int _start = 0;
         private int _end = 0;
         private bool _optional = false;
+        private string[] _postAnalyzers = new string[0];
         private ContextualQuery[] _queries;
         private Operation[] _rules;
 
@@ -30,7 +31,7 @@ namespace Phonos.Core.RuleBuilder
                 throw new QueryBuilderException("RuleContext must have at least one Rule.");
 
             return new Rule(_id, _group, new Interval(_start, _end - _start),
-                _queries, _rules, optional: _optional);
+                _queries, _rules, postAnalyzers: _postAnalyzers, optional: _optional);
         }
 
         public RuleContextBuilder Id(string id)
@@ -54,6 +55,12 @@ namespace Phonos.Core.RuleBuilder
         public RuleContextBuilder To(int end)
         {
             _end = end;
+            return this;
+        }
+
+        public RuleContextBuilder PostAnalyzers(params string[] analyzers)
+        {
+            _postAnalyzers = analyzers;
             return this;
         }
 

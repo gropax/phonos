@@ -43,9 +43,9 @@ p1c7r1c:
 p1c7r1d:
     src: Zink p.47-48
     context: Évolution de /ə/ final
-    rules: Abrègement des voyelles longues finales
+    rules: Abrègement des voyelles longues
     from: 1900
-    to: 1910
+    to: 1950
     samples:
         ʁyː:
             _graph: r ue

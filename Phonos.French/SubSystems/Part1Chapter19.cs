@@ -19,7 +19,8 @@ namespace Phonos.French.SubSystems
         {
             return new[]
             {
-                Rule1a(), Rule1b(), Rule1c(), Rule1d(), Rule1e(),
+                Rule1a(), Rule1b(), Rule1c(), Rule1d(),
+                // Rule1e(), @fixme dépend de la classe du mot
                 Rule2(),
                 Rule3a(), Rule3b(), Rule3c(),
                 Rule4a(), Rule4b(), Rule4c(), Rule4d(),
@@ -77,18 +78,21 @@ namespace Phonos.French.SubSystems
                     .Phono(px => new[] { "e" })));
         }
 
-        public static Rule Rule1e()
-        {
-            return R.Rule(c => c
-                .Id("p1c19r1e")
-                .From(1900).To(2000)
-                .Query(q => q
-                    .Match(m => m.Phon("e"))
-                    .After(Q.End))
-                .Rules(r => r
-                    .Named("Ouverture de /e/ en finale absolue")
-                    .Phono(px => new[] { "ɛ" })));
-        }
+        /// <summary>
+        /// Ouverture de /e/ en finale absolue
+        /// </summary>
+        //public static Rule Rule1e()
+        //{
+        //    return R.Rule(c => c
+        //        .Id("p1c19r1e")
+        //        .From(1900).To(2000)
+        //        .Query(q => q
+        //            .Match(m => m.Phon("e"))
+        //            .After(Q.End))
+        //        .Rules(r => r
+        //            .Named("Ouverture de /e/ en finale absolue")
+        //            .Phono(px => new[] { "ɛ" })));
+        //}
 
 
 

@@ -81,7 +81,14 @@ namespace Phonos.French.SubSystems
                     .After(Q.End))
                 .Rules(r => r
                     .Named("Effacement de /œ/ et allongement de la voyelle précédente")
-                    .Phono(px => new[] { px[0] + "ː" })));
+                    .Phono(px => new[] { px[0] + "ː" })
+                    .Rewrite(g =>
+                    {
+                        if (g[0] == 'e')
+                            return "ée";
+                        else
+                            return $"{g[0]}e";
+                    })));
         }
 
         public static Rule Rule1d()
@@ -89,12 +96,11 @@ namespace Phonos.French.SubSystems
             return R.Rule(c => c
                 .Id("p1c7r1d")
                 .Group("")
-                .From(1900).To(1910)
+                .From(1900).To(1950)
                 .Query(q => q
-                    .Match(m => m.Phon(IPA.IsLongVowel))
-                    .After(Q.End))
+                    .Match(m => m.Phon(IPA.IsLongVowel)))
                 .Rules(r => r
-                    .Named("Abrègement des voyelles longues finales")
+                    .Named("Abrègement des voyelles longues")
                     .Phono(px =>
                         new[] { px[0].Substring(0, px[0].Length - 1) })));
         }

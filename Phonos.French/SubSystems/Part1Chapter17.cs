@@ -224,7 +224,7 @@ namespace Phonos.French.SubSystems
                 .Query(q => q
                     .Scope("syllable")
                     .Match(m => m.Seq(
-                        s => s.Phon("e"),
+                        s => s.Phon("e").With("accent", "tonic"),
                         s => s.Phon("s")))
                     .After(a => a
                         .Seq(s => s.Maybe(m => m.Phon(IPA.IsConsonant)),
