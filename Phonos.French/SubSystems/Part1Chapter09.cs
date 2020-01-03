@@ -29,7 +29,7 @@ namespace Phonos.French.SubSystems
             return R.Rule(c => c
                 .Id("p1c9r1a")
                 .Group("Diphtongaison de /ɛ/ tonique libre ou monosyllabique")
-                .From(100).To(200)
+                .From(200).To(250)
                 .Query(
                     q => q  // tonique libre
                         .Scope("syllable")
@@ -50,7 +50,7 @@ namespace Phonos.French.SubSystems
             return R.Rule(c => c
                 .Id("p1c9r1b")
                 .Group("Diphtongaison de /ɛ/ tonique libre ou monosyllabique")
-                .From(200).To(300)
+                .From(250).To(300)
                 .Query(q => q.
                     Match(m => m.Phon("ɛɛ̯").With("accent", "tonic")))
                 .Rules(p => p
@@ -89,7 +89,7 @@ namespace Phonos.French.SubSystems
             return R.Rule(c => c
                 .Id("p1c9r2a")
                 .Group("Diphtongaison de /ɔ/ (issu do /ǒ/) tonique libre ou monosyllabique")
-                .From(200).To(300)
+                .From(300).To(350)
                 .Query(
                     q => q  // tonique libre
                         .Scope("syllable")
@@ -110,7 +110,7 @@ namespace Phonos.French.SubSystems
             return R.Rule(c => c
                 .Id("p1c9r2b")
                 .Group("Diphtongaison de /ɔ/ (issu do /ǒ/) tonique libre ou monosyllabique")
-                .From(300).To(400)
+                .From(350).To(400)
                 .Query(q => q.
                     Match(m => m.Phon("ɔɔ̯").With("accent", "tonic")))
                 .Rules(p => p
@@ -204,7 +204,7 @@ namespace Phonos.French.SubSystems
             return R.Rule(c => c
                 .Id("p1c9r3a")
                 .Group("Diphtongaison de /a/ tonique libre ou monosyllabique non suivie d'une nasale")
-                .From(400).To(500)
+                .From(500).To(550)
                 .Query(
                     q => q  // tonique libre
                         .Scope("syllable")
@@ -226,7 +226,7 @@ namespace Phonos.French.SubSystems
             return R.Rule(c => c
                 .Id("p1c9r3b")
                 .Group("Diphtongaison de /a/ tonique libre ou monosyllabique non suivie d'une nasale")
-                .From(500).To(600)
+                .From(550).To(600)
                 .Query(q => q.
                     Match(m => m.Phon("aa̯").With("accent", "tonic")))
                 .Rules(p => p
@@ -432,7 +432,7 @@ namespace Phonos.French.SubSystems
             return R.Rule(c => c
                 .Id("p1c9r5a")
                 .Group("Diphtongaison de /o/ tonique libre ou monosyllabique")
-                .From(400).To(500)
+                .From(500).To(550)
                 .Query(
                     q => q  // tonique libre
                         .Scope("syllable")
@@ -453,7 +453,7 @@ namespace Phonos.French.SubSystems
             return R.Rule(c => c
                 .Id("p1c9r5b")
                 .Group("Diphtongaison de /o/ tonique libre ou monosyllabique")
-                .From(500).To(600)
+                .From(550).To(600)
                 .Query(q => q.
                     Match(m => m.Phon("oo̯").With("accent", "tonic")))
                 .Rules(p => p

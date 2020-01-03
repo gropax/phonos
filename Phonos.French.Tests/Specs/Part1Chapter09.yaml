@@ -2,8 +2,8 @@
     src: Zink p.54, http://www.diachronie.be/cours_grammaire/phonetique/072.html
     context: Diphtongaison de /ɛ/ tonique libre ou monosyllabique
     rules: Segmentation de /ɛ/ sous l'accent tonique
-    from: 100?
-    to: 200?
+    from: 200
+    to: 250
     samples:
         fɛru:
             _graph: f e r u
@@ -20,7 +20,7 @@ p1c9r1b:
     src: Zink p.54, http://www.diachronie.be/cours_grammaire/phonetique/072.html
     context: Diphtongaison de /ɛ/ tonique libre ou monosyllabique
     rules: Dissimilation d'aperture de /ɛ/
-    from: 200
+    from: 250
     to: 300
     samples:
         fɛɛ̯ru:
@@ -68,8 +68,8 @@ p1c9r2a:
     src: Zink p.55-56, http://www.diachronie.be/cours_grammaire/phonetique/134.html
     context: Diphtongaison de /ɔ/ (issu do /ǒ/) tonique libre ou monosyllabique
     rules: Segmentation de /ɔ/ sous l'accent tonique
-    from: 200?
-    to: 300?
+    from: 300
+    to: 350
     samples:
         sɔrɔr:
             _graph: s o r o r
@@ -86,7 +86,7 @@ p1c9r2b:
     src: Zink p.55-56, http://www.diachronie.be/cours_grammaire/phonetique/134.html
     context: Diphtongaison de /ɔ/ (issu do /ǒ/) tonique libre ou monosyllabique
     rules: Dissimilation d'aperture de /ɔ/
-    from: 300
+    from: 350
     to: 400
     samples:
         sɔɔ̯rɔr:
@@ -198,8 +198,8 @@ p1c9r3a:
     src: Zink p.56-57, http://www.diachronie.be/cours_grammaire/phonetique/001.html
     context: Diphtongaison de /a/ tonique libre ou monosyllabique non suivie d'une nasale
     rules: Segmentation de /a/ sous l'accent tonique
-    from: 400?
-    to: 500?
+    from: 500
+    to: 550
     samples:
         mare:
             _graph: m a r e
@@ -222,7 +222,7 @@ p1c9r3b:
     src: Zink p.56-57, http://www.diachronie.be/cours_grammaire/phonetique/001.html
     context: Diphtongaison de /a/ tonique libre ou monosyllabique non suivie d'une nasale
     rules: Dissimilation d'aperture de /a̯/
-    from: 500
+    from: 550
     to: 600
     samples:
         maa̯re:
@@ -461,8 +461,8 @@ p1c9r5a:
     src: Zink p.59-60, http://www.diachronie.be/cours_grammaire/phonetique/107.html
     context: Diphtongaison de /o/ tonique libre ou monosyllabique
     rules: Segmentation de /o/ sous l’accent tonique
-    from: 400?
-    to: 500?
+    from: 500
+    to: 550
     samples:
         ora:
             _graph: h:0 o r a
@@ -479,7 +479,7 @@ p1c9r5b:
     src: Zink p.59-60, http://www.diachronie.be/cours_grammaire/phonetique/107.html
     context: Diphtongaison de /o/ tonique libre ou monosyllabique
     rules: Dissimilation d’aperture de /o̯/
-    from: 500
+    from: 550
     to: 600
     samples:
         oo̯ra:

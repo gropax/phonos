@@ -580,10 +580,11 @@ namespace Phonos.French.SubSystems
                 .Id("p1c15r7a")
                 .From(200).To(230)
                 .Query(q => q
-                    .Scope("syllable")
-                    .Before(Q.Start)
+                    .Before(b => b.Or(
+                        o => o.Start(),
+                        o => o.Phon(p => !IPA.IsVowel(p))))
                     .Match(m => m.Phon("k"))
-                    .After(a => a.Phon("i", "e", "ɛ")))
+                    .After(a => a.Phon(IPA.IsPalatalVowel)))
                 .Rules(r => r
                     .Named("Palatalisation de /k/ en position forte")
                     .Phono(px => new[] { "kʲ" })));
@@ -595,10 +596,11 @@ namespace Phonos.French.SubSystems
                 .Id("p1c15r7b")
                 .From(230).To(260)
                 .Query(q => q
-                    .Scope("syllable")
-                    .Before(Q.Start)
+                    .Before(b => b.Or(
+                        o => o.Start(),
+                        o => o.Phon(p => !IPA.IsVowel(p))))
                     .Match(m => m.Phon("kʲ"))
-                    .After(a => a.Phon("i", "e", "ɛ")))
+                    .After(a => a.Phon(IPA.IsPalatalVowel)))
                 .Rules(r => r
                     .Named("Dentalisation de /kʲ/ en position forte")
                     .Phono(px => new[] { "tʲ" })));
@@ -610,10 +612,11 @@ namespace Phonos.French.SubSystems
                 .Id("p1c15r7c")
                 .From(260).To(300)
                 .Query(q => q
-                    .Scope("syllable")
-                    .Before(Q.Start)
+                    .Before(b => b.Or(
+                        o => o.Start(),
+                        o => o.Phon(p => !IPA.IsVowel(p))))
                     .Match(m => m.Phon("tʲ"))
-                    .After(a => a.Phon("i", "e", "ɛ")))
+                    .After(a => a.Phon(IPA.IsPalatalVowel)))
                 .Rules(r => r
                     .Named("Assibilation de /tʲ/ en position forte")
                     .Phono(px => new[] { "ʦʲ" })));
@@ -625,10 +628,11 @@ namespace Phonos.French.SubSystems
                 .Id("p1c15r7d")
                 .From(200).To(230)
                 .Query(q => q
-                    .Scope("syllable")
-                    .Before(Q.Start)
+                    .Before(b => b.Or(
+                        o => o.Start(),
+                        o => o.Phon(p => !IPA.IsVowel(p))))
                     .Match(m => m.Phon("g"))
-                    .After(a => a.Phon("i", "e", "ɛ")))
+                    .After(a => a.Phon(IPA.IsPalatalVowel)))
                 .Rules(r => r
                     .Named("Palatalisation de /g/ en position forte")
                     .Phono(px => new[] { "gʲ" })));
@@ -640,10 +644,11 @@ namespace Phonos.French.SubSystems
                 .Id("p1c15r7e")
                 .From(230).To(260)
                 .Query(q => q
-                    .Scope("syllable")
-                    .Before(Q.Start)
+                    .Before(b => b.Or(
+                        o => o.Start(),
+                        o => o.Phon(p => !IPA.IsVowel(p))))
                     .Match(m => m.Phon("gʲ"))
-                    .After(a => a.Phon("i", "e", "ɛ")))
+                    .After(a => a.Phon(IPA.IsPalatalVowel)))
                 .Rules(r => r
                     .Named("Dentalisation de /gʲ/ en position forte")
                     .Phono(px => new[] { "dʲ" })));
@@ -655,10 +660,11 @@ namespace Phonos.French.SubSystems
                 .Id("p1c15r7f")
                 .From(260).To(300)
                 .Query(q => q
-                    .Scope("syllable")
-                    .Before(Q.Start)
+                    .Before(b => b.Or(
+                        o => o.Start(),
+                        o => o.Phon(p => !IPA.IsVowel(p))))
                     .Match(m => m.Phon("dʲ"))
-                    .After(a => a.Phon("i", "e", "ɛ")))
+                    .After(a => a.Phon(IPA.IsPalatalVowel)))
                 .Rules(r => r
                     .Named("Assibilation de /dʲ/ en position forte")
                     .Phono(px => new[] { "ʤʲ" })));
@@ -672,7 +678,7 @@ namespace Phonos.French.SubSystems
                 .Query(q => q
                     .Before(b => b.Phon(IPA.IsVowel))
                     .Match(m => m.Phon("k"))
-                    .After(a => a.Phon("i", "e", "ɛ")))
+                    .After(a => a.Phon(IPA.IsPalatalVowel)))
                 .Rules(r => r
                     .Named("Palatalisation de /k/ intervocalique")
                     .Phono(px => new[] { "j", "kʲ" })
@@ -687,7 +693,7 @@ namespace Phonos.French.SubSystems
                 .Query(q => q
                     .Before(b => b.Phon("j"))
                     .Match(m => m.Phon("kʲ"))
-                    .After(a => a.Phon("i", "e", "ɛ")))
+                    .After(a => a.Phon(IPA.IsPalatalVowel)))
                 .Rules(r => r
                     .Named("Dentalisation de /kʲ/ intervocalique")
                     .Phono(px => new[] { "tʲ" })));
@@ -701,7 +707,7 @@ namespace Phonos.French.SubSystems
                 .Query(q => q
                     .Before(b => b.Phon("j"))
                     .Match(m => m.Phon("tʲ"))
-                    .After(a => a.Phon("i", "e", "ɛ")))
+                    .After(a => a.Phon(IPA.IsPalatalVowel)))
                 .Rules(r => r
                     .Named("Assibilation de /tʲ/ intervocalique")
                     .Phono(px => new[] { "ʦʲ" })));
@@ -715,7 +721,7 @@ namespace Phonos.French.SubSystems
                 .Query(q => q
                     .Before(b => b.Phon(IPA.IsVowel))
                     .Match(m => m.Phon("g"))
-                    .After(a => a.Phon("i", "e", "ɛ")))
+                    .After(a => a.Phon(IPA.IsPalatalVowel)))
                 .Rules(r => r
                     .Named("Déocclusion et avancée de /g/ intervocalique")
                     .Phono(px => new[] { "y", "y" })

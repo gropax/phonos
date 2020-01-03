@@ -532,12 +532,13 @@ p1c15r7a:
     samples:
         kerwu:
             _graph: c e r w u
-            _syllable: long:3 short:2
             kʲerwu: c e r w u
         radkina:
             _graph: r a d c i n a
-            _syllable: long:3 long:2 short:2
             radkʲina: r a d c i n a
+        rakina:  # fictif
+            _graph: r a c i n a
+            # no match
 
 p1c15r7b:
     src: Zink p.102-105
@@ -548,12 +549,13 @@ p1c15r7b:
     samples:
         kʲerwu:
             _graph: c e r w u
-            _syllable: long:3 short:2
             tʲerwu: c e r w u
         radkʲina:
             _graph: r a d c i n a
-            _syllable: long:3 long:2 short:2
             radtʲina: r a d c i n a
+        rakʲina:  # fictif
+            _graph: r a c i n a
+            # no match
 
 p1c15r7c:
     src: Zink p.102-105
@@ -564,12 +566,13 @@ p1c15r7c:
     samples:
         tʲerwu:
             _graph: c e r w u
-            _syllable: long:3 short:2
             ʦʲerwu: c e r w u
         radtʲina:
             _graph: r a d c i n a
-            _syllable: long:3 long:2 short:2
             radʦʲina: r a d c i n a
+        ratʲina:  # fictif
+            _graph: r a c i n a
+            # no match
 
 p1c15r7d:
     src: Zink p.102-105
@@ -580,12 +583,13 @@ p1c15r7d:
     samples:
         gente:
             _graph: g e n t e
-            _syllable: long:3 short:2
             gʲente: g e n t e
         argilla:
             _graph: a r g i l l a
-            _syllable: short:2 long:3 short:2
             argʲilla: a r g i l l a
+        ragina:  # fictif
+            _graph: r a g i n a
+            # no match
 
 p1c15r7e:
     src: Zink p.102-105
@@ -596,12 +600,13 @@ p1c15r7e:
     samples:
         gʲente:
             _graph: g e n t e
-            _syllable: long:3 short:2
             dʲente: g e n t e
         argʲilla:
             _graph: a r g i l l a
-            _syllable: short:2 long:3 short:2
             ardʲilla: a r g i l l a
+        ragʲina:  # fictif
+            _graph: r a g i n a
+            # no match
 
 p1c15r7f:
     src: Zink p.102-105
@@ -612,12 +617,13 @@ p1c15r7f:
     samples:
         dʲente:
             _graph: g e n t e
-            _syllable: long:3 short:2
             ʤʲente: g e n t e
         ardʲilla:
             _graph: a r g i l l a
-            _syllable: short:2 long:3 short:2
             arʤʲilla: a r g i l l a
+        radʲina:  # fictif
+            _graph: r a g i n a
+            # no match
 
 p1c15r7g:
     src: Zink p.102-105
