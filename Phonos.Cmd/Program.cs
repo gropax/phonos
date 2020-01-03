@@ -64,7 +64,7 @@ namespace Phonos.Cmd
 
                 Console.WriteLine($"\nOutput: {output}\n");
                 Console.WriteLine($"Steps:");
-                Console.WriteLine($"\t{latinWord}");
+                Console.WriteLine($"\t{word.PrettyPhonemes}");
                 foreach (var step in ToSteps(derivation))
                     Console.WriteLine($"\t{step.DebuggerDisplay}");
             }

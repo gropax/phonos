@@ -148,7 +148,8 @@ namespace Phonos.French.SubSystems
                     .Match(m => m.Phon("au̯")))
                 .Rules(p => p
                     .Named("Évolution de /au̯/ en latin vulgaire")
-                    .Phono(px => new [] { "ɔ" })));
+                    .Phono(px => new [] { "ɔ" })
+                    .Rewrite(_ => "o")));
         }
     }
 }

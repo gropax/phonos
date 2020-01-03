@@ -121,19 +121,19 @@ p1c8r2c:
             _graph: au:2 r u
             _syllable: long:1 short:2
             _accent: tonic:1 final:2
-            ɔru: au:2 r u
+            ɔru: o r u
         parau̯la:
             _graph: p a r au:2 l a
             _syllable: short:2 long:2 short:2
             _accent: initial:2 tonic:2 final:2
-            parɔla: p a r au:2 l a
+            parɔla: p a r o l a
         klau̯zu:
             _graph: k l au:2 s u
             _syllable: long:3 short:2
             _accent: tonic:3 final:2
-            klɔzu: k l au:2 s u
+            klɔzu: k l o s u
         lau̯do:
             _graph: l au:2 d o
             _syllable: long:2 short:2
             _accent: tonic:2 final:2
-            lɔdo: l au:2 d o
+            lɔdo: l o d o
