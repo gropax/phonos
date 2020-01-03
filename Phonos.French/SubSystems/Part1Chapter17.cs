@@ -536,7 +536,13 @@ namespace Phonos.French.SubSystems
                 .Rules(r => r
                     .Named("Réduction de /ʦ/")
                     .Phono(_ => new[] { "s" })
-                    .Rewrite(_ => "s")));
+                    .Rewrite(g =>
+                    {
+                        if (g == "z")
+                            return "s";
+                        else
+                            return "c";
+                    })));
         }
 
         public static Rule Rule7d()

@@ -414,8 +414,11 @@ p1c17r7c:
     to: 1300
     samples:
         forʦ:
-            _graph: f o r ts
+            _graph: f o r z
             fors: f o r s
+        ʦjel:
+            _graph: c i e l
+            sjel: c i e l
 
 p1c17r7d:
     src: Zink p.125-128

@@ -31,7 +31,7 @@ namespace Phonos.Core
         public static string[] PALATAL_VOWELS = new []
         {
             "i", "y", "ɪ", "ʏ", "e", "ø",
-            //"ɛ", "œ",
+            "ɛ", "œ",
         };
         public static bool IsPalatalVowel(string phoneme)
         {

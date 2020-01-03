@@ -172,10 +172,10 @@ p1c15r3b:
     samples:
         fortʲa:
             _graph: f o r ti a
-            forʦʲa: f o r tsi a
+            forʦʲa: f o r ci a
         plattʲa:
             _graph: p l a t ti a
-            platʦʲa: p l a t tsi a
+            platʦʲa: p l a t ci a
 
 p1c15r3c:
     src: Zink p.96-98
@@ -185,11 +185,11 @@ p1c15r3c:
     to: 700
     samples:
         forʦʲa:
-            _graph: f o r tsi a
-            forʦa: f o r ts a
-        platʦʲa:
-            _graph: p l a t tsi a
-            platʦa: p l a t ts a
+            _graph: f o r ci a
+            forʦa: f o r c a
+        platʦʲe:
+            _graph: p l a t ci e
+            platʦe: p l a t c e
 
 p1c15r3d:
     src: Zink p.96-98
@@ -240,11 +240,11 @@ p1c15r3g:
     to: 200
     samples:
         rajtʲone:
-            _graph: r a i ti o n e
-            rajʦʲone: r a i tsi o n e
+            _graph: r a i t o n e
+            rajʦʲone: r a i ci o n e
         palajtʲu:
-            _graph: p a l a i ti u
-            palajʦʲu: p a l a i tsi u
+            _graph: p a l a i t u
+            palajʦʲu: p a l a i ci u
 
 p1c15r3h:
     src: Zink p.96-98
@@ -254,11 +254,11 @@ p1c15r3h:
     to: 400
     samples:
         rajʦʲone:
-            _graph: r a i tsi o n e
-            rajʣʲone: r a i dzi o n e
+            _graph: r a i ci o n e
+            rajʣʲone: r a i zi o n e
         palajʦʲu:
-            _graph: p a l a i tsi u
-            palajʣʲu: p a l a i dzi u
+            _graph: p a l a i ci u
+            palajʣʲu: p a l a i zi u
 
 p1c15r3i:
     src: Zink p.96-98
@@ -268,11 +268,11 @@ p1c15r3i:
     to: 700
     samples:
         rajʣʲone:
-            _graph: r a i dzi o n e
-            rajʣone: r a i dz o n e
+            _graph: r a i zi o n e
+            rajʣone: r a i z o n e
         palajʣʲu:
-            _graph: p a l a i dzi u
-            palajʣu: p a l a i dz u
+            _graph: p a l a i zi u
+            palajʣu: p a l a i z u
 
 # @todo Formation de la diphtongue de coalescence
 

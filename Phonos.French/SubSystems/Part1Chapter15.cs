@@ -209,7 +209,7 @@ namespace Phonos.French.SubSystems
                 .Rules(r => r
                     .Named("Assibilation de /tʲ/")
                     .Phono(px => new[] { "ʦʲ" })
-                    .Rewrite(_ => "tsi")));
+                    .Rewrite(_ => "ci")));
         }
 
         public static Rule Rule3c()
@@ -222,7 +222,7 @@ namespace Phonos.French.SubSystems
                 .Rules(r => r
                     .Named("Dépalatalisation de /ʦʲ/")
                     .Phono(px => new[] { "ʦ" })
-                    .Rewrite(_ => "ts")));
+                    .Rewrite(_ => "c")));
         }
 
         public static Rule Rule3d()
@@ -278,7 +278,7 @@ namespace Phonos.French.SubSystems
                 .Rules(r => r
                     .Named("Assibilation de /tʲ/ intervocalique")
                     .Phono(px => new[] { "ʦʲ" })
-                    .Rewrite(_ => "tsi")));
+                    .Rewrite(_ => "ci")));
         }
 
         public static Rule Rule3h()
@@ -293,7 +293,7 @@ namespace Phonos.French.SubSystems
                 .Rules(r => r
                     .Named("Sonorisation de /ʦʲ/ intervocalique")
                     .Phono(px => new[] { "ʣʲ" })
-                    .Rewrite(_ => "dzi")));
+                    .Rewrite(_ => "zi")));
         }
 
         public static Rule Rule3i()
@@ -307,7 +307,7 @@ namespace Phonos.French.SubSystems
                 .Rules(r => r
                     .Named("Dépalatalisation de /ʣʲ/ intervocalique")
                     .Phono(px => new[] { "ʣ" })
-                    .Rewrite(_ => "dz")));
+                    .Rewrite(_ => "z")));
         }
 
         public static Rule Rule3j()
