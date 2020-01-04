@@ -29,3 +29,191 @@ p1c13r1b:
             _graph: r e m
             _accent: tonic:3
             re: r e
+
+p1c13r1c:
+    src: Zink p.75
+    context: Chute des consonnes finales du latin dans les plurisyllabliques
+    rules: Chute du /n/ finale
+    from: -200?
+    to: -100?
+    samples:
+        nomen:
+            _graph: n o m e n
+            _accent: tonic:2 final:3
+            nome: n o m e
+        non:
+            _graph: r e m
+            _accent: tonic:3
+            # no match
+
+p1c13r1d:
+    src: Zink p.75
+    context: Chute des consonnes finales du latin dans les plurisyllabliques
+    rules: Chute du /c/ finale
+    from: 0?
+    to: 100?
+    samples:
+        illac:
+            _graph: i l l a c
+            illa: i l l a c
+
+
+
+p1c13r2a:
+    src: Zink p.75
+    context: Chute des consonnes finales du latin dans les plurisyllabliques
+    rules: Assourdissement des consonnes sonores
+    from: 600
+    to: 700
+    samples:
+        plomb:
+            _graph: p l o m b o
+            plomp: p l o m b
+        grand:
+            _graph: g r a n d
+            grant: g r a n d
+        porteð:
+            _graph: p o r t e t
+            porteθ: p o r t e t
+        long:
+            _graph: l o n g
+            lonk: l o n g
+        nev:
+            _graph: n e v
+            nef: n e f
+        kloz:
+            _graph: c l o s
+            klos: c l o s
+        vojʣ:
+            _graph: v o i z
+            vojʦ: v o i z
+
+p1c13r2b:
+    src: Zink p.75
+    context: Chute des consonnes finales du latin dans les plurisyllabliques
+    rules: Dentalisation de /m/ final
+    optional: true
+    from: 600
+    to: 700
+    samples:
+        flum:
+            _graph: f l u m
+            flum: f l u m
+            flun: f l u n
+
+p1c13r2c:
+    src: Zink p.75
+    context: Chute des consonnes finales du latin dans les plurisyllabliques
+    rules: Spirantisation de /t/ final après voyelle simple
+    from: 600
+    to: 650
+    samples:
+        portet:
+            _graph: p o r t e t
+            porteθ: p o r t e t
+
+p1c13r2d:
+    src: Zink p.75
+    context: Chute des consonnes finales du latin dans les plurisyllabliques
+    rules: Amuïssement de /θ/ final
+    from: 650
+    to: 700
+    samples:
+        porteθ:
+            _graph: p o r t e t
+            porte: p o r t e
+
+
+
+p1c13r3a:
+    src: Zink p.75
+    context: Chute des consonnes finales du latin dans les plurisyllabliques
+    rules: Amuïssement de la consonne finale après consonne
+    from: 1200
+    to: 1300
+    samples:
+        dort:
+            _graph: d o r t
+            dor(t): d o r t
+
+p1c13r3b:
+    src: Zink p.75
+    context: Chute des consonnes finales du latin dans les plurisyllabliques
+    rules: Amuïssement de la consonne finale après voyelle
+    optional: true
+    from: 1200
+    to: 1300
+    samples:
+        brok:
+            _graph: b r o c
+            brok: b r o c
+            bro(k): b r o c
+        kap:
+            _graph: c a p
+            kap: c a p
+            ka(p): c a p
+        set:
+            _graph: s e pt
+            set: s e pt
+            se(t): s e pt
+
+p1c13r3c:
+    src: Zink p.75
+    context: Chute des consonnes finales du latin dans les plurisyllabliques
+    rules: Amuïssement de /r/ finale après voyelle
+    from: 1200
+    to: 1300
+    samples:
+        premier:
+            _graph: p r e m i e r
+            premie(r): p r e m i er
+        mentør:
+            _graph: m e n t eu r
+            mentø(r): m e n t eu r
+        plezir:
+            _graph: p l ai s i r
+            plezi(r): p l ai s ir
+
+p1c13r3d:
+    src: Zink p.75
+    context: Chute des consonnes finales du latin dans les plurisyllabliques
+    rules: Amuïssement de /s/ final après /ɔ/
+    from: 1200
+    to: 1300
+    samples:
+        grɔs:
+            _graph: g r o s
+            groː(s): g r o s
+
+p1c13r3e:
+    src: Zink p.75
+    context: Chute des consonnes finales du latin dans les plurisyllabliques
+    rules: Amuïssement de /s/ final après /a/
+    from: 1200
+    to: 1300
+    samples:
+        bas:
+            _graph: b a s
+            bɑː(s): b a s
+
+p1c13r3f:
+    src: Zink p.75
+    context: Chute des consonnes finales du latin dans les plurisyllabliques
+    rules: Amuïssement de /s/ final après voyelle
+    from: 1200
+    to: 1300
+    samples:
+        bes:  # fictif
+            _graph: b e s
+            beː(s): b e s
+
+p1c13r3g:
+    src: Zink p.75
+    context: Chute des consonnes finales du latin dans les plurisyllabliques
+    rules: Amuïssement de /s/ final après /ə/
+    from: 1200
+    to: 1300
+    samples:
+        bəs:  # fictif
+            _graph: b e s
+            bə(s): b e s
