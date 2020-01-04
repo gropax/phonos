@@ -49,7 +49,7 @@ namespace Phonos.French.Tests
             int expectedNb = sample.Outputs.Length;
 
             Assert.True(expectedNb == derived.Length,
-                $"Expect [{string.Join("", word.Phonemes)}] to have [{expectedNb}] derivations ({string.Join(", ", sample.Outputs.Select(o => "[" + string.Join("", o.Word.Phonemes) + "]"))}) but only have [{derived.Length}].");
+                $"Expect [{word.PrettyPhonemes}] to have [{expectedNb}] derivations ({string.Join(", ", sample.Outputs.Select(o => $"[{o.Word.PrettyPhonemes}]"))}) but only have [{derived.Length}].");
 
             for (int i = 0; i < sample.Outputs.Length; i++)
                 TestSampleOutput(sample.Outputs, derived, i);
@@ -63,6 +63,7 @@ namespace Phonos.French.Tests
             var real = derived[index];
 
             Assert.Equal(expected.Phonemes, real.Phonemes);
+            Assert.Equal(expected.Liaison, real.Liaison);
 
             Assert.Equal(expected.GraphicalForms.Length, real.GraphicalForms.Length);
             for (int j = 0; j < expected.GraphicalForms.Length; j++)

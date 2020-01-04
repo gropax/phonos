@@ -73,6 +73,23 @@ namespace Phonos.Core.RuleBuilder
         {
             return phonemes.Select(p => UNVOICE[p]).ToArray();
         }
+
+        static Dictionary<string, string> DEAFENING =
+            new Dictionary<string, string>()
+            {
+                { "b", "p" }, { "d", "t" }, { "ð", "θ" },
+                { "g", "k" }, { "v", "f" }, { "z", "s" },
+                { "ʣ", "ʦ" },
+            };
+        public static string[] Deafen(string[] phonemes)
+        {
+            if (phonemes.Length > 1)
+                throw new RewritingError("Can only consonify a single phoneme.");
+            if (DEAFENING.TryGetValue(phonemes[0], out var deafened))
+                return new[] { deafened };
+            else
+                return phonemes;
+        }
     }
 
     [Serializable]

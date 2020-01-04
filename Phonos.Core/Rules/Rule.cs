@@ -81,7 +81,9 @@ namespace Phonos.Core.Rules
 
             var metas = word.Metas.Concat(operation.Metas).ToArray();
 
-            return new Word(phonemes, graphicalForms, fields, metas);
+            var liaison = operation.Liaison?.Invoke(matches.Last().Value);
+
+            return new Word(phonemes, graphicalForms, fields, metas, liaison);
         }
 
         public Alignment<string> RealignField(Alignment<string> field,

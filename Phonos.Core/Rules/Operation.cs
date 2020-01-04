@@ -12,13 +12,16 @@ namespace Phonos.Core.Rules
         public string[] Metas { get; }
         public Func<string[], string[]> Phonological { get; }
         public GraphicalMap[] Graphical { get; }
+        public Func<string[], string[]> Liaison { get; }
 
-        public Operation(string name, Func<string[], string[]> phonological, GraphicalMap[] graphical, string[] metas = null)
+        public Operation(string name, Func<string[], string[]> phonological,
+            GraphicalMap[] graphical, Func<string[], string[]> liaison = null, string[] metas = null)
         {
             Name = name;
             Phonological = phonological;
             Graphical = graphical;
             Metas = metas ?? new string[0];
+            Liaison = liaison;
         }
     }
 }

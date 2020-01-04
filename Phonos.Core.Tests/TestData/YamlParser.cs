@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Phonos.Core.Tests.TestData
 {
@@ -26,6 +27,7 @@ namespace Phonos.Core.Tests.TestData
                 foreach (var stepObj in stepsObj.Skip(1))
                 {
                     var parts = ((string)stepObj).Split(new string[] { "=>" }, StringSplitOptions.None);
+
                     string phono = parts[0].Trim();
                     var graphicalForms = parts[1].Split(',').Select(g => g.Trim()).ToArray();
 
@@ -35,6 +37,8 @@ namespace Phonos.Core.Tests.TestData
                 yield return new WhiteBoxTest(latin, steps.ToArray());
             }
         }
+
+        private Regex _phonemesRegex = new Regex(@"([^\(]+)(?:\(([^\(]+)\))?");
 
         public IEnumerable<BlackBoxTest> ParseBlackBoxTests(TextReader reader)
         {
@@ -53,7 +57,11 @@ namespace Phonos.Core.Tests.TestData
                 {
                     string fieldName = (string)fieldKv.Key;
 
-                    var outputPhono = ParsePhonemes((string)fieldKv.Key);
+                    string phonoStr = (string)fieldKv.Key;
+                    var match = _phonemesRegex.Match(phonoStr);
+                    var outputPhono = ParsePhonemes(match.Groups[1].Value);
+                    var liaison = ParsePhonemes(match.Groups[2].Value);
+
                     var graphicalForms = new Alignment<string>[0];
                     var metas = new string[0];
                     var wordFields = new Dictionary<string, Alignment<string>>();
@@ -94,7 +102,7 @@ namespace Phonos.Core.Tests.TestData
                     }
 
                     outputs.Add(new SampleOutput(
-                        new Word(outputPhono, graphicalForms, wordFields, metas)));
+                        new Word(outputPhono, graphicalForms, wordFields, metas, liaison)));
                 }
 
                 yield return new BlackBoxTest(latin, outputs.ToArray());
@@ -133,7 +141,10 @@ namespace Phonos.Core.Tests.TestData
                     var inputPhono = (string)wordKv.Key;
                     var fieldsKv = (Dictionary<object, dynamic>)wordKv.Value;
 
-                    var phonemes = ParsePhonemes(inputPhono);
+                    var match = _phonemesRegex.Match(inputPhono);
+                    var phonemes = ParsePhonemes(match.Groups[1].Value);
+                    var liaison = ParsePhonemes(match.Groups[2].Value);
+
                     var graphicalForms = new Alignment<string>[0];
                     var metas = new string[0];
                     var wordFields = new Dictionary<string, Alignment<string>>();
@@ -165,7 +176,11 @@ namespace Phonos.Core.Tests.TestData
                             wordFields.Add(fieldName.Substring(1), ParseAlignment(fieldKv.Value));
                         else
                         {
-                            var outputPhono = ParsePhonemes((string)fieldKv.Key);
+                            var phonoStr2 = (string)fieldKv.Key;
+                            var match2 = _phonemesRegex.Match(phonoStr2);
+                            var outputPhono = ParsePhonemes(match2.Groups[1].Value);
+                            var liaison2 = ParsePhonemes(match2.Groups[2].Value);
+
                             var graphicalForms2 = new Alignment<string>[0];
                             var metas2 = new string[0];
                             var wordFields2 = new Dictionary<string, Alignment<string>>();
@@ -206,11 +221,11 @@ namespace Phonos.Core.Tests.TestData
                             }
 
                             outputs.Add(new SampleOutput(
-                                new Word(outputPhono, graphicalForms2, wordFields2, metas2)));
+                                new Word(outputPhono, graphicalForms2, wordFields2, metas2, liaison2)));
                         }
                     }
 
-                    var inputWord = new Word(phonemes, graphicalForms, wordFields, metas);
+                    var inputWord = new Word(phonemes, graphicalForms, wordFields, metas, liaison);
 
                     samples.Add(new RuleTestSample(inputWord, outputs.ToArray()));
                 }
@@ -245,10 +260,15 @@ namespace Phonos.Core.Tests.TestData
         public char[] Range2 = new[] { '̯' };
         public string[] ParsePhonemes(string phonStr)
         {
+            if (string.IsNullOrWhiteSpace(phonStr))
+                return new string[0];
+
             var phonemes = new List<string>();
+
             for (int i = phonStr.Length - 1; i >= 0; i--)
             {
                 char current = phonStr[i];
+
                 if (Range1.Contains(current))
                 {
                     phonemes.Add(phonStr.Substring(i - 1, 2));

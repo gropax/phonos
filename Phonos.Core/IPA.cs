@@ -13,7 +13,6 @@ namespace Phonos.Core
             "ɘ", "ɵ", "ɤ", "o", "ə", "ɛ", "œ", "ɜ", "ɞ",
             "ʌ", "ɔ", "æ", "ɐ", "a", "ɶ", "ä", "ɑ", "ɒ",
         };
-
         public static bool IsVowel(string phoneme)
         {
             return VOWELS.Contains(phoneme[0].ToString());
