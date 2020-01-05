@@ -86,7 +86,7 @@ namespace Phonos.Cmd
 
         private static DerivationStep ToStep(WordDerivation d)
         {
-            var phonemes = string.Join("", d.Derived.Phonemes);
+            var phonemes = d.Derived.PrettyPhonemes;
             var graphicalForms = d.Derived.GraphicalForms
                 .Select(g => string.Join("", g.Intervals
                     .OrderBy(i => i.Start)

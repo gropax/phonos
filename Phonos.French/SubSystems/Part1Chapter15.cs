@@ -724,7 +724,7 @@ namespace Phonos.French.SubSystems
                     .After(a => a.Phon(IPA.IsPalatalVowel)))
                 .Rules(r => r
                     .Named("Déocclusion et avancée de /g/ intervocalique")
-                    .Phono(px => new[] { "y", "y" })
+                    .Phono(px => new[] { "j", "j" })
                     .Rewrite(_ => "i i")));
         }
 

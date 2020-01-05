@@ -81,7 +81,11 @@ namespace Phonos.Core.Rules
 
             var metas = word.Metas.Concat(operation.Metas).ToArray();
 
-            var liaison = operation.Liaison?.Invoke(matches.Last().Value);
+            string liaison;
+            if (operation.Liaison == null)
+                liaison = word.Liaison;
+            else
+                liaison = operation.Liaison(matches.Last().Value());
 
             return new Word(phonemes, graphicalForms, fields, metas, liaison);
         }
