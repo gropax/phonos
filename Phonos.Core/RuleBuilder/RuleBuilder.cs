@@ -12,17 +12,14 @@ namespace Phonos.Core.RuleBuilder
     public class RuleBuilder
     {
         private string _name = null;
+        private string[] _metas = new string[0];
         private Func<string[], string[]> _phono;
         private GraphicalMap[] _graph;
-        private Func<string[], string[]> _liaison = null;
-        private string[] _metas = new string[0];
 
         public Operation Build()
         {
-            return new Operation(_name,
-                _phono ?? Operation.Identity,
+            return new Operation(_name, _phono ?? Operation.Identity,
                 _graph ?? new[] { GraphicalMap.Identity },
-                _liaison,
                 _metas);
         }
 
@@ -41,12 +38,6 @@ namespace Phonos.Core.RuleBuilder
         public RuleBuilder Phono(Func<string[], string[]> map)
         {
             _phono = map;
-            return this;
-        }
-
-        public RuleBuilder Liaison(Func<string[], string[]> map)
-        {
-            _liaison = map;
             return this;
         }
 

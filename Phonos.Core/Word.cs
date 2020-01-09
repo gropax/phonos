@@ -14,32 +14,19 @@ namespace Phonos.Core
         public Alignment<string>[] GraphicalForms { get; }
         public Dictionary<string, Alignment<string>> Fields { get; }
         public string[] Metas { get; }
-        public string[] Liaison { get; }
 
-        public string DebuggerDisplay => $"/{PrettyPhonemes}/ ({string.Join(", ", GraphicalForms.Select(g => g.ToString()))})";
+        public string DebuggerDisplay => $"/{string.Join("", Phonemes)}/ ({string.Join(", ", GraphicalForms.Select(g => g.ToString()))})";
 
         public Word(string[] phonemes, Alignment<string>[] graphicalForms,
-            Dictionary<string, Alignment<string>> fields = null,
-            string[] metas = null, string[] liaison = null)
+            Dictionary<string, Alignment<string>> fields = null, string[] metas = null)
         {
             Phonemes = phonemes;
             GraphicalForms = graphicalForms;
             Fields = fields ?? new Dictionary<string, Alignment<string>>();
             Metas = metas ?? new string[0];
-            Liaison = liaison ?? new string[0];
         }
 
-        public string PrettyPhonemes
-        {
-            get
-            {
-                var mainPart = string.Join("", Phonemes);
-                var liaison = Liaison.Length == 0
-                    ? string.Empty
-                    : "(" + string.Join("", Liaison) + ")";
-                return mainPart + liaison;
-            }
-        }
+        public string PrettyPhonemes => string.Join("", Phonemes);
 
         public Alignment<string> GetField(string name)
         {
