@@ -63,8 +63,8 @@ p1c13r2a:
     src: Zink p.75
     context: Chute des consonnes finales du latin dans les plurisyllabliques
     rules: Assourdissement des consonnes sonores
-    from: 650
-    to: 700
+    from: 600
+    to: 650
     samples:
         plomb:
             _graph: p l o m b

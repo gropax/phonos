@@ -34,7 +34,9 @@ namespace Phonos.Core
             get
             {
                 var mainPart = string.Join("", Phonemes);
-                var liaison = string.IsNullOrWhiteSpace(Liaison) ? string.Empty : $"({Liaison})";
+                var liaison = Liaison.Length == 0
+                    ? string.Empty
+                    : "(" + string.Join("", Liaison) + ")";
                 return mainPart + liaison;
             }
         }

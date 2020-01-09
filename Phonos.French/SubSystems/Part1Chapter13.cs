@@ -17,10 +17,6 @@ namespace Phonos.French.SubSystems
             return new IRule[]
             {
                 RuleSet1a(),
-                Rule1c(), Rule1d(),
-                Rule2a(), Rule2b(), Rule2c(), Rule2d(),
-                Rule3h(),
-                RuleSet3(),
             };
         }
 
@@ -32,7 +28,6 @@ namespace Phonos.French.SubSystems
                 Rule2a(), Rule2b(), Rule2c(), Rule2d(),
                 Rule3a(), Rule3b(), Rule3c(), Rule3d(), Rule3e(), Rule3f(), Rule3g(),
                 RuleSet1a(),
-                RuleSet3(),
             };
         }
 
@@ -41,18 +36,6 @@ namespace Phonos.French.SubSystems
             return new FirstRule("p1c13s1a",
                 Rule1a(),  // monosyllabic
                 Rule1b()); // other
-        }
-
-        public static IRule RuleSet3()
-        {
-            return new FirstRule("p1c13s3",
-                Rule3a(),
-                Rule3c(),
-                Rule3d(),
-                Rule3e(),
-                Rule3f(),
-                Rule3g(),
-                Rule3b());
         }
 
         public static Rule Rule1a()
@@ -123,7 +106,7 @@ namespace Phonos.French.SubSystems
         {
             return R.Rule(c => c
                 .Id("p1c13r2a")
-                .From(650).To(700)
+                .From(600).To(650)
                 .Query(q => q
                     .Match(m => m.Phon("b", "d", "ð", "g", "v", "z", "ʣ"))
                     .After(Q.End))
@@ -158,7 +141,7 @@ namespace Phonos.French.SubSystems
         {
             return R.Rule(c => c
                 .Id("p1c13r2c")
-                .From(650).To(700)
+                .From(600).To(650)
                 .Query(q => q
                     .Before(b => b.Phon(IPA.IsVowel))
                     .Match(m => m.Phon("t"))
@@ -172,7 +155,7 @@ namespace Phonos.French.SubSystems
         {
             return R.Rule(c => c
                 .Id("p1c13r2d")
-                .From(1000).To(1100)
+                .From(650).To(700)
                 .Query(q => q
                     .Match(m => m.Phon("θ"))
                     .After(Q.End))
@@ -196,7 +179,7 @@ namespace Phonos.French.SubSystems
                 .Rules(r => r
                     .Named("Amuïssement de la consonne finale après consonne")
                     .Phono(P.Erase)
-                    .Liaison()));
+                    .Liaison(P.Nothing)));
         }
 
         public static Rule Rule3b()
@@ -212,12 +195,9 @@ namespace Phonos.French.SubSystems
                 .Rules(r => r
                     .Named("Amuïssement de la consonne finale après voyelle")
                     .Phono(P.Erase)
-                    .Liaison()));
+                    .Liaison(P.Nothing)));
         }
 
-        /// <summary>
-        /// Amuïssement de /r/ final après voyelle
-        /// </summary>
         public static Rule Rule3c()
         {
             return R.Rule(c => c
@@ -230,7 +210,7 @@ namespace Phonos.French.SubSystems
                 .Rules(r => r
                     .Named("Amuïssement de /r/ final après voyelle")
                     .Phono(P.Erase)
-                    .Liaison("r")));
+                    .Liaison(P.Nothing)));
         }
 
         public static Rule Rule3d()
@@ -246,7 +226,7 @@ namespace Phonos.French.SubSystems
                 .Rules(r => r
                     .Named("Amuïssement de /s/ final après /ɔ/, fermeture de /ɔ/")
                     .Phono(_ => new[] { "oː" })
-                    .Liaison("s")
+                    .Liaison(px => new[] { "s" })
                     .Rewrite(_ => "o s:0")));
         }
 
@@ -263,7 +243,7 @@ namespace Phonos.French.SubSystems
                 .Rules(r => r
                     .Named("Amuïssement de /s/ final après /a/, vélarisation de /a/")
                     .Phono(_ => new[] { "ɑː" })
-                    .Liaison("s")
+                    .Liaison(px => new[] { "s" })
                     .Rewrite(_ => "a s:0")));
         }
 
@@ -279,7 +259,7 @@ namespace Phonos.French.SubSystems
                 .Rules(r => r
                     .Named("Amuïssement de /s/ final après /ə/")
                     .Phono(P.Erase)
-                    .Liaison()));
+                    .Liaison(P.Nothing)));
         }
 
         public static Rule Rule3g()
@@ -295,7 +275,7 @@ namespace Phonos.French.SubSystems
                 .Rules(r => r
                     .Named("Amuïssement de /s/ final après voyelle, qui s'allonge")
                     .Phono(px => new[] { $"{px[0]}ː" })
-                    .Liaison("s")
+                    .Liaison(px => new[] { "s" })
                     .Rewrite(g => $"{g[0]} s:0")));
         }
 
