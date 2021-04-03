@@ -33,8 +33,9 @@ namespace Phonos.Fra.Similarity.Distances
                 (schwa1 && s2 == "œ") ||
                 (s1 == "ɛ̃" && s2 == "œ̃"))
                 return D0;
-            else if ((s1 == "ɔ" && s2 == "ɑ"))
-                return D1;
+            else if ((s1 == "ɑ" && s2 == "ɔ") ||
+                (s1 == "ɑ̃" && s2 == "ɔ̃"))
+                return D2;
 
             if (schwa1 || schwa2)
             {
