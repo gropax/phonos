@@ -53,8 +53,8 @@ namespace Phonos.Fra.Similarity.Distances.Tests
         [InlineData("e", "ə", ">", "ɛ", "ə")]
         [InlineData("o", "ə", ">", "ɔ", "ə")]
         [InlineData("e", "ə", "=", "o", "ə")]
-        [InlineData("e", "ə", "=", "e", "ɛ")]
-        [InlineData("o", "ə", "=", "o", "ɔ")]
+        //[InlineData("e", "ə", "=", "e", "ɛ")]
+        //[InlineData("o", "ə", "=", "o", "ɔ")]
 
         [InlineData("i", "y", "<", "i", "u")]
         [InlineData("e", "ø", "<", "e", "o")]
