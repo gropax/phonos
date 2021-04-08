@@ -25,6 +25,7 @@ namespace Phonos.Fra.Similarity
         public static Phoneme ng = new Phoneme("ŋ", isSyllabic: true, isConsonantic: true, isPosterior: true, isNasal: true, isVoiced: true);
         public static Phoneme l = new Phoneme("l", isSyllabic: true, isConsonantic: true, isCoronal: true, isAnterior: true, isContinuous: true, isVoiced: true);
         public static Phoneme R = new Phoneme("ʁ", isSyllabic: true, isConsonantic: true, isPosterior: true, isContinuous: true, isVoiced: true);
+        public static Phoneme X = new Phoneme("χ", isSyllabic: true, isConsonantic: true, isPosterior: true, isContinuous: true, isVoiced: false);
         public static Phoneme j = new Phoneme("j", isContinuous: true, isVoiced: true);
         public static Phoneme w = new Phoneme("w", isPosterior: true, isRounded: true, isContinuous: true, isVoiced: true);
         public static Phoneme Y = new Phoneme("ɥ", isRounded: true, isContinuous: true, isVoiced: true);
@@ -56,7 +57,7 @@ namespace Phonos.Fra.Similarity
         public static Phoneme[] Consonants = new[]
         {
             p, t, k, b, d, g, f, s, S, v, z, Z,
-            m, n, nj, ng, l, R, j, w, Y,
+            m, n, nj, ng, l, R, X, j, w, Y,
         };
 
         public static Phoneme[] All = Vowels.Concat(Consonants).ToArray();

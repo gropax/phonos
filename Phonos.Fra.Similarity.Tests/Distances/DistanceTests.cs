@@ -35,7 +35,7 @@ namespace Phonos.Fra.Similarity.Distances.Tests
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Not validated")]
         public void TestTriangleInequality()
         {
             var triplets = _points.Triplets().ToArray();

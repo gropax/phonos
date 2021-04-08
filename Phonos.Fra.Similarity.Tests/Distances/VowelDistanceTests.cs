@@ -5,14 +5,14 @@ using Xunit;
 
 namespace Phonos.Fra.Similarity.Distances.Tests
 {
-    public class VowelDistanceTests : VowelDistanceTestsBase
-    {
-        protected override IDistance<Phoneme> _distance => new VowelDistance();
-    }
+    //public class VowelDistanceTests : VowelDistanceTestsBase
+    //{
+    //    protected override IDistance<Phoneme> _distance => new VowelDistance();
+    //}
 
     public class NeighborhoodVowelDistanceTests : VowelDistanceTestsBase
     {
-        protected override IDistance<Phoneme> _distance => new NeighborhoodVowelDistance();
+        protected override IDistance<Phoneme> _distance => PhonemeDistances.NeighborhoodVowelDistance;
     }
 
     public abstract class VowelDistanceTestsBase : DistanceTests<Phoneme>
@@ -75,6 +75,13 @@ namespace Phonos.Fra.Similarity.Distances.Tests
         [InlineData("u", "ɔ", "<", "u", "ɑ")]
 
         [InlineData("ɔ", "ɑ", "<", "ɛ", "a")]
+
+        //[InlineData("ɛ", "œ", "=", "ɛ̃", "œ̃")]
+        [InlineData("ɛ", "ɔ", "=", "ɛ̃", "ɔ̃")]
+        [InlineData("ɛ", "ɑ", "=", "ɛ̃", "ɑ̃")]
+        [InlineData("œ", "ɔ", "=", "œ̃", "ɔ̃")]
+        [InlineData("œ", "ɑ", "=", "œ̃", "ɑ̃")]
+        [InlineData("ɑ", "ɔ", "=", "ɑ̃", "ɔ̃")]
         public void TestParallelPairs(string s1, string s2, string op, string s3, string s4)
         {
             var p1 = Phonemes.BySymbol(s1);
