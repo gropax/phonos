@@ -14,5 +14,14 @@ namespace Phonos.Fra.Similarity.Tests
                 for (int j = 0; j < i; j++)
                     yield return Tuple.Create(ary[i], ary[j]);
         }
+
+        public static IEnumerable<Tuple<T, T, T>> Triplets<T>(this IEnumerable<T> ts)
+        {
+            return
+                from t1 in ts
+                from t2 in ts
+                from t3 in ts
+                select Tuple.Create(t1, t2, t3);
+        }
     }
 }

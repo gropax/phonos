@@ -4,12 +4,12 @@ using System.Text;
 
 namespace Phonos.Fra.Similarity.Distances
 {
-    public class SyllableDistance : ISyllableDistance
+    public class SyllableDistance : IDistance<Syllable>
     {
-        private IPhonemeDistance _vowelDistance { get; }
-        private IPhonemeDistance _consonantDistance { get; }
+        private IDistance<Phoneme> _vowelDistance { get; }
+        private IDistance<Phoneme> _consonantDistance { get; }
 
-        public SyllableDistance(IPhonemeDistance vowelDistance, IPhonemeDistance consonantDistance)
+        public SyllableDistance(IDistance<Phoneme> vowelDistance, IDistance<Phoneme> consonantDistance)
         {
             _vowelDistance = vowelDistance;
             _consonantDistance = consonantDistance;

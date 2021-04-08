@@ -5,19 +5,10 @@ using Xunit;
 
 namespace Phonos.Fra.Similarity.Distances.Tests
 {
-    public class VowelDistanceTests : VowelDistanceTestsBase
+    public class ConsonantDistanceTests : DistanceTests<Phoneme>
     {
-        protected override IDistance<Phoneme> _distance => new VowelDistance();
-    }
-
-    public class NeighborhoodVowelDistanceTests : VowelDistanceTestsBase
-    {
-        protected override IDistance<Phoneme> _distance => new NeighborhoodVowelDistance();
-    }
-
-    public abstract class VowelDistanceTestsBase : DistanceTests<Phoneme>
-    {
-        protected override IEnumerable<Phoneme> _points => Phonemes.Vowels;
+        protected override IDistance<Phoneme> _distance => new ConsonantDistance();
+        protected override IEnumerable<Phoneme> _points => Phonemes.Consonants;
 
         [Theory]
         [InlineData("a", "ɑ")]

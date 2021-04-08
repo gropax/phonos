@@ -9,19 +9,8 @@ namespace Phonos.Fra.Similarity
         Realization[] GetRealizations(WordForm wordForm);
     }
 
-    public interface IPhoneticDistance
+    public interface IDistance<T>
     {
-        double GetDistance(Realization fst, Realization snd);
+        double GetDistance(T fst, T snd);
     }
-
-    public interface ISyllableDistance
-    {
-        double GetDistance(Syllable fst, Syllable snd);
-    }
-
-    public interface IPhonemeDistance
-    {
-        double GetDistance(Phoneme fst, Phoneme snd);
-    }
-
 }

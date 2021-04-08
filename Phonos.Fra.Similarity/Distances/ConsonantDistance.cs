@@ -8,21 +8,19 @@ namespace Phonos.Fra.Similarity.Distances
     /// <summary>
     /// Lexicographic order of phoneme symbols: abdefgijklmnopstuvwyzøŋœœ̃ɑɑ̃ɔɔ̃əɛɛ̃ɥɲʁʃʒ
     /// </summary>
-    public class VowelDistance : IDistance<Phoneme>
+    public class ConsonantDistance : IDistance<Phoneme>
     {
         private const double D0 = 1;
         private const double D1 = 2;
         private const double D2 = 3;
         private const double D3 = 4;
-        private const double DMAX = 8;
 
         private string[] _central1 = new[] { "ɛ", "ɔ" };
         private string[] _central2 = new[] { "e", "a", "o" };
 
         public double GetDistance(Phoneme fst, Phoneme snd)
         {
-            //return Math.Log10(1 + GetDistanceBase(fst, snd));
-            return GetDistanceBase(fst, snd);
+            return Math.Log10(1 + GetDistanceBase(fst, snd));
         }
 
         public double GetDistanceBase(Phoneme fst, Phoneme snd)
@@ -51,8 +49,6 @@ namespace Phonos.Fra.Similarity.Distances
                     return D1;
                 else if (_central2.Contains(other))
                     return D2;
-                else
-                    return D3;
             }
 
             double dist = 0;
@@ -79,7 +75,7 @@ namespace Phonos.Fra.Similarity.Distances
             if (fst.IsNasal != snd.IsNasal)
                 dist += D3;
 
-            return Math.Min(dist, DMAX);
+            return dist;
         }
     }
 }

@@ -3,11 +3,11 @@ using System.Linq;
 
 namespace Phonos.Fra.Similarity.Distances
 {
-    public class SyllabicDistance : IPhoneticDistance
+    public class SyllabicDistance : IDistance<Realization>
     {
-        private ISyllableDistance _syllableDistance;
+        private IDistance<Syllable> _syllableDistance;
 
-        public SyllabicDistance(ISyllableDistance syllableDistance)
+        public SyllabicDistance(IDistance<Syllable> syllableDistance)
         {
             _syllableDistance = syllableDistance;
         }
