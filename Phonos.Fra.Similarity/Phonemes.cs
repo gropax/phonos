@@ -102,6 +102,11 @@ namespace Phonos.Fra.Similarity
             IsTight = isTight;
         }
 
+        public override string ToString()
+        {
+            return $"/{Symbol}/";
+        }
+
         public override bool Equals(object obj)
         {
             return obj is Phoneme phoneme &&

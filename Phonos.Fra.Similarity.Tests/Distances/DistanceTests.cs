@@ -40,8 +40,7 @@ namespace Phonos.Fra.Similarity.Distances.Tests
         {
             var triplets = _points.Triplets().ToArray();
 
-            int l = triplets.Length;
-            double total = Math.Pow(l, 3);
+            int total = triplets.Length;
             double count = 0;
 
             foreach ((var p1, var p2, var p3) in triplets)
@@ -50,7 +49,7 @@ namespace Phonos.Fra.Similarity.Distances.Tests
                 var d2 = _distance.GetDistance(p2, p3);
                 var d3 = _distance.GetDistance(p1, p3);
 
-                Assert.True(d3 <= d1 + d2, $"[{count/total:P2}]  d(/{p1}/, /{p3}/) = {d3} ≰ {d1 + d2} = {d1} + {d2} = d(/{p1}/, /{p2}/) + d(/{p2}/, /{p3}/)");
+                Assert.True(d3 <= d1 + d2, $"[{count/total:P2}]  d({p1}, {p3}) = {d3} ≰ {d1 + d2} = {d1} + {d2} = d({p1}, {p2}) + d({p2}, {p3})");
 
                 count++;
             }
