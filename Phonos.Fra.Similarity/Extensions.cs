@@ -32,6 +32,23 @@ namespace Phonos.Fra.Similarity
                 select Tuple.Create(t1, t2, t3);
         }
 
+        public static IEnumerable<U> ConsecutivePairs<T, U>(this IEnumerable<T> ts, Func<T, T, U> reduce)
+        {
+            T last = default;
+            bool hasLast = false;
+
+            foreach (var t in ts)
+            {
+                if (hasLast)
+                    yield return reduce(last, t);
+                else
+                    hasLast = true;
+
+                last = t;
+            }
+        }
+
+
         public static void Populate<T>(this T[] array, T value)
         {
             for (int i = 0; i < array.Length; i++)

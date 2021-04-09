@@ -57,6 +57,19 @@ namespace Phonos.Fra.Similarity.Lexicon
             var symbols = string.Join("", Phonemes.Select(p => p.Symbol));
             return $"/{symbols}/";
         }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Syllable syllable &&
+                   Enumerable.SequenceEqual(Onset, syllable.Onset) &&
+                   EqualityComparer<Phoneme>.Default.Equals(Nucleus, syllable.Nucleus) &&
+                   Enumerable.SequenceEqual(Coda, syllable.Coda);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Onset, Nucleus, Coda, Phonemes);
+        }
     }
 
 }

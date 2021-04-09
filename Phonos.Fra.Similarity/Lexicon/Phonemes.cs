@@ -93,6 +93,8 @@ namespace Phonos.Fra.Similarity.Lexicon
         public bool IsLow { get; }
         public bool IsTight { get; }
 
+        public bool IsVowel => IsSyllabic && !IsConsonantic;
+
         public Phoneme(string symbol, bool isSyllabic = false, bool isConsonantic = false, bool isCoronal = false, bool isAnterior = false, bool isPosterior = false, bool isRounded = false, bool isNasal = false, bool isContinuous = false, bool isVoiced = false, bool isHigh = false, bool isLow = false, bool isTight = false)
         {
             Symbol = symbol;
