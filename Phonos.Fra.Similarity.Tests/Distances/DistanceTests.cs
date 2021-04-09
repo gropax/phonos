@@ -14,7 +14,7 @@ namespace Phonos.Fra.Similarity.Distances.Tests
         [Fact]
         public void TestSeparation()
         {
-            foreach ((var p1, var p2) in _points.UnorderedPairs().Take(1000000))
+            foreach ((var p1, var p2) in _points.UnorderedPairs().Take(100000))
             {
                 if (p1.Equals(p2))
                     Assert.True(_distance.GetDistance(p1, p2) == 0, $"d({p1}, {p2}) ≠ 0");
@@ -26,7 +26,7 @@ namespace Phonos.Fra.Similarity.Distances.Tests
         [Fact]
         public void TestSymetry()
         {
-            foreach ((var p1, var p2) in _points.UnorderedPairs().Take(1000000))
+            foreach ((var p1, var p2) in _points.UnorderedPairs().Take(100000))
             {
                 var d1 = _distance.GetDistance(p1, p2);
                 var d2 = _distance.GetDistance(p2, p1);
@@ -38,7 +38,7 @@ namespace Phonos.Fra.Similarity.Distances.Tests
         [Fact]
         public void TestTriangleInequality()
         {
-            var triplets = _points.Triplets().Take(1000000).ToArray();
+            var triplets = _points.Triplets().Take(100000).ToArray();
 
             int total = triplets.Length;
             double count = 0;

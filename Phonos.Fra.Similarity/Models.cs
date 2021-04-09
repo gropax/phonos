@@ -28,10 +28,18 @@ namespace Phonos.Fra.Similarity
         /// Score quantifiant la déformation du mot-forme ayant abouti à la réalisation.
         /// </summary>
         public double Distortion { get; }
+
+        public Realization(Syllable[] syllables, double distortion = 0)
+        {
+            Syllables = syllables;
+            Distortion = distortion;
+        }
     }
 
     public class Syllable
     {
+        public static Syllable Null { get; } = new Syllable(new Phoneme[0], Similarity.Phonemes._, new Phoneme[0]);
+
         public Phoneme[] Onset { get; }
         public Phoneme Nucleus { get; }
         public Phoneme[] Coda { get; }

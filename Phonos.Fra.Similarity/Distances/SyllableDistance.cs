@@ -36,26 +36,11 @@ namespace Phonos.Fra.Similarity.Distances
                 return 0;
 
             var candidates = 
-                from ps1 in Pad(fst, length)
-                from ps2 in Pad(snd, length)
+                from ps1 in fst.Pad(Phonemes._, length)
+                from ps2 in snd.Pad(Phonemes._, length)
                 select ps1.Zip(ps2, (p1, p2) => _consonantDistance.GetDistance(p1, p2)).Sum(d => d);
 
             return candidates.Min(d => d) / length;
-        }
-
-        private IEnumerable<Phoneme[]> Pad(Phoneme[] phonemes, int length)
-        {
-            int diff = length - phonemes.Length;
-            for (int i = 0; i <= diff; i++)
-            {
-                var before = new Phoneme[i];
-                var after = new Phoneme[diff - i];
-
-                before.Populate(Phonemes._);
-                after.Populate(Phonemes._);
-
-                yield return before.Concat(phonemes).Concat(after).ToArray();
-            }
         }
     }
 }

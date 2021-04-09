@@ -39,5 +39,20 @@ namespace Phonos.Fra.Similarity
                 array[i] = value;
             }
         }
+
+        public static IEnumerable<T[]> Pad<T>(this T[] phonemes, T value, int length)
+        {
+            int diff = length - phonemes.Length;
+            for (int i = 0; i <= diff; i++)
+            {
+                var before = new T[i];
+                var after = new T[diff - i];
+
+                before.Populate(value);
+                after.Populate(value);
+
+                yield return before.Concat(phonemes).Concat(after).ToArray();
+            }
+        }
     }
 }
