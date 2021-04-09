@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Phonos.Fra.Similarity.Distances
@@ -15,9 +16,46 @@ namespace Phonos.Fra.Similarity.Distances
             _consonantDistance = consonantDistance;
         }
 
+        private const double ONSET_WEIGHT = 1;
+        private const double NUCLEUS_WEIGHT = 1;
+        private const double CODA_WEIGHT = 1;
+
         public double GetDistance(Syllable fst, Syllable snd)
         {
-            throw new NotImplementedException();
+            var onsetDistance = GetConsonantClusterDistance(fst.Onset, snd.Onset);
+            var nucleusDistance = _vowelDistance.GetDistance(fst.Nucleus, snd.Nucleus);
+            var codaDistance = GetConsonantClusterDistance(fst.Coda, snd.Coda);
+
+            return ONSET_WEIGHT * onsetDistance + NUCLEUS_WEIGHT * nucleusDistance + CODA_WEIGHT * codaDistance;
+        }
+
+        public double GetConsonantClusterDistance(Phoneme[] fst, Phoneme[] snd)
+        {
+            int length = Math.Max(fst.Length, snd.Length);
+            if (length == 0)
+                return 0;
+
+            var candidates = 
+                from ps1 in Pad(fst, length)
+                from ps2 in Pad(snd, length)
+                select ps1.Zip(ps2, (p1, p2) => _consonantDistance.GetDistance(p1, p2)).Sum(d => d);
+
+            return candidates.Min(d => d) / length;
+        }
+
+        private IEnumerable<Phoneme[]> Pad(Phoneme[] phonemes, int length)
+        {
+            int diff = length - phonemes.Length;
+            for (int i = 0; i <= diff; i++)
+            {
+                var before = new Phoneme[i];
+                var after = new Phoneme[diff - i];
+
+                before.Populate(Phonemes._);
+                after.Populate(Phonemes._);
+
+                yield return before.Concat(phonemes).Concat(after).ToArray();
+            }
         }
     }
 }

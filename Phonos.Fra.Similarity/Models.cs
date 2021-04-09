@@ -33,9 +33,22 @@ namespace Phonos.Fra.Similarity
     public class Syllable
     {
         public Phoneme[] Onset { get; }
-        public Phoneme[] Nucleus { get; }
+        public Phoneme Nucleus { get; }
         public Phoneme[] Coda { get; }
-        public IEnumerable<Phoneme> Phonemes => Onset.Concat(Nucleus).Concat(Coda);
+        public IEnumerable<Phoneme> Phonemes => Onset.Append(Nucleus).Concat(Coda);
+
+        public Syllable(Phoneme[] onset, Phoneme nucleus, Phoneme[] coda)
+        {
+            Onset = onset;
+            Nucleus = nucleus;
+            Coda = coda;
+        }
+
+        public override string ToString()
+        {
+            var symbols = string.Join("", Phonemes.Select(p => p.Symbol));
+            return $"/{symbols}/";
+        }
     }
 
 }

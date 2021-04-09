@@ -7,6 +7,8 @@ namespace Phonos.Fra.Similarity
 {
     public static class Phonemes
     {
+        public static Phoneme _ = new Phoneme("");
+
         public static Phoneme p = new Phoneme("p", isConsonantic: true, isAnterior: true);
         public static Phoneme t = new Phoneme("t", isConsonantic: true, isCoronal: true, isAnterior: true);
         public static Phoneme k = new Phoneme("k", isConsonantic: true, isPosterior: true);
@@ -37,7 +39,7 @@ namespace Phonos.Fra.Similarity
         public static Phoneme y = new Phoneme("y", isSyllabic: true, isAnterior: true, isRounded: true, isHigh: true, isTight: true);
         public static Phoneme eu = new Phoneme("ø", isSyllabic: true, isAnterior: true, isRounded: true, isTight: true);
         public static Phoneme oe = new Phoneme("œ", isSyllabic: true, isAnterior: true, isRounded: true);
-        public static Phoneme _ = new Phoneme("ə", isSyllabic: true, isRounded: true);
+        public static Phoneme _e = new Phoneme("ə", isSyllabic: true, isRounded: true);
         public static Phoneme u = new Phoneme("u", isSyllabic: true, isPosterior: true, isRounded: true, isHigh: true, isTight: true);
         public static Phoneme o = new Phoneme("o", isSyllabic: true, isPosterior: true, isRounded: true, isTight: true);
         public static Phoneme O = new Phoneme("ɔ", isSyllabic: true, isPosterior: true, isRounded: true);
@@ -50,7 +52,7 @@ namespace Phonos.Fra.Similarity
 
         public static Phoneme[] Vowels = new[]
         {
-            i, e, E, a, y, eu, oe, _, u, o, O, A,
+            i, e, E, a, y, eu, oe, _e, u, o, O, A,
             @in, an, un, on,
         };
 
@@ -60,7 +62,12 @@ namespace Phonos.Fra.Similarity
             m, n, nj, ng, l, R, X, j, w, Y,
         };
 
-        public static Phoneme[] All = Vowels.Concat(Consonants).ToArray();
+        public static Phoneme[] ContinuousConsonants = new[]
+        {
+            f, s, S, v, z, Z, l, R, X,
+        };
+
+        public static Phoneme[] All = Vowels.Concat(Consonants).Append(Phonemes._).ToArray();
 
         public static Dictionary<string, Phoneme> _phonemesBySymbol = All.ToDictionary(p => p.Symbol);
         public static Phoneme BySymbol(string symbol)

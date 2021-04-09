@@ -11,6 +11,7 @@ namespace Phonos.Fra.Similarity.Distances
             circleDistances: new double[] { 1, 2, 3, 4 },
             maxDistances: 5,
             neighborhoods: Neighborhoods(
+                Of(""),
                 Of("i", C(), C(), C("e", "y"), C("ɛ", "ø", "ə")),
                 Of("e", C(), C("ɛ"), C("i", "ø", "ə", "œ"), C("a", "y")),
                 Of("ɛ", C(), C("e", "ə"), C("œ", "ø", "a"), C("i", "ɛ̃", "ɑ", "ɔ")),
@@ -32,6 +33,7 @@ namespace Phonos.Fra.Similarity.Distances
             circleDistances: new double[] { 1, 2, 3, 4 },
             maxDistances: 5,
             neighborhoods: Neighborhoods(
+                Of(""),
                 Of("p", C("b")),
                 Of("t", C("d")),
                 Of("k", C("g")),

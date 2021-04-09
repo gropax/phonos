@@ -14,19 +14,19 @@ namespace Phonos.Fra.Similarity.Distances.Tests
         [Fact]
         public void TestSeparation()
         {
-            foreach ((var p1, var p2) in _points.UnorderedPairs())
+            foreach ((var p1, var p2) in _points.UnorderedPairs().Take(1000000))
             {
                 if (p1.Equals(p2))
-                    Assert.Equal(0, _distance.GetDistance(p1, p2));
+                    Assert.True(_distance.GetDistance(p1, p2) == 0, $"d({p1}, {p2}) ≠ 0");
                 else
-                    Assert.True(_distance.GetDistance(p1, p2) > 0);
+                    Assert.True(_distance.GetDistance(p1, p2) > 0, $"d({p1}, {p2}) ≯ 0");
             }
         }
 
         [Fact]
         public void TestSymetry()
         {
-            foreach ((var p1, var p2) in _points.UnorderedPairs())
+            foreach ((var p1, var p2) in _points.UnorderedPairs().Take(1000000))
             {
                 var d1 = _distance.GetDistance(p1, p2);
                 var d2 = _distance.GetDistance(p2, p1);
@@ -35,10 +35,10 @@ namespace Phonos.Fra.Similarity.Distances.Tests
             }
         }
 
-        [Fact(Skip = "Not validated")]
+        [Fact]
         public void TestTriangleInequality()
         {
-            var triplets = _points.Triplets().ToArray();
+            var triplets = _points.Triplets().Take(1000000).ToArray();
 
             int total = triplets.Length;
             double count = 0;

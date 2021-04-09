@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Phonos.Fra.Similarity.Tests
+namespace Phonos.Fra.Similarity
 {
     public static class Extensions
     {

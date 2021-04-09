@@ -1,6 +1,7 @@
 ﻿using Phonos.Fra.Similarity.Tests;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace Phonos.Fra.Similarity.Distances.Tests
@@ -13,7 +14,7 @@ namespace Phonos.Fra.Similarity.Distances.Tests
 
     public abstract class ConsonantDistanceTests : DistanceTests<Phoneme>
     {
-        protected override IEnumerable<Phoneme> _points => Phonemes.Consonants;
+        protected override IEnumerable<Phoneme> _points => Phonemes.Consonants.Append(Phonemes._);
 
         [Theory]
         [InlineData("p", "b")]
