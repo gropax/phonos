@@ -22,3 +22,5 @@ packages/
 AppData/
 App_Data/
 *.log
+
+data/

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Phonos.Fra.Lexicon;
+using System;
 using System.Linq;
 
 namespace Phonos.Fra.Similarity.Distances

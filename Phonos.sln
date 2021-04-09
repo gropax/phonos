@@ -21,9 +21,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Phonos.Latin.Tests", "Phono
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Phonos.Cmd", "Phonos.Cmd\Phonos.Cmd.csproj", "{2F7E76D9-FCC5-49D4-A77F-0F5EE1E78316}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phonos.Fra.Similarity", "Phonos.Fra.Similarity\Phonos.Fra.Similarity.csproj", "{802932DD-A266-4BC9-97EE-A58D95C1695D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Phonos.Fra.Similarity", "Phonos.Fra.Similarity\Phonos.Fra.Similarity.csproj", "{802932DD-A266-4BC9-97EE-A58D95C1695D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phonos.Fra.Similarity.Tests", "Phonos.Fra.Similarity.Tests\Phonos.Fra.Similarity.Tests.csproj", "{C7347716-F71B-4F03-87F8-5DCFAB03DAD2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Phonos.Fra.Similarity.Tests", "Phonos.Fra.Similarity.Tests\Phonos.Fra.Similarity.Tests.csproj", "{C7347716-F71B-4F03-87F8-5DCFAB03DAD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phonos.Fra.Lexicon", "Phonos.Fra.Lexicon\Phonos.Fra.Lexicon.csproj", "{B1C78FE7-F6AC-487C-A609-41912EE3AC15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phonos.Fra.Lexicon.Tests", "Phonos.Fra.Lexicon.Tests\Phonos.Fra.Lexicon.Tests.csproj", "{7A306F20-0502-47D0-A6B0-E5583FDE9F43}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +79,14 @@ Global
 		{C7347716-F71B-4F03-87F8-5DCFAB03DAD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7347716-F71B-4F03-87F8-5DCFAB03DAD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7347716-F71B-4F03-87F8-5DCFAB03DAD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1C78FE7-F6AC-487C-A609-41912EE3AC15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1C78FE7-F6AC-487C-A609-41912EE3AC15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1C78FE7-F6AC-487C-A609-41912EE3AC15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1C78FE7-F6AC-487C-A609-41912EE3AC15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A306F20-0502-47D0-A6B0-E5583FDE9F43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A306F20-0502-47D0-A6B0-E5583FDE9F43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A306F20-0502-47D0-A6B0-E5583FDE9F43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A306F20-0502-47D0-A6B0-E5583FDE9F43}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 
-namespace Phonos.Fra.Similarity
+namespace Phonos.Fra.Lexicon
 {
     public class Lemma
     {
@@ -38,7 +38,7 @@ namespace Phonos.Fra.Similarity
 
     public class Syllable
     {
-        public static Syllable Null { get; } = new Syllable(new Phoneme[0], Similarity.Phonemes._, new Phoneme[0]);
+        public static Syllable Null { get; } = new Syllable(new Phoneme[0], Lexicon.Phonemes._, new Phoneme[0]);
 
         public Phoneme[] Onset { get; }
         public Phoneme Nucleus { get; }

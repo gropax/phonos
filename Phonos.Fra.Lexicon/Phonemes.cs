@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Phonos.Fra.Similarity
+namespace Phonos.Fra.Lexicon
 {
     public static class Phonemes
     {
