@@ -1,10 +1,19 @@
 using System;
+using System.Linq;
 using Xunit;
 
 namespace Phonos.Fra.Similarity.Lexicon.Tests
 {
     public class Lexique380ParserTests
     {
+        [Fact]
+        public void TestParseLexique()
+        {
+            string lexiquePath = @"C:\Users\VR1\source\repos\phonos\data\Lexique383.tsv";
+            var nouns = LexiqueParser.ParseLexique(lexiquePath)
+                .ToArray();
+        }
+
         [Fact]
         public void TestParseLine()
         {

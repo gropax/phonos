@@ -12,6 +12,7 @@ namespace Phonos.Fra.Similarity.Lexicon
             using (StreamReader reader = new StreamReader(file))
             {
                 string line;
+                reader.ReadLine();  // Skip headers
                 while ((line = reader.ReadLine()) != null)
                     yield return ParseEntry(line);
             }
