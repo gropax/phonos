@@ -1,4 +1,4 @@
-﻿using Phonos.Fra.Lexicon;
+﻿using Phonos.Fra.Similarity.Lexicon;
 using Phonos.Fra.Similarity.Tests;
 using System;
 using System.Collections.Generic;
