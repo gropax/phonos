@@ -71,5 +71,10 @@ namespace Phonos.Fra.Similarity
                 yield return before.Concat(phonemes).Concat(after).ToArray();
             }
         }
+
+        public static string[] SplitPhonemes(this string phonemesStr)
+        {
+            return phonemesStr.Select(c => c.ToString()).ToArray();
+        }
     }
 }

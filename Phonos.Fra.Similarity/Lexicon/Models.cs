@@ -29,6 +29,8 @@ namespace Phonos.Fra.Similarity.Lexicon
 
     public class Realization
     {
+        public string Graphical { get; }
+
         /// <summary>
         /// Découpage du mot phonétique en syllabes.
         /// </summary>
@@ -39,8 +41,9 @@ namespace Phonos.Fra.Similarity.Lexicon
         /// </summary>
         public double Distortion { get; }
 
-        public Realization(Syllable[] syllables, double distortion = 0)
+        public Realization(string graphical, Syllable[] syllables, double distortion = 0)
         {
+            Graphical = graphical;
             Syllables = syllables;
             Distortion = distortion;
         }

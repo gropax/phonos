@@ -19,7 +19,7 @@ namespace Phonos.Fra.Similarity.Lexicon.Tests
         {
             string line = "grumeleuses\tgRym°l2z\tgrumeleux\tADJ\tf\tp\t0.33\t1.89\t0.02\t0.14\t\t1\t2\t0\t11\t8\tCCVCVCVVCVC\tCCVCVCVC\t0\t0\t0\t0\tgRy-m°-l2z\t3\tCCV-CV-CVC\tsesuelemurg\tz2l°myRg\tgru-me-leu-ses\tADJ\t63\t19\t3.4\t\tgrumeleux\t1\n";
 
-            var expected = new LexiqueEntry("grumeleuses", "grumeleux", "ADJ",
+            var expected = new LexiqueEntry("grumeleuses", "grumeleux", "ADJ", "f", "p",
                 phonemes: new[]
                 {
                     new ContextualPhoneme(Phonemes.g),

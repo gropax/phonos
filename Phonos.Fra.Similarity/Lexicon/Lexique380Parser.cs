@@ -25,6 +25,8 @@ namespace Phonos.Fra.Similarity.Lexicon
                 wordForm: parts[0],
                 lemma: parts[2],
                 pos: parts[3],
+                gender: parts[4],
+                number: parts[5],
                 phonemes: ParsePhonemes(parts[1]));
         }
 
@@ -62,13 +64,17 @@ namespace Phonos.Fra.Similarity.Lexicon
         public string WordForm { get; }
         public string Lemma { get; }
         public string POS { get; }
+        public string Gender { get; }
+        public string Number { get; }
         public ContextualPhoneme[] Phonemes { get; }
 
-        public LexiqueEntry(string wordForm, string lemma, string pos, ContextualPhoneme[] phonemes)
+        public LexiqueEntry(string wordForm, string lemma, string pos, string gender, string number, ContextualPhoneme[] phonemes)
         {
             WordForm = wordForm;
             Lemma = lemma;
             POS = pos;
+            Gender = gender;
+            Number = number;
             Phonemes = phonemes;
         }
 

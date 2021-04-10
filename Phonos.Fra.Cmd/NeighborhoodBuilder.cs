@@ -26,7 +26,7 @@ namespace Phonos.Fra.Cmd
         {
             var nouns = LexiqueParser.ParseLexique(lexiquePath)
                 .Where(e => e.POS == "NOM")
-                .Select(e => new WordForm(e.WordForm, new[] { _realizationComputer.Compute(e).Single() }))
+                .Select(e => new WordForm(e.WordForm, _realizationComputer.Compute(e)))
                 .ToArray();
 
             var nounsByForm = nouns.ToLookup(e => e.GraphicForm);

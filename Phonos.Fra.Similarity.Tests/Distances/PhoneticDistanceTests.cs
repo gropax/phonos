@@ -17,9 +17,41 @@ namespace Phonos.Fra.Similarity.Distances.Tests
     {
         protected override IEnumerable<Realization> _points => Realizations();
 
+        [Theory]
+        [InlineData("aʁ", "aʁk", "<", "aʁ", "akʁ")]
+        public void TestParallelPairs(string s1, string s2, string op, string s3, string s4)
+        {
+            var r1 = ToRealization(s1);
+            var r2 = ToRealization(s2);
+            var r3 = ToRealization(s3);
+            var r4 = ToRealization(s4);
+
+            var d1 = _distance.GetDistance(r1, r2);
+            var d2 = _distance.GetDistance(r3, r4);
+
+            if (op == "=")
+                Assert.True(d1 == d2, $"d(/{s1}/, /{s2}/) = {d1} ≠ {d2} = d(/{s3}/, /{s4}/)");
+            else if (op == "<")
+                Assert.True(d1 < d2, $"d(/{s1}/, /{s2}/) = {d1} ≮ {d2} = d(/{s3}/, /{s4}/)");
+            else if (op == ">")
+                Assert.True(d1 > d2, $"d(/{s1}/, /{s2}/) = {d1} ≯ {d2} = d(/{s3}/, /{s4}/)");
+            else
+                throw new NotImplementedException();
+        }
+
+
+
+        private Syllabifier _syllabifier = new Syllabifier();
+        private Realization ToRealization(string phonemeStr)
+        {
+            var phonemes = phonemeStr.SplitPhonemes().Select(s => Phonemes.BySymbol(s)).ToArray();
+            var syllables = _syllabifier.Compute(phonemes).ToArray();
+            return new Realization(phonemeStr, syllables);
+        }
+
         private IEnumerable<Realization> Realizations()
         {
-            yield return new Realization(new[] { Syllable.Null });
+            yield return new Realization("", new[] { Syllable.Null });
 
             var syllables = AllSyllables().GetEnumerator();
             var q1 = new Queue<Syllable>();
@@ -43,13 +75,13 @@ namespace Phonos.Fra.Similarity.Distances.Tests
                 q2.Enqueue(syllable);
                 q3.Enqueue(syllable);
 
-                yield return new Realization(q1.ToArray());
+                yield return new Realization("", q1.ToArray());
 
                 if (q2.Count == 2)
-                    yield return new Realization(q2.ToArray());
+                    yield return new Realization("", q2.ToArray());
 
                 if (q2.Count == 3)
-                    yield return new Realization(q3.ToArray());
+                    yield return new Realization("", q3.ToArray());
             }
         }
 
