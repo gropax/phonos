@@ -10,7 +10,7 @@ namespace Phonos.Fra.Similarity.Distances.Tests
     public class SyllableDistanceTests : SyllableDistanceTestsBase
     {
         protected override IDistance<Syllable> _distance =>
-            new SyllableDistance(PhonemeDistances.NeighborhoodVowelDistance, PhonemeDistances.NeighborhoodConsonantDistance);
+            new SyllableDistance(Distances.NeighborhoodVowelDistance, Distances.NeighborhoodConsonantDistance);
     }
 
     public abstract class SyllableDistanceTestsBase : DistanceTests<Syllable>

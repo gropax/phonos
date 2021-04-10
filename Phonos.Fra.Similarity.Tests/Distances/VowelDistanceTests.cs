@@ -14,7 +14,7 @@ namespace Phonos.Fra.Similarity.Distances.Tests
 
     public class NeighborhoodVowelDistanceTests : VowelDistanceTestsBase
     {
-        protected override IDistance<Phoneme> _distance => PhonemeDistances.NeighborhoodVowelDistance;
+        protected override IDistance<Phoneme> _distance => Distances.NeighborhoodVowelDistance;
     }
 
     public abstract class VowelDistanceTestsBase : DistanceTests<Phoneme>

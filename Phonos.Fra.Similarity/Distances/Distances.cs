@@ -6,9 +6,15 @@ using System.Text;
 
 namespace Phonos.Fra.Similarity.Distances
 {
-    public static class PhonemeDistances
+    public static class Distances
     {
-        public static IDistance<Phoneme> NeighborhoodVowelDistance = new NeighborhoodDistance<Phoneme>(
+        public static IDistance<WordForm> WordFormDistance => new WordFormDistance(RealizationDistance);
+
+        public static IDistance<Realization> RealizationDistance => new PhoneticDistance(SyllableDistance);
+
+        public static IDistance<Syllable> SyllableDistance => new SyllableDistance(NeighborhoodVowelDistance, NeighborhoodConsonantDistance);
+
+        public static IDistance<Phoneme> NeighborhoodVowelDistance => new NeighborhoodDistance<Phoneme>(
             circleDistances: new double[] { 1, 2, 3, 4 },
             maxDistances: 5,
             neighborhoods: Neighborhoods(
@@ -30,7 +36,7 @@ namespace Phonos.Fra.Similarity.Distances
                 Of("œ̃", C("ɛ̃"), C(), C("ɔ̃"), C("œ", "ɑ̃")),
                 Of("ɔ̃", C(), C("ɑ̃"), C("œ̃"), C("ɔ", "ɛ̃"))));
 
-        public static IDistance<Phoneme> NeighborhoodConsonantDistance = new NeighborhoodDistance<Phoneme>(
+        public static IDistance<Phoneme> NeighborhoodConsonantDistance => new NeighborhoodDistance<Phoneme>(
             circleDistances: new double[] { 1, 2, 3, 4 },
             maxDistances: 5,
             neighborhoods: Neighborhoods(

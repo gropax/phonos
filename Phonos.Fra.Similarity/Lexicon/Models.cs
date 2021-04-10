@@ -13,8 +13,18 @@ namespace Phonos.Fra.Similarity.Lexicon
     public class WordForm
     {
         public string GraphicForm { get; }
-        public Syllable[] Syllables { get; }
-        public IEnumerable<Phoneme> Phonemes => Syllables.SelectMany(p => p.Phonemes);
+        public Realization[] Realizations { get; }
+
+        public WordForm(string graphicForm, Realization[] realizations)
+        {
+            GraphicForm = graphicForm;
+            Realizations = realizations;
+        }
+
+        public override string ToString()
+        {
+            return GraphicForm;
+        }
     }
 
     public class Realization
@@ -33,6 +43,12 @@ namespace Phonos.Fra.Similarity.Lexicon
         {
             Syllables = syllables;
             Distortion = distortion;
+        }
+
+        public override string ToString()
+        {
+            var symbols = string.Join(".", Syllables.Select(s => string.Join("", s.Phonemes.Select(p => p.Symbol))));
+            return $"/{symbols}/";
         }
     }
 

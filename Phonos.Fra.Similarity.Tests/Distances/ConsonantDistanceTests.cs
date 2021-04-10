@@ -9,7 +9,7 @@ namespace Phonos.Fra.Similarity.Distances.Tests
 {
     public class NeighborhoodConsonantDistanceTests : ConsonantDistanceTests
     {
-        protected override IDistance<Phoneme> _distance => PhonemeDistances.NeighborhoodConsonantDistance;
+        protected override IDistance<Phoneme> _distance => Distances.NeighborhoodConsonantDistance;
     }
 
 
